@@ -8,6 +8,7 @@ use Soft\Http\Requests\UserCreateRequest;
 use Soft\Http\Requests\UserUpdateRequest;
 //agregamos esto para no escribir cinema 
 use Soft\User;
+use Soft\Perfil;
 use Session;
 use Redirect;
 
@@ -39,8 +40,9 @@ class UsuarioController extends Controller
 
     public function create()
     {
+        $perfils=Perfil::lists('descripcion','id');
         //retorna a una vista que esta en la carpeta usuario y dentro esta create
-        return view('admin.usuario.create');
+        return view('admin.usuario.create',['perfils'=>$perfils]);
     }
 
    
@@ -70,12 +72,14 @@ class UsuarioController extends Controller
     //editar los recursos
     public function edit($id)
     {
+        //creamos un $movie que va a hacer igual al user que encontremos con la id que recibimos 
+        $perfils=Perfil::lists('descripcion','id');
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
         $user=User::find($id);
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
         
-        return view('admin.usuario.edit',['user'=>$user]);
+        return view('admin.usuario.edit',['user'=>$user , 'perfils'=>$perfils]);
     }
 
 
@@ -97,11 +101,11 @@ class UsuarioController extends Controller
     {
         //destruye deacuerdo al id que nos pasaron User::destroy($id); 
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
-        //$users=User::find($id);
-        //$users->delete();
+        $users=User::find($id);
+        $users->delete();
         
         //le manda un mensaje al usuario
-       // Session::flash('message','usuario eliminado con exito'); 
-        //return Redirect::to('/usuario');
+        Session::flash('message','usuario eliminado con exito'); 
+        return Redirect::to('/usuario');
     }
 }

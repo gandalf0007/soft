@@ -8,7 +8,7 @@
 de UsuarioController y el metodo PUT es para actualizar-->
 {!!Form::model($user,['route'=>['usuario.update',$user->id],'method'=>'PUT'])!!}
 
-@include('admin.usuario.forms.userforms')
+@include('admin.usuario.forms.formsedit')
 
 {!!Form::submit('modificar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}

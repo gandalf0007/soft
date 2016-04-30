@@ -28,9 +28,13 @@
 	{!!Form::text('usu_perfil',null,['class'=>'form-control','placeholder'=>'ingrese el perfil'])!!}
 </div>
 
+
 <div class="form-group">
 	{!!Form::label('telefono')!!}
 	{!!Form::text('usu_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
 
-
+<div class="form-group">
+	{!!Form::label('perfil')!!}
+	{!!Form::select('usu_perfil',$perfils)!!}
+</div>

@@ -10,6 +10,7 @@
 {!!Html::style('css/bootstrap-responsive.min.css')!!}
 {!!Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600')!!}
 {!!Html::style('css/font-awesome.css')!!}
+{!!Html::style('css/font-awesome.min.css')!!}
 {!!Html::style('css/style.css')!!}
 {!!Html::style('css/pages/dashboard.css')!!}
 
@@ -62,14 +63,11 @@
         <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
         <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
         <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i><span>Usuarios</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
-            <li><a href="error.html">404</a></li>
+            <li><a class="fa  fa-user-plus" href="{!! URL::to('usuario/create') !!}"> Crear Usuarios</a></li>
+            <li><a class="fa fa-users"href="{!! URL::to('usuario/') !!}"> Listar Usuarios</a></li>
+            
           </ul>
         </li>
       </ul>
