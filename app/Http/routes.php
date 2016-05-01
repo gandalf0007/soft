@@ -21,6 +21,7 @@ Route::get('admin','FrontController@admin');
 Route::resource('usuario','UsuarioController');
 //Route::resource('cliente','ClienteController');
 Route::resource('rubro','RubroController');
+Route::resource('ivatipo','IvatipoController');
 
 //sistema de logue para laravel 5.2
 Route::auth();
