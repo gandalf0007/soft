@@ -16,7 +16,12 @@
 //rutas , el primer parammetro es el nombre de la ruta
 //el segundo parametro llama a la funcion dentro de frontController
 Route::get('/','FrontController@index');
+Route::get('admin','FrontController@admin');
+
 Route::resource('usuario','UsuarioController');
+Route::auth();
+Route::get('logged', 'LoginController@index');
+
 
 /*
 
@@ -32,7 +37,7 @@ Route::auth();
 Route::resource('mail','MailController');
 //para redireccionar si ya esta logueado y trata de entrar al login
 Route::get('logged', 'LoginController@index');
-Route::get('admin','FrontController@admin');
+
 //enrutado ressfull
 
 Route::resource('genero', 'GeneroController');
