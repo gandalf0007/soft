@@ -18,8 +18,8 @@ class User extends Authenticatable
         'id',
         'usu_nombre',
         'usu_apellido',
-        'usu_pass',
-        'usu_email',
+        'password',
+        'email',
         'usu_direcc',
         'usu_perfil',
         'usu_tel',
@@ -30,7 +30,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ['usu_pass', 'remember_token',];
+    protected $hidden = ['password', 'remember_token',];
     //protected $dates = ['deleted_at'];
 
     //especificamos un modelo para setear la contraseña cada vez que se cambia , recivimos un $valor
@@ -39,7 +39,7 @@ class User extends Authenticatable
         //si ese valor no esta vacio , cambiamos la contraseña
         if (!empty($valor)) {
             //es para encriptar la contraseña y con make le pasamos el valor
-            $this->attributes['usu_pass'] = \hash::make($valor);
+            $this->attributes['password'] = \hash::make($valor);
         }
 
     }

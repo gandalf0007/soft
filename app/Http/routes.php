@@ -19,7 +19,12 @@ Route::get('/','FrontController@index');
 Route::get('admin','FrontController@admin');
 
 Route::resource('usuario','UsuarioController');
+//Route::resource('cliente','ClienteController');
+Route::resource('rubro','RubroController');
+
+//sistema de logue para laravel 5.2
 Route::auth();
+//para redireccionar si ya esta logueado y trata de entrar al login
 Route::get('logged', 'LoginController@index');
 
 

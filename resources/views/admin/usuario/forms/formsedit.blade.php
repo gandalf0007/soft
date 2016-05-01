@@ -10,12 +10,12 @@
 
 <div class="form-group">
 	{!!Form::label('password')!!}
-	{!!Form::text('usu_pass',null,['class'=>'form-control','placeholder'=>'ingrese el password'])!!}
+	{!!Form::text('password',null,['class'=>'form-control','placeholder'=>'ingrese el password'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('email')!!}
-	{!!Form::text('usu_email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
+	{!!Form::text('email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
 </div>
 
 <div class="form-group">

@@ -53,8 +53,8 @@ class UsuarioController extends Controller
         user::create([
             'usu_nombre' =>$request['usu_nombre'],
             'usu_apellido' =>$request['usu_apellido'],
-            'usu_pass' =>$request['usu_pass'],
-            'usu_email' =>$request['usu_email'],
+            'password'=>bcrypt($request['password']),
+            'email' =>$request['email'],
             'usu_direcc' =>$request['usu_direcc'],
             'usu_perfil' =>$request['usu_perfil'],
             'usu_tel' =>$request['usu_tel'],

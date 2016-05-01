@@ -58,18 +58,39 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
-        <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
-        <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i><span>Usuarios</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a class="fa  fa-user-plus" href="{!! URL::to('usuario/create') !!}"> Crear Usuarios</a></li>
-            <li><a class="fa fa-users"href="{!! URL::to('usuario/') !!}"> Listar Usuarios</a></li>
-            
-          </ul>
+
+        <li class="active"><a href="index.html"><i class="icon-dashboard"></i>
+        <span>Dashboard</span></a> 
         </li>
+
+        <li><a href="reports.html"><i class="icon-list-alt"></i>
+        <span>Reports</span> </a> </li>
+
+        <li><a href="guidely.html"><i class="icon-facetime-video"></i>
+        <span>App Tour</span> </a></li>
+
+        <li><a href="charts.html"><i class="icon-bar-chart"></i>
+        <span>Charts</span> </a> </li>
+
+        <li><a href="shortcodes.html"><i class="icon-code"></i>
+        <span>Shortcodes</span> </a> </li>
+
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-user"></i><span>Usuarios</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li><a class="fa  fa-user-plus" href="{!! URL::to('usuario/create') !!}"> Crear Usuarios</a></li>
+        <li><a class="fa fa-users"href="{!! URL::to('usuario/') !!}"> Listar Usuarios</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-desktop"></i><span>Config</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li><a class="fa  fa-cubes" href="{!! URL::to('rubro/') !!}">  Rubros</a></li>
+        </ul>
+        </li>
+
+
       </ul>
     </div>
     <!-- /container --> 
