@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Soft\Http\Requests;
 use Soft\Http\Requests\UserCreateRequest;
 use Soft\Http\Requests\UserUpdateRequest;
+use Illuminate\Database\Eloquent\Scope;
 //agregamos esto para no escribir cinema 
 use Soft\User;
 use Soft\Perfil;
@@ -25,12 +26,27 @@ class UsuarioController extends Controller
     }
 
     //lista los recuroso
-    public function index()
+    public function index(Request $request)
     {
+        //agrega un buscador que filtra por nombre de usuario , se agrega el Request $request
+
         //hacemos referencia al namespace de nuestra aplicacion y despues al modelo user
         //All() nos trae todos los elementos que tiene la tabala user
         //cambiamos all() por pagination() para no mostrar todos los elementos sino algunos
-        $users= user::paginate(10);
+        
+
+
+        //ordenamos por usu_nombre y lo guaramos en $users
+        $users=user::orderBy('usu_nombre');
+        //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
+        $usu_nombre=$request->input('usu_nombre');
+        //preguntamos que si ($usu_nombre no es vacio
+        if (!empty($usu_nombre)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $users->where('usu_nombre','LIKE','%'.$usu_nombre.'%');
+        }
+        //realizamos la paginacion
+        $users=$users->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion

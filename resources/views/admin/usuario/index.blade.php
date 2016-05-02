@@ -5,6 +5,22 @@
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
+<div class="panel-body">
+<div class="col-lg-6">
+
+
+ <!--buscador-->
+{!!Form::open(['route'=>'usuario.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left pull-right' , 'role'=>'Search'])!!}
+
+<div class="form-group">
+	{!!Form::label('nombre')!!}
+	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
+</div>
+
+{!!Form::submit('Buscar',['class'=>'btn btn-primary'])!!}
+{!!Form::close()!!}
+ <!--endbuscador-->
+
 <table class="table">
 	<thead>
 		<th>nombre</th>
