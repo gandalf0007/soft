@@ -8,16 +8,18 @@
 <div class="panel-body">
 <div class="col-lg-6">
 
+<div class="container-fluid">
 
- <!--buscador-->
-{!!Form::open(['route'=>'usuario.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left pull-right' , 'role'=>'Search'])!!}
+ 
+<!--buscador-->
+{!!Form::open(['route'=>'usuario.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
+ <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 
-{!!Form::submit('Buscar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
  <!--endbuscador-->
 
@@ -48,5 +50,9 @@
 	</table>
 
 <!--para renderizar la paginacion-->
-{!! $users->render() !!}
+
+
+  {!! $users->render() !!}
+ 
+</div>
 @endsection

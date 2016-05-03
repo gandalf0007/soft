@@ -6,18 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
+
+{!!Html::style('css/bootstrap.css')!!}
 {!!Html::style('css/bootstrap.min.css')!!}
 {!!Html::style('css/bootstrap-responsive.min.css')!!}
 {!!Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600')!!}
-{!!Html::style('css/font-awesome.css')!!}
-{!!Html::style('css/font-awesome.min.css')!!}
 {!!Html::style('css/style.css')!!}
 {!!Html::style('css/pages/dashboard.css')!!}
-
-
-
-
-
+{!!Html::style('css/font-awesome.css')!!}
+{!!Html::style('css/font-awesome.min.css')!!}
 
    
 </head>
