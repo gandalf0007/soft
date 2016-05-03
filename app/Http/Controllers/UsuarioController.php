@@ -117,8 +117,8 @@ class UsuarioController extends Controller
     {
         //destruye deacuerdo al id que nos pasaron User::destroy($id); 
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
-        $users=User::find($id);
-        $users->delete();
+        $user=User::find($id);
+        $user->delete();
         
         //le manda un mensaje al usuario
         Session::flash('message','usuario eliminado con exito'); 

@@ -1,13 +1,12 @@
 <?php
 
 namespace Soft\Http\Controllers;
-use Illuminate\Http\Request;
-use Soft\Http\Requests;
-use Soft\Rubro;
-use Session;
-use Redirect;
 
-class RubroController extends Controller
+use Illuminate\Http\Request;
+
+use Soft\Http\Requests;
+
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class RubroController extends Controller
      */
     public function index()
     {
-        $rubros= Rubro::paginate(10);
-        return view('admin.configuracion.rubro.index',compact('rubros'));
+        //
     }
 
     /**
@@ -27,7 +25,7 @@ class RubroController extends Controller
      */
     public function create()
     {
-         return view('admin.configuracion.rubro.create');
+        //
     }
 
     /**
@@ -38,10 +36,7 @@ class RubroController extends Controller
      */
     public function store(Request $request)
     {
-        Rubro::create([
-            'descripcion' =>$request['descripcion'],
-            ]);
-        return redirect('/rubro')->with('message','rubro guardado con exito');
+        //
     }
 
     /**
@@ -63,12 +58,7 @@ class RubroController extends Controller
      */
     public function edit($id)
     {
-        //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
-        $rubro=Rubro::find($id);
-        //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
-        //user correspondiente
-        
-        return view('admin.configuracion.rubro.edit',['rubro'=>$rubro]);
+        //
     }
 
     /**
@@ -80,13 +70,7 @@ class RubroController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $rubro=Rubro::find($id);
-       $rubro->fill($request->all());
-       $rubro->save();
-
-        //le manda un mensaje al usuario
-       Session::flash('message','rubro modificado con exito'); 
-       return Redirect::to('/rubro');
+        //
     }
 
     /**
@@ -97,11 +81,6 @@ class RubroController extends Controller
      */
     public function destroy($id)
     {
-        $rubro=Rubro::find($id);
-        $rubro->delete();
-        
-        //le manda un mensaje al usuario
-        Session::flash('message','rubro eliminado con exito'); 
-        return Redirect::to('/rubro');
+        //
     }
 }

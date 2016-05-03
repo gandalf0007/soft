@@ -22,7 +22,8 @@ Route::resource('usuario','UsuarioController');
 //Route::resource('cliente','ClienteController');
 Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
-
+Route::resource('marca','MarcaController');
+Route::resource('producto','ProductoController');
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login

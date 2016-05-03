@@ -3,23 +3,33 @@
 namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 use Soft\Http\Requests;
+use Soft\Marca;
 use Session;
 use Redirect;
-use Soft\Ivatipo;
-class IvatipoController extends Controller
+
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $ivatipos= Ivatipo::paginate(10);
+        $marcas=marca::orderBy('descripcion');
+        //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
+        $descripcion=$request->input('descripcion');
+        //preguntamos que si ($usu_nombre no es vacio
+        if (!empty($descripcion)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $marcas->where('descripcion','LIKE','%'.$descripcion.'%');
+        }
+        //realizamos la paginacion
+        $marcas=$marcas->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.configuracion.ivatipo.index',compact('ivatipos'));
+        return view('admin.configuracion.marca.index',compact('marcas'));
     }
 
     /**
@@ -29,7 +39,7 @@ class IvatipoController extends Controller
      */
     public function create()
     {
-        return view('admin.configuracion.ivatipo.create');
+        return view('admin.configuracion.marca.create');
     }
 
     /**
@@ -40,12 +50,11 @@ class IvatipoController extends Controller
      */
     public function store(Request $request)
     {
-        Ivatipo::create([
+        marca::create([
             'descripcion' =>$request['descripcion'],
-            'valor' =>$request['valor'],
             
             ]);
-        return redirect('/ivatipo')->with('message','iva guardado con exito');
+        return redirect('/marca')->with('message','marca guardado con exito');
     }
 
     /**
@@ -67,12 +76,12 @@ class IvatipoController extends Controller
      */
     public function edit($id)
     {
-
-       $ivatipo=Ivatipo::find($id);
+        //creamos un $marca que va a hacer igual a la marca que encontremos con la id que recibimos 
+        $marca=marca::find($id);
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
         
-        return view('admin.configuracion.ivatipo.edit',['ivatipo'=>$ivatipo ]);
+        return view('admin.configuracion.marca.edit',['marca'=>$marca]);
     }
 
     /**
@@ -84,13 +93,13 @@ class IvatipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ivatipo=Ivatipo::find($id);
-       $ivatipo->fill($request->all());
-       $ivatipo->save();
+       $marca=marca::find($id);
+       $marca->fill($request->all());
+       $marca->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','iva modificado con exito'); 
-       return Redirect::to('/ivatipo');
+       Session::flash('message','marca modificado con exito'); 
+       return Redirect::to('/marca');
     }
 
     /**
@@ -101,11 +110,11 @@ class IvatipoController extends Controller
      */
     public function destroy($id)
     {
-        $ivatipo=Ivatipo::find($id);
-        $ivatipo->delete();
+        $marca=marca::find($id);
+        $marca->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','iva eliminado con exito'); 
-        return Redirect::to('/ivatipo');
+        Session::flash('message','marca eliminada con exito'); 
+        return Redirect::to('/marca');
     }
 }
