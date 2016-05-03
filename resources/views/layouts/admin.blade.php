@@ -94,6 +94,8 @@
         <li><a class="fa  fa-cubes" href="{!! URL::to('rubro/') !!}">  Rubros</a></li>
         <br><!--salto de linea-->
         <li><a class="fa  fa-eur" href="{!! URL::to('ivatipo/') !!}">  Iva Tipo</a></li>
+        <br><!--salto de linea-->
+        <li><a class="fa  fa-tags" href="{!! URL::to('marca/') !!}">  Marca</a></li>
         </ul>
         </li>
 
