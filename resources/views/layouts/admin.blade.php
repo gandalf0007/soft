@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 
-
+{!!Html::style('css/bootstrap.css')!!}
 {!!Html::style('css/bootstrap.min.css')!!}
 {!!Html::style('css/bootstrap-responsive.min.css')!!}
 {!!Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600')!!}
@@ -22,7 +22,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Bootstrap Admin Template </a>
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Soft Shark</a>
         <!--comprueva si esta logueado y se carga el panel de user-->
         @if (Auth::check())
       <div class="nav-collapse">
