@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>Soft Shark</title>
-        <link rel="stylesheet" href="css/login.css"> 
+
+       
+        {!!Html::style('css/login.css')!!}
+        
+
   </head>
 
   <body>
@@ -18,9 +22,8 @@
 
  <div class="container">
       <div id="login">
-     <br><br>
+     <br><br><br><br>
 
-       
           <form  role="form" method="POST" action="{{ url('/login') }}">
               {!! csrf_field() !!}
                 <fieldset class="clearfix">
@@ -28,14 +31,15 @@
                     <p>
                       <span class="fontawesome-user"></span>  
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  
-
+                          <div class="">
                             <input type="text"  name="email" value="{{ old('email') }}" onBlur="if(this.value == '') this.value = 'email'" onFocus="if(this.value == 'email') this.value = ''" required>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif                       
+                                    <li class="help-block">
+                                        {{ $errors->first('email') }}
+                                    </li>
+                                @endif      
+                          </div>                     
                         </div>
                     </p>
                     <!--input del password -->
@@ -45,9 +49,9 @@
                                 <input type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <li class="help-block">
+                                        {{ $errors->first('password') }}
+                                    </li>
                                 @endif
                         </div>
                     </p>
@@ -61,7 +65,6 @@
                     <p>Not a member? <a href="#" class="blue">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
 
                 </div>
-              
             </div> <!-- end login -->
   </body>
 </html>
