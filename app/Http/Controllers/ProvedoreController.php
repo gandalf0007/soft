@@ -1,17 +1,16 @@
 <?php
 
 namespace Soft\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 use Soft\Http\Requests;
-use Soft\Producto;
+use Soft\Provedore;
 use Session;
 use Redirect;
-use Storage;
-use Soft\Rubro;
-use Soft\Marca;
-use Soft\Ivatipo;
 
-class ProductoController extends Controller
+
+class ProvedoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,21 +19,21 @@ class ProductoController extends Controller
      */
     public function index(Request $request)
     {
-         //ordenamos por usu_nombre y lo guaramos en $users
-        $productos=producto::orderBy('pro_descrip');
+        //ordenamos por usu_nombre y lo guaramos en $users
+        $provedores=provedore::orderBy('prov_razsoc');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
-        $pro_descrip=$request->input('pro_descrip');
+        $prov_razsoc=$request->input('prov_razsoc');
         //preguntamos que si ($usu_nombre no es vacio
-        if (!empty($pro_descrip)) {
+        if (!empty($prov_razsoc)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $productos->where('pro_descrip','LIKE','%'.$pro_descrip.'%');
+            $provedores->where('prov_razsoc','LIKE','%'.$prov_razsoc.'%');
         }
         //realizamos la paginacion
-        $productos=$productos->paginate(10);
+        $provedores=$provedores->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.index',compact('productos'));
+        return view('admin.provedor.index',compact('provedores'));
     }
 
     /**
@@ -44,10 +43,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $rubros=Rubro::lists('descripcion','id');
-        $marcas=Marca::lists('descripcion','id');
-        $ivatipos=ivatipo::lists('descripcion','id');
-        return view('admin.producto.create',['ivatipos'=>$ivatipos,'rubros'=>$rubros,'marcas'=>$marcas]);
+        return view('admin.provedor.create');
     }
 
     /**
@@ -58,8 +54,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-         producto::create($request->all());
-        return redirect('/producto')->with('message','producto guardado con exito');
+        Provedore::create($request->all());
+        return redirect('/provedor')->with('message','provedor guardado con exito');
     }
 
     /**
@@ -81,7 +77,12 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
+        $provedore=provedore::find($id);
+        //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
+        //user correspondiente
+        return view('admin.provedor.edit',['provedore'=>$provedore]);
     }
 
     /**
@@ -93,7 +94,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
+       $provedore=provedore::find($id);
+       $provedore->fill($request->all());
+       $provedore->save();
+
+        //le manda un mensaje al usuario
+       Session::flash('message','provedor modificado con exito'); 
+       return Redirect::to('/provedor');
     }
 
     /**
@@ -106,13 +114,11 @@ class ProductoController extends Controller
     {
         //destruye deacuerdo al id que nos pasaron User::destroy($id); 
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
-        $producto=producto::find($id);
-        $producto->delete();
+        $provedore=Provedore::find($id);
+        $provedore->delete();
         
-        //para eliminar la imagen
-        \Storage::delete($producto->pro_imagen);
         //le manda un mensaje al usuario
-        Session::flash('message','producto eliminado con exito'); 
-        return Redirect::to('/producto');
+        Session::flash('message','provedor eliminado con exito'); 
+        return Redirect::to('/provedor');
     }
 }

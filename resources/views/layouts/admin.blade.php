@@ -7,8 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 
-{!!Html::style('css/bootstrap.css')!!}
 {!!Html::style('css/bootstrap.min.css')!!}
+{!!Html::style('css/bootstrap.css')!!}
 {!!Html::style('css/bootstrap-responsive.min.css')!!}
 {!!Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600')!!}
 {!!Html::style('css/style.css')!!}
@@ -76,6 +76,22 @@
 
         <li><a href="shortcodes.html"><i class="icon-code"></i>
         <span>Shortcodes</span> </a> </li>
+
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-shopping-basket"></i><span>Productos</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li><a class="fa fa-plus-square" href="{!! URL::to('producto/create') !!}"> Agregar Producto</a></li>
+        <li><a class="fa fa-list-ul"href="{!! URL::to('producto/') !!}"> Listar Productos</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-user-secret"></i><span>Provedores</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li><a class="fa fa-user-plus" href="{!! URL::to('provedor/create') !!}"> Agregar Provedor</a></li>
+        <li><a class="fa fa-users"href="{!! URL::to('provedor/') !!}"> Listar Provedores</a></li>
+        </ul>
+        </li>
 
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-user"></i><span>Usuarios</span><b class="caret"></b></a>
