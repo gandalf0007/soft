@@ -10,6 +10,7 @@ use Storage;
 use Soft\Rubro;
 use Soft\Marca;
 use Soft\Ivatipo;
+use Soft\Provedore;
 
 class ProductoController extends Controller
 {
@@ -47,7 +48,9 @@ class ProductoController extends Controller
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','id');
-        return view('admin.producto.create',['ivatipos'=>$ivatipos,'rubros'=>$rubros,'marcas'=>$marcas]);
+        $provedores=provedore::lists('prov_razsoc','id');
+        return view('admin.producto.create',['ivatipos'=>$ivatipos,'rubros'=>$rubros,'marcas'=>$marcas
+                                            ,'provedores'=>$provedores]);
     }
 
     /**

@@ -115,8 +115,8 @@
 
 <!--provedor-->
 <div class="form-group">
-	{!!Form::label('provedor')!!}
-	{!!Form::text('provedor_id',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
+	{!!Form::label('provedores')!!}
+	{!!Form::select('provedor_id',$provedores)!!}
 </div>
 
 <!--observacioes-->
