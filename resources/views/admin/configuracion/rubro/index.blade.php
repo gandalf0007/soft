@@ -4,6 +4,9 @@
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
+<div class="panel-body">
+<div class="container-fluid">
+
 <table class="table">
 	<thead>
 		<th>ID</th>
@@ -31,4 +34,6 @@
 
 <!--para renderizar la paginacion-->
 {!! $rubros->render() !!}
+</div>
+</div>
 @endsection

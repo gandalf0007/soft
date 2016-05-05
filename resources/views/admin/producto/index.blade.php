@@ -5,11 +5,12 @@
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
+
+
 <div class="panel-body">
-<div class="col-lg-6">
 <div class="container-fluid">
 
- 
+
 <!--buscador-->
 {!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 
@@ -20,7 +21,8 @@
 </div>
 
 {!!Form::close()!!}
- <!--endbuscador-->
+ <!--endbuscador--> 
+
 
 <table class="table">
 	<thead>
@@ -56,5 +58,6 @@
 
   {!! $productos->render() !!}
  
+</div>
 </div>
 @endsection

@@ -6,8 +6,6 @@
 @include('alerts.success')
 
 <div class="panel-body">
-<div class="col-lg-6">
-
 <div class="container-fluid">
 
  
@@ -54,5 +52,6 @@
 
   {!! $users->render() !!}
  
+</div>
 </div>
 @endsection

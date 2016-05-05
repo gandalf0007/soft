@@ -2,9 +2,9 @@
 @include('alerts.errors')
 @section('content')
 
-
+<div class="panel-body">
+<div class="col-lg-6">
 <div class="container-fluid">
-
 
 
 {!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True ])!!}
@@ -13,8 +13,7 @@
 {!!Form::close()!!}
 
 
-
-
 </div>
-
+</div>
+</div>
 @endsection

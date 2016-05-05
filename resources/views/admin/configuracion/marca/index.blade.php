@@ -4,9 +4,11 @@
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
+<div class="panel-body">
+<div class="container-fluid">
 
 <!--buscador-->
-{!!Form::open(['route'=>'marca.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left pull-right' , 'role'=>'Search'])!!}
+{!!Form::open(['route'=>'marca.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
@@ -16,6 +18,8 @@
 {!!Form::submit('Buscar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
  <!--endbuscador-->
+
+
 
 <table class="table">
 	<thead>
@@ -45,4 +49,6 @@
 
 <!--para renderizar la paginacion-->
 {!! $marcas->render() !!}
+</div>
+</div>
 @endsection

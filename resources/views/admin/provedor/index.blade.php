@@ -4,8 +4,6 @@
 @include('alerts.success')
 
 <div class="panel-body">
-<div class="col-lg-6">
-
 <div class="container-fluid">
 
  
@@ -54,5 +52,6 @@
 
   {!! $provedores->render() !!}
  
+</div>
 </div>
 @endsection
