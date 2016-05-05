@@ -45,12 +45,12 @@
 
 <div class="form-group">
 	{!!Form::label('Observacion')!!}
-	{!!Form::text('prov_observacion',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
+	{!!Form::textarea('prov_observacion',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('Habilitado')!!}
-	{!!Form::text('prov_habilitado',null,['class'=>'form-control','placeholder'=>'ingrese el Cuit'])!!}
+	{!!Form::checkbox('prov_habilitado',null,['class'=>'form-control','placeholder'=>'ingrese el Cuit'])!!}
 </div>
 
 

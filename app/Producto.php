@@ -17,7 +17,7 @@ class Producto extends Model
         'pro_preciocosto',
         'iva_id',
 
-        'pro_precio1',
+        'pro_venta',
         'pro_precio2',
         'pro_precio3',
 
