@@ -26,18 +26,25 @@
 
 <table class="table">
 	<thead>
-		<th>id</th>
+		<th>Imagen</th>
+		<th>Codigo</th>
 		<th>descripcion</th>
-		<th>imagen</th>
-		<th>imagen</th>
+		<th>Iva</th>
+		<th>Costo</th>
+		<th>venta</th>
+		<th>venta 2</th>
 	</thead>
 	@foreach($productos as $producto)
 	<tbody>
 	<!-- -->
- <td>{{ $producto -> id}}</td>
-  <td>{{ $producto -> pro_descrip}}</td>
-  <td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
-  <td>{{ $producto -> pro_imagen}}</td>
+	<td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
+ 	<td>{{ $producto -> pro_codigo}}</td>
+  	<td>{{ $producto -> pro_descrip}}</td>
+   	<td>{{ $producto -> iva_id}}</td>
+  	<td>{{ $producto -> pro_preciocosto}}</td>
+  	<td>{{ $producto -> pro_venta}}</td>
+  	<td>{{ $producto -> pro_precio2}}</td>
+
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
 

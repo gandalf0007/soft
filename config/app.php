@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -157,6 +158,8 @@ return [
         Soft\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+    
+   
     ],
 
     /*
