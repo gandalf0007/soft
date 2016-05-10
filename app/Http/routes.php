@@ -31,6 +31,9 @@ Route::auth();
 Route::get('logged', 'LoginController@index');
 
 
+//agregado pdf
+Route::get('reportes', 'PdfController@index');
+Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais');
 /*
 
 Route::get('contacto','FrontController@contacto');

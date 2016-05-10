@@ -16,6 +16,8 @@
 {!!Html::style('css/font-awesome.css')!!}
 {!!Html::style('css/font-awesome.min.css')!!}
 
+
+
    
 </head>
 <body>
@@ -97,6 +99,16 @@
         </ul>
         </li>
 
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-trash"></i><span>Reportes</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li><a class="fa  fa-cubes" href="{!! URL::to('rubro/') !!}">  Listar Reportes</a></li>
+        <li class="active"><a href="{!! URL::to('reportes/') !!}" ><i class="fa fa-circle-o"></i> Reportes </a></li>
+                
+        <br><!--salto de linea-->
+        </ul>
+        </li>
+
 
       </ul>
     </div>
@@ -153,6 +165,7 @@
 {!!Html::script('js/chart.min.js')!!}
 {!!Html::script('js/bootstrap.js')!!}
 {!!Html::script('js/base.js')!!}
+{!!Html::script('js/pdf.js')!!}
 
 
 </body>
