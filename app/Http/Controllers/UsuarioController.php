@@ -35,9 +35,8 @@ class UsuarioController extends Controller
         //cambiamos all() por pagination() para no mostrar todos los elementos sino algunos
         
 
-
         //ordenamos por usu_nombre y lo guaramos en $users
-        $users=user::orderBy('usu_nombre');
+        $users=user::orderBy('id');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
         $usu_nombre=$request->input('usu_nombre');
         //preguntamos que si ($usu_nombre no es vacio
@@ -45,6 +44,15 @@ class UsuarioController extends Controller
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
             $users->where('usu_nombre','LIKE','%'.$usu_nombre.'%');
         }
+
+        //busqueda por tipo
+        $tpye=$request->input('type');
+        if (!empty($tpye)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $users->where('usu_perfil','LIKE','%'.$tpye.'%');
+        }
+
+
         //realizamos la paginacion
         $users=$users->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index

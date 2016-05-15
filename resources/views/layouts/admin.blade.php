@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 
+
 {!!Html::style('css/bootstrap.min.css')!!}
 {!!Html::style('css/bootstrap.css')!!}
 {!!Html::style('css/bootstrap-responsive.min.css')!!}

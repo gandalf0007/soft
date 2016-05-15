@@ -15,6 +15,7 @@
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
+	{!!Form::select('type',config('options.type'))!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 
@@ -23,6 +24,7 @@
 
 <table class="table">
 	<thead>
+		<th>Id</th>
 		<th>nombre</th>
 		<th>correo</th>
 		<th>operaciones</th>
@@ -30,8 +32,9 @@
 	@foreach($users as $user)
 	<tbody>
 	<!-- -->
- <td>{{ $user -> usu_nombre}}</td>
-
+ 	<td>{{ $user -> id}}</td>
+	<td>{{ $user -> usu_nombre}}</td>
+	<td>{{ $user -> email}}</td>
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
 

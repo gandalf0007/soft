@@ -7,6 +7,7 @@
 
 <table class="table">
 	<thead>
+		<th>id</th>
 		<th>nombre</th>
 		<th>correo</th>
 		<th>operaciones</th>
@@ -14,7 +15,8 @@
 	@foreach($users as $user)
 	<tbody>
 	<!-- -->
- <td>{{ $user -> name}}</td>
+ <td>{{ $user -> id}}</td>
+ <td>{{ $user -> usu_nomrbe}}</td>
  <td>{{ $user -> email}}</td>
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
