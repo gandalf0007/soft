@@ -14,9 +14,20 @@ class RubroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rubros= Rubro::paginate(10);
+
+        $rubros=rubro::orderBy('id');
+        //buscador
+        $rubro=$request->input('rubro');
+        if (!empty($rubro)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $rubros->where('descripcion','LIKE','%'.$rubro.'%');
+        }
+
+
+        $rubros=$rubros->paginate(1);    
+        
         return view('admin.configuracion.rubro.index',compact('rubros'));
     }
 

@@ -25,7 +25,8 @@
 	<thead>
 		<th>ID</th>
 		<th>Descripcion</th>
-
+		<th>Editar</th>
+		<th>Eliminar</th>
 	</thead>
 	@foreach($marcas as $marca)
 	<tbody>

@@ -14,7 +14,8 @@
 		<th>ID</th>
 		<th>Descripcion</th>
 		<th>Valor</th>
-
+		<th>Editar</th>
+		<th>Eliminar</th>
 	</thead>
 	@foreach($ivatipos as $ivatipo)
 	<tbody>

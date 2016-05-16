@@ -21,10 +21,14 @@
 
 <table class="table">
 	<thead>
-		<th>razon social</th>
-		<th>contacto</th>
-		<th>email</th>
-		<th>operaciones</th>
+		<th>Razon Social</th>
+		<th>Contacto</th>
+		<th>Email</th>
+		<th>Telefono</th>
+		<th>Direccion</th>
+		<th>Cuit</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
 	</thead>
 	@foreach($provedores as $provedore)
 	<tbody>
@@ -32,6 +36,9 @@
 	 <td>{{ $provedore -> prov_razsoc}}</td>
 	 <td>{{ $provedore -> prov_contacto}}</td>
 	 <td>{{ $provedore -> prov_mail}}</td>
+	 <td>{{ $provedore -> prov_tel}}</td>
+	 <td>{{ $provedore -> prov_direccion}}</td>
+	 <td>{{ $provedore -> prov_cuit}}</td>
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
 

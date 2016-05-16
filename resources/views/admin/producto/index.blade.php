@@ -26,19 +26,21 @@
 
 <table class="table">
 	<thead>
-		<th>Imagen</th>
 		<th>Codigo</th>
-		<th>descripcion</th>
+		<th>Imagen</th>
+		<th>Descripcion</th>
 		<th>Iva</th>
 		<th>Costo</th>
 		<th>venta</th>
 		<th>venta 2</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
 	</thead>
 	@foreach($productos as $producto)
 	<tbody>
 	<!-- -->
+	<td>{{ $producto -> pro_codigo}}</td>
 	<td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
- 	<td>{{ $producto -> pro_codigo}}</td>
   	<td>{{ $producto -> pro_descrip}}</td>
    	<td>{{ $producto -> iva_id}}</td>
   	<td>{{ $producto -> pro_preciocosto}}</td>

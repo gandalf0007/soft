@@ -7,10 +7,27 @@
 <div class="panel-body">
 <div class="container-fluid">
 
+
+<!--buscador-->
+{!!Form::open(['route'=>'rubro.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
+
+<div class="form-group">
+	{!!Form::label('nombre')!!}
+	{!!Form::text('rubro',null,['class'=>'form-control','placeholder'=>'nombre del rubro'])!!}
+	
+ <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
+</div>
+
+{!!Form::close()!!}
+ <!--endbuscador-->
+
+
 <table class="table">
 	<thead>
 		<th>ID</th>
 		<th>Descripcion</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
 	</thead>
 	@foreach($rubros as $rubro)
 	<tbody>
