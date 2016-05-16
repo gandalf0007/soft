@@ -10,9 +10,9 @@
 
 <!-- $user es el elemento que estamos recibiendo y usuario.update hace referencia a la funcion update
 de UsuarioController y el metodo PUT es para actualizar-->
-{!!Form::model($user,['route'=>['usuario.update',$user->id],'method'=>'PUT'])!!}
+{!!Form::model($cliente,['route'=>['cliente.update',$cliente->id],'method'=>'PUT'])!!}
 
-@include('admin.usuario.forms.formsedit')
+@include('admin.cliente.forms.formscreate')
 
 {!!Form::submit('modificar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}

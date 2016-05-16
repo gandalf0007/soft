@@ -97,18 +97,27 @@
         <li><a class="fa  fa-eur" href="{!! URL::to('ivatipo/') !!}">  Iva Tipo</a></li>
         <br><!--salto de linea-->
         <li><a class="fa  fa-tags" href="{!! URL::to('marca/') !!}">  Marca</a></li>
+        <br><!--salto de linea-->
+        <li><a class="fa  fa-car" href="{!! URL::to('transporte/') !!}">  Transporte</a></li>
         </ul>
         </li>
 
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-trash"></i><span>Reportes</span><b class="caret"></b></a>
+        <i class="fa fa-user"></i><span>Clientes</span><b class="caret"></b></a>
         <ul class="dropdown-menu">
-        <li><a class="fa  fa-cubes" href="{!! URL::to('rubro/') !!}">  Listar Reportes</a></li>
-        <li class="active"><a href="{!! URL::to('reportes/') !!}" ><i class="fa fa-circle-o"></i> Reportes </a></li>
-                
+        <li><a class="fa  fa-cubes" href="{!! URL::to('cliente/') !!}">Listar Clientes</a></li>
         <br><!--salto de linea-->
         </ul>
         </li>
+
+
+
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-trash"></i><span>Reportes</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li class="active"><a href="{!! URL::to('reportes/') !!}" ><i class="fa fa-circle-o"></i> Listar Reportes </a></li>
+
+        
 
 
       </ul>

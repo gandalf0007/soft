@@ -21,7 +21,7 @@ class FrontController extends Controller
     public function index()
     {
        //retornando una vista
-        return view ('mercadopago');
+        return view ('index');
     }
 
  

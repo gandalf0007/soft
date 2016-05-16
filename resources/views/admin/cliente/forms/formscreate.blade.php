@@ -1,0 +1,62 @@
+<div class="form-group">
+	{!!Form::label('Razon Social')!!}
+	{!!Form::text('clie_nombres',null,['class'=>'form-control','placeholder'=>'ingrese el nombre'])!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Direccion')!!}
+	{!!Form::text('clie_direccion',null,['class'=>'form-control','placeholder'=>'ingrese la direccion'])!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Telefono')!!}
+	{!!Form::text('clie_telefono',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Email')!!}
+	{!!Form::text('clie_email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
+</div>
+
+
+<div class="form-group">
+	{!!Form::label('Cuit')!!}
+	{!!Form::text('clie_Cuit',null,['class'=>'form-control','placeholder'=>'ingrese el Cuit'])!!}
+</div>
+
+
+<div class="form-group">
+	{!!Form::label('Localidad')!!}
+	{!!Form::select('clie_localidad')!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Categoria Iva')!!}
+	{!!Form::select('clie_iva',$ivas)!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Transporte')!!}
+	{!!Form::select('transp_des',$transportes)!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Lista de Precio')!!}
+	{!!Form::select('clie_lista_precio')!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Observacion')!!}
+	{!!Form::textarea('clie_observacion',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Habilitado')!!}
+	{!!Form::checkbox('clie_habilitado',null,['class'=>'form-control','placeholder'=>''])!!}
+</div>
+
+<div class="form-group">
+	{!!Form::label('Habilitado Cta Cte')!!}
+	{!!Form::checkbox('clie_hab_cta',null,['class'=>'form-control','placeholder'=>''])!!}
+</div>
+
