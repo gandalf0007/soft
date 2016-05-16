@@ -10,17 +10,17 @@
 
 <!--buscador-->
 {!!Form::open(['route'=>'rubro.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
-
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('rubro',null,['class'=>'form-control','placeholder'=>'nombre del rubro'])!!}
 	
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
-
 {!!Form::close()!!}
  <!--endbuscador-->
 
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('rubro/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Rubro</a></div>
 
 <table class="table">
 	<thead>

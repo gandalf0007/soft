@@ -9,16 +9,16 @@
 
 <!--buscador-->
 {!!Form::open(['route'=>'marca.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
-
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
 	{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'ingrese la descripcion'])!!}
 </div>
-
 {!!Form::submit('Buscar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
  <!--endbuscador-->
 
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('marca/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nueva Marca</a></div>
 
 
 <table class="table">

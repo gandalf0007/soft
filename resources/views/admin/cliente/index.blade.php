@@ -11,16 +11,17 @@
  
 <!--buscador-->
 {!!Form::open(['route'=>'cliente.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
-
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('clie_nombres',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
 	{!!Form::select('type',config('options.type'))!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
-
 {!!Form::close()!!}
  <!--endbuscador-->
+
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('cliente/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Cliente</a></div>
 
 <table class="table">
 	<thead>

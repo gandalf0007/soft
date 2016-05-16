@@ -19,6 +19,9 @@
 {!!Form::close()!!}
  <!--endbuscador-->
 
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('provedor/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Provedor</a></div>
+
 <table class="table">
 	<thead>
 		<th>Razon Social</th>

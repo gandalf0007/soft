@@ -13,16 +13,16 @@
 
 <!--buscador-->
 {!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
-
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
 	{!!Form::text('pro_descrip',null,['class'=>'form-control','placeholder'=>'descripcion del prodcuto'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
-
 {!!Form::close()!!}
  <!--endbuscador--> 
 
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('producto/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Producto</a></div>
 
 <table class="table">
 	<thead>

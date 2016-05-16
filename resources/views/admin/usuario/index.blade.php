@@ -21,6 +21,9 @@
 
 {!!Form::close()!!}
  <!--endbuscador-->
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('usuario/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a></div>
+
 
 <table class="table">
 	<thead>

@@ -7,7 +7,8 @@
 <div class="panel-body">
 <div class="container-fluid">
 
-
+<div><a class="btn btn-success  pull-right " href="{!! URL::to('ivatipo/create') !!}">
+  <i class="fa fa-user-plus fa-lg"></i> Nuevo Iva</a></div>
 
 <table class="table">
 	<thead>
