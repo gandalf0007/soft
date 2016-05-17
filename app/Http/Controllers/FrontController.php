@@ -47,5 +47,11 @@ class FrontController extends Controller
         return view ('admin.index');
     }
 
+    public function welcome()
+    {
+       //retornando una vista
+        return view ('welcome');
+    }
+
     
 }

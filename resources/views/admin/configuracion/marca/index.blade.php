@@ -1,11 +1,17 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
 
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
-<div class="panel-body">
-<div class="container-fluid">
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Seccion de Usuarios</h3>
+            </div>
+			<div class="box-body">
 
 <!--buscador-->
 {!!Form::open(['route'=>'marca.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
@@ -21,7 +27,7 @@
   <i class="fa fa-user-plus fa-lg"></i> Nueva Marca</a></div>
 
 
-<table class="table">
+<table id="example2" class="table table-bordered table-hover">
 	<thead>
 		<th>ID</th>
 		<th>Descripcion</th>
@@ -50,6 +56,14 @@
 
 <!--para renderizar la paginacion-->
 {!! $marcas->render() !!}
-</div>
-</div>
+
+			</div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
 @endsection

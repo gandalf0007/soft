@@ -26,7 +26,7 @@ class RubroController extends Controller
         }
 
 
-        $rubros=$rubros->paginate(1);    
+        $rubros=$rubros->paginate(10);    
         
         return view('admin.configuracion.rubro.index',compact('rubros'));
     }

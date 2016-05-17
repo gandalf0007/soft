@@ -25,7 +25,7 @@ class MarcaController extends Controller
             $marcas->where('descripcion','LIKE','%'.$descripcion.'%');
         }
         //realizamos la paginacion
-        $marcas=$marcas->paginate(1);
+        $marcas=$marcas->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion

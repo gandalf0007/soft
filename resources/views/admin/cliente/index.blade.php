@@ -1,12 +1,18 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
 
 
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 
-<div class="panel-body">
-<div class="container-fluid">
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Seccion de Usuarios</h3>
+            </div>
+			<div class="box-body">
 
  
 <!--buscador-->
@@ -23,7 +29,8 @@
 <div><a class="btn btn-success  pull-right " href="{!! URL::to('cliente/create') !!}">
   <i class="fa fa-user-plus fa-lg"></i> Nuevo Cliente</a></div>
 
-<table class="table">
+
+<table id="example2" class="table table-bordered table-hover">
 	<thead>
 		<th>Id</th>
 		<th>Nombre</th>
@@ -63,6 +70,13 @@
 
   {!! $clientes->render() !!}
  
-</div>
-</div>
+			</div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
 @endsection

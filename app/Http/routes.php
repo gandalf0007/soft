@@ -15,6 +15,7 @@
 
 //rutas , el primer parammetro es el nombre de la ruta
 //el segundo parametro llama a la funcion dentro de frontController
+
 Route::get('/','FrontController@index');
 Route::get('admin','FrontController@admin');
 
@@ -66,3 +67,9 @@ Route::group(['middleware'=>['guest']], function(){
 
 });
 */
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/admin', 'HomeController@index');
+ 
+});

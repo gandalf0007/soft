@@ -62,7 +62,7 @@
 
                     <p><a href="{{ url('password/email') }}" class="blue">Forgot Your Password?</a><span class="fontawesome-arrow-right"></span></p>
 
-                    <p>Not a member? <a href="#" class="blue">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
+                    <p>Not a member? <a href="{{ url('/register') }}" class="blue">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
 
                 </div>
             </div> <!-- end login -->
