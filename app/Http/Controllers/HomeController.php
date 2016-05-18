@@ -9,7 +9,7 @@ namespace Soft\Http\Controllers;
 
 use Soft\Http\Requests;
 use Illuminate\Http\Request;
-
+use Soft\User;
 /**
  * Class HomeController
  * @package App\Http\Controllers
@@ -33,6 +33,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+
+        //$items = Item::where('type', 1)->count();
+       // $item_kits = Item::where('type', 2)->count();
+        //$customers = Customer::count();
+        //$suppliers = Supplier::count();
+        //$receivings = Receiving::count();
+        //$sales = Sale::count();
+        $empleados = User::count();
+        return view('admin.index')
+           // ->with('items', $items)
+            //->with('item_kits', $item_kits)
+           // ->with('customers', $customers)
+           // ->with('suppliers', $suppliers)
+           // ->with('receivings', $receivings)
+           // ->with('sales', $sales)
+            ->with('empleados', $empleados);
     }
 }

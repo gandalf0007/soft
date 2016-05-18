@@ -46,9 +46,9 @@
 	<!-- -->
  	<td>{{ $cliente -> id}}</td>
 	<td>{{ $cliente -> clie_nombres}}</td>
-	<td>{{ $cliente -> email}}</td>
-	<td>{{ $cliente -> usu_tel}}</td>
-	<td>{{ $cliente -> usu_direcc}}</td>
+	<td>{{ $cliente -> clie_email}}</td>
+	<td>{{ $cliente -> clie_tel}}</td>
+	<td>{{ $cliente -> clie_direcc}}</td>
 	<td>{{ $cliente -> usu_perfil}}</td>
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->

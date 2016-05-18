@@ -23,30 +23,7 @@ class FrontController extends Controller
        //retornando una vista
         return view ('index');
     }
-
- 
-    public function contacto()
-    {
-        //retornando una vista
-        return view ('contacto');
-    }
-
-
-    public function reviews()
-    {
-        $movies= Movie::Movies();
-        //retornando una vista
-        return view('reviews',compact('movies'));
-       
-        
-    }
-
-    public function admin()
-    {
-       //retornando una vista
-        return view ('admin.index');
-    }
-
+    
     public function welcome()
     {
        //retornando una vista
