@@ -33,7 +33,7 @@
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
+        <li class="active"><a href="{{ url('admin') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
 
         <li >
         <a href="{!! URL::to('producto/') !!}">

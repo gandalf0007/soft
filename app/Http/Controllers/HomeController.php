@@ -10,6 +10,8 @@ namespace Soft\Http\Controllers;
 use Soft\Http\Requests;
 use Illuminate\Http\Request;
 use Soft\User;
+use Soft\Producto;
+use Soft\Provedore;
 /**
  * Class HomeController
  * @package App\Http\Controllers
@@ -35,8 +37,8 @@ class HomeController extends Controller
     {
         
 
-        //$items = Item::where('type', 1)->count();
-       // $item_kits = Item::where('type', 2)->count();
+        $productos = Producto::count();
+        $provedores = provedore::count();
         //$customers = Customer::count();
         //$suppliers = Supplier::count();
         //$receivings = Receiving::count();
@@ -47,8 +49,8 @@ class HomeController extends Controller
             //->with('item_kits', $item_kits)
            // ->with('customers', $customers)
            // ->with('suppliers', $suppliers)
-           // ->with('receivings', $receivings)
-           // ->with('sales', $sales)
+            ->with('provedores', $provedores)
+            ->with('productos', $productos)
             ->with('empleados', $empleados);
     }
 }

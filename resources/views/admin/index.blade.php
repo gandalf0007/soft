@@ -13,12 +13,12 @@
           <div class="small-box bg-aqua">
             <div class="inner">
 			 <h3>{{$empleados}}</h3>
-              <p>Nuevas Ventas</p>
+              <p>Total Ventas</p>
             </div>
 			<div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-			<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="{!! URL::to('venta/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<!-- ./col -->
@@ -26,15 +26,32 @@
 
 		<div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-aqua">
             <div class="inner">
 			 <h3>{{$empleados}}</h3>
-              <p>Empleados Creados</p>
+              <p>Total Compras</p>
             </div>
 			<div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa  fa-cart-plus"></i>
             </div>
-			<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="{!! URL::to('compra/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+		</div>
+		<!-- ./col -->
+
+
+
+		<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+			 <h3>{{$provedores}}</h3>
+              <p>Total Provedores</p>
+            </div>
+			<div class="icon">
+              <i class="fa fa-user-secret"></i>
+            </div>
+			<a href="{!! URL::to('provedor/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<!-- ./col -->
@@ -50,7 +67,7 @@
 			<div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-			<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="{!! URL::to('usuario/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<!-- ./col -->
@@ -66,7 +83,23 @@
 			<div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-			<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="#" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+		</div>
+		<!-- ./col -->
+
+
+		<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+			 <h3>{{$productos}}</h3>
+              <p>Productos Totales</p>
+            </div>
+			<div class="icon">
+              <i class="fa fa-cubes"></i>
+            </div>
+			<a href="{!! URL::to('producto/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<!-- ./col -->
