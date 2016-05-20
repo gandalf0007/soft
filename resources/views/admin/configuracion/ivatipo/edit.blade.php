@@ -3,9 +3,14 @@
 <!-- mostrar mensjae de validacion-->
 @include('alerts.request')
 
-<div class="panel-body">
-<div class="col-lg-6">
-<div class="container-fluid">
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Editar Iva</h3>
+            </div>
+			<div class="box-body">
 
 <!-- $user es el elemento que estamos recibiendo y usuario.update hace referencia a la funcion update
 de UsuarioController y el metodo PUT es para actualizar-->
@@ -24,7 +29,13 @@ de UsuarioController y el metodo PUT es para actualizar-->
 {!!Form::submit('modificar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
 
-</div>
-</div>
-</div>
+     </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
 @endsection

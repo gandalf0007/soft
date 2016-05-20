@@ -10,7 +10,7 @@
 
 <div class="form-group">
 	{!!Form::label('password')!!}
-	{!!Form::text('password',null,['class'=>'form-control','placeholder'=>'ingrese el password'])!!}
+	{!!Form::password('password',['class'=>'form-control','placeholder'=>'ingrese el password'])!!}
 </div>
 
 <div class="form-group">
@@ -24,12 +24,6 @@
 </div>
 
 <div class="form-group">
-	{!!Form::label('perfil')!!}
-	{!!Form::text('usu_perfil',null,['class'=>'form-control','placeholder'=>'ingrese el perfil'])!!}
-</div>
-
-
-<div class="form-group">
 	{!!Form::label('telefono')!!}
 	{!!Form::text('usu_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
@@ -38,3 +32,6 @@
 	{!!Form::label('perfil')!!}
 	{!!Form::select('usu_perfil',$perfils)!!}
 </div>
+
+
+  

@@ -32,7 +32,7 @@
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
       <tr>
-        <th>Id</th>
+    <th>Id</th>
 		<th>Nombre</th>
 		<th>Correo</th>
 		<th>Telefono</th>
@@ -56,7 +56,8 @@
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
 
-<td>{!! link_to_route('usuario.edit', $title = 'editar', $parameters = $user->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>
+<td>{!! link_to_route('usuario.edit', $title = 'editar', $parameters = $user->id  , $attributes = ['class'=>'btn btn-primary']); !!}
+</td>
 
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['usuario.destroy',$user->id],'method'=>'DELETE'])!!}
@@ -71,7 +72,9 @@
 <!--para renderizar la paginacion-->
   {!! $users->render() !!}
  
-			</div>
+
+
+			     </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
