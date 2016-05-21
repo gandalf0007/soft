@@ -24,7 +24,7 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::get('/','FrontController@index');
-
+Route::get('welcome','FrontController@welcome');
 
 
 
@@ -36,6 +36,7 @@ Route::resource('producto','ProductoController');
 Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
+Route::resource('venta','VentaController');
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login
