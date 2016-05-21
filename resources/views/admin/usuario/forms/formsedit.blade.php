@@ -1,3 +1,9 @@
+
+<div class="form-horizontal">
+	{!!Form::label('file', 'File') !!}
+	{!!Form::file('path')!!}
+</div>
+
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'ingrese el nombre'])!!}

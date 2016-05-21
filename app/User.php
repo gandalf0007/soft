@@ -1,7 +1,9 @@
 <?php
 
 namespace Soft;
-
+use Carbon\Carbon; 
+use DB;
+use Storage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Scope;
@@ -24,6 +26,7 @@ class User extends Authenticatable
         'usu_direcc',
         'usu_perfil',
         'usu_tel',
+        'path',
     ];
 
     /**
@@ -46,6 +49,12 @@ class User extends Authenticatable
     }
 
 
+    public function setPathAttribute($path){
 
+      $this->attributes['path']  = Carbon::now()->second.$path->getClientOriginalName();
+      $name = Carbon::now()->second.$path->getClientOriginalName();
+      \Storage::disk('local')->put($name, \File::get($path));
+
+    }
 
 }

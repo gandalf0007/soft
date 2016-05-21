@@ -113,7 +113,7 @@ class ProductoController extends Controller
         $producto->delete();
         
         //para eliminar la imagen
-        \Storage::delete($producto->pro_imagen);
+        \Storage::delete($producto->path);
         //le manda un mensaje al usuario
         Session::flash('message','producto eliminado con exito'); 
         return Redirect::to('/producto');

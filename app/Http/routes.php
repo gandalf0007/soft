@@ -16,11 +16,19 @@
 //rutas , el primer parammetro es el nombre de la ruta
 //el segundo parametro llama a la funcion dentro de frontController
 
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/admin', 'HomeController@index');
+    Route::get('usuario/perfil','UsuarioController@perfil');
+ 
+});
+
 Route::get('/','FrontController@index');
-Route::get('admin','FrontController@admin');
+
+
+
 
 Route::resource('usuario','UsuarioController');
-//Route::resource('cliente','ClienteController');
 Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
@@ -68,8 +76,3 @@ Route::group(['middleware'=>['guest']], function(){
 });
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-    Route::get('/admin', 'HomeController@index');
- 
-});

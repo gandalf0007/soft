@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Soft\User;
 use Soft\Producto;
 use Soft\Provedore;
+use Auth;
 /**
  * Class HomeController
  * @package App\Http\Controllers
@@ -53,4 +54,8 @@ class HomeController extends Controller
             ->with('productos', $productos)
             ->with('empleados', $empleados);
     }
+
+    
+
+    
 }

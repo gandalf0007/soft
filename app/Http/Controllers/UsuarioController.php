@@ -12,6 +12,7 @@ use Soft\User;
 use Soft\Perfil;
 use Session;
 use Redirect;
+use Storage;
 
 class UsuarioController extends Controller
 {
@@ -82,6 +83,7 @@ class UsuarioController extends Controller
             'usu_direcc' =>$request['usu_direcc'],
             'usu_perfil' =>$request['usu_perfil'],
             'usu_tel' =>$request['usu_tel'],
+            'path' =>$request['path'],
             ]);
         return redirect('/usuario')->with('message','usuario guardado con exito');
     }
@@ -127,9 +129,17 @@ class UsuarioController extends Controller
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
         $user=User::find($id);
         $user->delete();
-        
+        \Storage::delete($user->path);
         //le manda un mensaje al usuario
         Session::flash('message','usuario eliminado con exito'); 
         return Redirect::to('/usuario');
     }
+
+
+    public function perfil()
+    { 
+        
+        return view('admin.usuario.perfil');
+    }
+
 }

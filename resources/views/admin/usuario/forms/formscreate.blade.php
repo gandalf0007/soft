@@ -28,6 +28,11 @@
 	{!!Form::text('usu_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
 
+<div class="form-horizontal">
+	{!!Form::label('file', 'File') !!}
+	{!!Form::file('path')!!}
+</div>
+
 <div class="form-group">
 	{!!Form::label('perfil')!!}
 	{!!Form::select('usu_perfil',$perfils)!!}
