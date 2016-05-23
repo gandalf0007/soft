@@ -11,7 +11,7 @@
         "mercadopago/sdk": "0.5.2",
         "barryvdh/laravel-debugbar": "^2.2",
         "acacha/admin-lte-template-laravel": "2.*",
-        "orchestra/avatar": "~3.0"
+        "gloudemans/shoppingcart": "^1.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

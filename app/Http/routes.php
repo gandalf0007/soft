@@ -25,8 +25,9 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::get('/','FrontController@index');
 Route::get('welcome','FrontController@welcome');
-
-
+Route::get('venta-show','VentaController@addproducto');
+Route::get('venta-addtocart/{id}','VentaController@addtocart');
+Route::get('show-my-cart','VentaController@showMyCart');
 
 Route::resource('usuario','UsuarioController');
 Route::resource('rubro','RubroController');

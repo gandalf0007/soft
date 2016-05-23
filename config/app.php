@@ -161,7 +161,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
-        Orchestra\Avatar\AvatarServiceProvider::class,
+        \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
     ],
 
     /*
@@ -212,7 +212,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
-         'Avatar' => Orchestra\Support\Facade\Avatar::class,
+         'Cart'=> \Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];
