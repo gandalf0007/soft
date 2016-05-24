@@ -69,7 +69,7 @@ class VentaController extends Controller
         //$formid= str_random();
         //$cart_content = Cart::content(1);
         $mycart = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
-        
+        //recorro uno a uno todos los productos que tengan el user_id = al AUTH
         foreach ($mycart as $mycart) {
             //crea una nueva venta
             $transaction  = new Transaction();
@@ -85,8 +85,6 @@ class VentaController extends Controller
             $transaction->save();
   
         }   
-        
-
          return Redirect::to('venta-cart-destroy');
     }
 
@@ -144,8 +142,7 @@ class VentaController extends Controller
 
     public function create()
     {
-       $productos=Producto::all();
-       return view('admin.venta.productoadd',['productos'=>$productos ]);
+
     }
 
     /**
@@ -162,15 +159,7 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-        //$producto=producto::find($id);
-        //$request=$producto;
-        ProductosAdd::create($request->all());
-        
-
-        dd($productosadd);
-       
+    {      
         
     }
 
@@ -182,9 +171,7 @@ class VentaController extends Controller
      */
     public function show($id)
     {
-        $producto=producto::find($id);
-        dd($Producto);
-        
+         
     }
 
     /**
@@ -195,8 +182,7 @@ class VentaController extends Controller
      */
     public function edit($id)
     {
-       $producto=producto::find($id);
-        dd($Producto);
+       
     }
 
     /**
@@ -209,13 +195,7 @@ class VentaController extends Controller
     public function update(Request $request, $id)
     {
 
-        //$producto=producto::find($request);
-       //ProductosAdd::create($producto->all());
         
-        //$productosadd=ProductosAdd::all();
-
-       // dd($producto);
-        //return Redirect::to('/transporte');
     }
 
     /**
