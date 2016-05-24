@@ -2,8 +2,8 @@
 
 namespace Soft\Http\Controllers;
 
-use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Request;
 use Soft\Http\Requests;
 use Soft\User;
 use Soft\Producto;
@@ -11,6 +11,10 @@ use Soft\ProductosAdd;
 use Redirect;
 use Auth;
 use DB;
+use Cart;
+use Soft\Transaction;
+
+
 class VentaController extends Controller
 {
     /**
@@ -21,55 +25,118 @@ class VentaController extends Controller
     public function index()
     {
         $mycart = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
+        $my_cart_total = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->sum('pro_precio1');
         $clientes=user::lists('usu_nombre','id');
-        $users=user::all();
+        $cart = Cart::content();
+        
         //retorna a una vista que esta en la carpeta usuario y dentro esta create
         
         return view('admin.venta.index')
         ->with('mycart',$mycart)
-        ->with('clientes',$clientes)
-        ->with('users',$users);
+        ->with('my_cart_total',$my_cart_total)
+        ->with('cart',$cart)
+        ->with('clientes',$clientes);
     }
 
 
     public function addproducto(){
+        //me busca los productos
         $productos = producto::Paginate(8);
-
+        //me los manda a productoadd
         return View('admin.venta.productoadd')->with('productos',$productos);
     }
 
 
     public function addtocart($id){
-        $produto = producto::find($id);
-
+        $producto = producto::find($id);
+        //crea una nuevo producto
         $mass_shopping_cart = new ProductosAdd;
-
+        //almacena los datos del producto
         $mass_shopping_cart->user_id = Auth::user()->id;
-        $mass_shopping_cart->pro_id = $produto->id;
+        $mass_shopping_cart->pro_id = $producto->id;
         $mass_shopping_cart->cantidad = 1;
-        $mass_shopping_cart->pro_descrip = $produto->pro_descrip;
-        //$mass_shopping_cart->pro_precio1 = $produto->pro_precio1;
-        
+        $mass_shopping_cart->pro_descrip = $producto->pro_descrip;
+        $mass_shopping_cart->pro_precio1 = $producto->pro_venta;
+        //los guarda
         $mass_shopping_cart->save();
+
+       return Redirect::to('venta');
+    }
+
+
+     public function checkout()
+    {
+        //$formid= str_random();
+        //$cart_content = Cart::content(1);
+        $mycart = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
         
-        return Redirect::to('venta');
+        foreach ($mycart as $mycart) {
+            //crea una nueva venta
+            $transaction  = new Transaction();
+            //busca de prodcutosadd los productos de mi carrito
+            $product = ProductosAdd::find(Auth::user()->id);
+            //alamacena la venta
+            $transaction->product_id  = $mycart->pro_id;
+            $transaction->form_id     = Auth::user()->usu_nombre;
+            $transaction->qty         = $mycart->cantidad;
+            $transaction->total_price = $mycart->pro_precio1 * $mycart->cantidad;
+            $transaction->status      = 'pagado';
+            //guardo la venta
+            $transaction->save();
+  
+        }   
+        
+
+         return Redirect::to('venta-cart-destroy');
     }
 
 
-    public function showMyCart(){
-        $mycart = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->where('status','=','')->get();
-        $for_delivery = DB::table('mass_shopping_cart')->where('user_id','=',Auth::user()->id)->where('status','=','For Delivery')->get();
-        $my_cart_total = DB::table('mass_shopping_cart')->where('user_id','=',Auth::user()->id)->where('status','=','')->sum('item_price');
 
-        // $my_cart = MassShoppingCart::where('user_id','=',Auth::user()->id)->get();
-        // $for_delivery = MassShoppingCart::where('status','=','For Delivery')->get();
 
-        //return $my_cart->user_id;
+
+    public function addcart() {
+        //cliente
        
-        return View('admin.venta.index')
-                ->with('mycart',$my_cart);
-        //return View::make('my_cart')->with('my_cart',$my_cart)->with('for_delivery',$for_delivery)->with('my_cart_total',$my_cart_total);
+
+        //add porducto
+        $product_id = Request::get('product_id');
+        $producto = producto::find($product_id);
+        Cart::add(array('id' => $product_id, 'name' => $producto->pro_descrip , 'qty' => 1, 'price' => $producto->pro_venta));
+    
+
+        //increment the quantity
+    if (Request::get('product_id') && (Request::get('increment')) == 1) {
+        $rowId = Cart::search(array('id' => Request::get('product_id')));
+        $item = Cart::get($rowId[0]);
+
+        Cart::update($rowId[0], $item->qty + 0);
     }
+
+        //decrease the quantity
+    if (Request::get('product_id') && (Request::get('decrease')) == 1) {
+        $rowId = Cart::search(array('id' => Request::get('product_id')));
+        $item = Cart::get($rowId[0]);
+
+        Cart::update($rowId[0], $item->qty - 2);
+    }
+
+        //remove the item
+    if (Request::get('product_id') && (Request::get('remove')) == 'true') {
+    $rowId = Cart::search(array('id' => Request::get('product_id')));
+    if ($rowId[0]){
+    Cart::remove($rowId[0]);}
+    }
+
+
+        $cart = Cart::content();
+    
+    return view('admin.venta.index', array('cart' => $cart, 'title' => 'Welcome', 'description' => '', 'page' => 'home'));
+        
+}
+
+
+
+   
 
 
 
@@ -157,8 +224,17 @@ class VentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        ////destruimos los items de producto_adds
+        $misproductos=DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
+        
+         foreach ($misproductos as $misproductos) {
+            $misproductos=ProductosAdd::find($misproductos->id);
+              $misproductos->delete();
+         }
+        //le manda un mensaje al usuario
+        
+        return Redirect::to('venta');
     }
 }

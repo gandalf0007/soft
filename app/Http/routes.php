@@ -23,10 +23,25 @@ Route::group(['middleware' => 'web'], function () {
  
 });
 
+Route::get('cart/checkout','VentaController@checkout');
+
+Route::get('venta-addproducto','VentaController@addproducto');
+Route::get('venta-addcart','VentaController@addcart');
+Route::post('venta-addcart','VentaController@addcart');
+
+
+
+Route::get('venta-addtocart/{id}','VentaController@addtocart');
+Route::get('venta-cart-destroy','VentaController@destroy');
+
+
+
 Route::get('/','FrontController@index');
 Route::get('welcome','FrontController@welcome');
-Route::get('venta-show','VentaController@addproducto');
-Route::get('venta-addtocart/{id}','VentaController@addtocart');
+
+
+Route::get('venta-cart','VentaController@cart');
+
 Route::get('show-my-cart','VentaController@showMyCart');
 
 Route::resource('usuario','UsuarioController');
@@ -38,6 +53,7 @@ Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
 Route::resource('venta','VentaController');
+
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login
