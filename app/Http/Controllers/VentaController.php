@@ -13,6 +13,7 @@ use Auth;
 use DB;
 use Cart;
 use Soft\Transaction;
+use Soft\Venta;
 
 
 class VentaController extends Controller
@@ -29,8 +30,6 @@ class VentaController extends Controller
         $clientes=user::lists('usu_nombre','id');
         $cart = Cart::content();
         
-        //retorna a una vista que esta en la carpeta usuario y dentro esta create
-        
         return view('admin.venta.index')
         ->with('mycart',$mycart)
         ->with('my_cart_total',$my_cart_total)
@@ -42,14 +41,36 @@ class VentaController extends Controller
     public function addproducto(){
         //me busca los productos
         $productos = producto::Paginate(8);
-        //me los manda a productoadd
+        //me los manda a productoadd asi los seleccioens
         return View('admin.venta.productoadd')->with('productos',$productos);
     }
 
-
+    //agrega un item a mi carrito con el id que se paso
     public function addtocart($id){
+        //traigo todos los productos agregados al carrito de ese usuario
+        $myitemadd = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
+        
+        //recivo y busco el id del item q deseo agregar
         $producto = producto::find($id);
-        //crea una nuevo producto
+        //$myitemadd = ProductosAdd::find($id);
+          
+        foreach ($myitemadd as $myitemadd ) {
+             if ($myitemadd->pro_id !== 0 ) {
+                $pro_id= $myitemadd->pro_id;
+             }else{
+                $pro_id=0;
+                }}
+         
+        if ($id == $pro_id) {
+            $myitemadd->cantidad = $myitemadd->cantidad +1;
+            
+            DB::table('productos_adds')
+            //->where('user_id','=',Auth::user()->id)
+            ->update(array('cantidad' => 2));
+            
+           
+        }else{
+        //crea una nuevo producto en ProductosAdd
         $mass_shopping_cart = new ProductosAdd;
         //almacena los datos del producto
         $mass_shopping_cart->user_id = Auth::user()->id;
@@ -59,34 +80,60 @@ class VentaController extends Controller
         $mass_shopping_cart->pro_precio1 = $producto->pro_venta;
         //los guarda
         $mass_shopping_cart->save();
+        }
 
+        
        return Redirect::to('venta');
     }
 
 
      public function checkout()
     {
+        //$venta_id= 0;
         //$formid= str_random();
         //$cart_content = Cart::content(1);
+        //genero una venta que estara relacinada con los productos en las transacciones
+        $venta = new Venta();
+        //$ventagenerada->cliente_id  =
+        $venta->user_id     = Auth::user()->usu_nombre;
+        //$ventagenerada->pago_tipo   =
+        //$ventagenerada->total       =
+        //$ventagenerada->comentario  =
+        $venta->save();
+
+        //traigo todos los productos de productosAdds del usuario 
         $mycart = DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
-        //recorro uno a uno todos los productos que tengan el user_id = al AUTH
+        //los recorro
         foreach ($mycart as $mycart) {
-            //crea una nueva venta
+            //crea una nueva transaccion
             $transaction  = new Transaction();
-            //busca de prodcutosadd los productos de mi carrito
-            $product = ProductosAdd::find(Auth::user()->id);
-            //alamacena la venta
+            //alamacena la transaccion
+            $transaction->venta_id    = $venta->id;
             $transaction->product_id  = $mycart->pro_id;
-            $transaction->form_id     = Auth::user()->usu_nombre;
+            $transaction->user     = Auth::user()->usu_nombre;
             $transaction->qty         = $mycart->cantidad;
             $transaction->total_price = $mycart->pro_precio1 * $mycart->cantidad;
             $transaction->status      = 'pagado';
-            //guardo la venta
+            //guardo la transaccion
             $transaction->save();
   
         }   
+        //redirecciona para destruir lo que se almaceno en productosAdds
          return Redirect::to('venta-cart-destroy');
     }
+
+    //borrar un item del carrito
+    public function deleteitem() {
+        //almacenamos el id del producto que mandamos
+        $product_id = Request::get('product_id');
+        //lo buscamos
+        $myitem=ProductosAdd::find($product_id);
+        //lo borramos
+        $myitem->delete();
+
+        return Redirect::to('venta');
+
+        }
 
 
 
@@ -206,14 +253,16 @@ class VentaController extends Controller
      */
     public function destroy()
     {
-        ////destruimos los items de producto_adds
+        //destruimos los items de producto_adds al hacer el chekout
         $misproductos=DB::table('productos_adds')->where('user_id','=',Auth::user()->id)->get();
-        
          foreach ($misproductos as $misproductos) {
             $misproductos=ProductosAdd::find($misproductos->id);
               $misproductos->delete();
          }
-        //le manda un mensaje al usuario
+       
+
+
+
         
         return Redirect::to('venta');
     }

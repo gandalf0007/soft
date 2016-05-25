@@ -8,8 +8,9 @@ class Transaction extends Model
 {
 	 protected $fillable = [
         	'id',
+        	'venta_id',
             'product_id',
-            'form_id',
+            'user',
             'qty',
             'total_price',
             'status',

@@ -11,6 +11,7 @@ class Venta extends Model
             'cliente_id',
             'user_id',
            	'pago_tipo',
+           	'total',
            	'comentario',
     ];
 

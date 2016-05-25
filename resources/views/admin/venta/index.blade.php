@@ -95,18 +95,18 @@
         <td>{{$mycart->pro_descrip}}</td>
         <td>${{$mycart->pro_precio1}}</td>
        
-        
+       <!--cantidad--> 
         <td>
-        <!--{{url("venta-addcart?product_id=$item->id&increment=1")}}--><a class="cart_quantity_up" href=""> + </a>
+        <!--{{url("venta-addcart?product_id=$mycart->id&increment=1")}}--><a class="cart_quantity_up" href=""> + </a>
         <input class="cart_quantity_input" type="text" name="quantity" value="{{$mycart->cantidad}}" autocomplete="off" size="2"> 
-        <!--{{url("venta-addcart?product_id=$item->id&decrease=1")}}--><a class="cart_quantity_down" href=""> - </a>
+        <!--{{url("venta-addcart?product_id=$mycart->id&decrease=1")}}--><a class="cart_quantity_down" href=""> - </a>
         </td>
 
-      
+        <!--total-->
         <td>Total: ${{$my_cart_total}}</td>
        
-
-        <td><!--{{url("venta-addcart?product_id=$item->id&remove=true")}}--><a href=""><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
+        <!--eliminar-->
+        <td><!--{{url("venta-addcart?product_id=$mycart->id&remove=true")}}--><a href="{{url("venta-item-destroy?product_id=$mycart->id&remove=true")}}"><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
 
         </tr>
         
