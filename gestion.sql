@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2016 a las 18:51:45
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.21
+-- Tiempo de generación: 25-05-2016 a las 06:32:10
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -358,8 +358,9 @@ INSERT INTO `scaffoldinterfaces` (`id`, `package`, `migration`, `model`, `contro
 
 CREATE TABLE `transactions` (
   `id` int(10) UNSIGNED NOT NULL,
+  `venta_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `product_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `form_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `qty` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `total_price` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -371,11 +372,22 @@ CREATE TABLE `transactions` (
 -- Volcado de datos para la tabla `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `product_id`, `form_id`, `qty`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
-(28, '42', 'admin', '1', '15', 'pagado', '2016-05-24 14:47:17', '2016-05-24 14:47:17'),
-(29, '42', 'admin', '1', '15', 'pagado', '2016-05-24 14:47:17', '2016-05-24 14:47:17'),
-(30, '42', 'admin', '1', '15', 'pagado', '2016-05-24 14:47:17', '2016-05-24 14:47:17'),
-(31, '41', 'admin', '1', '15', 'pagado', '2016-05-24 14:47:38', '2016-05-24 14:47:38');
+INSERT INTO `transactions` (`id`, `venta_id`, `product_id`, `user`, `qty`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
+(36, '1', '41', 'admin', '1', '15', 'pagado', '2016-05-24 20:53:51', '2016-05-24 20:53:51'),
+(37, '1', '41', 'admin', '1', '15', 'pagado', '2016-05-24 20:53:51', '2016-05-24 20:53:51'),
+(38, '1', '41', 'admin', '1', '15', 'pagado', '2016-05-24 20:54:12', '2016-05-24 20:54:12'),
+(39, NULL, '41', 'admin', '1', '15', 'pagado', '2016-05-24 21:09:12', '2016-05-24 21:09:12'),
+(40, NULL, '42', 'admin', '1', '15', 'pagado', '2016-05-24 21:10:47', '2016-05-24 21:10:47'),
+(41, '1', '41', 'admin', '1', '15', 'pagado', '2016-05-24 21:11:31', '2016-05-24 21:11:31'),
+(42, '2', '41', 'admin', '1', '15', 'pagado', '2016-05-24 21:11:59', '2016-05-24 21:11:59'),
+(43, '2', '42', 'admin', '1', '15', 'pagado', '2016-05-24 21:11:59', '2016-05-24 21:11:59'),
+(44, '3', '41', 'admin', '1', '15', 'pagado', '2016-05-24 21:45:48', '2016-05-24 21:45:48'),
+(45, '3', '42', 'admin', '1', '15', 'pagado', '2016-05-24 21:45:48', '2016-05-24 21:45:48'),
+(46, '3', '42', 'admin', '1', '15', 'pagado', '2016-05-24 21:45:48', '2016-05-24 21:45:48'),
+(47, '4', '41', 'admin', '1', '15', 'pagado', '2016-05-24 22:04:36', '2016-05-24 22:04:36'),
+(48, '5', '41', 'admin', '1', '15', 'pagado', '2016-05-24 22:05:37', '2016-05-24 22:05:37'),
+(49, '6', '41', 'admin', '1', '15', 'pagado', '2016-05-25 00:24:10', '2016-05-25 00:24:10'),
+(50, '6', '41', 'admin', '1', '15', 'pagado', '2016-05-25 00:24:10', '2016-05-25 00:24:10');
 
 -- --------------------------------------------------------
 
@@ -442,9 +454,22 @@ CREATE TABLE `ventas` (
   `user_id` int(11) NOT NULL,
   `pago_tipo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `comentario` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `total` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `cliente_id`, `user_id`, `pago_tipo`, `comentario`, `total`, `created_at`, `updated_at`) VALUES
+(1, 0, 0, '', '', NULL, '2016-05-24 21:11:31', '2016-05-24 21:11:31'),
+(2, 0, 0, '', '', NULL, '2016-05-24 21:11:59', '2016-05-24 21:11:59'),
+(3, 0, 0, '', '', NULL, '2016-05-24 21:45:48', '2016-05-24 21:45:48'),
+(4, 0, 0, '', '', NULL, '2016-05-24 22:04:36', '2016-05-24 22:04:36'),
+(5, 0, 0, '', '', NULL, '2016-05-24 22:05:37', '2016-05-24 22:05:37'),
+(6, 0, 0, '', '', NULL, '2016-05-25 00:24:10', '2016-05-25 00:24:10');
 
 -- --------------------------------------------------------
 
@@ -605,7 +630,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos_adds`
 --
 ALTER TABLE `productos_adds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `provedores`
 --
@@ -625,7 +650,7 @@ ALTER TABLE `scaffoldinterfaces`
 -- AUTO_INCREMENT de la tabla `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `transportes`
 --
@@ -640,7 +665,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `venta_items`
 --
