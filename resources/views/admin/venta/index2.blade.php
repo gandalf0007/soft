@@ -11,7 +11,7 @@
             <div class="box-header">
               <h3 class="box-title">Seccion Ventas</h3>
             </div>
-            <div class="box-body">
+			<div class="box-body">
  
 
 
@@ -26,15 +26,7 @@
                             
             {!! Form::open(array('url' => 'sales', 'class' => 'form-horizontal')) !!}
     
-    
-    <!--clientes-->
-    <div class="col-md-7">
-       <div class="form-group">
-           {!!Form::label('Cliente ID',null,['class'=>'col-sm-4 control-label'])!!}
-           <div class="col-sm-8">
-           {!!Form::select('usu_nomrbe', $clientes, array('class' => 'form-control'))!!}
-           </div>
-       </div>
+  
     <!--tipo de pago-->
         <div class="form-group">
         <label for="payment_type" class="col-sm-4 control-label">Tipo de pago</label>
@@ -46,8 +38,8 @@
     </div>
                             
         </div>
-                          
-    <table class="table table-bordered">
+                       
+    <!--<table class="table table-bordered">
     <tr>
         <th>Codigo</th>
         <th>Descripcion</th>
@@ -65,14 +57,14 @@
         <td>{{$item->name}}</td>
         <td>${{$item->price}}</td>
        
-        <!--cantidad-->
+        cantidad
         <td><a class="cart_quantity_up" href="{{url("venta-addcart?product_id=$item->id&increment=1")}}"> + </a>
         <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2"> 
         <a class="cart_quantity_down" href="{{url("venta-addcart?product_id=$item->id&decrease=1")}}"> - </a>
         </td>
-        <!--Precio Total-->
+        Precio Total
         <td>Total: ${{$item->subtotal}}</td>
-        <!--eliminar-->
+        eliminar
         <td><a href="{{url("venta-addcart?product_id=$item->id&remove=true")}}"><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
 
         </tr>
@@ -83,7 +75,52 @@
                 @endif
                 </tbody>
             </table>
+<br><br-->
+
+  <table class="table table-bordered">
+    <tr>
+        <th>Codigo</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Precio Total</th>
+        <th>Eliminar</th>
+    </tr>
+    
+     @foreach($mycart as $mycart)
+      <tbody>
+      <tr ng-repeat="newsaletemp in saletemp">
+      </tr>
+        <td>{{$mycart->pro_id}}</td> 
+        <td>{{$mycart->pro_descrip}}</td>
+        <td>${{$mycart->pro_precio1}}</td>
+       
+       <!--cantidad--> 
+        <td>
+        <!--{{url("venta-addcart?product_id=$mycart->id&increment=1")}}--><a class="cart_quantity_up" href=""> + </a>
+        <input class="cart_quantity_input" type="text" name="quantity" value="{{$mycart->cantidad}}" autocomplete="off" size="2"> 
+        <!--{{url("venta-addcart?product_id=$mycart->id&decrease=1")}}--><a class="cart_quantity_down" href=""> - </a>
+        </td>
+
+        <!--total-->
+        <td>Total: ${{$my_cart_total}}</td>
+       
+        <!--eliminar-->
+        <td><!--{{url("venta-addcart?product_id=$mycart->id&remove=true")}}--><a href="{{url("venta-item-destroy?product_id=$mycart->id&remove=true")}}"><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
+
+        </tr>
+        
+       
+         @endforeach
+        
+        
+                
+            
+                </tbody>
+            </table>
 <br><br>
+
+
     <!--row-->
     <div class="row">
 
@@ -128,7 +165,9 @@
                     <!--Boton Completar Venta-->
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success btn-block">Completar Venta</button>
+                        <a class="btn btn-default check_out" href="{{url('cart/checkout')}}">completar venta</a>
+                        <a href="">
+                            <button type="submit" class="btn btn-success btn-block">Completar Venta</button></a>
                         </div>
                     </div>
                 </div>
@@ -138,7 +177,7 @@
                     </div>
 
 
-                 </div>
+			     </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

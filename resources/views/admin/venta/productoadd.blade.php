@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-{!! Html::script('js/angular.min.js', array('type' => 'text/javascript')) !!}
-{!! Html::script('js/sale.js', array('type' => 'text/javascript')) !!}
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
 @include('alerts.success')
 

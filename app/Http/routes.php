@@ -32,20 +32,31 @@ Route::post('venta-addcart','VentaController@addcart');
 //visualisa los productos para agregar
 Route::get('venta-addproducto','VentaController@addproducto');
 //al darle agregar a un producto a mi carrito , le mando el id de ese producto
-Route::get('venta-addtocart/{id}','VentaController@addtocart');
+Route::get('venta-addtocart/{id}','VentaController@add');
 Route::get('cart/checkout','VentaController@checkout');
 //eliminar objetos de productosadds al hacer el chekout
 Route::get('venta-cart-destroy','VentaController@destroy');
 //eliminar un item del carrito
 Route::get('venta-item-destroy','VentaController@deleteitem');
 
+/*---------------carrito------------*/
+//mostrar
+Route::get('cart-show','VentaController@show');
+//eliminar carricato
+Route::get('cart-trash','VentaController@trash');
+//actualizar items
+Route::get('cart-update/{id}/{quantity}','VentaController@update');
+//eliminar productos del carrito
+Route::get('cart-delete/{id}','VentaController@delete');
+//chekout finalizar carrito
+Route::get('cart-checkout','VentaController@checkout');
+/*---------------carrito------------*/
+
+
 
 Route::get('/','FrontController@index');
 Route::get('welcome','FrontController@welcome');
-
-
 Route::get('venta-cart','VentaController@cart');
-
 Route::get('show-my-cart','VentaController@showMyCart');
 
 Route::resource('usuario','UsuarioController');

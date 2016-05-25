@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Soft\User;
 use Soft\Producto;
 use Soft\Provedore;
+use Soft\Venta;
 use Auth;
 /**
  * Class HomeController
@@ -40,6 +41,7 @@ class HomeController extends Controller
 
         $productos = Producto::count();
         $provedores = provedore::count();
+        $Ventas = Venta::count();
         //$customers = Customer::count();
         //$suppliers = Supplier::count();
         //$receivings = Receiving::count();
@@ -49,7 +51,7 @@ class HomeController extends Controller
            // ->with('items', $items)
             //->with('item_kits', $item_kits)
            // ->with('customers', $customers)
-           // ->with('suppliers', $suppliers)
+            ->with('Ventas', $Ventas)
             ->with('provedores', $provedores)
             ->with('productos', $productos)
             ->with('empleados', $empleados);

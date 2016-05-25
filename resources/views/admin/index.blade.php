@@ -12,13 +12,13 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-			 <h3>{{$empleados}}</h3>
+			 <h3>{{$Ventas}}</h3>
               <p>Total Ventas</p>
             </div>
 			<div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-			<a href="{!! URL::to('venta/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="{!! URL::to('cart-show') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
 		</div>
 		<!-- ./col -->

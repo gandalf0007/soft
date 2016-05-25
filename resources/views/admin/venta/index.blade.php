@@ -1,180 +1,101 @@
 @extends('layouts.app')
+
 @section('content')
-<!-- muestra mensaje que se a modificado o creado exitosamente-->
-@include('alerts.success')
-
-
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seccion Ventas</h3>
+              <h3 class="box-title"><i class="fa  fa-bank"></i>Seccion Ventas</h3>
             </div>
 			<div class="box-body">
- 
 
 
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Agregar Producto</a></div>
-
-</td>
+	
+		
 
 
-<div class="col-md-9">
-        <div class="row">
-                            
-            {!! Form::open(array('url' => 'sales', 'class' => 'form-horizontal')) !!}
-    
-  
-    <!--tipo de pago-->
-        <div class="form-group">
-        <label for="payment_type" class="col-sm-4 control-label">Tipo de pago</label>
-        <div class="col-sm-8">
-        {!! Form::select('payment_type', array('Cash' => 'Cash', 'Check' => 'Check', 'Debit Card' => 'Debit Card', 'Credit Card' => 'Credit Card'), array('class' => 'form-control')) !!}
-        </div>
-        </div>
 
-    </div>
-                            
-        </div>
-                       
-    <!--<table class="table table-bordered">
-    <tr>
-        <th>Codigo</th>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Precio Total</th>
-        <th>Eliminar</th>
-    </tr>
-    @if(count($cart))
-     @foreach($cart as $item)
-      <tbody>
-      <tr ng-repeat="newsaletemp in saletemp">
-      </tr>
-        <td>{{$item->id}}</td> 
-        <td>{{$item->name}}</td>
-        <td>${{$item->price}}</td>
-       
-        cantidad
-        <td><a class="cart_quantity_up" href="{{url("venta-addcart?product_id=$item->id&increment=1")}}"> + </a>
-        <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2"> 
-        <a class="cart_quantity_down" href="{{url("venta-addcart?product_id=$item->id&decrease=1")}}"> - </a>
-        </td>
-        Precio Total
-        <td>Total: ${{$item->subtotal}}</td>
-        eliminar
-        <td><a href="{{url("venta-addcart?product_id=$item->id&remove=true")}}"><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
-
-        </tr>
-         @endforeach
-        @else
-        <th><p>You have no items in the shopping cart</p></th>
-                
-                @endif
-                </tbody>
-            </table>
-<br><br-->
-
-  <table class="table table-bordered">
-    <tr>
-        <th>Codigo</th>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Precio Total</th>
-        <th>Eliminar</th>
-    </tr>
-    
-     @foreach($mycart as $mycart)
-      <tbody>
-      <tr ng-repeat="newsaletemp in saletemp">
-      </tr>
-        <td>{{$mycart->pro_id}}</td> 
-        <td>{{$mycart->pro_descrip}}</td>
-        <td>${{$mycart->pro_precio1}}</td>
-       
-       <!--cantidad--> 
-        <td>
-        <!--{{url("venta-addcart?product_id=$mycart->id&increment=1")}}--><a class="cart_quantity_up" href=""> + </a>
-        <input class="cart_quantity_input" type="text" name="quantity" value="{{$mycart->cantidad}}" autocomplete="off" size="2"> 
-        <!--{{url("venta-addcart?product_id=$mycart->id&decrease=1")}}--><a class="cart_quantity_down" href=""> - </a>
-        </td>
-
-        <!--total-->
-        <td>Total: ${{$my_cart_total}}</td>
-       
-        <!--eliminar-->
-        <td><!--{{url("venta-addcart?product_id=$mycart->id&remove=true")}}--><a href="{{url("venta-item-destroy?product_id=$mycart->id&remove=true")}}"><button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a></td>
-
-        </tr>
-        
-       
-         @endforeach
-        
-        
-                
-            
-                </tbody>
-            </table>
-<br><br>
+		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
+  		<i class="fa fa-user-plus fa-lg"></i> Agregar Producto</a></div>
 
 
-    <!--row-->
-    <div class="row">
+		<div class="table-cart">
+			@if(count($cart))
+			<p>
+				<a href="{!! URL::to('cart-trash') !!}" class="btn btn-danger">
+					Vaciar Venta <i class="fa fa-trash"></i>
+				</a>
+			</p>
 
 
-            <div class="col-md-6">
-                <!--Agregar Pago-->
-                <div class="form-group">
-                    <label for="total" class="col-sm-4 control-label">Agregar Pago</label>
-                    <div class="col-sm-8">
-                        <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" id="add_payment" ng-model="add_payment"/>
-                        </div>
-                    </div>
-                </div>
-                <!--Comentario-->
-                <div>&nbsp;</div>
-                <div class="form-group">
-                    <label for="employee" class="col-sm-4 control-label">Comentario</label>
-                    <div class="col-sm-8">
-                    <input type="text" class="form-control" name="comments" id="comments" />
-                    </div>
-                </div>
-            </div>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>Imagen</th>
+							<th>Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th>Subtotal</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($cart as $item)
+							<tr> 
+								<td><img src="{{ $item->path }}"></td>
+								<td>{{ $item->pro_descrip }}</td>
+								<td>${{ number_format($item->pro_venta,2) }}</td>
+								<td>
+									<input 
+										type="number"
+										min="1"
+										max="100"
+										value="{{ $item->quantity }}"
+										id="product_{{ $item->id }}"
+									>
+									<a 
+										href="#" 
+										class="btn btn-warning btn-update-item"
+										data-href="{!! URL::to('cart-update/'.$item->id) !!}"
+										data-id = "{{ $item->id }}"
+									>
+										<i class="fa fa-refresh"></i>
+									</a>
+								</td>
+								<td>${{ number_format($item->pro_venta * $item->quantity,2) }}</td>
+								<td>
+									<a href="{!! URL::to('cart-delete/'.$item->id) !!}" class="btn btn-danger">
+										<i class="fa fa-remove"></i>
+									</a>
+								</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table><hr>
+				
+				<h3>
+					<span class="label label-success">
+						Total: ${{ number_format($total,2) }}
+					</span>
+				</h3>
 
+			</div>
+			@else
+				<h3><span class="label label-warning">No hay productos Seleccionados :</span></h3>
+			@endif
+			<hr>
+			<p>
+				
 
-                <div class="col-md-6">
-                <!--Total-->
-                    <div class="form-group">
-                        <label for="supplier_id" class="col-sm-4 control-label">Total</label>
-                      <div class="col-sm-8">
-                        <p class="form-control-static"></p>
-                      </div>
-                    </div>                   
-                <!--Monto a Pagar--> 
-                    <div class="form-group">
-                        <label for="amount_due" class="col-sm-4 control-label">Monto a Pagar</label>
-                        <div class="col-sm-8">
-                        <p class="form-control-static"></p>
-                        </div>
-                    </div>
-                    <!--Boton Completar Venta-->
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                        <a class="btn btn-default check_out" href="{{url('cart/checkout')}}">completar venta</a>
-                        <a href="">
-                            <button type="submit" class="btn btn-success btn-block">Completar Venta</button></a>
-                        </div>
-                    </div>
-                </div>
-    </div><!--end Row-->
-                            {!! Form::close() !!}                        
+				<a href="{!! URL::to('cart-checkout') !!}" class="btn btn-primary">
+				 Confirmar Venta <i class="fa fa-chevron-circle-right"></i>
+				</a>
+			</p>
+		</div>
 
-                    </div>
+	</div>
 
 
 			     </div>
@@ -186,4 +107,4 @@
       </div>
       <!-- /.row -->
     </section>
-@endsection
+@stop
