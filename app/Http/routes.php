@@ -17,18 +17,21 @@
 //el segundo parametro llama a la funcion dentro de frontController
 
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-    Route::get('/admin', 'HomeController@index');
-    Route::get('usuario/perfil','UsuarioController@perfil');
+    
+    Route::get('/','FrontController@index');
+   Route::get('welcome','FrontController@welcome');
  
 });
 
+Route::group(['middleware' => 'web'], function () {
+
+ Route::get('/admin', 'HomeController@index');
+ Route::get('usuario/perfil','UsuarioController@perfil');
 
 
-
+/*
 Route::get('venta-addcart','VentaController@addcart');
 Route::post('venta-addcart','VentaController@addcart');
-
 //visualisa los productos para agregar
 Route::get('venta-addproducto','VentaController@addproducto');
 //al darle agregar a un producto a mi carrito , le mando el id de ese producto
@@ -38,6 +41,8 @@ Route::get('cart/checkout','VentaController@checkout');
 Route::get('venta-cart-destroy','VentaController@destroy');
 //eliminar un item del carrito
 Route::get('venta-item-destroy','VentaController@deleteitem');
+Route::get('venta-cart','VentaController@cart');
+Route::get('show-my-cart','VentaController@showMyCart');*/
 
 /*---------------carrito------------*/
 //mostrar
@@ -53,12 +58,7 @@ Route::get('cart-checkout','VentaController@checkout');
 /*---------------carrito------------*/
 
 
-
-Route::get('/','FrontController@index');
-Route::get('welcome','FrontController@welcome');
-Route::get('venta-cart','VentaController@cart');
-Route::get('show-my-cart','VentaController@showMyCart');
-
+/*---------------menu------------*/
 Route::resource('usuario','UsuarioController');
 Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
@@ -68,18 +68,27 @@ Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
 Route::resource('venta','VentaController');
+/*---------------menu------------*/
 
+
+/*---------------login------------*/
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login
 Route::get('logged', 'LoginController@index');
+/*---------------login------------*/
 
 
+/*---------------reportes Pdf------------*/
 //agregado pdf
 Route::get('reportes', 'PdfController@index');
 Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais');
-/*
+/*---------------reportes Pdf------------*/
 
+
+
+
+/*
 Route::get('contacto','FrontController@contacto');
 Route::get('reviews','FrontController@reviews');
 Route::get('password/email','Auth\PasswordController@getEmail');
@@ -108,4 +117,4 @@ Route::group(['middleware'=>['guest']], function(){
 
 });
 */
-
+});
