@@ -13,6 +13,7 @@ use Soft\Perfil;
 use Session;
 use Redirect;
 use Storage;
+use Image;
 
 class UsuarioController extends Controller
 {
@@ -74,8 +75,8 @@ class UsuarioController extends Controller
    //guarda los recursos en este caso los datos del usuario en la tabla user , name , email y password son los campos de mi
     //tabla user , a eso les agrego los datos de nombre , correo y pass atravas de request por el metodo post
     public function store(Request $request)
-    {
-        user::create([
+    {      
+            user::create([
             'usu_nombre' =>$request['usu_nombre'],
             'usu_apellido' =>$request['usu_apellido'],
             'password'=>bcrypt($request['password']),
@@ -83,7 +84,6 @@ class UsuarioController extends Controller
             'usu_direcc' =>$request['usu_direcc'],
             'usu_perfil' =>$request['usu_perfil'],
             'usu_tel' =>$request['usu_tel'],
-            'path' =>$request['path'],
             ]);
         return redirect('/usuario')->with('message','usuario guardado con exito');
     }
@@ -112,9 +112,16 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
-       $user=User::find($id);
-       $user->fill($request->all());
-       $user->save();
+        $user=User::find($id);
+        $user->usu_nombre = $request['usu_nombre'];
+        $user->usu_apellido =$request['usu_apellido'];
+        $user->password=bcrypt($request['password']);
+        $user->email =$request['email'];
+        $user->usu_direcc =$request['usu_direcc'];
+        $user->usu_perfil =$request['usu_perfil'];
+        $user->usu_tel =$request['usu_tel'];
+        $user->path =$request['path'];
+        $user->save();
 
         //le manda un mensaje al usuario
        Session::flash('message','usuario modificado con exito'); 

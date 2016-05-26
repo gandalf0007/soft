@@ -11,13 +11,8 @@
 			<div class="box-body">
 
 
-	
-		
-
-
-
 		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
-  		<i class="fa fa-user-plus fa-lg"></i> Agregar Producto</a></div>
+  		<i class="fa fa-cubes fa-lg"></i> Agregar Producto</a></div>
 
 
 		<div class="table-cart">
@@ -94,8 +89,6 @@
 				</a>
 			</p>
 		</div>
-
-	</div>
 
 
 			     </div>

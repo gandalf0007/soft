@@ -117,7 +117,18 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- Imagen del perfil de usuario -->
-                            {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'user-image')) }}
+                            <?php     if(!empty(Auth::user()->path)){?>
+
+                               {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'user-image')) }}
+
+                           <?php }else{ ?>
+
+                               {{ HTML::image('storage/user-default.png'  , 'img', array('class' => 'user-image')) }}
+
+                            <?php } ?>
+
+
+                              
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->usu_nombre }}</span>
                         </a>
@@ -125,7 +136,17 @@
                             <!-- The user image in the menu -->
                             <li class="user-header">
                             <!-- Imagen del perfil de usuario -->
-                                {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'img-circle')) }}
+                             <?php     if(!empty(Auth::user()->path)){?>
+
+                              {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'img-circle')) }}
+
+                           <?php }else{ ?>
+
+                               {{ HTML::image('storage/user-default.png'  , 'img', array('class' => 'user-image')) }}
+                               
+                            <?php } ?>
+                            
+                                
                                 <p>
 
                                     {{ Auth::user()->usu_nombre }}

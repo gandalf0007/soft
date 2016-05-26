@@ -22,6 +22,7 @@ class User extends Authenticatable
         'usu_nombre',
         'usu_apellido',
         'password',
+        're_password',
         'email',
         'usu_direcc',
         'usu_perfil',
@@ -50,11 +51,10 @@ class User extends Authenticatable
 
 
     public function setPathAttribute($path){
-
       $this->attributes['path']  = Carbon::now()->second.$path->getClientOriginalName();
       $name = Carbon::now()->second.$path->getClientOriginalName();
       \Storage::disk('local')->put($name, \File::get($path));
-
     }
+
 
 }

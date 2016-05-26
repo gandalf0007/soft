@@ -27,22 +27,44 @@
             <p class="login-box-msg">Register a new membership</p>
             <form action="{{ url('/register') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Full name" name="name" value="{{ old('name') }}"/>
+                    <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}"/>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
+
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Apellido" name="apellido" value="{{ old('apellido') }}"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
                 <div class="form-group has-feedback">
                     <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
+
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Password" name="password"/>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation"/>
                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                 </div>
+                
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="direccion" name="direccion" value="{{ old('direccion') }}"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="telefono" name="telefono" value="{{ old('telefono') }}"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                
+
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">

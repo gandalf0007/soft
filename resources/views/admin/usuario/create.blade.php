@@ -12,7 +12,7 @@
             </div>
 			<div class="box-body">
 
-{!!Form::open(['route'=>'usuario.store', 'method'=>'POST' , 'files'=>True])!!}
+{!!Form::open(['route'=>'usuario.store', 'method'=>'POST' 'enctype'='multipart/form-data'])!!}
 @include('admin.usuario.forms.formscreate')
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
