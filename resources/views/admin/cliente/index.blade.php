@@ -32,24 +32,23 @@
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
-		<th>Id</th>
+		
 		<th>Nombre</th>
 		<th>Correo</th>
 		<th>Telefono</th>
 		<th>Direccion</th>
-		<th>Tipo</th>
+		<th>Cuit</th>
 		<th>Editar</th>
 		<th>Eliminar</th>
 	</thead>
 	@foreach($clientes as $cliente)
 	<tbody>
 	<!-- -->
- 	<td>{{ $cliente -> id}}</td>
 	<td>{{ $cliente -> clie_nombres}}</td>
-	<td>{{ $cliente -> clie_email}}</td>
-	<td>{{ $cliente -> clie_tel}}</td>
-	<td>{{ $cliente -> clie_direcc}}</td>
-	<td>{{ $cliente -> usu_perfil}}</td>
+	<td>{{ $cliente -> clie_mail}}</td>
+	<td>{{ $cliente -> clie_telefono}}</td>
+	<td>{{ $cliente -> clie_direccion}}</td>
+	<td>{{ $cliente -> clie_cuit}}</td>
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
 

@@ -35,6 +35,19 @@
             <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ url('admin') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
 
+
+
+        <li class="treeview">
+                <a href="#"><i class='fa fa-desktop'></i> <span>Config</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a  href="{!! URL::to('rubro/') !!}">Rubros</a></li>
+                    <li><a  href="{!! URL::to('ivatipo/') !!}">Iva Tipo</a></li>
+                    <li><a  href="{!! URL::to('marca/') !!}">Marca</a></li>
+                    <li><a  href="{!! URL::to('transporte/') !!}">Transporte</a></li>
+                </ul>
+        </li>
+
+
         <li >
         <a href="{!! URL::to('producto/') !!}">
         <i class='fa fa-shopping-basket'></i><span>Productos</span></a>
@@ -61,21 +74,17 @@
         </li>
 
         <li >
+        <a href="{!! URL::to('listar-venta/') !!}">
+        <i class='fa fa-dollar'></i><span>Listar Venta</span></a>
+        </li>
+
+        <li >
         <a href="{!! URL::to('reportes/') !!}">
         <i class='fa fa-circle-o'></i><span>Reportes</span></a>
         </li>
             
 
-            <li class="treeview">
-                <a href="#"><i class='fa fa-desktop'></i> <span>Config</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a class="fa  fa-cubes" href="{!! URL::to('rubro/') !!}">Rubros</a></li>
-                    <li><a class="fa  fa-eur" href="{!! URL::to('ivatipo/') !!}">Iva Tipo</a></li>
-                    <li><a class="fa  fa-tags" href="{!! URL::to('marca/') !!}">Marca</a></li>
-                    <li><a class="fa  fa-car" href="{!! URL::to('transporte/') !!}">Transporte</a></li>
-                </ul>
-            </li>
-
+           
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
