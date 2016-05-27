@@ -24,5 +24,11 @@ class Cliente extends Model
             'clie_hab_cta',
     ];
     		
-            
+          
+public function venta()
+    {
+        //un cliente puede tener muchas ventas
+       return $this->hasMany('Soft\venta');
+    }
+
 }

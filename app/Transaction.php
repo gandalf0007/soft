@@ -13,7 +13,7 @@ class Transaction extends Model
             'user',
             'qty',
             'total_price',
-            'status',
+           
         
     ];
           

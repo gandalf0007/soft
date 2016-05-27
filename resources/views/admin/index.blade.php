@@ -77,7 +77,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-			 <h3>{{$empleados}}</h3>
+			 <h3>{{$activities}}</h3>
               <p>Nuevos Visitantes</p>
             </div>
 			<div class="icon">

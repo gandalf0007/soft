@@ -25,7 +25,7 @@
      <br><br><br><br>
 
           <form  role="form" method="POST" action="{{ url('/login') }}">
-              {!! csrf_field() !!}
+             <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                 <fieldset class="clearfix">
                 <!--input del email -->
                     <p>

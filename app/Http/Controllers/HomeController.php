@@ -14,6 +14,8 @@ use Soft\Producto;
 use Soft\Provedore;
 use Soft\Venta;
 use Auth;
+use Counter;
+
 /**
  * Class HomeController
  * @package App\Http\Controllers
@@ -37,20 +39,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-
-        $productos = Producto::count();
-        $provedores = provedore::count();
+        $activities =Counter::showAndCount('/');
         $Ventas = Venta::count();
+        $provedores = provedore::count();
+        $productos = Producto::count();
+        $empleados = User::count();
         //$customers = Customer::count();
         //$suppliers = Supplier::count();
         //$receivings = Receiving::count();
         //$sales = Sale::count();
-        $empleados = User::count();
+       
         return view('admin.index')
            // ->with('items', $items)
             //->with('item_kits', $item_kits)
-           // ->with('customers', $customers)
+            ->with('activities', $activities)
             ->with('Ventas', $Ventas)
             ->with('provedores', $provedores)
             ->with('productos', $productos)

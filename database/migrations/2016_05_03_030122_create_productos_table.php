@@ -26,9 +26,9 @@ class CreateProductosTable extends Migration
             $table->double('pro_rentabi2');
             $table->double('pro_rentabi3');
 
-            $table->double('pro_atock_act');
-            $table->double('pro_atock_cri');
-            $table->double('pro_atock_ped');
+            $table->double('pro_stock_act');
+            $table->double('pro_stock_cri');
+            $table->double('pro_stock_ped');
 
             $table->integer('rubro_id');
             $table->integer('marca_id');

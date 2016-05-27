@@ -56,7 +56,7 @@
         </li>
 
         <li >
-        <a href="{!! URL::to('cart-show/') !!}">
+        <a href="{!! URL::to('venta-show/') !!}">
         <i class='fa fa-dollar'></i><span>Generar Venta</span></a>
         </li>
 

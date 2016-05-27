@@ -162,7 +162,9 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Kim\Activity\ActivityServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
     ],
 
     /*
@@ -214,7 +216,9 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
          'Cart'=> \Gloudemans\Shoppingcart\Facades\Cart::class,
-         'Image' => Intervention\Image\Facades\Image::class
+         'Image' => Intervention\Image\Facades\Image::class,
+         'Activity' => Kim\Activity\ActivityFacade::class,
+         'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
     ],
 
 ];

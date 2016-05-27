@@ -2,8 +2,8 @@
 
 namespace Soft\Http\Controllers;
 
-
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Request;
 use Soft\Http\Requests;
 use Soft\User;
 use Soft\Producto;
@@ -14,6 +14,7 @@ use DB;
 use Cart;
 use Soft\Transaction;
 use Soft\Venta;
+use Soft\Cliente;
 
 
 class VentaController extends Controller
@@ -24,6 +25,7 @@ class VentaController extends Controller
         /*si no existe mi session cart , esntonces la creo con put y creo
         un array para almacenar los items*/
         if(!\Session::has('cart')) \Session::put('cart', array());
+        if(!\Session::has('cliente')) \Session::put('cliente', array());
     }
 
     /**
@@ -31,7 +33,7 @@ class VentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+/*---------------------------------carrito--------------------------------------*/
     public function addproducto(){
         //me busca los productos
         $productos = producto::Paginate(8);
@@ -42,11 +44,13 @@ class VentaController extends Controller
     //mostrar carrito
     public function show()
     {
-        /*obtengo mi variable de session que cree y la almaceno en $cart */
+        /*obtengo mi variable de session cart que cree y la almaceno en $cart */
         $cart = \Session::get('cart');
+        /*obtengo mi variable de session cliente que cree y la almaceno en $cart */
+        $cliente = \Session::get('cliente');
         //llama a la funcion total
         $total = $this->total();
-        return view('admin.venta.index', compact('cart','total'));
+        return view('admin.venta.index', compact('cart','total','cliente'));
     }
 
     //agregar item
@@ -58,12 +62,11 @@ class VentaController extends Controller
         $cart[$itemadd->pro_descrip] = $itemadd;
         \Session::put('cart', $cart);
 
-        return redirect('cart-show');
-        dd($itemadd);
+        return redirect('venta-show');
 
      }
 
-     // Delete item
+     // Delete item y client
     public function delete($id)
     {
         $item  = producto::find($id);
@@ -71,7 +74,7 @@ class VentaController extends Controller
         unset($cart[$item->pro_descrip]);
         \Session::put('cart', $cart);
 
-        return redirect('cart-show');
+        return redirect('venta-show');
     }
 
 
@@ -84,15 +87,16 @@ class VentaController extends Controller
         $cart[$item->pro_descrip]->quantity = $quantity;
         \Session::put('cart', $cart);
 
-        return redirect('cart-show');
+        return redirect('venta-show');
     }
 
 
-    //limpiar carrito
+    //limpiar carrito y cliente
      public function trash()
     {
         \Session::forget('cart');
-        return redirect('cart-show');
+        \Session::forget('cliente');
+        return redirect('venta-show');
     }
 
 
@@ -108,15 +112,28 @@ class VentaController extends Controller
     }
 
 
-     public function checkout()
+     public function checkout(Request $Request)
     {
+        $total = $this->total();
+
+        //traigo el tipo de pago y si es efectivo que se guarde como pagado en otro caso 
+        //que se guarde como pendiente
+        $tipo_pago=$Request['tipo_pago'];
+        if ($tipo_pago == "Efectivo") 
+        {
+            $tipo_pago = "pagado";
+        }else{  
+            $tipo_pago="pendiente";            
+        }
+        
         //genero una venta que estara relacinada con los productos en las transacciones
         $venta = new Venta();
         //$venta->cliente_id  =
-        $venta->user_id       = Auth::user()->usu_nombre;
-        //$venta->pago_tipo   =
-        //$venta->total       =
+        $venta->user_id       = Auth::user()->id;
+        $venta->pago_tipo     = $Request['tipo_pago'];
+        $venta->total         = $total;
         //$venta->comentario  =
+        $venta->status = $tipo_pago;
         $venta->save();
 
         //traigo todos los productos de la session  del usuario 
@@ -131,15 +148,71 @@ class VentaController extends Controller
             $transaction->user        = Auth::user()->usu_nombre;
             $transaction->cantidad    = $item->quantity;
             $transaction->total_price = $item->pro_venta * $item->quantity;
-            $transaction->status      = 'pagado';
             //guardo la transaccion
             $transaction->save();
-  
-        }   
-        //redirecciona para destruir el carrito de la seccion
-         return Redirect::to('cart-trash');
-    }
 
+            //descontar stock en la tabla producto
+            $producto = producto::find($item->id);
+            $producto->pro_stock_act = $producto->pro_stock_act - $item->quantity;
+            $producto->save();
+        }   
+
+        //redirecciona para destruir el carrito de la seccion
+         return Redirect::to('venta-trash');
+    }
+/*---------------------------------carrito--------------------------------------*/
+
+
+
+ /*---------------------------------Listar Ventas--------------------------------------*/
+    public function listarVenta(){
+        $ventas = venta::all();
+         $ventas= venta::Paginate();
+         //me recorre las ventas 
+        foreach ($ventas as $venta) {
+            //a cada venta busca por ide del usuario y almaceno los nombre en un array
+          $usernames[]=user::find($venta->user_id) ;
+        }
+       
+        return view('admin.venta.listar.index')
+        ->with('ventas',$ventas)
+        ->with('usernames',$usernames);
+     
+    }
+/*---------------------------------Listar Ventas--------------------------------------*/
+
+
+
+
+
+
+/*---------------------------------cliente--------------------------------------*/
+public function seleccionarCliente()
+    {
+         //me busca los productos
+        $clientes = cliente::Paginate(10);
+        //me los manda a productoadd asi los seleccioens
+        return View('admin.venta.clienteadd')->with('clientes',$clientes);
+
+     }
+
+ public function addCliente($id)
+    {
+        $clienteadd  = cliente::find($id);
+        $cliente = \Session::get('cliente');
+        $cliente[$clienteadd->clie_nombres] = $clienteadd;
+        \Session::put('cliente', $cliente);
+        return redirect('venta-show');
+       
+
+     }
+
+
+/*---------------------------------cliente--------------------------------------*/
+
+
+/*---------------------------------vendedor--------------------------------------*/
+/*---------------------------------vendedor--------------------------------------*/
 
 
 }

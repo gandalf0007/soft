@@ -23,7 +23,7 @@ Route::group(['middleware' => 'web'], function () {
  
 });
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => 'auth'], function () {
 
  Route::get('/admin', 'HomeController@index');
  Route::get('usuario/perfil','UsuarioController@perfil');
@@ -48,15 +48,22 @@ Route::get('venta-addproducto','VentaController@addproducto');
 //al darle agregar a un producto a mi carrito , le mando el id de ese producto
 Route::get('venta-addtocart/{id}','VentaController@add');
 //mostrar
-Route::get('cart-show','VentaController@show');
+Route::get('venta-show','VentaController@show');
 //eliminar carricato
-Route::get('cart-trash','VentaController@trash');
+Route::get('venta-trash','VentaController@trash');
 //actualizar items
-Route::get('cart-update/{id}/{quantity}','VentaController@update');
+Route::get('venta-update/{id}/{quantity}','VentaController@update');
 //eliminar productos del carrito
-Route::get('cart-delete/{id}','VentaController@delete');
+Route::get('venta-delete/{id}','VentaController@delete');
 //chekout finalizar carrito
-Route::get('cart-checkout','VentaController@checkout');
+Route::post('venta-checkout','VentaController@checkout');
+Route::get('venta-checkout','VentaController@checkout');
+//listar ventas
+Route::get('listar-venta/','VentaController@listarVenta');
+//cargar Cliente
+Route::get('venta-addcliente/','VentaController@seleccionarCliente');
+//mandamos id del cliente para almacenarlo en la sessio
+Route::get('venta-cliente/{id}','VentaController@addCliente');
 /*---------------carrito------------*/
 
 

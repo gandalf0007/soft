@@ -31,7 +31,7 @@
         <div class="form-group">
         <label for="payment_type" class="col-sm-4 control-label">Tipo de pago</label>
         <div class="col-sm-8">
-        {!! Form::select('payment_type', array('Cash' => 'Cash', 'Check' => 'Check', 'Debit Card' => 'Debit Card', 'Credit Card' => 'Credit Card'), array('class' => 'form-control')) !!}
+        {!! Form::select('tipo_pago', array('Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Targeta de Debito' => 'Targeta de Debito', 'Targeta de Credito' => 'Targeta de Credito' , 'MercadoPago' => 'MercadoPago'), array('class' => 'form-control')) !!}
         </div>
         </div>
 

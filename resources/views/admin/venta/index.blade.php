@@ -14,11 +14,45 @@
 		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
   		<i class="fa fa-cubes fa-lg"></i> Agregar Producto</a></div>
 
+  		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}">
+  		<i class="fa fa-cubes fa-lg"></i> Agregar Cliente</a></div>
+		
 
+
+		{!! Form::open(array('url' => 'venta-checkout', 'method'=>'POST' )) !!}
+		 <!--tipo de pago-->
+		<div class="col-md-9">
+        <div class="row">
+        <div class="form-group">
+        <label for="tipo_pago" class="col-sm-6 control-label">Tipo de pago</label>
+        <div class="col-sm-8">
+        {!! Form::select('tipo_pago', array('Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Targeta de Debito' => 'Targeta de Debito', 'Targeta de Credito' => 'Targeta de Credito' , 'MercadoPago' => 'MercadoPago'), array('class' => 'form-control')) !!}
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <br><br>
+
+        <!-- ---------------------  cliente   --------------------------- -->
+		
+		@if(count($cliente))
+		@foreach($cliente as $cliente)
+		{{ $cliente->clie_nombres }}
+		
+		@endforeach
+		@endif
+
+
+
+
+
+
+		<!-- ---------------------  Carrito  --------------------------- -->
 		<div class="table-cart">
 			@if(count($cart))
 			<p>
-				<a href="{!! URL::to('cart-trash') !!}" class="btn btn-danger">
+				<a href="{!! URL::to('venta-trash') !!}" class="btn btn-danger">
 					Vaciar Venta <i class="fa fa-trash"></i>
 				</a>
 			</p>
@@ -53,7 +87,7 @@
 									<a 
 										href="#" 
 										class="btn btn-warning btn-update-item"
-										data-href="{!! URL::to('cart-update/'.$item->id) !!}"
+										data-href="{!! URL::to('venta-update/'.$item->id) !!}"
 										data-id = "{{ $item->id }}"
 									>
 										<i class="fa fa-refresh"></i>
@@ -61,7 +95,7 @@
 								</td>
 								<td>${{ number_format($item->pro_venta * $item->quantity,2) }}</td>
 								<td>
-									<a href="{!! URL::to('cart-delete/'.$item->id) !!}" class="btn btn-danger">
+									<a href="{!! URL::to('venta-delete/'.$item->id) !!}" class="btn btn-danger">
 										<i class="fa fa-remove"></i>
 									</a>
 								</td>
@@ -84,9 +118,11 @@
 			<p>
 				
 
-				<a href="{!! URL::to('cart-checkout') !!}" class="btn btn-primary">
+				<a href="{!! URL::to('venta-checkout') !!}" class="btn btn-primary">
 				 Confirmar Venta <i class="fa fa-chevron-circle-right"></i>
 				</a>
+				{!!Form::submit('Confirmar Venta',['class'=>'btn btn-primary'])!!}
+				{!!Form::close()!!}
 			</p>
 		</div>
 

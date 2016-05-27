@@ -13,6 +13,21 @@ class Venta extends Model
            	'pago_tipo',
            	'total',
            	'comentario',
+           	'status',
     ];
+
+
+public function user()
+    {
+      //una venta corresponde a un usuario
+        return $this->belongsTo(user::class);
+    }
+
+public function cliente()
+    {
+      //una venta corresponde a un cliente
+        return $this->belongsTo(cliente::class);
+    }
+
 
 }

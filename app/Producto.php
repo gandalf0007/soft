@@ -25,9 +25,9 @@ class Producto extends Model
           'pro_rentabi2',
           'pro_rentabi3',
 
-          'pro_atock_act',
-          'pro_atock_cri',
-          'pro_atock_ped',
+          'pro_stock_act',
+          'pro_stock_cri',
+          'pro_stock_ped',
 
            'rubro_id',
            'marca_id',

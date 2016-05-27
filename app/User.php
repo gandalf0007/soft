@@ -57,4 +57,10 @@ class User extends Authenticatable
     }
 
 
+public function venta()
+    {
+        //un usuario puede tener muchas ventas
+       return $this->hasMany('Soft\venta');
+    }
+
 }
