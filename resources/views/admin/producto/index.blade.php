@@ -37,6 +37,7 @@
 		<th>Costo</th>
 		<th>venta</th>
 		<th>venta 2</th>
+		<th>Stock</th>
 		<th>Editar</th>
 		<th>Eliminar</th>
 	</thead>
@@ -50,6 +51,7 @@
   	<td>{{ $producto -> pro_preciocosto}}</td>
   	<td>{{ $producto -> pro_venta}}</td>
   	<td>{{ $producto -> pro_precio2}}</td>
+  	<td>{{ $producto -> pro_stock_act}}</td>
 
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->

@@ -25,7 +25,7 @@ class User extends Authenticatable
         're_password',
         'email',
         'usu_direcc',
-        'usu_perfil',
+        'perfil_id',
         'usu_tel',
         'path',
     ];
@@ -57,10 +57,23 @@ class User extends Authenticatable
     }
 
 
+
+                        /*relaciones de las tablas*/
+
+
+/*para que esto funciones el la db enl nombre de la columna deve apuntar a la tabla relacionada
+por ejemplo , en user , el perfil se deve llamar asi perfil_id y no usu_perfil como se llamaba
+antes*/
 public function venta()
     {
         //un usuario puede tener muchas ventas
-       return $this->hasMany('Soft\venta');
+       return $this->hasMany(Venta::class);
     }
+
+public function perfil()
+    {
+        //un usuario tiene un perfil
+       return $this->belongsTo(perfil::class);;
+    }    
 
 }

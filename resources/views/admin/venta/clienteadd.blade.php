@@ -16,7 +16,8 @@
 
  
 <!--buscador-->
-{!!Form::open(['route'=>'cliente.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
+
+{!! Form::open(array('url' => 'venta-addcliente', 'method'=>'GET', 'class'=>'navbar-form navbar-left' , 'role'=>'Search' )) !!}
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('clie_nombres',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
@@ -32,24 +33,21 @@
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
-		<th>Id</th>
 		<th>Nombre</th>
 		<th>Correo</th>
 		<th>Telefono</th>
 		<th>Direccion</th>
-		<th>Tipo</th>
-		<th>Editar</th>
-		<th>Eliminar</th>
+		<th>Cuit</th>
+		<th>Agregar</th>
 	</thead>
 	@foreach($clientes as $cliente)
 	<tbody>
 	<!-- -->
- 	<td>{{ $cliente -> id}}</td>
-	<td>{{ $cliente -> clie_nombres}}</td>
-	<td>{{ $cliente -> clie_email}}</td>
-	<td>{{ $cliente -> clie_tel}}</td>
-	<td>{{ $cliente -> clie_direcc}}</td>
-	<td>{{ $cliente -> usu_perfil}}</td>
+ 	<td>{{ $cliente -> clie_nombres}}</td>
+	<td>{{ $cliente -> clie_mail}}</td>
+	<td>{{ $cliente -> clie_telefono}}</td>
+	<td>{{ $cliente -> clie_direccion}}</td>
+	<td>{{ $cliente -> clie_cuit}}</td>
 
 <td>
 <a href="{{ URL::to('venta-cliente/'.$cliente->id) }}">{{ Form::submit('Agregar Cliente',array('class'=>'btn btn-success')) }}</a>

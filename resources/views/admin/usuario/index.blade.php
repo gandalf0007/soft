@@ -49,7 +49,7 @@
 	  	<td>{{ $user -> email}}</td>
 	  	<td>{{ $user -> usu_tel}}</td>
 	  	<td>{{ $user -> usu_direcc}}</td>
-	  	<td>{{ $user -> usu_perfil}}</td>
+	  	<td>{{ $user->perfil->descripcion}}</td>
       
 
 

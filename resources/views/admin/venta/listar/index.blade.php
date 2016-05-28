@@ -44,7 +44,7 @@ endboton crear-->
     @foreach($ventas as $venta)
     <tbody>
 	  	<td>{{ $venta->user->usu_nombre }}</td>
-	  	<td>{{ $venta -> cliente_id}}</td>
+	  	<td>{{ $venta ->cliente->clie_nombres}}</td>
 	  	<td>{{ $venta -> pago_tipo}}</td>
 	  	<td>{{ $venta -> comentario}}</td>
 	  	<td>{{ $venta -> total}}</td>

@@ -25,7 +25,8 @@ class VentaController extends Controller
         /*si no existe mi session cart , esntonces la creo con put y creo
         un array para almacenar los items*/
         if(!\Session::has('cart')) \Session::put('cart', array());
-        if(!\Session::has('cliente')) \Session::put('cliente', array());
+        //para cliente ya no es un array ya que almaceno 1 solo objeto
+        if(!\Session::has('cliente')) \Session::put('cliente');
     }
 
     /**
@@ -44,6 +45,7 @@ class VentaController extends Controller
     //mostrar carrito
     public function show()
     {
+
         /*obtengo mi variable de session cart que cree y la almaceno en $cart */
         $cart = \Session::get('cart');
         /*obtengo mi variable de session cliente que cree y la almaceno en $cart */
@@ -125,10 +127,11 @@ class VentaController extends Controller
         }else{  
             $tipo_pago="pendiente";            
         }
-        
+        //traigo el cliente de la session
+        $cliente = \Session::get('cliente');
         //genero una venta que estara relacinada con los productos en las transacciones
         $venta = new Venta();
-        //$venta->cliente_id  =
+        $venta->cliente_id    = $cliente->id;
         $venta->user_id       = Auth::user()->id;
         $venta->pago_tipo     = $Request['tipo_pago'];
         $venta->total         = $total;
@@ -168,15 +171,9 @@ class VentaController extends Controller
     public function listarVenta(){
         $ventas = venta::all();
          $ventas= venta::Paginate();
-         //me recorre las ventas 
-        foreach ($ventas as $venta) {
-            //a cada venta busca por ide del usuario y almaceno los nombre en un array
-          $usernames[]=user::find($venta->user_id) ;
-        }
-       
+
         return view('admin.venta.listar.index')
-        ->with('ventas',$ventas)
-        ->with('usernames',$usernames);
+        ->with('ventas',$ventas);
      
     }
 /*---------------------------------Listar Ventas--------------------------------------*/
@@ -187,10 +184,23 @@ class VentaController extends Controller
 
 
 /*---------------------------------cliente--------------------------------------*/
-public function seleccionarCliente()
+public function seleccionarCliente(request $request)
     {
-         //me busca los productos
-        $clientes = cliente::Paginate(10);
+         //me busca los clientes
+        $clientes = cliente::orderBy('clie_nombres');
+
+        /*------------buscador-----------*/
+        //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
+        $clie_nombre=$request->input('clie_nombres');
+        //preguntamos que si ($usu_nombre no es vacio
+        if (!empty($clie_nombre)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $clientes->where('clie_nombres','LIKE','%'.$clie_nombre.'%');
+        }
+         $clientes=$clientes->paginate(10);
+         /*------------buscador-----------*/
+
+
         //me los manda a productoadd asi los seleccioens
         return View('admin.venta.clienteadd')->with('clientes',$clientes);
 
@@ -200,11 +210,9 @@ public function seleccionarCliente()
     {
         $clienteadd  = cliente::find($id);
         $cliente = \Session::get('cliente');
-        $cliente[$clienteadd->clie_nombres] = $clienteadd;
+        $cliente = $clienteadd;
         \Session::put('cliente', $cliente);
-        return redirect('venta-show');
-       
-
+         return redirect('venta-show');
      }
 
 

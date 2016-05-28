@@ -26,7 +26,7 @@ public function user()
 public function cliente()
     {
       //una venta corresponde a un cliente
-        return $this->belongsTo(cliente::class);
+        return $this->belongsTo(Cliente::class);
     }
 
 

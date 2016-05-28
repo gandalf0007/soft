@@ -10,54 +10,50 @@
             </div>
 			<div class="box-body">
 
+     		
+			 <!-- ---------------------  cliente   --------------------------- -->
+     		<div class="box-header with-border ">
+              <h3 class="box-title">Datos del Cliente</h3>
+              <a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}">
+  				<i class="fa fa-cubes fa-lg"></i> Agregar Cliente</a>
+            </div>
+			@if(count($cliente))
+            <div class="box-body">
+              <div class="input-group col-xs-6 pull-right">
+                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                <input type="text" class="form-control" placeholder="direccion" value="{{ $cliente->clie_direccion}}" disabled>
+             </div>
 
-		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
-  		<i class="fa fa-cubes fa-lg"></i> Agregar Producto</a></div>
+              <div class="input-group col-xs-6">
+                <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
+                 <input type="text" class="form-control" placeholder="Cuit" value="{{ $cliente->clie_cuit}}" disabled>
+              </div>
+              
+              <div class="input-group col-xs-6 pull-right">
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                 <input type="text" class="form-control" placeholder="telefono" value="{{ $cliente->clie_telefono}}" disabled>
+              </div>
 
-  		<div><a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}">
-  		<i class="fa fa-cubes fa-lg"></i> Agregar Cliente</a></div>
+              <div class="input-group col-xs-6">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="cliente" value="{{ $cliente->clie_nombres}}" disabled>
+              </div>
+              </div>
+              @endif
+<br><br><br>
 		
+			
 
-
-		{!! Form::open(array('url' => 'venta-checkout', 'method'=>'POST' )) !!}
-		 <!--tipo de pago-->
-		<div class="col-md-9">
-        <div class="row">
-        <div class="form-group">
-        <label for="tipo_pago" class="col-sm-6 control-label">Tipo de pago</label>
-        <div class="col-sm-8">
-        {!! Form::select('tipo_pago', array('Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Targeta de Debito' => 'Targeta de Debito', 'Targeta de Credito' => 'Targeta de Credito' , 'MercadoPago' => 'MercadoPago'), array('class' => 'form-control')) !!}
-        </div>
-        </div>
-        </div>
-        </div>
-        
+<!-- ---------------------  Carrito  --------------------------- -->
+			<div class="box-header with-border ">
+              <h3 class="box-title">Datos de los Productos</h3>
+             <a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}">
+  				<i class="fa fa-cubes fa-lg"></i> Agregar Producto</a>
+            </div>
         <br><br>
-
-        <!-- ---------------------  cliente   --------------------------- -->
 		
-		@if(count($cliente))
-		@foreach($cliente as $cliente)
-		{{ $cliente->clie_nombres }}
-		
-		@endforeach
-		@endif
-
-
-
-
-
-
-		<!-- ---------------------  Carrito  --------------------------- -->
 		<div class="table-cart">
 			@if(count($cart))
-			<p>
-				<a href="{!! URL::to('venta-trash') !!}" class="btn btn-danger">
-					Vaciar Venta <i class="fa fa-trash"></i>
-				</a>
-			</p>
-
-
 			<div class="table-responsive">
 				<table class="table table-striped table-hover table-bordered">
 					<thead>
@@ -105,7 +101,7 @@
 				</table><hr>
 				
 				<h3>
-					<span class="label label-success">
+					<span class="label label-success pull-right">
 						Total: ${{ number_format($total,2) }}
 					</span>
 				</h3>
@@ -118,11 +114,24 @@
 			<p>
 				
 
-				<a href="{!! URL::to('venta-checkout') !!}" class="btn btn-primary">
-				 Confirmar Venta <i class="fa fa-chevron-circle-right"></i>
-				</a>
-				{!!Form::submit('Confirmar Venta',['class'=>'btn btn-primary'])!!}
-				{!!Form::close()!!}
+				
+				
+		{!! Form::open(array('url' => 'venta-checkout', 'method'=>'POST' )) !!}
+		 <!--tipo de pago-->
+		<div class="box-header with-border ">
+            <h3 class="box-title">Datos Adicionales</h3>
+         </div><br>
+
+        <div class="form-group">
+        <label for="tipo_pago" class="control-label">Tipo de pago</label>
+        {!! Form::select('tipo_pago', array('Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Targeta de Debito' => 'Targeta de Debito', 'Targeta de Credito' => 'Targeta de Credito' , 'MercadoPago' => 'MercadoPago'), array('class' => 'form-control')) !!}
+        </div><br>
+			
+		<a href="{!! URL::to('venta-trash') !!}" class="btn btn-danger">Vaciar Venta <i class="fa fa-trash"></i></a>
+				
+		{!!Form::submit('Confirmar Venta',['class'=>'btn btn-primary'])!!}
+		{!!Form::close()!!}
+
 			</p>
 		</div>
 

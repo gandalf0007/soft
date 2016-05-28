@@ -14,4 +14,14 @@ class Perfil extends Model
 
     //crea una tabla de perfils
     protected $table="perfils";
+
+
+     						/*relaciones de las tablas*/
+
+public function user()
+    {
+        //un perfil puede tener muchas usuarios
+       return $this->hasMany(user::class);
+    }
+
 }

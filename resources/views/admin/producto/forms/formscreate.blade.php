@@ -14,6 +14,12 @@
 <tbody>
 
 <td>
+<!--codigo-->
+<div class="form-horizontal">
+	{!!Form::label('codigo:')!!}
+	{!!Form::text('pro_codigo',null,['class'=>'form-control ','placeholder'=>'ingrese el codigo del producto'])!!}
+</div>
+
 <!--descripcion-->
 <div class="form-horizontal">
 	{!!Form::label('descripcion:')!!}

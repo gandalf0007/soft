@@ -28,7 +28,7 @@ class Cliente extends Model
 public function venta()
     {
         //un cliente puede tener muchas ventas
-       return $this->hasMany('Soft\venta');
+       return $this->hasMany(Venta::class);
     }
 
 }

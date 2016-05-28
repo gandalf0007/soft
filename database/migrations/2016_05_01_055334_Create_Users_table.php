@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('usu_imagen');
             $table->string('usu_direcc');
             $table->integer('usu_tel');
-            $table->string('usu_perfil');
+            $table->string('perfil_id');
             $table->rememberToken();
             $table->timestamps();
         });

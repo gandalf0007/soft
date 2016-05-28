@@ -26,6 +26,7 @@
         <th>Costo</th>
         <th>venta</th>
         <th>venta 2</th>
+        <th>Stock</th>
         <th>Agregar</th>
 
     </thead>
@@ -39,20 +40,9 @@
     <td>{{ $producto -> pro_preciocosto}}</td>
     <td>{{ $producto -> pro_venta}}</td>
     <td>{{ $producto -> pro_precio2}}</td>
+    <td>{{ $producto -> pro_stock_act}}</td>
 
- <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
- el id a esa funcion -->
-<td>
- <form method="POST" action="{{url('venta-addcart')}}">
-    <input type="hidden" name="product_id" value="{{$producto->id}}">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <button type="submit" class="btn btn-fefault add-to-cart">
-        <i class="fa fa-shopping-cart"></i>
-         Add to cart
-    </button>
-</form>
-</td>
-
+ 
 <td>
 <a href="{{ URL::to('venta-addtocart/'.$producto->id) }}">{{ Form::submit('Add To Cart',array('class'=>'btn btn-success')) }}</a>
 </td>
