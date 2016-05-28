@@ -124,7 +124,7 @@
 
         <div class="form-group">
         <label for="tipo_pago" class="control-label">Tipo de pago</label>
-        {!! Form::select('tipo_pago', array('Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Targeta de Debito' => 'Targeta de Debito', 'Targeta de Credito' => 'Targeta de Credito' , 'MercadoPago' => 'MercadoPago'), array('class' => 'form-control')) !!}
+        {!! Form::select('tipo_pago', config('options.tipopago'),'', array('class' => 'form-control')) !!}
         </div><br>
 			
 		<a href="{!! URL::to('venta-trash') !!}" class="btn btn-danger">Vaciar Venta <i class="fa fa-trash"></i></a>
