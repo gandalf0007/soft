@@ -20,7 +20,6 @@
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('clie_nombres',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
-	{!!Form::select('type',config('options.type'))!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}

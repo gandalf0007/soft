@@ -18,7 +18,7 @@
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
-	{!!Form::select('type',config('options.type'))!!}
+  {{ Form::select('type',config('options.type'),'',['class'=>'form-control']) }}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}

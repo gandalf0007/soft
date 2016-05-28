@@ -51,7 +51,7 @@ class UsuarioController extends Controller
         $tpye=$request->input('type');
         if (!empty($tpye)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $users->where('usu_perfil','LIKE','%'.$tpye.'%');
+            $users->where('perfil_id','LIKE','%'.$tpye.'%');
         }
 
 
