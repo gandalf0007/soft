@@ -38,13 +38,15 @@
 		<th>Telefono</th>
 		<th>Direccion</th>
 		<th>Tipo</th>
-		<th>Editar</th>
-		<th>Eliminar</th>
+    <th>Editar</th>
+     <?php if (Auth::user()->perfil_id == 1): ?>
+    <th>Eliminar</th>
+    <?php endif ?>
       </tr>
     </thead>
     @foreach($users as $user)
     <tbody>
-      	<td>{{ $user -> id}}</td>
+      <td>{{ $user -> id}}</td>
 	  	<td>{{ $user -> usu_nombre}}</td>
 	  	<td>{{ $user -> email}}</td>
 	  	<td>{{ $user -> usu_tel}}</td>
@@ -53,27 +55,31 @@
       
 
 
+  
+
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
-
 <td>{!! link_to_route('usuario.edit', $title = 'editar', $parameters = $user->id  , $attributes = ['class'=>'btn btn-primary']); !!}
 </td>
 
+
+<?php if (Auth::user()->perfil_id == 1): ?>
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['usuario.destroy',$user->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $user->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
 
+<?php endif ?>
 
 	</tbody>
 	@endforeach
 	</table>
 
+<!--modal eliminar usuario-->
+ @include('admin.partials.modal.modal-delete-usuario')
+
 <!--para renderizar la paginacion-->
   {!! $users->render() !!}
- 
-
-
 			     </div>
             <!-- /.box-body -->
           </div>

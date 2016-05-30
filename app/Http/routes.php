@@ -64,6 +64,14 @@ Route::get('listar-venta/','VentaController@listarVenta');
 Route::get('venta-addcliente/','VentaController@seleccionarCliente');
 //mandamos id del cliente para almacenarlo en la sessio
 Route::get('venta-cliente/{id}','VentaController@addCliente');
+//detalle de la venta en una ventana modal
+
+//Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
+Route::post('listar-venta/detalle',[
+'as'=>'venta.detalleVenta',
+'uses'=>'VentaController@detalleVenta'
+	]);
+
 /*---------------carrito------------*/
 
 

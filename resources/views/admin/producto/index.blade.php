@@ -60,17 +60,16 @@
 
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['producto.destroy',$producto->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
-
 
 	</tbody>
 	@endforeach
 	</table>
+<!--modal de eliminar producto-->
+ @include('admin.partials.modal.modal-delete-producto')
 
 <!--para renderizar la paginacion-->
-
-
   {!! $productos->render() !!}
  
 			</div>

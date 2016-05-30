@@ -38,7 +38,9 @@
 		<th>Direccion</th>
 		<th>Cuit</th>
 		<th>Editar</th>
-		<th>Eliminar</th>
+		<?php if (Auth::user()->perfil_id == 1): ?>
+		<th>Eliminar</th>	
+		<?php endif ?>
 	</thead>
 	@foreach($clientes as $cliente)
 	<tbody>
@@ -53,19 +55,23 @@
 
 <td>{!! link_to_route('cliente.edit', $title = 'editar', $parameters = $cliente->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>
 
+<?php if (Auth::user()->perfil_id == 1): ?>
+	
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['cliente.destroy',$cliente->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $cliente->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
 
+<?php endif ?>
 
 	</tbody>
 	@endforeach
 	</table>
 
+<!--modal eliminar cliente-->
+ @include('admin.partials.modal.modal-delete-cliente')
+
 <!--para renderizar la paginacion-->
-
-
   {!! $clientes->render() !!}
  
 			</div>

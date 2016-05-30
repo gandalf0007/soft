@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('usu_apellido');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('usu_imagen');
+            $table->string('re_password');
+            $table->string('path')->default('avatar.png');
             $table->string('usu_direcc');
             $table->integer('usu_tel');
             $table->string('perfil_id');

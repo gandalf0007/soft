@@ -32,7 +32,9 @@
 		<th>ID</th>
 		<th>Descripcion</th>
 		<th>Editar</th>
-		<th>Eliminar</th>
+		<?php if (Auth::user()->perfil_id == 1): ?>
+		<th>Eliminar</th>	
+		<?php endif ?>
 	</thead>
 	@foreach($marcas as $marca)
 	<tbody>
@@ -44,16 +46,19 @@
 
 <td>{!! link_to_route('marca.edit', $title = 'editar', $parameters = $marca->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>
 
+<?php if (Auth::user()->perfil_id == 1): ?>
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['marca.destroy',$marca->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $marca->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
 
+<?php endif ?>
 
 	</tbody>
 	@endforeach
 	</table>
-
+<!--modal eliminar marca-->
+ @include('admin.partials.modal.modal-delete-marca')
 <!--para renderizar la paginacion-->
 {!! $marcas->render() !!}
 

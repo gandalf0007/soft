@@ -16,5 +16,18 @@ class Transaction extends Model
            
         
     ];
-          
+ 
+
+ public function producto()
+    {
+      //una transaccion corresponde a un producto
+        return $this->belongsTo(producto::class);
+    }
+
+public function venta()
+    {
+      //una transaccion corresponde a una venta
+        return $this->belongsTo(venta::class);
+    }
+
 }

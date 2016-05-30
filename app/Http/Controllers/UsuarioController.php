@@ -82,7 +82,7 @@ class UsuarioController extends Controller
             'password'=>bcrypt($request['password']),
             'email' =>$request['email'],
             'usu_direcc' =>$request['usu_direcc'],
-            'usu_perfil' =>$request['usu_perfil'],
+            'perfil_id' =>$request['perfil_id'],
             'usu_tel' =>$request['usu_tel'],
             ]);
         return redirect('/usuario')->with('message','usuario guardado con exito');
@@ -118,7 +118,7 @@ class UsuarioController extends Controller
         $user->password=bcrypt($request['password']);
         $user->email =$request['email'];
         $user->usu_direcc =$request['usu_direcc'];
-        $user->usu_perfil =$request['usu_perfil'];
+        $user->perfil_id =$request['perfil_id'];
         $user->usu_tel =$request['usu_tel'];
         $user->path =$request['path'];
         $user->save();

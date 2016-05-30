@@ -29,5 +29,10 @@ public function cliente()
         return $this->belongsTo(Cliente::class);
     }
 
+public function transaction()
+    {
+      //una venta corresponde a muchas transacciones
+         return $this->hasMany(Transaction::class);
+    }
 
 }

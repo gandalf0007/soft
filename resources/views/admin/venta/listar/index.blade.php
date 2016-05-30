@@ -28,9 +28,11 @@
   <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a></div>
 endboton crear-->
 
+
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
       <tr>
+    <td>Mostrar</td>
 		<th>Vendedor</th>
 		<th>Cliente</th>
 		<th>Pago</th>
@@ -42,6 +44,27 @@ endboton crear-->
     </thead>
     @foreach($ventas as $venta)
     <tbody>
+
+      <td>
+      
+
+    <a 
+    href="#" 
+    class="btn btn-primary btn-detalle-venta"
+    data-id="{{ $venta->id }}"
+    data-path="{{ route('venta.detalleVenta') }}"
+    data-toggle="modal" 
+    data-target="#myModal"
+    data-token="{{ csrf_token() }}"
+>
+    <i class="fa fa-external-link"></i>
+</a>
+
+<button type="button" class="btn  btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-external-link"></i></button>
+
+
+      </td>
+
 	  	<td>{{ $venta->user->usu_nombre }}</td>
 	  	<td>{{ $venta ->cliente->clie_nombres}}</td>
 	  	<td>{{ $venta -> pago_tipo}}</td>
@@ -74,4 +97,6 @@ endboton crear-->
       </div>
       <!-- /.row -->
     </section>
+
+    @include('admin.partials.modal.modal-detalle-venta')
 @endsection

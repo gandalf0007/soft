@@ -171,10 +171,24 @@ class VentaController extends Controller
     public function listarVenta(){
         $ventas = venta::all();
          $ventas= venta::Paginate();
-
+         $transactions = transaction::all();
         return view('admin.venta.listar.index')
-        ->with('ventas',$ventas);
+        ->with('ventas',$ventas)
+         ->with('transactions',$transactions);
+       
      
+    }
+
+    public function detalleVenta(Request $request){
+        $items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
+        //return json_encode($items);
+        dd($items);
+        //$items=venta::find($id);
+        //$mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
+        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
+       
+        
+       
     }
 /*---------------------------------Listar Ventas--------------------------------------*/
 

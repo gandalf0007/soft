@@ -63,5 +63,10 @@ class Producto extends Model
     }
 
 
+    public function transaction()
+    {
+      //una producto corresponde a una transaccion
+        return $this->belongsTo(transaction::class);
+    }
 
 }

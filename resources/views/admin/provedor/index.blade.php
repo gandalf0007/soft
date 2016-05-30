@@ -37,7 +37,9 @@
 		<th>Direccion</th>
 		<th>Cuit</th>
 		<th>Editar</th>
-		<th>Eliminar</th>
+		<?php if (Auth::user()->perfil_id == 1): ?>
+		<th>Eliminar</th>	
+		<?php endif ?>
 	</thead>
 	@foreach($provedores as $provedore)
 	<tbody>
@@ -48,24 +50,27 @@
 	 <td>{{ $provedore -> prov_tel}}</td>
 	 <td>{{ $provedore -> prov_direccion}}</td>
 	 <td>{{ $provedore -> prov_cuit}}</td>
+
+
+	 	 
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->
-
 <td>{!! link_to_route('provedor.edit', $title = 'editar', $parameters = $provedore->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>
 
+<?php if (Auth::user()->perfil_id == 1): ?>
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['provedor.destroy',$provedore->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $provedore->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
 
+<?php endif ?>	 
 
 	</tbody>
 	@endforeach
 	</table>
-
+<!--modal eliminar provedor-->
+ @include('admin.partials.modal.modal-delete-provedor')
 <!--para renderizar la paginacion-->
-
-
   {!! $provedores->render() !!}
  
 			</div>

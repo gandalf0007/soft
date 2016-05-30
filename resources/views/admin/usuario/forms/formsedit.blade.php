@@ -36,7 +36,7 @@
 
 <div class="form-group">
 	{!!Form::label('perfil')!!}
-	{!!Form::select('usu_perfil',$perfils)!!}
+	{!!Form::select('perfil_id',$perfils)!!}
 </div>
 
 

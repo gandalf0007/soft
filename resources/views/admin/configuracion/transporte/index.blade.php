@@ -35,7 +35,9 @@
 		<th>Direccion</th>
 		<th>Telefono</th>
 		<th>Editar</th>
-		<th>Eliminar</th>
+		<?php if (Auth::user()->perfil_id == 1): ?>
+		<th>Eliminar</th>	
+		<?php endif ?>
 	</thead>
 	@foreach($transportes as $transporte)
 	<tbody>
@@ -49,16 +51,20 @@
 
 <td>{!! link_to_route('transporte.edit', $title = 'editar', $parameters = $transporte->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>
 
+<?php if (Auth::user()->perfil_id == 1): ?>
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
 <td>{!!Form::open(['route'=>['transporte.destroy',$transporte->id],'method'=>'DELETE'])!!}
-{!!Form::submit('eliminar',['class'=>'btn btn-danger'])!!}
+ <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $transporte->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 {!!Form::close()!!}</td>
 
+<?php endif ?>
 
 	</tbody>
 	@endforeach
 	</table>
 
+<!--modal eliminar rubro-->
+ @include('admin.partials.modal.modal-delete-transporte')
 <!--para renderizar la paginacion-->
 {!! $transportes->render() !!}
 
