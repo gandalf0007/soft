@@ -39,5 +39,8 @@
 	{!!Form::select('perfil_id',$perfils)!!}
 </div>
 
+<div class="form-group">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+</div>
 
   

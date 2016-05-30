@@ -14,6 +14,7 @@ use Session;
 use Redirect;
 use Storage;
 use Image;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -120,9 +121,19 @@ class UsuarioController extends Controller
         $user->usu_direcc =$request['usu_direcc'];
         $user->perfil_id =$request['perfil_id'];
         $user->usu_tel =$request['usu_tel'];
-        $user->path =$request['path'];
+       // $user->path =$request['path'];
         $user->save();
 
+//carga de imagen atraves de intervention el paquete de imagen
+        if ($request->hasFile('path')) {
+            $avatar =$request->file('path');
+            $filename=time() . '.' . $avatar->getClientOriginalExtension();
+            image::make($avatar)->resize(300, 300)->save( public_path('/storage/' . $filename));
+
+            $user = Auth::user();
+            $user->path = $filename;
+            $user->save();
+        }
         //le manda un mensaje al usuario
        Session::flash('message','usuario modificado con exito'); 
        return Redirect::to('/usuario');
