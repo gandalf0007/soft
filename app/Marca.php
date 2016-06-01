@@ -25,4 +25,10 @@ class Marca extends Model
     }
 
 
+public function producto()
+    {
+      //una marca corresponde a muchos productos
+        return $this->hasMany(producto::class);
+    }
+
 }

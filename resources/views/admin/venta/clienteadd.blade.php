@@ -27,9 +27,6 @@
 {!!Form::close()!!}
  <!--endbuscador-->
 
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('cliente/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Agregar Cliente</a></div>
-
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>

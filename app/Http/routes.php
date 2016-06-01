@@ -66,11 +66,16 @@ Route::get('venta-addcliente/','VentaController@seleccionarCliente');
 Route::get('venta-cliente/{id}','VentaController@addCliente');
 //detalle de la venta en una ventana modal
 
-//Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
-Route::post('listar-venta/detalle',[
+Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
+Route::post('listar-venta/detalle/{id}','VentaController@detalleVenta');
+/*Route::post('listar-venta/detalle/{id}',[
 'as'=>'venta.detalleVenta',
 'uses'=>'VentaController@detalleVenta'
 	]);
+Route::get('listar-venta/detalle/{id}',[
+'as'=>'venta.detalleVenta',
+'uses'=>'VentaController@detalleVenta'
+	]);*/
 
 /*---------------carrito------------*/
 

@@ -147,7 +147,7 @@ class VentaController extends Controller
             $transaction  = new Transaction();
             //alamacena la transaccion
             $transaction->venta_id    = $venta->id;
-            $transaction->product_id  = $item->id;
+            $transaction->producto_id  = $item->id;
             $transaction->user        = Auth::user()->usu_nombre;
             $transaction->cantidad    = $item->quantity;
             $transaction->total_price = $item->pro_venta * $item->quantity;
@@ -172,22 +172,25 @@ class VentaController extends Controller
         $ventas = venta::all();
          $ventas= venta::Paginate();
          $transactions = transaction::all();
+
+
         return view('admin.venta.listar.index')
         ->with('ventas',$ventas)
          ->with('transactions',$transactions);
-       
      
     }
 
-    public function detalleVenta(Request $request){
-        $items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
+    public function detalleVenta($id){
+        //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
         //return json_encode($items);
-        dd($items);
+      
+        $ventas = venta::all();
+         $ventas= venta::Paginate();
+         $transactions = transaction::all();
         //$items=venta::find($id);
-        //$mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
-        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
+        $mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
        
-        
+        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
        
     }
 /*---------------------------------Listar Ventas--------------------------------------*/

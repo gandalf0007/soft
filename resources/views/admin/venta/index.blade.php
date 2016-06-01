@@ -14,8 +14,9 @@
 			 <!-- ---------------------  cliente   --------------------------- -->
      		<div class="box-header with-border ">
               <h3 class="box-title">Datos del Cliente</h3>
-              <a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}">
-  				<i class="fa fa-cubes fa-lg"></i> Agregar Cliente</a>
+
+              <a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}"><i class="fa  fa-users fa-lg"></i> Agregar Cliente</a>
+              
             </div>
 			@if(count($cliente))
             <div class="box-body">

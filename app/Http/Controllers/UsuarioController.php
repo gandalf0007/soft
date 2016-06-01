@@ -130,7 +130,7 @@ class UsuarioController extends Controller
             $filename=time() . '.' . $avatar->getClientOriginalExtension();
             image::make($avatar)->resize(300, 300)->save( public_path('/storage/' . $filename));
 
-            $user = Auth::user();
+            $user=User::find($id);
             $user->path = $filename;
             $user->save();
         }

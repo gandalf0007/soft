@@ -45,25 +45,9 @@ endboton crear-->
     @foreach($ventas as $venta)
     <tbody>
 
-      <td>
-      
-
-    <a 
-    href="#" 
-    class="btn btn-primary btn-detalle-venta"
-    data-id="{{ $venta->id }}"
-    data-path="{{ route('venta.detalleVenta') }}"
-    data-toggle="modal" 
-    data-target="#myModal"
-    data-token="{{ csrf_token() }}"
->
-    <i class="fa fa-external-link"></i>
-</a>
-
-<button type="button" class="btn  btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-external-link"></i></button>
-
-
-      </td>
+<td>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-expand"> Detalle</i></button></td>
+</td>
 
 	  	<td>{{ $venta->user->usu_nombre }}</td>
 	  	<td>{{ $venta ->cliente->clie_nombres}}</td>

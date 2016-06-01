@@ -65,7 +65,7 @@
 
         <li >
         <a href="{!! URL::to('cliente/') !!}">
-        <i class='fa fa-user'></i><span>Clientes</span></a>
+        <i class='fa fa-users'></i><span>Clientes</span></a>
         </li>
 
         <li >

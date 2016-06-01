@@ -69,4 +69,9 @@ class Producto extends Model
         return $this->belongsTo(transaction::class);
     }
 
+    public function marca()
+    {
+      //una producto corresponde a una marca
+        return $this->belongsTo(marca::class);
+    }
 }
