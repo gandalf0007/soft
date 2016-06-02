@@ -20,6 +20,11 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
+        //modal
+        $ivas=iva::lists('descripcion','id');
+        $transportes=transporte::lists('transp_descrip','id');
+
+
         $clientes=cliente::orderBy('clie_nombres');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
         $clie_nombres=$request->input('clie_nombres');
@@ -33,7 +38,7 @@ class ClienteController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.cliente.index',compact('clientes'));
+        return view('admin.cliente.index',compact('clientes','ivas','transportes'));
     }
 
     /**
@@ -80,12 +85,12 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $ivas=iva::lists('descripcion','id');
+      /*  $ivas=iva::lists('descripcion','id');
         $transportes=transporte::lists('transp_descrip','id');
 
         $cliente=cliente::find($id);
         return view('admin.cliente.edit',['cliente'=>$cliente  , 'transportes'=>$transportes , 'ivas'=>$ivas]);
-    }
+    */}
 
     /**
      * Update the specified resource in storage.

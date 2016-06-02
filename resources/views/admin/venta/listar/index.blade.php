@@ -40,13 +40,14 @@ endboton crear-->
 		<th>Total</th>
 		<th>Estatus</th>
     <th>Fecha</th>
+    <th>Pdf</th>
       </tr>
     </thead>
     @foreach($ventas as $venta)
     <tbody>
 
 <td>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-expand"> Detalle</i></button></td>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-expand"> Detalle</i></button>
 </td>
 
 	  	<td>{{ $venta->user->usu_nombre }}</td>
@@ -66,6 +67,8 @@ endboton crear-->
       </td>
 
       <td>{{ $venta -> updated_at}}</td>
+
+      <td><a href="{{ URL::to('venta-detalle-pdf/1/'.$venta->id) }}" target="_blank" ><button class="btn btn-danger"><i class="fa fa-file-pdf-o"> PDF</i></button></a></td>
 
 	</tbody>
   @endforeach

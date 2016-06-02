@@ -2,10 +2,34 @@
 <div class="modal fade " id="datalle-{{ $venta->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
  <div class="modal-dialog modal-lg" role="document">
      <div class="modal-content">
+
+          <!----------------------------   tabla del vendedor   -------------------->
      <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <h4 class="modal-title">Detalle del Cliente</h4>
-         </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Detalle del Vendedor</h4>
+      </div>
+ <table id="example2" class="table table-bordered table-hover">
+  <thead>
+      <tr>
+    <th>Nombre</th>
+    <th>Apellido</td>
+    <th>Email</th>
+    <th>Perfil</th>
+    <th>Cuit</th>
+      </tr>
+    </thead>
+    <tbody>
+   <td>{{ $venta->user->usu_nombre }}</td>
+   <td>{{ $venta->user->usu_apellido }}</td>
+   <td>{{ $venta->user->usu_email }}</td>
+   <td>{{ $venta->user->perfil->descripcion }}</td>
+  </tbody>
+  </table>
+
+      <!----------------------------  tabla del Cliente   -------------------->
+     <div class="modal-header">
+      <h4 class="modal-title">Detalle del Cliente</h4>
+     </div>
  <table id="example2" class="table table-bordered table-hover">
   <thead>
       <tr>
@@ -25,11 +49,11 @@
   </tbody>
   </table>
 
-
-         <div class="modal-header">
-              <h4 class="modal-title">Detalle de los Productos</h4>
-         </div>
-  
+      <!----------------------------   tabla del Producto   -------------------->
+    <div class="modal-header">
+        <h4 class="modal-title">Detalle de los Productos</h4>
+    </div>
+    <div class="table-responsive">
   <table id="example2" class="table table-bordered table-hover">
   <thead>
       <tr>
@@ -44,7 +68,7 @@
     </thead>
     <!--solo muestro las transacciones con el id de sa venta-->
     @foreach($transactions as $transaction)
-    <?php if ($venta->id == $transaction->venta_id ): ?>
+    @if ($venta->id == $transaction->venta_id )
     <tbody>
    <td>{{ $transaction->producto->path }}</td>
    <td>{{ $transaction->producto->pro_codigo }}</td>
@@ -54,14 +78,20 @@
    <td>{{ $transaction->producto->marca->descripcion }}</td>
    <td>{{ $transaction->total_price }}</td>
   </tbody>
-   <?php endif ?>
+  @endif
   @endforeach
   </table>
+        <h3>
+          <span class="label label-success pull-right">
+            Total: ${{ $venta -> total}}
+          </span>
+        </h3>
+</div>
+<br>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
          </div>
      </div>
    </div>
  </div>
-
 @endforeach

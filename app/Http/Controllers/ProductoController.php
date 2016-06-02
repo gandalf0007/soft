@@ -21,6 +21,13 @@ class ProductoController extends Controller
      */
     public function index(Request $request)
     {
+        //modal
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('prov_razsoc','id');
+
+
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::orderBy('pro_descrip');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
@@ -35,7 +42,7 @@ class ProductoController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.index',compact('productos'));
+        return view('admin.producto.index',compact('productos','rubros','marcas','ivatipos','provedores'));
     }
 
     /**
@@ -96,7 +103,13 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $producto=producto::find($id);
+         $producto->fill($request->all());
+         $producto->save();
+
+        //le manda un mensaje al usuario
+       Session::flash('message','rubro modificado con exito'); 
+       return Redirect::to('/producto');
     }
 
     /**

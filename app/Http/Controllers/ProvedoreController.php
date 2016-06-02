@@ -77,12 +77,12 @@ class ProvedoreController extends Controller
      */
     public function edit($id)
     {
-
+/*
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
         $provedore=provedore::find($id);
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
-        return view('admin.provedor.edit',['provedore'=>$provedore]);
+        return view('admin.provedor.edit',['provedore'=>$provedore]);*/
     }
 
     /**

@@ -99,7 +99,7 @@
 							</tr>
 						@endforeach
 					</tbody>
-				</table><hr>
+				</table>
 				
 				<h3>
 					<span class="label label-success pull-right">

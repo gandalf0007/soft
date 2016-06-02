@@ -16,10 +16,7 @@
 de UsuarioController y el metodo PUT es para actualizar-->
 {!!Form::model($marca,['route'=>['marca.update',$marca->id],'method'=>'PUT'])!!}
 
-<div class="form-group">
-	{!!Form::label('descripcion')!!}
-	{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'ingrese la descripcion'])!!}
-</div>
+@include('admin.configuracion.marca.forms.formscreate')
 
 {!!Form::submit('modificar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}

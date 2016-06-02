@@ -63,7 +63,6 @@ class VentaController extends Controller
         $itemadd->quantity = 1;
         $cart[$itemadd->pro_descrip] = $itemadd;
         \Session::put('cart', $cart);
-
         return redirect('venta-show');
 
      }
@@ -180,7 +179,28 @@ class VentaController extends Controller
      
     }
 
-    public function detalleVenta($id){
+
+public function detalleVentaPdf($tipo,$id){
+        $vistaurl="admin.venta.venta-detalle-pdf";
+        $ventas=venta::all();
+        $transactions = transaction::all();
+        
+     return $this->crearPDF($ventas, $transactions , $vistaurl,$tipo,$id);
+     
+    }
+
+    public function crearPDF($ventas, $transactions , $vistaurl,$tipo ,$id){
+        $data = $ventas;
+        $date = date('Y-m-d');
+        $view =  \View::make($vistaurl, compact('data', 'date', 'transactions','id'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        
+        if($tipo==1){return $pdf->stream('reporte');}
+        if($tipo==2){return $pdf->download('reporte.pdf'); }
+     
+    }
+  /*  public function detalleVenta($id){
         //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
         //return json_encode($items);
       
@@ -191,8 +211,11 @@ class VentaController extends Controller
         $mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
        
         //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
-       
-    }
+       return view('admin.venta.listar.index')
+        ->with('ventas',$ventas)
+         ->with('transactions',$transactions)
+       ->with('mycart',$mycart);
+    }/*
 /*---------------------------------Listar Ventas--------------------------------------*/
 
 
@@ -234,6 +257,8 @@ public function seleccionarCliente(request $request)
 
 
 /*---------------------------------cliente--------------------------------------*/
+
+
 
 
 /*---------------------------------vendedor--------------------------------------*/

@@ -74,12 +74,12 @@ class RubroController extends Controller
      */
     public function edit($id)
     {
-        //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
+     /*   //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
         $rubro=Rubro::find($id);
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
         
-        return view('admin.configuracion.rubro.edit',['rubro'=>$rubro]);
+        return view('admin.configuracion.rubro.edit',['rubro'=>$rubro]);*/
     }
 
     /**
