@@ -15,18 +15,21 @@ use Cart;
 use Soft\Transaction;
 use Soft\Venta;
 use Soft\Cliente;
+use Soft\Presupuesto;
+use Soft\presupuestos_detalle;
 
 
-class VentaController extends Controller
+
+class PresupuestoController extends Controller
 {
 
     public function __construct()
     {
         /*si no existe mi session cart , esntonces la creo con put y creo
         un array para almacenar los items*/
-        if(!\Session::has('cart')) \Session::put('cart', array());
+        if(!\Session::has('presupuesto')) \Session::put('presupuesto', array());
         //para cliente ya no es un array ya que almaceno 1 solo objeto
-        if(!\Session::has('cliente')) \Session::put('cliente');
+        if(!\Session::has('cliente_presu')) \Session::put('cliente_presu');
     }
 
     /**
@@ -37,34 +40,33 @@ class VentaController extends Controller
 /*---------------------------------carrito--------------------------------------*/
     public function addproducto(){
         //me busca los productos
-        //$productos = producto::Paginate(8);
+        $productos = producto::Paginate(8);
         //me los manda a productoadd asi los seleccioens
-        //return View('admin.venta.productoadd')->with('productos',$productos);
+        return View('admin.venta.presupuesto.productoadd')->with('productos',$productos);
     }
 
     //mostrar carrito
     public function show()
     {
-        //carga los productos en el modal
-        $productos = producto::Paginate(8);
+
         /*obtengo mi variable de session cart que cree y la almaceno en $cart */
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         /*obtengo mi variable de session cliente que cree y la almaceno en $cart */
-        $cliente = \Session::get('cliente');
+        $cliente = \Session::get('cliente_presu');
         //llama a la funcion total
         $total = $this->total();
-        return view('admin.venta.index', compact('cart','total','cliente','productos'));
+        return view('admin.venta.presupuesto.presupuesto', compact('cart','total','cliente'));
     }
 
     //agregar item
     public function add($id)
     {
         $itemadd  = producto::find($id);
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         $itemadd->quantity = 1;
         $cart[$itemadd->pro_descrip] = $itemadd;
-        \Session::put('cart', $cart);
-        return redirect('venta-show');
+        \Session::put('presupuesto', $cart);
+        return redirect('presupuesto-show');
 
      }
 
@@ -72,11 +74,11 @@ class VentaController extends Controller
     public function delete($id)
     {
         $item  = producto::find($id);
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         unset($cart[$item->pro_descrip]);
-        \Session::put('cart', $cart);
+        \Session::put('presupuesto', $cart);
 
-        return redirect('venta-show');
+        return redirect('presupuesto-show');
     }
 
 
@@ -85,27 +87,27 @@ class VentaController extends Controller
     {
         
         $item  = producto::find($id);
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         $cart[$item->pro_descrip]->quantity = $quantity;
-        \Session::put('cart', $cart);
+        \Session::put('presupuesto', $cart);
 
-        return redirect('venta-show');
+        return redirect('presupuesto-show');
     }
 
 
     //limpiar carrito y cliente
      public function trash()
     {
-        \Session::forget('cart');
-        \Session::forget('cliente');
-        return redirect('venta-show');
+        \Session::forget('presupuesto');
+        \Session::forget('cliente_presu');
+        return redirect('presupuesto-show');
     }
 
 
     //total del carrito
     private function total()
     {
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         $total = 0;
         foreach($cart as $item){
             $total += $item->pro_venta * $item->quantity;
@@ -128,25 +130,25 @@ class VentaController extends Controller
             $tipo_pago="pendiente";            
         }
         //traigo el cliente de la session
-        $cliente = \Session::get('cliente');
+        $cliente = \Session::get('cliente_presu');
         //genero una venta que estara relacinada con los productos en las transacciones
-        $venta = new Venta();
-        $venta->cliente_id    = $cliente->id;
-        $venta->user_id       = Auth::user()->id;
-        $venta->pago_tipo     = $Request['tipo_pago'];
-        $venta->total         = $total;
+        $presupuesto = new presupuesto();
+        $presupuesto->cliente_id    = $cliente->id;
+        $presupuesto->user_id       = Auth::user()->id;
+        $presupuesto->pago_tipo     = $Request['tipo_pago'];
+        $presupuesto->total         = $total;
         //$venta->comentario  =
-        $venta->status = $tipo_pago;
-        $venta->save();
+        $presupuesto->status = $tipo_pago;
+        $presupuesto->save();
 
         //traigo todos los productos de la session  del usuario 
-        $cart = \Session::get('cart');
+        $cart = \Session::get('presupuesto');
         //los recorro
         foreach ($cart as $item) {
             //crea una nueva transaccion
-            $transaction  = new Transaction();
+            $transaction  = new presupuestos_detalle();
             //alamacena la transaccion
-            $transaction->venta_id    = $venta->id;
+            $transaction->presupuesto_id    = $presupuesto->id;
             $transaction->producto_id  = $item->id;
             $transaction->user        = Auth::user()->usu_nombre;
             $transaction->cantidad    = $item->quantity;
@@ -154,14 +156,14 @@ class VentaController extends Controller
             //guardo la transaccion
             $transaction->save();
 
-            //descontar stock en la tabla producto
+           /* //descontar stock en la tabla producto
             $producto = producto::find($item->id);
             $producto->pro_stock_act = $producto->pro_stock_act - $item->quantity;
-            $producto->save();
+            $producto->save();*/
         }   
 
         //redirecciona para destruir el carrito de la seccion
-         return Redirect::to('venta-trash');
+         return Redirect::to('presupuesto-trash');
     }
 /*---------------------------------carrito--------------------------------------*/
 
@@ -243,17 +245,17 @@ public function seleccionarCliente(request $request)
 
 
         //me los manda a productoadd asi los seleccioens
-        return View('admin.venta.clienteadd')->with('clientes',$clientes);
+        return View('admin.venta.presupuesto.clienteadd')->with('clientes',$clientes);
 
      }
 
  public function addCliente($id)
     {
         $clienteadd  = cliente::find($id);
-        $cliente = \Session::get('cliente');
+        $cliente = \Session::get('cliente_presu');
         $cliente = $clienteadd;
-        \Session::put('cliente', $cliente);
-         return redirect('venta-show');
+        \Session::put('cliente_presu', $cliente);
+         return redirect('presupuesto-show');
      }
 
 

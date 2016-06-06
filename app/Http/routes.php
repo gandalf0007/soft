@@ -42,7 +42,8 @@ Route::get('venta-item-destroy','VentaController@deleteitem');
 Route::get('venta-cart','VentaController@cart');
 Route::get('show-my-cart','VentaController@showMyCart');*/
 
-/*---------------carrito------------*/
+/*--------------------------------SECCION VENTAS------------------------------*/
+/*---------------VENTAS------------*/
 //visualisa los productos para agregar
 Route::get('venta-addproducto','VentaController@addproducto');
 //al darle agregar a un producto a mi carrito , le mando el id de ese producto
@@ -78,8 +79,29 @@ Route::get('listar-venta/detalle/{id}',[
 'as'=>'venta.detalleVenta',
 'uses'=>'VentaController@detalleVenta'
 	]);*/
+/*---------------VENTAS------------*/
 
-/*---------------carrito------------*/
+/*---------------PRESUPUESTOS------------*/
+Route::get('presupuesto-show','PresupuestoController@show');
+//visualisa los productos para agregar
+Route::get('presupuesto-addproducto','PresupuestoController@addproducto');
+//al darle agregar a un producto a mi carrito , le mando el id de ese producto
+Route::get('presupuesto-addtocart/{id}','PresupuestoController@add');
+//eliminar carricato
+Route::get('presupuesto-trash','PresupuestoController@trash');
+//actualizar items
+Route::get('presupuesto-update/{id}/{quantity}','PresupuestoController@update');
+//eliminar productos del carrito
+Route::get('presupuesto-delete/{id}','PresupuestoController@delete');
+//chekout finalizar carrito
+Route::post('presupuesto-checkout','PresupuestoController@checkout');
+Route::get('presupuesto-checkout','PresupuestoController@checkout');
+//cargar Cliente
+Route::get('presupuesto-addcliente/','PresupuestoController@seleccionarCliente');
+//mandamos id del cliente para almacenarlo en la sessio
+Route::get('presupuesto-cliente/{id}','PresupuestoController@addCliente');
+/*---------------PRESUPUESTOS------------*/
+/*--------------------------------SECCION VENTAS------------------------------*/
 
 
 /*---------------menu------------*/

@@ -11,7 +11,7 @@
 {!!Form::model($user,['route'=>['usuario.update',$user->id],'method'=>'PUT' , 'files'=>True])!!}
 
 <div class="modal-body">      
-{{ Html::image('storage/' . $user->path , 'img', array('class' => 'user-image')) }}
+{{ Html::image('storage/' . $user->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
 
 @include('admin.usuario.forms.formsedit')
 </div>

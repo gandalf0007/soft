@@ -11,7 +11,7 @@
 {!!Form::model($producto,['route'=>['producto.update',$producto->id],'method'=>'PUT' , 'files'=>True])!!}
 
 <div class="modal-body">      
-{{ Html::image('storage/' . $producto->path , 'img', array('class' => 'user-image')) }}
+{{ Html::image('storage/' . $producto->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
 
 @include('admin.producto.forms.formscreate')
 </div>

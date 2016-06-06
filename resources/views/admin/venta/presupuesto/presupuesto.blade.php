@@ -6,7 +6,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa  fa-bank"></i>Seccion Ventas</h3>
+              <h3 class="box-title"><i class="fa  fa-bank"></i>Seccion Presupuestos</h3>
             </div>
 			<div class="box-body">
 
@@ -15,7 +15,7 @@
      		<div class="box-header with-border ">
               <h3 class="box-title">Datos del Cliente</h3>
 
-              <a class="btn btn-success  pull-right " href="{!! URL::to('venta-addcliente') !!}"><i class="fa  fa-users fa-lg"></i> Agregar Cliente</a>
+              <a class="btn btn-success  pull-right " href="{!! URL::to('presupuesto-addcliente') !!}"><i class="fa  fa-users fa-lg"></i> Agregar Cliente</a>
               
             </div>
 			@if(count($cliente))
@@ -48,9 +48,8 @@
 <!-- ---------------------  Carrito  --------------------------- -->
 			<div class="box-header with-border ">
               <h3 class="box-title">Datos de los Productos</h3>
-             
-			<a class="btn btn-success  pull-right " data-toggle="modal" data-target="#productos"><i class="fa  fa-cubes fa-lg"></i> Agregar Producto</a>
-
+             <a class="btn btn-success  pull-right " href="{!! URL::to('presupuesto-addproducto') !!}">
+  				<i class="fa fa-cubes fa-lg"></i> Agregar Producto</a>
             </div>
         <br><br>
 		
@@ -85,7 +84,7 @@
 									<a 
 										href="#" 
 										class="btn btn-warning btn-update-item"
-										data-href="{!! URL::to('venta-update/'.$item->id) !!}"
+										data-href="{!! URL::to('presupuesto-update/'.$item->id) !!}"
 										data-id = "{{ $item->id }}"
 									>
 										<i class="fa fa-refresh"></i>
@@ -93,7 +92,7 @@
 								</td>
 								<td>${{ number_format($item->pro_venta * $item->quantity,2) }}</td>
 								<td>
-									<a href="{!! URL::to('venta-delete/'.$item->id) !!}" class="btn btn-danger">
+									<a href="{!! URL::to('presupuesto-delete/'.$item->id) !!}" class="btn btn-danger">
 										<i class="fa fa-remove"></i>
 									</a>
 								</td>
@@ -118,7 +117,7 @@
 
 				
 				
-		{!! Form::open(array('url' => 'venta-checkout', 'method'=>'POST' )) !!}
+		{!! Form::open(array('url' => 'presupuesto-checkout', 'method'=>'POST' )) !!}
 		 <!--tipo de pago-->
 		<div class="box-header with-border ">
             <h3 class="box-title">Datos Adicionales</h3>
@@ -129,7 +128,7 @@
         {!! Form::select('tipo_pago', config('options.tipopago'),'', array('class' => 'form-control')) !!}
         </div><br>
 			
-		<a href="{!! URL::to('venta-trash') !!}" class="btn btn-danger">Vaciar Venta <i class="fa fa-trash"></i></a>
+		<a href="{!! URL::to('presupuesto-trash') !!}" class="btn btn-danger">Vaciar Venta <i class="fa fa-trash"></i></a>
 				
 		{!!Form::submit('Confirmar Venta',['class'=>'btn btn-primary'])!!}
 		{!!Form::close()!!}
@@ -147,6 +146,4 @@
       </div>
       <!-- /.row -->
     </section>
-
-@include('admin.partials.modal.modal-venta-agregarproducto')
 @stop

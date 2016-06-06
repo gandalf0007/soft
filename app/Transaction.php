@@ -9,9 +9,9 @@ class Transaction extends Model
 	 protected $fillable = [
         	'id',
         	'venta_id',
-            'product_id',
+            'producto_id',
             'user',
-            'qty',
+            'cantidad',
             'total_price',
            
         

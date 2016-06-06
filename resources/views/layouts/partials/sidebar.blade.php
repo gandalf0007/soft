@@ -47,6 +47,16 @@
                 </ul>
         </li>
 
+         <li class="treeview">
+                <a href="#"><i class='fa fa-dollar'></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a  href="{!! URL::to('venta-show/') !!}">Generar Venta</a></li>
+                    <li><a  href="{!! URL::to('presupuesto-show/') !!}">Generar Presupuesto</a></li>
+                    <li><a  href="{!! URL::to('listar-venta/') !!}">Listar</a></li>
+                    
+                </ul>
+        </li>
+
 
         <li >
         <a href="{!! URL::to('producto/') !!}">
@@ -66,16 +76,6 @@
         <li >
         <a href="{!! URL::to('cliente/') !!}">
         <i class='fa fa-users'></i><span>Clientes</span></a>
-        </li>
-
-        <li >
-        <a href="{!! URL::to('venta-show/') !!}">
-        <i class='fa fa-dollar'></i><span>Generar Venta</span></a>
-        </li>
-
-        <li >
-        <a href="{!! URL::to('listar-venta/') !!}">
-        <i class='fa fa-dollar'></i><span>Listar Venta</span></a>
         </li>
 
         <li >
