@@ -14,8 +14,19 @@ return array(
 'Cheque' => 'Cheque', 
 'Targeta de Debito' => 'Targeta de Debito', 
 'Targeta de Credito' => 'Targeta de Credito' , 
-'MercadoPago' => 'MercadoPago'
-]
+'MercadoPago' => 'MercadoPago',
+],
+
+
+'searchrubro'=>[
+'Descripcion' => 'Descripcion', 
+'Id' => 'Id',
+
+],
+
+
+
+
 
 	)
 

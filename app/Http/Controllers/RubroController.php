@@ -20,10 +20,19 @@ class RubroController extends Controller
         $rubros=rubro::orderBy('id');
         //buscador
         $rubro=$request->input('rubro');
-        if (!empty($rubro)) {
-            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $rubros->where('descripcion','LIKE','%'.$rubro.'%');
+        $type=$request->input('searchrubro');
+
+
+        if (!empty($rubro) and $type=="Descripcion" ) {
+           $rubros->where('descripcion','LIKE','%'.$rubro.'%');
         }
+       
+        if (!empty($rubro) and $type=="Id") {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $rubros->where('id','LIKE','%'.$rubro.'%');
+        }
+
+       
 
 
         $rubros=$rubros->paginate(10);    

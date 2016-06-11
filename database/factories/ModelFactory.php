@@ -19,3 +19,19 @@ $factory->define(Soft\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(Soft\Rubro::class, function (Faker\Generator $faker) {
+    return [
+        'descripcion' => $faker->name,
+      
+    ];
+});
+
+$factory->define(Soft\Producto::class, function (Faker\Generator $faker) {
+    return [
+        'pro_codigo' => $faker->name,
+        'pro_descrip' => $faker->name,
+      
+    ];
+});
