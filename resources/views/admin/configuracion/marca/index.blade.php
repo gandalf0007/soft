@@ -31,36 +31,27 @@
 	<thead>
 		<th>ID</th>
 		<th>Descripcion</th>
-		<th>Editar</th>
-		<?php if (Auth::user()->perfil_id == 1): ?>
-		<th>Eliminar</th>	
-		<?php endif ?>
+		<th class="col-md-4">Operaciones</th>		
 	</thead>
 	@foreach($marcas as $marca)
 	<tbody>
 	<!-- -->
  <td>{{ $marca -> id}}</td>
  <td>{{ $marca -> descripcion}}</td>
- <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
- el id a esa funcion -->
-
- <!--<td>{!! link_to_route('marca.edit', $title = 'editar', $parameters = $marca->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>-->
 
 
 <td>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $marca->id }}"><i class="fa fa-edit"> Editar</i></button>
-</td>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $marca->id }}"><i class="fa fa-expand"> Ver</i></button>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $marca->id }}"><i class="fa fa-edit"> Editar</i></button>
 
 <!--nivel de acceso-->
 @if (Auth::user()->perfil_id == 1)
-
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
-<td>{!!Form::open(['route'=>['marca.destroy',$marca->id],'method'=>'DELETE'])!!}
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $marca->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
-{!!Form::close()!!}</td>
-
 @endif
+
+</td>
 
 	</tbody>
 	@endforeach
@@ -70,6 +61,8 @@
  @include('admin.partials.modal.modal-edit-marca')	
 <!--modal eliminar marca-->
  @include('admin.partials.modal.modal-delete-marca')
+ <!--modal ver marca-->
+ @include('admin.partials.modal.modal-ver-marca')
 <!--para renderizar la paginacion-->
 {!! $marcas->render() !!}
 

@@ -36,10 +36,7 @@
 		<th>Select</th>
 		<th>ID</th>
 		<th>Descripcion</th>
-		<th>Editar</th>
-		@if (Auth::user()->perfil_id == 1)
-		<th>Eliminar</th>	
-		@endif
+		<th class="col-md-4">Operaciones</th>	
 	</thead>
 	@foreach($rubros as $rubro)
 	<tbody>
@@ -52,16 +49,17 @@
  <td>{{ $rubro -> descripcion}}</td>
 
 <td>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $rubro->id }}"><i class="fa fa-expand"> Ver</i></button>
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $rubro->id }}"><i class="fa fa-edit"> Editar</i></button>
-</td>
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
-<td>
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $rubro->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
+ @endif
 </td>
-@endif
+
 
 	</tbody>
 	@endforeach
@@ -69,12 +67,15 @@
 
 	
 {!!Form::submit('Eliminar seleccion',['class'=>'btn btn-danger pull-right'])!!}
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 {!!Form::close()!!}
 
 <!--modal editar rubro-->
  @include('admin.partials.modal.modal-edit-rubro')
 <!--modal eliminar rubro-->
  @include('admin.partials.modal.modal-delete-rubro')
+ <!--modal ver rubro-->
+ @include('admin.partials.modal.modal-ver-rubro')
 
 <!--para renderizar la paginacion-->
 {!! $rubros->render() !!}

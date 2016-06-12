@@ -38,8 +38,7 @@
 		<th>venta</th>
 		<th>venta 2</th>
 		<th>Stock</th>
-		<th>Editar</th>
-		<th>Eliminar</th>
+		<th class="col-md-4">Operaciones</th>
 	</thead>
 	@foreach($productos as $producto)
 	<tbody>
@@ -53,24 +52,17 @@
   	<td>{{ $producto -> pro_precio2}}</td>
   	<td>{{ $producto -> pro_stock_act}}</td>
 
- <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
- el id a esa funcion -->
-
- <!--<td>{!! link_to_route('producto.edit', $title = 'editar', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>-->
-
 <td>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $producto->id }}"><i class="fa fa-edit"> Editar</i></button>
-</td>
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
-
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
-<td>{!!Form::open(['route'=>['producto.destroy',$producto->id],'method'=>'DELETE'])!!}
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
-{!!Form::close()!!}</td>
-
 @endif
+</td>
 
 	</tbody>
 	@endforeach
@@ -80,6 +72,8 @@
  @include('admin.partials.modal.modal-edit-producto')	
 <!--modal de eliminar producto-->
  @include('admin.partials.modal.modal-delete-producto')
+<!--modal de ver producto-->
+ @include('admin.partials.modal.modal-ver-producto')
 
 <!--para renderizar la paginacion-->
   {!! $productos->render() !!}

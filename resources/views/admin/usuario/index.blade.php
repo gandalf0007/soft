@@ -38,10 +38,7 @@
 		<th>Telefono</th>
 		<th>Direccion</th>
 		<th>Tipo</th>
-    <th>Editar</th>
-     <?php if (Auth::user()->perfil_id == 1): ?>
-    <th>Eliminar</th>
-    <?php endif ?>
+    <th class="col-md-4">Operaciones</th> 
       </tr>
     </thead>
     @foreach($users as $user)
@@ -53,29 +50,17 @@
 	  	<td>{{ $user -> usu_direcc}}</td>
 	  	<td>{{ $user->perfil->descripcion}}</td>
       
-
-
-  
-
- <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
- el id a esa funcion -->
-<!--<td>{!! link_to_route('usuario.edit', $title = 'editar', $parameters = $user->id  , $attributes = ['class'=>'btn btn-primary']); !!}
-</td>-->
-
 <td>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $user->id }}"><i class="fa fa-edit"> Editar</i></button>
-</td>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $user->id }}"><i class="fa fa-expand"> Ver</i></button>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $user->id }}"><i class="fa fa-edit"> Editar</i></button>
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
-
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
-<td>{!!Form::open(['route'=>['usuario.destroy',$user->id],'method'=>'DELETE'])!!}
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $user->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
-{!!Form::close()!!}</td>
-
 @endif
+</td>
 
 	</tbody>
 	@endforeach
@@ -85,6 +70,8 @@
  @include('admin.partials.modal.modal-edit-usuario')
 <!--modal eliminar usuario-->
  @include('admin.partials.modal.modal-delete-usuario')
+ <!--modal ver usuario-->
+ @include('admin.partials.modal.modal-ver-usuario')
 
 <!--para renderizar la paginacion-->
   {!! $users->render() !!}
