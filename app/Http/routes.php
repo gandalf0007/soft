@@ -106,7 +106,10 @@ Route::get('presupuesto-cliente/{id}','PresupuestoController@addCliente');
 
 /*---------------menu------------*/
 Route::resource('usuario','UsuarioController');
+
+Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
 Route::resource('rubro','RubroController');
+
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');

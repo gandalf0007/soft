@@ -9,6 +9,7 @@ class Rubro extends Model
     protected $fillable = [
         'id',
         'descripcion',
+        'select',
         
     ];
 }

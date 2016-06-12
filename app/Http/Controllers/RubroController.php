@@ -6,7 +6,8 @@ use Soft\Http\Requests;
 use Soft\Rubro;
 use Session;
 use Redirect;
-
+use Illuminate\Support\Facades\Input;
+use DB;
 class RubroController extends Controller
 {
     /**
@@ -14,6 +15,16 @@ class RubroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /*public function listing(){
+        $rubros = rubro::all();
+        return response()->json(
+             $rubros->toArray()   
+            );
+
+    }*/
+
+
     public function index(Request $request)
     {
 
@@ -117,6 +128,7 @@ class RubroController extends Controller
      */
     public function destroy($id)
     {
+
         $rubro=Rubro::find($id);
         $rubro->delete();
         
@@ -124,4 +136,31 @@ class RubroController extends Controller
         Session::flash('message','rubro eliminado con exito'); 
         return Redirect::to('/rubro');
     }
+
+
+    /*-------------------------eliminacion multiple----------------*/
+    public function deleteMultiple(){
+
+    $checkeds = Input::only('checked')['checked'];
+    
+        for ($i=1; $i < $checkeds; $i++) { 
+            DB::table('rubros')->whereIn('id', $checkeds)->delete(); 
+             Session::flash('message','rubro eliminado con exito'); 
+            return Redirect::to('/rubro');
+        }
+
+
+            return Redirect::to('/rubro');
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

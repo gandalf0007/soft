@@ -11,6 +11,6 @@ class RubroTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(Soft\Rubro::class, 1000)->create();
+        factory(Soft\Rubro::class, 100)->create();
     }
 }

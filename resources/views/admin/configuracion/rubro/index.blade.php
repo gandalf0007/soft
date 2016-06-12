@@ -17,9 +17,8 @@
 <!--buscador-->
 {!!Form::open(['route'=>'rubro.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
-	{!!Form::label('nombre')!!}
-	{!!Form::text('rubro',null,['class'=>'form-control','placeholder'=>'nombre del rubro'])!!}
-	
+{!!Form::label('nombre')!!}
+{!!Form::text('rubro',null,['class'=>'form-control','placeholder'=>'nombre del rubro'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
@@ -28,24 +27,29 @@
 <div><a class="btn btn-success  pull-right " href="{!! URL::to('rubro/create') !!}">
   <i class="fa fa-user-plus fa-lg"></i> Nuevo Rubro</a></div>
 
+
+{!!Form::open(['url' => 'rubro/deletemultiple','method'=>'DELETE'])!!}	
+
+
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
+		<th>Select</th>
 		<th>ID</th>
 		<th>Descripcion</th>
 		<th>Editar</th>
-		<?php if (Auth::user()->perfil_id == 1): ?>
+		@if (Auth::user()->perfil_id == 1)
 		<th>Eliminar</th>	
-		<?php endif ?>
+		@endif
 	</thead>
 	@foreach($rubros as $rubro)
 	<tbody>
 	<!-- -->
+<td><div class="form-group">
+ <input type="checkbox" name="checked[]" value="{{ $rubro->id }}">
+</div></td>
+
  <td>{{ $rubro -> id}}</td>
  <td>{{ $rubro -> descripcion}}</td>
- <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
- el id a esa funcion -->
- <!--
-<td>{!! link_to_route('rubro.edit', $title = 'editar', $parameters = $rubro->id  , $attributes = ['class'=>'btn btn-primary']); !!}</td>-->
 
 <td>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $rubro->id }}"><i class="fa fa-edit"> Editar</i></button>
@@ -53,22 +57,25 @@
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
-
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
-<td>{!!Form::open(['route'=>['rubro.destroy',$rubro->id],'method'=>'DELETE'])!!}
+<td>
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $rubro->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
-{!!Form::close()!!}</td>
-
+</td>
 @endif
 
 	</tbody>
 	@endforeach
 	</table>
 
+	
+{!!Form::submit('Eliminar seleccion',['class'=>'btn btn-danger pull-right'])!!}
+{!!Form::close()!!}
+
 <!--modal editar rubro-->
  @include('admin.partials.modal.modal-edit-rubro')
 <!--modal eliminar rubro-->
  @include('admin.partials.modal.modal-delete-rubro')
+
 <!--para renderizar la paginacion-->
 {!! $rubros->render() !!}
 
