@@ -1,3 +1,4 @@
+
 <div class="form-group">
 	{!!Form::label('nombre')!!}
 	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'ingrese el nombre'])!!}
@@ -29,10 +30,11 @@
 </div>
 
 
-
+<div class="row">
+<div class="col-xs-6 col-md-2">
 <div class="form-group">
 	{!!Form::label('perfil')!!}
-	{!!Form::select('usu_perfil',$perfils)!!}
+	{!!Form::select('usu_perfil',$perfils,'',['class'=>' form-control'])!!}
 </div>
-
-
+</div>
+</div>

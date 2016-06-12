@@ -25,22 +25,22 @@
 </div>
 
 
-<div class="form-group">
+<div class="form-group col-xs-3">
 	{!!Form::label('Localidad')!!}
-	{!!Form::select('clie_localidad')!!}
+	{!!Form::select('clie_localidad',['class'=>' form-control'])!!}
 </div>
 
-<div class="form-group">
+<div class="form-group col-xs-3">
 	{!!Form::label('Categoria Iva')!!}
-	{!!Form::select('clie_iva',$ivas)!!}
+	{!!Form::select('clie_iva',$ivas,'',['class'=>' form-control'])!!}
 </div>
 
-<div class="form-group">
+<div class="form-group col-xs-3">
 	{!!Form::label('Transporte')!!}
-	{!!Form::select('transp_des',$transportes)!!}
+	{!!Form::select('transp_des',$transportes,'',['class'=>' form-control'])!!}
 </div>
 
-<div class="form-group">
+<div class="form-group col-xs-3">
 	{!!Form::label('Lista de Precio')!!}
 	{!!Form::select('clie_lista_precio')!!}
 </div>
