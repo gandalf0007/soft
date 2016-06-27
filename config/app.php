@@ -147,6 +147,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
        
 
 
@@ -165,6 +166,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Kim\Activity\ActivityServiceProvider::class,
         Kryptonit3\Counter\CounterServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -219,6 +222,7 @@ return [
          'Image' => Intervention\Image\Facades\Image::class,
          'Activity' => Kim\Activity\ActivityFacade::class,
          'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
+         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

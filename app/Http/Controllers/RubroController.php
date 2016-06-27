@@ -27,27 +27,21 @@ class RubroController extends Controller
 
     public function index(Request $request)
     {
+        $rubros=rubro::orderBy('descripcion');
 
-        $rubros=rubro::orderBy('id');
-        //buscador
-        $rubro=$request->input('rubro');
-        $type=$request->input('searchrubro');
-
-
-        if (!empty($rubro) and $type=="Descripcion" ) {
+        //buscador por descripcion
+        $rubro=$request->input('descripcion');
+        if (!empty($rubro)) {
            $rubros->where('descripcion','LIKE','%'.$rubro.'%');
         }
-       
-        if (!empty($rubro) and $type=="Id") {
+        //busqueda por codigo
+        $tpye=$request->input('codigo');
+        if (!empty($tpye)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $rubros->where('id','LIKE','%'.$rubro.'%');
+            $rubros->where('id','LIKE','%'.$tpye.'%');
         }
-
-       
-
-
+     
         $rubros=$rubros->paginate(10);    
-        
         return view('admin.configuracion.rubro.index',compact('rubros'));
     }
 

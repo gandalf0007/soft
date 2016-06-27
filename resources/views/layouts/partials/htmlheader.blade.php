@@ -2,6 +2,10 @@
     <meta charset="UTF-8">
     <title> AdminLTE 2 with Laravel - @yield('htmlheader_title', 'Your title here') </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    
     <!-- Bootstrap 3.3.4 -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->

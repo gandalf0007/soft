@@ -17,8 +17,8 @@
 <!--buscador-->
 {!!Form::open(['route'=>'rubro.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
-{!!Form::label('nombre')!!}
-{!!Form::text('rubro',null,['class'=>'form-control','placeholder'=>'nombre del rubro'])!!}
+{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
+{!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'Codigo'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
@@ -31,7 +31,7 @@
 {!!Form::open(['url' => 'rubro/deletemultiple','method'=>'DELETE'])!!}	
 
 
-<table id="example2" class="table table-bordered table-hover">
+<table id="" class="table table-bordered table-hover">
 	<thead>
 		<th>Select</th>
 		<th>ID</th>

@@ -30,13 +30,18 @@ class ProductoController extends Controller
 
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::orderBy('pro_descrip');
-        //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
+
+        //busqueda por descripccion
         $pro_descrip=$request->input('pro_descrip');
-        //preguntamos que si ($usu_nombre no es vacio
-        if (!empty($pro_descrip)) {
-            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+        if (!empty($pro_descrip)) { 
             $productos->where('pro_descrip','LIKE','%'.$pro_descrip.'%');
         }
+        //busqueda por codigo
+        $codigo=$request->input('pro_codigo');
+        if (!empty($codigo)) {
+            $productos->where('pro_codigo','LIKE','%'.$codigo.'%');
+        }
+        
         //realizamos la paginacion
         $productos=$productos->paginate(10);
         //retorna a una vista que esta en la carpeta usuario y dentro esta index

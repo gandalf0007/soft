@@ -17,8 +17,8 @@
 <!--buscador-->
 {!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
-	{!!Form::label('descripcion')!!}
-	{!!Form::text('pro_descrip',null,['class'=>'form-control','placeholder'=>'descripcion del prodcuto'])!!}
+{!!Form::text('pro_codigo',null,['class'=>'form-control','placeholder'=>'Codigo'])!!}
+{!!Form::text('pro_descrip',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}

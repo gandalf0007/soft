@@ -135,6 +135,16 @@ Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais'
 /*---------------reportes Pdf------------*/
 
 
+/*---------------Excel import/export ------------*/
+/*--------export --------*/
+Route::get('/userExport','ExcelController@userExport');
+/*--------import --------*/
+/*---------------Excel import/export ------------*/
+
+
+
+
+
 
 
 /*

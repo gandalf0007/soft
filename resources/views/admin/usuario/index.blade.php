@@ -9,7 +9,16 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seccion de Usuarios</h3>
+              <h3 class="box-title">Seccion de Usuarios</h3><br>
+    <div>
+    <br>
+      <a class="btn btn-success   " href="{!! URL::to('usuario/create') !!}">
+      <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a>
+
+      <a class="btn btn-success   " href="{!! URL::to('/userExport') !!}">
+      <i class="fa  fa-file-excel-o fa-lg"></i> exportar</a>
+    </div>
+
             </div>
 			<div class="box-body">
  
@@ -24,10 +33,10 @@
 {!!Form::close()!!}
  <!--endbuscador-->
 
-<!--boton crear-->
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('usuario/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a></div>
-<!--endboton crear-->
+<!--boton crear / exportar-->
+
+<!--endboton crear / exportar-->
+
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
