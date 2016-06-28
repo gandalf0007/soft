@@ -66,11 +66,11 @@
 
 
 <!--modal editar provedor-->
- @include('admin.partials.modal.modal-edit-provedor')
+ @include('admin.partials.modal.ver-edit-delete.modal-edit-provedor')
 <!--modal eliminar provedor-->
- @include('admin.partials.modal.modal-delete-provedor')
+ @include('admin.partials.modal.ver-edit-delete.modal-delete-provedor')
  <!--modal Ver provedor-->
- @include('admin.partials.modal.modal-ver-provedor')
+ @include('admin.partials.modal.ver-edit-delete.modal-ver-provedor')
 <!--para renderizar la paginacion-->
  {!! $provedores->render() !!}
  

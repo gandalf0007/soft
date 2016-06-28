@@ -57,13 +57,16 @@ endboton crear-->
 	  	<td>{{ $venta -> total}}</td>
 
       <td>
-      <?php if ($venta -> status == "pagado"){ ?>
-        <span class="label label-success">{{ $venta -> status}}</span>
-      <?php }if ($venta -> status == "pendiente"){ ?>
-      <span class="label label-warning">{{ $venta -> status}}</span>
-     <?php } if ($venta -> status == "cancelado"){ ?>
-      <span class="label label-danger">{{ $venta -> status}}</span>
-       <?php } ?>
+      @if ($venta -> status == "pagado")
+      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-success">{{ $venta -> status}}</span></a>
+
+      @elseif ($venta -> status == "pendiente")
+      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-warning">{{ $venta -> status}}</span></a>
+
+      @elseif ($venta -> status == "cancelado")
+      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-danger">{{ $venta -> status}}</span></a>
+
+      @endif
       </td>
 
       <td>{{ $venta -> updated_at}}</td>
@@ -85,5 +88,6 @@ endboton crear-->
       <!-- /.row -->
     </section>
 
-    @include('admin.partials.modal.modal-detalle-venta')
+    @include('admin.partials.modal.venta.modal-detalle-venta')
+    @include('admin.partials.modal.venta.modal-status')
 @endsection

@@ -69,11 +69,11 @@
 	</table>
 
 <!--modal editar Producto-->
- @include('admin.partials.modal.modal-edit-producto')	
+ @include('admin.partials.modal.ver-edit-delete.modal-edit-producto')	
 <!--modal de eliminar producto-->
- @include('admin.partials.modal.modal-delete-producto')
+ @include('admin.partials.modal.ver-edit-delete.modal-delete-producto')
 <!--modal de ver producto-->
- @include('admin.partials.modal.modal-ver-producto')
+ @include('admin.partials.modal.ver-edit-delete.modal-ver-producto')
 
 <!--para renderizar la paginacion-->
   {!! $productos->render() !!}

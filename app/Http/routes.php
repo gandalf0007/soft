@@ -43,6 +43,8 @@ Route::get('venta-cart','VentaController@cart');
 Route::get('show-my-cart','VentaController@showMyCart');*/
 
 /*--------------------------------SECCION VENTAS------------------------------*/
+
+
 /*---------------VENTAS------------*/
 //visualisa los productos para agregar
 Route::get('venta-addproducto','VentaController@addproducto');
@@ -68,6 +70,14 @@ Route::get('venta-cliente/{id}','VentaController@addCliente');
 
 Route::get('venta-detalle-pdf/{tipo}/{id}','VentaController@detalleVentaPdf');
 
+//cambiar status de venta
+Route::get('cambiar-status/','VentaController@cambiarStatus');
+Route::post('cambiar-status/','VentaController@cambiarStatus');
+
+Route::post('cambiar-status/{id}',[
+'as'=>'venta.cambiarStatus',
+'uses'=>'VentaController@cambiarStatus'
+	]);
 //detalle de la venta en una ventana modal
 /*Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
 Route::post('listar-venta/detalle/{id}','VentaController@detalleVenta');*/
@@ -80,6 +90,8 @@ Route::get('listar-venta/detalle/{id}',[
 'uses'=>'VentaController@detalleVenta'
 	]);*/
 /*---------------VENTAS------------*/
+
+
 
 /*---------------PRESUPUESTOS------------*/
 Route::get('presupuesto-show','PresupuestoController@show');
@@ -136,9 +148,12 @@ Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais'
 
 
 /*---------------Excel import/export ------------*/
-/*--------export --------*/
+/*--------user --------*/
 Route::get('/userExport','ExcelController@userExport');
-/*--------import --------*/
+Route::get('/userImport','ExcelController@userImport');
+Route::post('/userImport','ExcelController@userImport');
+
+
 /*---------------Excel import/export ------------*/
 
 

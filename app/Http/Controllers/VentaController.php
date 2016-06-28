@@ -201,6 +201,17 @@ public function detalleVentaPdf($tipo,$id){
         if($tipo==2){return $pdf->download('reporte.pdf'); }
      
     }
+
+    public function cambiarStatus(Request $Request , $id){
+    
+
+        $venta=venta::find($id);
+        $venta->status=$Request['pago'];
+        $venta->save();
+        return Redirect::to('/listar-venta');
+
+    }
+
   /*  public function detalleVenta($id){
         //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
         //return json_encode($items);

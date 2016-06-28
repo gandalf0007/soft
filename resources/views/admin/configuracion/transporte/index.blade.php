@@ -62,11 +62,11 @@
 	</table>
 
 <!--modal editar transporte-->
- @include('admin.partials.modal.modal-edit-transporte')
+ @include('admin.partials.modal.ver-edit-delete.modal-edit-transporte')
 <!--modal eliminar rubro-->
- @include('admin.partials.modal.modal-delete-transporte')
+ @include('admin.partials.modal.ver-edit-delete.modal-delete-transporte')
  <!--modal eliminar rubro-->
- @include('admin.partials.modal.modal-ver-transporte')
+ @include('admin.partials.modal.ver-edit-delete.modal-ver-transporte')
 
 <!--para renderizar la paginacion-->
 {!! $transportes->render() !!}

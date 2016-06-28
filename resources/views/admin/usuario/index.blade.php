@@ -9,15 +9,18 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seccion de Usuarios</h3><br>
-    <div>
-    <br>
-      <a class="btn btn-success   " href="{!! URL::to('usuario/create') !!}">
-      <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a>
+              <h3 class="box-title">Seccion de Usuarios</h3>
+            <div><br>
+              <a class="btn btn-success   " href="{!! URL::to('usuario/create') !!}">
+              <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a>
 
-      <a class="btn btn-success   " href="{!! URL::to('/userExport') !!}">
-      <i class="fa  fa-file-excel-o fa-lg"></i> exportar</a>
-    </div>
+              <a class="btn btn-success" data-toggle="modal" data-target="#importuser" >
+              <i class="fa  fa-file-excel-o fa-lg"></i> Importar</a>
+           
+
+            <a class="btn btn-success" href="{!! URL::to('/userExport') !!}">
+            <i class="fa  fa-file-excel-o fa-lg"></i> exportar</a>
+            </div>
 
             </div>
 			<div class="box-body">
@@ -76,11 +79,13 @@
 	</table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.modal-edit-usuario')
+ @include('admin.partials.modal.ver-edit-delete.modal-edit-usuario')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.modal-delete-usuario')
+ @include('admin.partials.modal.ver-edit-delete.modal-delete-usuario')
  <!--modal ver usuario-->
- @include('admin.partials.modal.modal-ver-usuario')
+ @include('admin.partials.modal.ver-edit-delete.modal-ver-usuario')
+  <!--modal importar usuario-->
+ @include('admin.partials.modal.excel.importuser')
 
 <!--para renderizar la paginacion-->
   {!! $users->render() !!}

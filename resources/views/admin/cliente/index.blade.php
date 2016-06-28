@@ -65,11 +65,11 @@
 	</table>
 
 <!--modal editar cliente-->
- @include('admin.partials.modal.modal-edit-cliente')
+ @include('admin.partials.modal.ver-edit-delete.modal-edit-cliente')
 <!--modal eliminar cliente-->
- @include('admin.partials.modal.modal-delete-cliente')
+ @include('admin.partials.modal.ver-edit-delete.modal-delete-cliente')
  <!--modal ver cliente-->
- @include('admin.partials.modal.modal-ver-cliente')
+ @include('admin.partials.modal.ver-edit-delete.modal-ver-cliente')
 
 <!--para renderizar la paginacion-->
   {!! $clientes->render() !!}
