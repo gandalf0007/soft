@@ -31,6 +31,7 @@ class UsuarioController extends Controller
     //lista los recuroso
     public function index(Request $request)
     {
+        
         //modal
         $perfils=Perfil::lists('descripcion','id');
         //agrega un buscador que filtra por nombre de usuario , se agrega el Request $request
@@ -48,6 +49,7 @@ class UsuarioController extends Controller
         if (!empty($usu_nombre)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
             $users->where('usu_nombre','LIKE','%'.$usu_nombre.'%');
+            
         }
 
         //busqueda por tipo

@@ -168,16 +168,22 @@ class VentaController extends Controller
 
 
  /*---------------------------------Listar Ventas--------------------------------------*/
-    public function listarVenta(){
-        $ventas = venta::all();
-         $ventas= venta::Paginate();
+    public function listarVenta(request $request){
+
+
+         $ventas=venta::orderBy('id')->paginate(50);
          $transactions = transaction::all();
 
+         /*buscador*/
+        $fechai=$request->input('fecha_inicio');
+        $fechaf=$request->input('fecha_final');
+        if (!empty($fechai) and !empty($fechaf)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $ventas = venta::where('created_at', '>=' , $fechai)->where('created_at', '<=', $fechaf)->paginate(50);
+        }
+        /*buscador*/
 
-        return view('admin.venta.listar.index')
-        ->with('ventas',$ventas)
-         ->with('transactions',$transactions);
-     
+        return view('admin.venta.listar.index',compact('ventas','transactions'));
     }
 
 

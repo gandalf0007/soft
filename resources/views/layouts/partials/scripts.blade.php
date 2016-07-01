@@ -14,18 +14,10 @@
 
 <script src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-<script>
-$(document).ready(function() {
-    $('#myTable').DataTable( {
-        "order": [[ 3, "desc" ]]
-    } );
-} );
-	
-</script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->
+@yield('scriptdatepicker')
+
+
+
 
 
 	
