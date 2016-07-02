@@ -17,6 +17,11 @@ return array(
 'MercadoPago' => 'MercadoPago',
 ],
 
+'tipogasto'=>[
+'General' => 'General', 
+'Kiosco' => 'Kiosco', 
+],
+
 
 'searchrubro'=>[
 'Descripcion' => 'Descripcion', 

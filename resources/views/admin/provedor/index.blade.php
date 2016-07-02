@@ -8,7 +8,12 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seccion de Usuarios</h3>
+              <h3 class="box-title">Seccion de Provedores</h3>
+	<div><br>
+		<a class="btn btn-success" href="{!! URL::to('provedor/create') !!}">
+  		<i class="fa fa-user-secret fa-lg"></i> Nuevo Provedor</a>
+  	</div>
+
             </div>
 			<div class="box-body">
 
@@ -24,8 +29,7 @@
  <!--endbuscador-->
 
 
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('provedor/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Nuevo Provedor</a></div>
+
 
 
 <table id="example2" class="table table-bordered table-hover">

@@ -10,6 +10,10 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Configuracion Transporte</h3>
+
+<div><br><a class="btn btn-success" href="{!! URL::to('transporte/create') !!}">
+  <i class="fa  fa-plus fa-lg"></i> Nuevo Transporte</a></div> 
+
             </div>
 			<div class="box-body">
 
@@ -25,8 +29,7 @@
 {!!Form::close()!!}
  <!--endbuscador-->
 
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('transporte/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Nuevo Transporte</a></div>
+
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>

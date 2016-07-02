@@ -9,7 +9,11 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seccion de Usuarios</h3>
+              <h3 class="box-title">Seccion de Productos</h3>
+
+<div><br><a class="btn btn-success" href="{!! URL::to('producto/create') !!}">
+  <i class="fa fa-shopping-basket fa-lg"></i> Nuevo Producto</a></div>
+
             </div>
 			<div class="box-body">
 
@@ -25,8 +29,7 @@
  <!--endbuscador--> 
 
 
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('producto/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Nuevo Producto</a></div>
+
 
 <table id="example2" class="table table-bordered table-hover">
 	<thead>

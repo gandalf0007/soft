@@ -129,6 +129,7 @@ Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
 Route::resource('venta','VentaController');
+Route::resource('gasto','GastoController');
 /*---------------menu------------*/
 
 

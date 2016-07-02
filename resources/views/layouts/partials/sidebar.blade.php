@@ -82,8 +82,11 @@
         <a href="{!! URL::to('reportes/') !!}">
         <i class='fa fa-circle-o'></i><span>Reportes</span></a>
         </li>
-            
 
+         <li >
+        <a href="{!! URL::to('gasto/') !!}">
+        <i class='fa fa-money'></i><span>Gastos</span></a>
+        </li>  
            
         </ul><!-- /.sidebar-menu -->
     </section>
