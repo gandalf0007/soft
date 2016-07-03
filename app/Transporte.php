@@ -16,5 +16,11 @@ class Transporte extends Model
     ];
    
            
+public function cliente()
+    {
+        //un transporte puede tener muchas clientes
+       return $this->hasMany(Cliente::class);
+    }
+
 
 }

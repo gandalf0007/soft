@@ -6,6 +6,7 @@ use Soft\Http\Requests;
 use Soft\Marca;
 use Session;
 use Redirect;
+use Alert;
 
 class MarcaController extends Controller
 {
@@ -52,9 +53,9 @@ class MarcaController extends Controller
     {
         marca::create([
             'descripcion' =>$request['descripcion'],
-            
             ]);
-        return redirect('/marca')->with('message','marca guardado con exito');
+        Alert::success('Mensaje existoso', 'Marca Creada');
+        return redirect('/marca');
     }
 
     /**
@@ -98,7 +99,7 @@ class MarcaController extends Controller
        $marca->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','marca modificado con exito'); 
+        Alert::success('Mensaje existoso', 'Marca Modificada');
        return Redirect::to('/marca');
     }
 
@@ -114,7 +115,7 @@ class MarcaController extends Controller
         $marca->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','marca eliminada con exito'); 
+            Alert::success('Mensaje existoso', 'Marca Eliminada');
         return Redirect::to('/marca');
     }
 }

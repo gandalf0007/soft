@@ -11,6 +11,7 @@ use Soft\Rubro;
 use Soft\Marca;
 use Soft\Ivatipo;
 use Soft\Provedore;
+use Alert;
 
 class ProductoController extends Controller
 {
@@ -74,7 +75,8 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
          producto::create($request->all());
-        return redirect('/producto')->with('message','producto guardado con exito');
+         Alert::success('Mensaje existoso', 'Producto Creado');
+        return redirect('/producto');
     }
 
     /**
@@ -113,7 +115,7 @@ class ProductoController extends Controller
          $producto->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','rubro modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Producto Modificado');
        return Redirect::to('/producto');
     }
 
@@ -133,7 +135,7 @@ class ProductoController extends Controller
         //para eliminar la imagen
         \Storage::delete($producto->path);
         //le manda un mensaje al usuario
-        Session::flash('message','producto eliminado con exito'); 
+        Alert::success('Mensaje existoso', 'Producto Eliminado');
         return Redirect::to('/producto');
     }
 }

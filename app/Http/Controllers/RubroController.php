@@ -8,6 +8,8 @@ use Session;
 use Redirect;
 use Illuminate\Support\Facades\Input;
 use DB;
+use Alert;
+
 class RubroController extends Controller
 {
     /**
@@ -66,7 +68,8 @@ class RubroController extends Controller
         Rubro::create([
             'descripcion' =>$request['descripcion'],
             ]);
-        return redirect('/rubro')->with('message','rubro guardado con exito');
+        Alert::success('Mensaje existoso', 'Rubro Creado');
+        return redirect('/rubro');
     }
 
     /**
@@ -110,7 +113,7 @@ class RubroController extends Controller
        $rubro->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','rubro modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Rubro Modificado'); 
        return Redirect::to('/rubro');
     }
 
@@ -127,7 +130,7 @@ class RubroController extends Controller
         $rubro->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','rubro eliminado con exito'); 
+        Alert::success('Mensaje existoso', 'Rubro Eliminado');
         return Redirect::to('/rubro');
     }
 
@@ -139,7 +142,7 @@ class RubroController extends Controller
     
         for ($i=1; $i < $checkeds; $i++) { 
             DB::table('rubros')->whereIn('id', $checkeds)->delete(); 
-             Session::flash('message','rubro eliminado con exito'); 
+             Alert::success('Mensaje existoso', 'Rubros Eliminados');
             return Redirect::to('/rubro');
         }
 

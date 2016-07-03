@@ -10,4 +10,11 @@ class Iva extends Model
         'id','descripcion',
     ];
     
+
+    public function cliente()
+    {
+        //un iva puede tener muchas clientes
+       return $this->hasMany(cliente::class);
+    }
+
 }

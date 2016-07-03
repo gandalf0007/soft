@@ -10,6 +10,7 @@ use Soft\Iva;
 use Soft\Transporte;
 use Session;
 use Redirect;
+use Alert;
 
 class ClienteController extends Controller
 {
@@ -63,7 +64,8 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         cliente::create($request->all());
-        return redirect('/cliente')->with('message','cliente guardado con exito');
+        Alert::success('Mensaje existoso', 'Cliente Creado');
+        return redirect('/cliente');
     }
 
     /**
@@ -106,7 +108,7 @@ class ClienteController extends Controller
        $cliente->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','cliente modificado con exito'); 
+           Alert::success('Mensaje existoso', 'Cliente Modificado');
        return Redirect::to('/cliente');
     }
 
@@ -122,7 +124,7 @@ class ClienteController extends Controller
         $cliente->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','cliente eliminado con exito'); 
+            Alert::success('Mensaje existoso', 'Cliente Eliminado'); 
         return Redirect::to('/cliente');
     }
 }

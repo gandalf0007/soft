@@ -1,3 +1,7 @@
+<div class="form-horizontal">
+	{!!Form::label('file', 'File') !!}
+	{!!Form::file('path')!!}
+</div>
 
 <div class="form-group">
 	{!!Form::label('nombre')!!}
@@ -15,6 +19,11 @@
 </div>
 
 <div class="form-group">
+	{!!Form::label('re-password')!!}
+	{!!Form::text('re_password',null,['class'=>'form-control','placeholder'=>'ingrese el password'])!!}
+</div>
+
+<div class="form-group">
 	{!!Form::label('email')!!}
 	{!!Form::text('email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
 </div>
@@ -29,12 +38,7 @@
 	{!!Form::text('usu_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
 
-
-<div class="row">
-<div class="col-xs-6 col-md-2">
 <div class="form-group">
 	{!!Form::label('perfil')!!}
-	{!!Form::select('usu_perfil',$perfils,'',['class'=>' form-control'])!!}
-</div>
-</div>
+	{!!Form::select('perfil_id',$perfils,'',['class'=>'form-control'])!!}
 </div>

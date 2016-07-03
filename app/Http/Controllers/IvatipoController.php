@@ -6,6 +6,8 @@ use Soft\Http\Requests;
 use Session;
 use Redirect;
 use Soft\Ivatipo;
+use Alert;
+
 class IvatipoController extends Controller
 {
     /**
@@ -43,9 +45,10 @@ class IvatipoController extends Controller
         Ivatipo::create([
             'descripcion' =>$request['descripcion'],
             'valor' =>$request['valor'],
-            
             ]);
-        return redirect('/ivatipo')->with('message','iva guardado con exito');
+
+        Alert::success('Mensaje existoso', 'Iva Creado');
+        return redirect('/ivatipo');
     }
 
     /**
@@ -89,7 +92,7 @@ class IvatipoController extends Controller
        $ivatipo->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','iva modificado con exito'); 
+        Alert::success('Mensaje existoso', 'Iva Modificado');
        return Redirect::to('/ivatipo');
     }
 
@@ -105,7 +108,7 @@ class IvatipoController extends Controller
         $ivatipo->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','iva eliminado con exito'); 
+            Alert::success('Mensaje existoso', 'Iva Eliminado');
         return Redirect::to('/ivatipo');
     }
 }

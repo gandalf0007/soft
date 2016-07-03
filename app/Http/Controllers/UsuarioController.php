@@ -15,6 +15,7 @@ use Redirect;
 use Storage;
 use Image;
 use Auth;
+use Alert;
 
 class UsuarioController extends Controller
 {
@@ -85,12 +86,15 @@ class UsuarioController extends Controller
             'usu_nombre' =>$request['usu_nombre'],
             'usu_apellido' =>$request['usu_apellido'],
             'password'=>bcrypt($request['password']),
+            're_password'=>$request['re_password'],
             'email' =>$request['email'],
             'usu_direcc' =>$request['usu_direcc'],
             'perfil_id' =>$request['perfil_id'],
             'usu_tel' =>$request['usu_tel'],
             ]);
-        return redirect('/usuario')->with('message','usuario guardado con exito');
+
+        Alert::success('Mensaje existoso', 'Creado');
+        return redirect('/usuario');
     }
 
     
@@ -121,6 +125,7 @@ class UsuarioController extends Controller
         $user->usu_nombre = $request['usu_nombre'];
         $user->usu_apellido =$request['usu_apellido'];
         $user->password=bcrypt($request['password']);
+        $user->re_password=$request['re_password'];
         $user->email =$request['email'];
         $user->usu_direcc =$request['usu_direcc'];
         $user->perfil_id =$request['perfil_id'];
@@ -139,7 +144,7 @@ class UsuarioController extends Controller
             $user->save();
         }
         //le manda un mensaje al usuario
-       Session::flash('message','usuario modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Modificado');
        return Redirect::to('/usuario');
 
     }
@@ -153,7 +158,7 @@ class UsuarioController extends Controller
         $user->delete();
         \Storage::delete($user->path);
         //le manda un mensaje al usuario
-        Session::flash('message','usuario eliminado con exito'); 
+        Alert::success('Mensaje existoso', 'Eliminado');
         return Redirect::to('/usuario');
     }
 

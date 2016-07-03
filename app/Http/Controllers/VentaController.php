@@ -15,6 +15,7 @@ use Cart;
 use Soft\Transaction;
 use Soft\Venta;
 use Soft\Cliente;
+use Alert;
 
 
 class VentaController extends Controller
@@ -98,6 +99,7 @@ class VentaController extends Controller
     {
         \Session::forget('cart');
         \Session::forget('cliente');
+         Alert::success('Mensaje existoso', 'Venta Creada');
         return redirect('venta-show');
     }
 
@@ -160,6 +162,7 @@ class VentaController extends Controller
             $producto->save();
         }   
 
+       
         //redirecciona para destruir el carrito de la seccion
          return Redirect::to('venta-trash');
     }

@@ -40,6 +40,8 @@
 		<th>Telefono</th>
 		<th>Direccion</th>
 		<th>Cuit</th>
+		<th>Transpsporte</th>
+		<th>Iva</th>
 		<th class="col-md-4">Operaciones</th>
 	</thead>
 	@foreach($clientes as $cliente)
@@ -50,7 +52,8 @@
 	<td>{{ $cliente -> clie_telefono}}</td>
 	<td>{{ $cliente -> clie_direccion}}</td>
 	<td>{{ $cliente -> clie_cuit}}</td>
-
+	<td>{{ $cliente ->transporte->transp_descrip}}</td>
+	<td>{{ $cliente ->iva->descripcion}}</td>
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $cliente->id }}"><i class="fa fa-expand"> Ver</i></button>
 

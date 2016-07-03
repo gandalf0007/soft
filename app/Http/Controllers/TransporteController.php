@@ -8,6 +8,7 @@ use Soft\Http\Requests;
 use Session;
 use Redirect;
 use Soft\Transporte;
+use Alert;
 
 class TransporteController extends Controller
 {
@@ -53,7 +54,7 @@ class TransporteController extends Controller
        transporte::create($request->all());
 
         //le manda un mensaje al usuario
-       Session::flash('message','transporte modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Transporte Creado');
        return Redirect::to('/transporte');
     }
 
@@ -94,7 +95,7 @@ class TransporteController extends Controller
         $transporte->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','transporte modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Transporte Modificado');
        return Redirect::to('/transporte');
     }
 
@@ -110,7 +111,7 @@ class TransporteController extends Controller
         $transporte->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','transporte eliminado con exito'); 
+        Alert::success('Mensaje existoso', 'Transporte Eliminado');
         return Redirect::to('/transporte');
     }
 }

@@ -14,11 +14,6 @@
 </div>
 
 <div class="form-group">
-	{!!Form::label('email')!!}
-	{!!Form::text('email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
-</div>
-
-<div class="form-group">
 	{!!Form::label('Skype')!!}
 	{!!Form::text('prov_skype',null,['class'=>'form-control','placeholder'=>'ingrese el Skype'])!!}
 </div>

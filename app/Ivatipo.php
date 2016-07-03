@@ -12,4 +12,8 @@ class Ivatipo extends Model
         'valor',
         
     ];
+
+
+
+    
 }

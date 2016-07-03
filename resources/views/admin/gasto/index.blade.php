@@ -58,9 +58,9 @@
 	  <td>{{ $gasto -> fecha}}</td>
   	<td>{{ $gasto -> tipo_gasto}}</td>
    	<td>{{ $gasto -> descripcion}}</td>
-  	<td>{{ $gasto -> justificante}}</td>
+  	<td class="text-center"><a href="#"><i class='fa  fa-file-text-o'></i></a>{{ $gasto -> justificante}}</td>
   	<td>{{ $gasto -> cliente_vinc}}</td>
-  	<td>{{ $gasto -> importe}}</td>
+  	<td>${{ $gasto -> importe}}</td>
     <td>{{ $gasto -> tipo_pago}}</td>
 
 <td>

@@ -13,7 +13,7 @@
 <div class="modal-body">      
 {{ Html::image('storage/' . $user->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
 
-@include('admin.usuario.forms.formsedit')
+@include('admin.usuario.forms.formscreate')
 </div>
 
 <div class="modal-footer">

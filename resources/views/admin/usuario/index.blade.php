@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <!-- muestra mensaje que se a modificado o creado exitosamente-->
-@include('alerts.success')
+<!--include('alerts.success')-->
 
 
 <section class="content">

@@ -8,6 +8,7 @@ use Soft\Http\Requests;
 use Soft\Provedore;
 use Session;
 use Redirect;
+use Alert;
 
 
 class ProvedoreController extends Controller
@@ -55,7 +56,8 @@ class ProvedoreController extends Controller
     public function store(Request $request)
     {
         Provedore::create($request->all());
-        return redirect('/provedor')->with('message','provedor guardado con exito');
+        Alert::success('Mensaje existoso', 'Provedor Creado');
+        return redirect('/provedor');
     }
 
     /**
@@ -100,7 +102,7 @@ class ProvedoreController extends Controller
        $provedore->save();
 
         //le manda un mensaje al usuario
-       Session::flash('message','provedor modificado con exito'); 
+       Alert::success('Mensaje existoso', 'Provedor Modificado');
        return Redirect::to('/provedor');
     }
 
@@ -118,7 +120,7 @@ class ProvedoreController extends Controller
         $provedore->delete();
         
         //le manda un mensaje al usuario
-        Session::flash('message','provedor eliminado con exito'); 
+        Alert::success('Mensaje existoso', 'Provedor Eliminado');
         return Redirect::to('/provedor');
     }
 }

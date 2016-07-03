@@ -167,6 +167,7 @@ return [
         Kim\Activity\ActivityServiceProvider::class,
         Kryptonit3\Counter\CounterServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -223,6 +224,7 @@ return [
          'Activity' => Kim\Activity\ActivityFacade::class,
          'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
          'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

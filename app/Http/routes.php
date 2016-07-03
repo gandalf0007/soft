@@ -20,6 +20,8 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('/','FrontController@index');
    Route::get('welcome','FrontController@welcome');
+
+
  
 });
 

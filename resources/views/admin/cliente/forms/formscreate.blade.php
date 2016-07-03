@@ -15,13 +15,13 @@
 
 <div class="form-group">
 	{!!Form::label('Email')!!}
-	{!!Form::text('clie_email',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
+	{!!Form::text('clie_mail',null,['class'=>'form-control','placeholder'=>'ingrese el email'])!!}
 </div>
 
 
 <div class="form-group">
 	{!!Form::label('Cuit')!!}
-	{!!Form::text('clie_Cuit',null,['class'=>'form-control','placeholder'=>'ingrese el Cuit'])!!}
+	{!!Form::text('clie_cuit',null,['class'=>'form-control','placeholder'=>'ingrese el Cuit'])!!}
 </div>
 
 
@@ -32,12 +32,12 @@
 
 <div class="form-group col-xs-3">
 	{!!Form::label('Categoria Iva')!!}
-	{!!Form::select('clie_iva',$ivas,'',['class'=>' form-control'])!!}
+	{!!Form::select('iva_id',$ivas,'',['class'=>' form-control'])!!}
 </div>
 
 <div class="form-group col-xs-3">
 	{!!Form::label('Transporte')!!}
-	{!!Form::select('transp_des',$transportes,'',['class'=>' form-control'])!!}
+	{!!Form::select('transporte_id',$transportes,'',['class'=>' form-control'])!!}
 </div>
 
 <div class="form-group col-xs-3">
