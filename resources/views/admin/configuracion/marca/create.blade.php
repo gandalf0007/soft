@@ -10,6 +10,7 @@
               <h3 class="box-title">Crear Nueva Marca</h3>
             </div>
 			<div class="box-body">
+@include('alerts.request')
 
 {!!Form::open(['route'=>'marca.store', 'method'=>'POST'])!!}
 

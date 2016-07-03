@@ -25,9 +25,11 @@ class UserCreateRequest extends Request
     public function rules()
     {
         return [
-        
-
-            //
+       'nombre' =>'required',
+        'apellido' =>'required',
+        'email' =>'required',
+        'password' =>'required',
+        're_password' =>'required',
         ];
     }
 }

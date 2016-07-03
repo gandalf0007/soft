@@ -80,17 +80,17 @@ class UsuarioController extends Controller
    
    //guarda los recursos en este caso los datos del usuario en la tabla user , name , email y password son los campos de mi
     //tabla user , a eso les agrego los datos de nombre , correo y pass atravas de request por el metodo post
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {      
             user::create([
-            'usu_nombre' =>$request['usu_nombre'],
-            'usu_apellido' =>$request['usu_apellido'],
+            'nombre' =>$request['nombre'],
+            'apellido' =>$request['apellido'],
             'password'=>bcrypt($request['password']),
             're_password'=>$request['re_password'],
             'email' =>$request['email'],
-            'usu_direcc' =>$request['usu_direcc'],
+            'direccion' =>$request['direccion'],
             'perfil_id' =>$request['perfil_id'],
-            'usu_tel' =>$request['usu_tel'],
+            'telefono' =>$request['telefono'],
             ]);
 
         Alert::success('Mensaje existoso', 'Creado');
@@ -118,18 +118,18 @@ class UsuarioController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
         $user=User::find($id);
-        $user->usu_nombre = $request['usu_nombre'];
-        $user->usu_apellido =$request['usu_apellido'];
+        $user->nombre = $request['nombre'];
+        $user->apellido =$request['apellido'];
         $user->password=bcrypt($request['password']);
         $user->re_password=$request['re_password'];
         $user->email =$request['email'];
-        $user->usu_direcc =$request['usu_direcc'];
+        $user->direccion =$request['direccion'];
         $user->perfil_id =$request['perfil_id'];
-        $user->usu_tel =$request['usu_tel'];
+        $user->telefono =$request['telefono'];
        // $user->path =$request['path'];
         $user->save();
 

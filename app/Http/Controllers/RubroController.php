@@ -3,6 +3,8 @@
 namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 use Soft\Http\Requests;
+use Soft\Http\Requests\RubroCreateRequest;
+use Soft\Http\Requests\RubroUpdateRequest;
 use Soft\Rubro;
 use Session;
 use Redirect;
@@ -63,7 +65,7 @@ class RubroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RubroCreateRequest $request)
     {
         Rubro::create([
             'descripcion' =>$request['descripcion'],
@@ -106,7 +108,7 @@ class RubroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RubroUpdateRequest $request, $id)
     {
        $rubro=Rubro::find($id);
        $rubro->fill($request->all());

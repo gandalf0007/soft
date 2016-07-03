@@ -10,6 +10,7 @@
               <h3 class="box-title">Crear Nuevo Iva Tipo</h3>
             </div>
 			<div class="box-body">
+@include('alerts.request')
 
 {!!Form::open(['route'=>'ivatipo.store', 'method'=>'POST'])!!}
 

@@ -13,7 +13,7 @@
 <div class="modal-body">
 <fieldset disabled>      
 {{ Html::image('storage/' . $user->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
-@include('admin.usuario.forms.formsedit')
+@include('admin.usuario.forms.formscreate')
 </fieldset>
 </div>
 

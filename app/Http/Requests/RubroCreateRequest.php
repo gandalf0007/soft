@@ -4,7 +4,7 @@ namespace Soft\Http\Requests;
 
 use Soft\Http\Requests\Request;
 
-class UserUpdateRequest extends Request
+class RubroCreateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,8 @@ class UserUpdateRequest extends Request
      */
     public function rules()
     {
-       return [
-        'nombre' =>'required',
-        'apellido' =>'required',
-        'email' =>'required',
+        return [
+            'descripcion' =>'required',
         ];
     }
 }

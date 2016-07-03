@@ -10,6 +10,7 @@
               <h3 class="box-title">Crear Nuevo Transporte</h3>
             </div>
 			<div class="box-body">
+@include('alerts.request')
 
 {!!Form::open(['route'=>'transporte.store', 'method'=>'POST'])!!}
 @include('admin.configuracion.transporte.forms.formscreate')

@@ -10,7 +10,7 @@
               <h3 class="box-title">Crear Nuevo Producto</h3>
             </div>
 			<div class="box-body">
-
+@include('alerts.request')
 
 {!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True ])!!}
 @include('admin.producto.forms.formscreate')

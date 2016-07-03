@@ -10,6 +10,7 @@
               <h3 class="box-title">Crear Nuevo Rubro</h3>
             </div>
 			<div class="box-body">
+@include('alerts.request')
 
 {!!Form::open(['route'=>'rubro.store', 'method'=>'POST'])!!}
 @include('admin.configuracion.rubro.forms.formscreate')

@@ -11,6 +11,8 @@
               <h3 class="box-title">Crear Nuevo Usuario</h3>
             </div>
 			<div class="box-body">
+@include('alerts.request')
+
 
 {!!Form::open(['route'=>'usuario.store', 'method'=>'POST'])!!}
 @include('admin.usuario.forms.formscreate')

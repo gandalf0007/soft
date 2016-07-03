@@ -5,12 +5,12 @@
 
 <div class="form-group">
 	{!!Form::label('nombre')!!}
-	{!!Form::text('usu_nombre',null,['class'=>'form-control','placeholder'=>'ingrese el nombre'])!!}
+	{!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'ingrese el nombre'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('apellido')!!}
-	{!!Form::text('usu_apellido',null,['class'=>'form-control','placeholder'=>'ingrese el apellido'])!!}
+	{!!Form::text('apellido',null,['class'=>'form-control','placeholder'=>'ingrese el apellido'])!!}
 </div>
 
 <div class="form-group">
@@ -30,12 +30,12 @@
 
 <div class="form-group">
 	{!!Form::label('Direccion')!!}
-	{!!Form::text('usu_direcc',null,['class'=>'form-control','placeholder'=>'ingrese la Direccion'])!!}
+	{!!Form::text('direccion',null,['class'=>'form-control','placeholder'=>'ingrese la Direccion'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('telefono')!!}
-	{!!Form::text('usu_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
+	{!!Form::text('telefono',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
 
 <div class="form-group">
