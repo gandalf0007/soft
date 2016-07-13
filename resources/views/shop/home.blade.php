@@ -68,18 +68,6 @@
 </div>	
 <!-- ========================== CARRUCEL ================================== -->
 
-<!-- ========================== CARRUCEL ================================== -->
-<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">			
-<div id="hero">
-	 @foreach($productos as $producto)
-	@if($producto->pro_descrip == "combopc")
-	 {!! $producto ->pro_observaciones !!}
-	 @endif
-	 @endforeach
-	</div>
-</div>	
-<!-- ========================== CARRUCEL ================================== -->
-
 
 <!-- ========================== NEW PRODUCT ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">

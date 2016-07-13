@@ -528,11 +528,7 @@
         <h4 class="module-title">Síguenos en Facebook</h4>
     </div><!-- /.module-heading -->
     @foreach( $boxs as $box)
-    <div class="module-body outer-top-xs">
-     
-    <p><iframe style="border: none; overflow: hidden; width: 500px; height: 290px;" src="{{ $box->box }}" width="300" height="150" frameborder="0" scrolling="no"></iframe></p>
-
-    </div><!-- /.module-body -->
+     {!! html_entity_decode($box->box) !!}
     @endforeach
 </div><!-- /.contact-timing -->
 </div><!-- /.col -->
