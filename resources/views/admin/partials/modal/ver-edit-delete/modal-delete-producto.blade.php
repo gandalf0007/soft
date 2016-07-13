@@ -7,7 +7,7 @@
               <h4 class="modal-title">Confirm Product Deletion</h4>
          </div>
          <div class="modal-body">
-             <p>Esta seguro que desea eliminar el Producto {{ $producto->pro_descrip }}?</p>
+             <p>Esta seguro que desea eliminar el Producto {{ $producto->descripcion }}?</p>
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>

@@ -12,9 +12,18 @@
 			<div class="box-body">
 
 
-{!!Form::open(['route'=>'producto.update', 'method'=>'PUT' , 'files'=>True ])!!}
+
+
+{!!Form::model($producto,['route'=>['producto.update',$producto->id],'method'=>'PUT' , 'files'=>True])!!}
+
+  
+{{ Html::image('storage/' . $producto->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
+
 @include('admin.producto.forms.formscreate')
-{!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
+
+
+{!!Form::submit('modificar',['class'=>'btn btn-primary pull-right'])!!}
+<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
 {!!Form::close()!!}
 
 

@@ -59,7 +59,9 @@
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $producto->id }}"><i class="fa fa-edit"> Editar</i></button>
+
+
+{!! link_to_route('producto.edit', $title = 'Editar', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary']); !!}
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
@@ -72,8 +74,7 @@
 	@endforeach
 	</table>
 
-<!--modal editar Producto-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-producto')	
+
 <!--modal de eliminar producto-->
  @include('admin.partials.modal.ver-edit-delete.modal-delete-producto')
 <!--modal de ver producto-->

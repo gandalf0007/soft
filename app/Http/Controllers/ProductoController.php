@@ -30,17 +30,17 @@ class ProductoController extends Controller
 
 
          //ordenamos por usu_nombre y lo guaramos en $users
-        $productos=producto::orderBy('pro_descrip');
+        $productos=producto::orderBy('descripcion');
 
         //busqueda por descripccion
-        $pro_descrip=$request->input('pro_descrip');
-        if (!empty($pro_descrip)) { 
-            $productos->where('pro_descrip','LIKE','%'.$pro_descrip.'%');
+        $descripcion=$request->input('descripcion');
+        if (!empty($descripcion)) { 
+            $productos->where('descripcion','LIKE','%'.$descripcion.'%');
         }
         //busqueda por codigo
-        $codigo=$request->input('pro_codigo');
+        $codigo=$request->input('codigo');
         if (!empty($codigo)) {
-            $productos->where('pro_codigo','LIKE','%'.$codigo.'%');
+            $productos->where('codigo','LIKE','%'.$codigo.'%');
         }
         
         //realizamos la paginacion
@@ -98,7 +98,12 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+        $producto=producto::find($id);
+        return view('admin.producto.edit',compact('rubros','marcas','ivatipos','provedores','producto'));
     }
 
     /**

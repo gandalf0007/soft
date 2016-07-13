@@ -55,7 +55,8 @@ class HomeController extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'));
+                                          'logos'
+                                          ));
     }
 
     
