@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Configuracion de Ivas</h3>
+@include('alerts.request')
 
             <div><br><a class="btn btn-success" href="{!! URL::to('ivatipo/create') !!}">
             <i class="fa fa-plus fa-lg"></i> Nuevo Iva</a></div>

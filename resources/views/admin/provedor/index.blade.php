@@ -9,6 +9,8 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Seccion de Provedores</h3>
+@include('alerts.request')
+
 	<div><br>
 		<a class="btn btn-success" href="{!! URL::to('provedor/create') !!}">
   		<i class="fa fa-user-secret fa-lg"></i> Nuevo Provedor</a>
@@ -45,12 +47,12 @@
 	@foreach($provedores as $provedore)
 	<tbody>
 	<!-- -->
-	 <td>{{ $provedore -> prov_razsoc}}</td>
-	 <td>{{ $provedore -> prov_contacto}}</td>
-	 <td>{{ $provedore -> prov_mail}}</td>
-	 <td>{{ $provedore -> prov_tel}}</td>
-	 <td>{{ $provedore -> prov_direccion}}</td>
-	 <td>{{ $provedore -> prov_cuit}}</td>
+	 <td>{{ $provedore -> razonsocial}}</td>
+	 <td>{{ $provedore -> contacto}}</td>
+	 <td>{{ $provedore -> email}}</td>
+	 <td>{{ $provedore -> telefono}}</td>
+	 <td>{{ $provedore -> direccion}}</td>
+	 <td>{{ $provedore -> cuit}}</td>
 
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $provedore->id }}"><i class="fa fa-expand"> Ver</i></button>

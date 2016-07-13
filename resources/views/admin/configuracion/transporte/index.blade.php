@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Configuracion Transporte</h3>
+@include('alerts.request')
 
 <div><br><a class="btn btn-success" href="{!! URL::to('transporte/create') !!}">
   <i class="fa  fa-plus fa-lg"></i> Nuevo Transporte</a></div> 
@@ -23,7 +24,7 @@
 {!!Form::open(['route'=>'transporte.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 	{!!Form::label('nombre')!!}
-	{!!Form::text('transp_descrip',null,['class'=>'form-control','placeholder'=>'nombre del transporte'])!!}
+	{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'nombre del transporte'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
@@ -43,9 +44,9 @@
 	<tbody>
 	<!-- -->
  <td>{{ $transporte -> id}}</td>
- <td>{{ $transporte -> transp_descrip}}</td>
- <td>{{ $transporte -> transp_direcc}}</td>
- <td>{{ $transporte -> transp_tel}}</td>
+ <td>{{ $transporte -> descripcion}}</td>
+ <td>{{ $transporte -> direccion}}</td>
+ <td>{{ $transporte -> telefono}}</td>
 
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $transporte->id }}"><i class="fa fa-expand"> Ver</i></button>

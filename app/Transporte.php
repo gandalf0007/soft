@@ -9,9 +9,9 @@ class Transporte extends Model
 
 	 protected $fillable = [
         'id',
-        'transp_descrip',
-        'transp_direcc',
-        'transp_tel',
+        'descripcion',
+        'direccion',
+        'telefono',
         
     ];
    

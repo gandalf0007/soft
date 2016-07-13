@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Seccion de Gastos</h3>
+@include('alerts.request')
 
               <div><br>
               <a class="btn btn-success   " href="{!! URL::to('gasto/create') !!}">
@@ -22,7 +23,7 @@
 
 <!--buscador-->
 
-{!!Form::open(['url'=>'listar-venta', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
+{!!Form::open(['route'=>'gasto.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 
 

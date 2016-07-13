@@ -1,6 +1,6 @@
 @foreach($productos as $producto)
-<div class="modal fade" id="Edit-{{ $producto->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
- <div class="modal-dialog" role="document">
+<div class="modal fade bs-example-modal-lg" id="Edit-{{ $producto->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
+ <div class="modal-dialog modal-lg" role="document">
      <div class="modal-content">
          <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

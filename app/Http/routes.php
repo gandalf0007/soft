@@ -18,17 +18,21 @@
 
 Route::group(['middleware' => 'web'], function () {
     
-    Route::get('/','FrontController@index');
+    Route::get('/','FrontController@admin');
    Route::get('welcome','FrontController@welcome');
 
-
+   Route::get('home','HomeController@index');
  
 });
 
+
+
+
 Route::group(['middleware' => 'auth'], function () {
 
- Route::get('/admin', 'HomeController@index');
+ Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
+
 
 
 /*
@@ -120,10 +124,8 @@ Route::get('presupuesto-cliente/{id}','PresupuestoController@addCliente');
 
 /*---------------menu------------*/
 Route::resource('usuario','UsuarioController');
-
 Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
 Route::resource('rubro','RubroController');
-
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');
@@ -132,9 +134,24 @@ Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
 Route::resource('venta','VentaController');
 Route::resource('gasto','GastoController');
+Route::resource('categoria','CategoriaController');
+Route::resource('categoriasub','CategoriaSubController');
 /*---------------menu------------*/
+/*---------------menu WEB------------*/
+Route::get('webconfig-carrucel','PaginasController@ConfigCarrucel');
+Route::resource('carrucel','WebCarrucelController');
 
+Route::get('webconfig-carrucelmarcas','PaginasController@ConfigCarrucelmarcas');
+Route::resource('carrucelmarcas','WebCarrucelMarcasController');
 
+Route::get('webconfig-footer','PaginasController@ConfigFooter');
+Route::resource('footer','WebFooterController');
+Route::resource('informacion','WebInformacionController');
+Route::resource('facebook','WebFacebookController');
+
+Route::get('webconfig-header','PaginasController@ConfigHeader');
+Route::resource('logo','WebLogoController');
+/*---------------menu WEB------------*/
 /*---------------login------------*/
 //sistema de logue para laravel 5.2
 Route::auth();

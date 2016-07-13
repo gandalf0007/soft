@@ -11,6 +11,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Seccion de Clientes</h3>
+@include('alerts.request')
 
 <div><br><a class="btn btn-success" href="{!! URL::to('cliente/create') !!}">
   <i class="fa fa-users fa-lg"></i> Nuevo Cliente</a></div>
@@ -23,7 +24,7 @@
 {!!Form::open(['route'=>'cliente.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 	{!!Form::label('nombre')!!}
-	{!!Form::text('clie_nombres',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
+	{!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
@@ -47,12 +48,12 @@
 	@foreach($clientes as $cliente)
 	<tbody>
 	<!-- -->
-	<td>{{ $cliente -> clie_nombres}}</td>
-	<td>{{ $cliente -> clie_mail}}</td>
-	<td>{{ $cliente -> clie_telefono}}</td>
-	<td>{{ $cliente -> clie_direccion}}</td>
-	<td>{{ $cliente -> clie_cuit}}</td>
-	<td>{{ $cliente ->transporte->transp_descrip}}</td>
+	<td>{{ $cliente -> nombre}}</td>
+	<td>{{ $cliente -> email}}</td>
+	<td>{{ $cliente -> telefono}}</td>
+	<td>{{ $cliente -> direccion}}</td>
+	<td>{{ $cliente -> cuit}}</td>
+	<td>{{ $cliente ->transporte->descripcion}}</td>
 	<td>{{ $cliente ->iva->descripcion}}</td>
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $cliente->id }}"><i class="fa fa-expand"> Ver</i></button>

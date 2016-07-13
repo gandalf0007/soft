@@ -29,9 +29,9 @@
         </form>
         <!-- /.search form -->
 
-        <!-- Sidebar Menu -->
+        <!---========================== Gestion Menu ====================== -->
         <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
+            <li class="header">GESTION DE STOCK</li>
             <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ url('admin') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
 
@@ -88,7 +88,55 @@
         <i class='fa fa-money'></i><span>Gastos</span></a>
         </li>  
            
-        </ul><!-- /.sidebar-menu -->
+        </ul><!---========================== Gestion  Menu====================== -->
+
+
+         <!---========================== Gestion web ====================== -->
+        <ul class="sidebar-menu">
+            <li class="header">WEB</li>
+
+        <li class="treeview">
+                <a href="#"><i class='fa fa-dollar'></i> <span>Configuracion</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                <li><a  href="{!! URL::to('webconfig-header/') !!}">Header</a></li>
+                <li><a  href="{!! URL::to('webconfig-carrucel/') !!}">Carrucel</a></li>
+                <li><a  href="{!! URL::to('webconfig-carrucelmarcas/') !!}">Marcas</a></li>
+                <li><a  href="{!! URL::to('webconfig-footer/') !!}">Footer</a></li>
+                </ul>
+        </li>
+
+        <li >
+        <a href="{!! URL::to('categoria/') !!}">
+        <i class='icon fa fa-list'></i><span>Categorias</span></a>
+        </li>
+
+        <li >
+        <a href="{!! URL::to('provedor/') !!}">
+        <i class='fa fa-user-secret'></i><span>Provedores</span></a>
+        </li>
+
+        <li >
+        <a href="{!! URL::to('usuario/') !!}">
+        <i class='fa fa-user'></i><span>Usuarios</span></a>
+        </li>
+
+        <li >
+        <a href="{!! URL::to('cliente/') !!}">
+        <i class='fa fa-users'></i><span>Clientes</span></a>
+        </li>
+
+        <li >
+        <a href="{!! URL::to('reportes/') !!}">
+        <i class='fa fa-circle-o'></i><span>Reportes</span></a>
+        </li>
+
+         <li >
+        <a href="{!! URL::to('gasto/') !!}">
+        <i class='fa fa-money'></i><span>Gastos</span></a>
+        </li>  
+           
+        </ul><!---========================== Gestion web ====================== -->
+
     </section>
     <!-- /.sidebar -->
 </aside>

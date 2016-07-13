@@ -1,14 +1,14 @@
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
-	{!!Form::text('transp_descrip',null,['class'=>'form-control','placeholder'=>'ingrese la descripcion'])!!}
+	{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'ingrese la descripcion'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
-	{!!Form::text('transp_direcc',null,['class'=>'form-control','placeholder'=>'ingrese la direccion'])!!}
+	{!!Form::text('direccion',null,['class'=>'form-control','placeholder'=>'ingrese la direccion'])!!}
 </div>
 
 <div class="form-group">
 	{!!Form::label('descripcion')!!}
-	{!!Form::text('transp_tel',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
+	{!!Form::text('telefono',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>

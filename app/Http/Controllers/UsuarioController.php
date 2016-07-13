@@ -133,7 +133,7 @@ class UsuarioController extends Controller
        // $user->path =$request['path'];
         $user->save();
 
-//carga de imagen atraves de intervention el paquete de imagen
+        //carga de imagen atraves de intervention el paquete de imagen
         if ($request->hasFile('path')) {
             $avatar =$request->file('path');
             $filename=time() . '.' . $avatar->getClientOriginalExtension();

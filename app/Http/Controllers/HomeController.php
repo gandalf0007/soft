@@ -15,7 +15,9 @@ use Soft\Provedore;
 use Soft\Venta;
 use Auth;
 use Counter;
-
+use Soft\categoria;
+use Soft\categoriasub;
+use DB;
 /**
  * Class HomeController
  * @package App\Http\Controllers
@@ -29,7 +31,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      
     }
 
     /**
@@ -39,24 +41,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $activities =Counter::showAndCount('/');
-        $Ventas = Venta::count();
-        $provedores = provedore::count();
-        $productos = Producto::count();
-        $empleados = User::count();
-        //$customers = Customer::count();
-        //$suppliers = Supplier::count();
-        //$receivings = Receiving::count();
-        //$sales = Sale::count();
-       
-        return view('admin.index')
-           // ->with('items', $items)
-            //->with('item_kits', $item_kits)
-            ->with('activities', $activities)
-            ->with('Ventas', $Ventas)
-            ->with('provedores', $provedores)
-            ->with('productos', $productos)
-            ->with('empleados', $empleados);
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         
+         return view ('shop.home',compact('categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'));
     }
 
     

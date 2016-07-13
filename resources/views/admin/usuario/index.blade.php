@@ -10,6 +10,8 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Seccion de Usuarios</h3>
+@include('alerts.request')
+
             <div><br>
               <a class="btn btn-success   " href="{!! URL::to('usuario/create') !!}">
               <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a>

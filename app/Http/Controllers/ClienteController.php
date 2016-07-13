@@ -3,7 +3,8 @@
 namespace Soft\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Soft\Http\Requests\ClienteCreateRequest;
+use Soft\Http\Requests\ClienteUpdateRequest;
 use Soft\Http\Requests;
 use Soft\Cliente;
 use Soft\Iva;
@@ -23,16 +24,16 @@ class ClienteController extends Controller
     {
         //modal
         $ivas=iva::lists('descripcion','id');
-        $transportes=transporte::lists('transp_descrip','id');
+        $transportes=transporte::lists('descripcion','id');
 
 
-        $clientes=cliente::orderBy('clie_nombres');
+        $clientes=cliente::orderBy('nombre');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
-        $clie_nombres=$request->input('clie_nombres');
+        $nombre=$request->input('nombre');
         //preguntamos que si ($usu_nombre no es vacio
-        if (!empty($clie_nombres)) {
+        if (!empty($nombre)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $clientes->where('clie_nombres','LIKE','%'.$clie_nombres.'%');
+            $clientes->where('nombre','LIKE','%'.$nombre.'%');
         }
         //realizamos la paginacion
         $clientes=$clientes->paginate(10);
@@ -50,7 +51,7 @@ class ClienteController extends Controller
     public function create()
     {
         $ivas=iva::lists('descripcion','id');
-        $transportes=transporte::lists('transp_descrip','id');
+        $transportes=transporte::lists('descripcion','id');
 
         return view('admin.cliente.create',['ivas'=>$ivas ,'transportes'=>$transportes ]);
     }
@@ -61,7 +62,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteCreateRequest $request)
     {
         cliente::create($request->all());
         Alert::success('Mensaje existoso', 'Cliente Creado');
@@ -101,7 +102,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClienteUpdateRequest $request, $id)
     {
         $cliente=cliente::find($id);
        $cliente->fill($request->all());

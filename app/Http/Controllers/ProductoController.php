@@ -26,7 +26,7 @@ class ProductoController extends Controller
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
-        $provedores=provedore::lists('prov_razsoc','id');
+        $provedores=provedore::lists('razonsocial','id');
 
 
          //ordenamos por usu_nombre y lo guaramos en $users
@@ -61,7 +61,7 @@ class ProductoController extends Controller
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
-        $provedores=provedore::lists('prov_razsoc','id');
+        $provedores=provedore::lists('razonsocial','id');
         return view('admin.producto.create',['ivatipos'=>$ivatipos,'rubros'=>$rubros,'marcas'=>$marcas
                                             ,'provedores'=>$provedores]);
     }

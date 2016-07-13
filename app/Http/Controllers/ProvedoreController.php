@@ -3,6 +3,8 @@
 namespace Soft\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Soft\Http\Requests\ProvedorCreateRequest;
+use Soft\Http\Requests\ProvedorUpdateRequest;
 
 use Soft\Http\Requests;
 use Soft\Provedore;
@@ -21,13 +23,13 @@ class ProvedoreController extends Controller
     public function index(Request $request)
     {
         //ordenamos por usu_nombre y lo guaramos en $users
-        $provedores=provedore::orderBy('prov_razsoc');
+        $provedores=provedore::orderBy('razonsocial');
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
-        $prov_razsoc=$request->input('prov_razsoc');
+        $razonsocial=$request->input('razonsocial');
         //preguntamos que si ($usu_nombre no es vacio
-        if (!empty($prov_razsoc)) {
+        if (!empty($razonsocial)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $provedores->where('prov_razsoc','LIKE','%'.$prov_razsoc.'%');
+            $provedores->where('razonsocial','LIKE','%'.$razonsocial.'%');
         }
         //realizamos la paginacion
         $provedores=$provedores->paginate(10);
@@ -53,7 +55,7 @@ class ProvedoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProvedorCreateRequest $request)
     {
         Provedore::create($request->all());
         Alert::success('Mensaje existoso', 'Provedor Creado');
@@ -94,7 +96,7 @@ class ProvedoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProvedorUpdateRequest $request, $id)
     {
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
        $provedore=provedore::find($id);

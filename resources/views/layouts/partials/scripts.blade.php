@@ -16,6 +16,21 @@
 @include('sweet::alert')
 
 
+<script src="{{ asset('js/dropzone/dropzone.js') }}"></script>
+<script src="{{ asset('js/dropzone/dropzone-config.js') }}"></script>
+
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
+<textarea id="my-editor" name="content" class="form-control"></textarea>
+<script>
+  CKEDITOR.replace( 'my-editor', {
+    filebrowserImageBrowseUrl: '../public/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '../public/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+    filebrowserBrowseUrl: '../public/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '../public/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+  });
+</script>
+
 @yield('scriptdatepicker')
 
 

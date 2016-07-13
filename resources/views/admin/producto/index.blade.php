@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Seccion de Productos</h3>
+@include('alerts.request')
 
 <div><br><a class="btn btn-success" href="{!! URL::to('producto/create') !!}">
   <i class="fa fa-shopping-basket fa-lg"></i> Nuevo Producto</a></div>
@@ -23,7 +24,7 @@
 <div class="form-group">
 {!!Form::text('pro_codigo',null,['class'=>'form-control','placeholder'=>'Codigo'])!!}
 {!!Form::text('pro_descrip',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
- <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
+ <button type="submit" class="fa  fa-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
  <!--endbuscador--> 

@@ -3,6 +3,8 @@
 namespace Soft\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Soft\Http\Requests\TransporteCreateRequest;
+use Soft\Http\Requests\TransporteUpdateRequest;
 
 use Soft\Http\Requests;
 use Session;
@@ -22,9 +24,9 @@ class TransporteController extends Controller
         $transportes=transporte::orderBy('id');
 
         //busquador
-        $transp_descrip=$request->input('transp_descrip');
-        if (!empty($transp_descrip)) {         
-            $transportes->where('transp_descrip','LIKE','%'.$transp_descrip.'%');
+        $descripcion=$request->input('descripcion');
+        if (!empty($descripcion)) {         
+            $transportes->where('descripcion','LIKE','%'.$descripcion.'%');
         }
 
 
@@ -48,7 +50,7 @@ class TransporteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TransporteCreateRequest $request)
     {
         
        transporte::create($request->all());
@@ -88,7 +90,7 @@ class TransporteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TransporteUpdateRequest $request, $id)
     {
         $transporte=transporte::find($id);
         $transporte->fill($request->all());

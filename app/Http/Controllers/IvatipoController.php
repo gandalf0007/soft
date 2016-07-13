@@ -2,6 +2,8 @@
 
 namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
+use Soft\Http\Requests\IvatipoCreateRequest;
+use Soft\Http\Requests\IvatipoUpdateRequest;
 use Soft\Http\Requests;
 use Session;
 use Redirect;
@@ -40,7 +42,7 @@ class IvatipoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IvatipoCreateRequest $request)
     {
         Ivatipo::create([
             'descripcion' =>$request['descripcion'],
@@ -85,7 +87,7 @@ class IvatipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IvatipoUpdateRequest $request, $id)
     {
         $ivatipo=Ivatipo::find($id);
        $ivatipo->fill($request->all());

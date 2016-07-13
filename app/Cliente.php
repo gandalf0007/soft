@@ -9,19 +9,19 @@ class Cliente extends Model
 
 	protected $fillable = [
         	'id',
-            'clie_nombres',
-            'clie_direccion',
-            'clie_telefono',
-            'clie_mail',
-            'clie_observacion',    
-            'clie_localidad',
+            'nombre',
+            'direccion',
+            'telefono',
+            'email',
+            'observacion',    
+            'localidad',
             'iva_id',
-            'clie_lista_precio',
-            'clie_cuit',
-            'clie_cp',
+            'lista_precio',
+            'cuit',
+            'cp',
             'transporte_id',
-            'clie_habilitado',
-            'clie_hab_cta',
+            'habilitado',
+            'cuentacorriente',
     ];
     		
           

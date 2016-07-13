@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Configuracion de Rubros</h3>
+@include('alerts.request')
 
 <div><br><a class="btn btn-success" href="{!! URL::to('rubro/create') !!}">
   <i class="fa fa-plus fa-lg"></i> Nuevo Rubro</a></div>
@@ -22,7 +23,6 @@
 {!!Form::open(['route'=>'rubro.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 {!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
-{!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'Codigo'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}

@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Configuracion de Marcas</h3>
+@include('alerts.request')
 
        <div><br><a class="btn btn-success" href="{!! URL::to('marca/create') !!}">
   		<i class="fa fa-plus fa-lg"></i> Nueva Marca</a></div>

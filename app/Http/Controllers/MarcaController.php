@@ -3,6 +3,8 @@
 namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 use Soft\Http\Requests;
+use Soft\Http\Requests\MarcaCreateRequest;
+use Soft\Http\Requests\MarcaUpdateRequest;
 use Soft\Marca;
 use Session;
 use Redirect;
@@ -49,7 +51,7 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarcaCreateRequest $request)
     {
         marca::create([
             'descripcion' =>$request['descripcion'],
@@ -92,7 +94,7 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MarcaUpdateRequest $request, $id)
     {
        $marca=marca::find($id);
        $marca->fill($request->all());

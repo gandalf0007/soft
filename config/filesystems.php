@@ -48,6 +48,22 @@ return [
             'root'   => public_path().'/storage',
         ],
 
+         'svg' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/categorias',
+        ],
+
+        'svg2' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/subcategorias',
+        ],
+
+        'carrucel' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/paginas/home/carrucel',
+        ],
+
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

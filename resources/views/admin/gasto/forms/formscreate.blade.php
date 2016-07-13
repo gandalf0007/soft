@@ -59,15 +59,15 @@
 
 <div class="panel panel-default">
 		<div class="panel-heading">
-   		 	<h3 class="panel-title">Concepto</h3>
+   		 	<h3 class="panel-title">Descripcion</h3>
  		</div>	
   <div class="panel-body">
 <div class="row">
 
   <div class="col-md-6">
 	<div class="form-horizontal">
-	{!!Form::label('concepto')!!}
-	{!!Form::textarea ('descripcion',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
+	{!!Form::label('Descripcion')!!}
+	{!!Form::textarea ('descripcion',null,['class'=>'form-control','placeholder'=>'ingrese la Descripcion'])!!}
 	</div>
   </div>
 

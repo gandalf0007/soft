@@ -7,39 +7,56 @@
 <br><br>
 
 <!-- .................................... tabla descripcion................................. -->
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Descripcion y Codigo</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
 <table class="table">
 <thead>
-		<th class="color1">Descripcion y Codigo</th>
+		<th class="color1"></th>
 </thead>
 <tbody>
 
 <td>
 <!--codigo-->
-<div class="form-horizontal">
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	{!!Form::label('codigo:')!!}
 	{!!Form::text('pro_codigo',null,['class'=>'form-control ','placeholder'=>'ingrese el codigo del producto'])!!}
 </div>
 
 <!--descripcion-->
-<div class="form-horizontal">
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	{!!Form::label('descripcion:')!!}
 	{!!Form::text('pro_descrip',null,['class'=>'form-control ','placeholder'=>'ingrese descripcion del producto'])!!}
 </div>
 <!--imagen-->
-<div class="form-horizontal">
-	{!!Form::label('file', 'File') !!}
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	{!!Form::label('file', 'Imagen') !!}
 	{!!Form::file('path')!!}
 </div>
 </td>
 </tbody>
 </table>
 
-
+</div>
+</div>
+</div>
 
 <!-- .................................... tabla Precios................................. -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Precios</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
 <table class="table">
 <thead>
-		<th class="color1">Precios</th>
+		<th class="color1"></th>
 </thead>
 <tbody>
 <td>
@@ -52,7 +69,7 @@
 <!--iva id-->
 <div class="form-horizontal">
 	{!!Form::label('iva id')!!} <br>
-	{!!Form::select('iva_id',$ivatipos)!!}
+	{!!Form::select('iva_id',$ivatipos,'',['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
@@ -97,10 +114,21 @@
 </tbody>
 </table>
 
+</div>
+</div>
+</div>
+
 <!-- .................................... tabla stock................................. -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Stock</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
 <table class="table">
 <thead>
-		<th class="color1">Stock</th>
+		<th class="color1"></th>
 
 </thead>
 <tbody>
@@ -129,44 +157,62 @@
 </tbody>
 </table>
 
-
+</div>
+</div>
+</div>
 
 <!-- ...........................tabla Rubro , Marca y Provedor................................. -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Rubro , Marca y Provedor</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
 <table class="table">
 <thead>
-		<th class="color1">Rubro , Marca y Provedor</th>
+		<th class="color1"></th>
 </thead>
 <tbody>
 <td>
 <!--rubro id-->
 <div class="form-horizontal">
 	{!!Form::label('rubro id')!!}
-	{!!Form::select('rubro_id',$rubros)!!}
+	{!!Form::select('rubro_id',$rubros,'',['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--marca id-->
 <div class="form-horizontal">
 	{!!Form::label('marca id')!!}
-	{!!Form::select('marca_id',$marcas)!!}
+	{!!Form::select('marca_id',$marcas,'',['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--provedor-->
 <div class="form-horizontal">
 	{!!Form::label('provedores')!!}
-	{!!Form::select('provedor_id',$provedores)!!}
+	{!!Form::select('provedor_id',$provedores,'',['class'=>'form-control'])!!}
 </div>
 </td>
 </tbody>
 </table>
 
-
+</div>
+</div>
+</div>
 
 <!-- ...........................tabla otras opciones................................. -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Otras Opciones</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
 <table class="table">
 <thead>
-		<th class="color1">Otras Opciones</th>
+		<th class="color1"></th>
 </thead>
 <tbody>
 <td>
@@ -179,7 +225,7 @@
 
 <td>
 <!--ubicacion-->
-<div class="form-horizontal">
+<div class="form-horizontal ">
 	{!!Form::label('ubicacion')!!}
 	{!!Form::text('pro_ubicacion',null,['class'=>'form-control','placeholder'=>'ingrese la ubicacion'])!!}
 </div>
@@ -187,25 +233,32 @@
 
 <td>
 <!--codigo de bulto-->
-<div class="form-horizontal">
+<div class="form-horizontal ">
 	{!!Form::label('codigo de bulto')!!}
 	{!!Form::text('pro_cod_bulto',null,['class'=>'form-control','placeholder'=>'ingrese el codigo de bulto'])!!}
 </div>
 <!--cantidad de bulto-->
-<div class="form-horizontal">
+<div class="form-horizontal ">
 	{!!Form::label('cantidad de bulto')!!}
 	{!!Form::text('pro_cant_bulto',null,['class'=>'form-control','placeholder'=>'ingrese la cantidad de bulto'])!!}
 </div>
+
 </td>
+
 </tbody>
 </table>
 
+	<div class="form-horizontal col-xs-12 col-sm-12 col-md-9">
+	{!!Form::label('observacioes')!!}
+	{!!Form::textarea ('pro_observaciones',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion'])!!}
+</div>
+<br>
+
+</div>
+</div>
+</div>
 
 
 <!--observacioes-->
-<div class="form-horizontal">
-	{!!Form::label('observacioes')!!}
-	{!!Form::textarea ('pro_observaciones',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
-</div>
-<br>
+
 

@@ -3,6 +3,9 @@
 namespace Soft\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Soft\Http\Requests\GastoCreateRequest;
+use Soft\Http\Requests\GastoUpdateRequest;
+
 use Session;
 use Redirect;
 use Soft\Http\Requests;
@@ -15,11 +18,22 @@ class GastoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
 
         $gastos= gasto::paginate(10);
       
+      /*buscador*/
+        $fechai=$request->input('fecha_inicio');
+        $fechaf=$request->input('fecha_final');
+
+        if (!empty($fechai) and !empty($fechaf)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $gastos = gasto::where('fecha', '>=' , $fechai)->where('fecha', '<=', $fechaf)->paginate(50);
+        }
+        /*buscador*/
+
+
        return view('admin.gasto.index',compact('gastos'));
     }
 
@@ -39,7 +53,7 @@ class GastoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GastoCreateRequest $request)
     {
          gasto::create($request->all());
          Session::flash('message','gasto Guardado con exito'); 
@@ -75,7 +89,7 @@ class GastoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GastoUpdateRequest $request, $id)
     {
          $gastos=gasto::find($id);
         $gastos->fill($request->all());
