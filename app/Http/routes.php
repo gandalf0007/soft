@@ -25,7 +25,9 @@ Route::group(['middleware' => 'web'], function () {
  
 });
 
-
+Route::group(array('middleware' => 'auth'), function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
+});
 
 
 Route::group(['middleware' => 'auth'], function () {

@@ -16,8 +16,8 @@
         "kim/activity": "^1.1",
         "kryptonit3/counter": "5.2.*",
         "maatwebsite/excel": "~2.1.0",
-        "uxweb/sweet-alert": "~1.1"
- 
+        "uxweb/sweet-alert": "~1.1",
+        "pqb/filemanager-laravel": "2.*"
 
     },
     "require-dev": {

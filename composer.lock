@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a003db22f66b675ad5130321cb9f3267",
-    "content-hash": "30069f575eed7379be8c8bd627dfcfa9",
+    "hash": "4d0e96a906eead4f8cbbb0389e8ba1fc",
+    "content-hash": "77acddbf761509bfdac2e80498dc540b",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -1470,6 +1470,44 @@
                 "xlsx"
             ],
             "time": "2015-05-01 07:00:55"
+        },
+        {
+            "name": "pqb/filemanager-laravel",
+            "version": "2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guillermomartinez/filemanager-laravel.git",
+                "reference": "be2c8ab3aa47198368c825e3ecc1ccbed5c48508"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guillermomartinez/filemanager-laravel/zipball/be2c8ab3aa47198368c825e3ecc1ccbed5c48508",
+                "reference": "be2c8ab3aa47198368c825e3ecc1ccbed5c48508",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Pqb\\FilemanagerLaravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guillermo M.",
+                    "email": "guille_55_88@hotmail.com"
+                }
+            ],
+            "description": "Filemanager for Laravel",
+            "time": "2016-03-31 23:44:22"
         },
         {
             "name": "psr/http-message",
