@@ -470,6 +470,10 @@
 </header>
 
 <!-- =========================== HEADER : END ================================ -->
+
+  @yield('content')
+
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
 	<div class="container">
 	<div class="row">
@@ -478,7 +482,7 @@
 			
 			
 
-     @yield('content')
+   
 
 
 
@@ -488,7 +492,7 @@
 	</div><!-- /.row -->
 
     
-	<!-- =============================== Marcas Carrucel=================================== -->
+	<!-- ===================== Marcas Carrucel======================== -->
 <div id="brands-carousel" class="logo-slider wow fadeInUp">
 
 		<h3 class="section-title">Nuestras Marcas</h3>
@@ -505,7 +509,7 @@
 		</div><!-- /.logo-slider-inner -->
 	
 </div><!-- /.logo-slider -->
-<!-- =============================== Marcas Carrucel=================================== -->
+<!-- =========================== Marcas Carrucel================================ -->
 
 
 	</div><!-- /.container -->

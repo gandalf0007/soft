@@ -154,7 +154,12 @@ Route::get('webconfig-header','WebHeaderController@ConfigHeader');
 Route::resource('logo','WebLogoController');
 
 Route::resource('post','WebPostController');
-Route::get('postdetail','PaginasController@postDetail');
+
+Route::get('blog','PaginasController@post');
+Route::get('blogdetail-post{id}',[
+'as'=>'paginas.postDetalle',
+'uses'=>'PaginasController@postDetalle'
+	]);
 /*---------------menu WEB------------*/
 /*---------------login------------*/
 //sistema de logue para laravel 5.2

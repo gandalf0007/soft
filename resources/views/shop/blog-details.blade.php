@@ -8,11 +8,9 @@
 		<div class="row">
 			<div class="blog-page">
 
-<!-- ==================BlOG===================================== -->	
-@foreach($posts as $post)		
+<!-- ==================BlOG===================================== -->		
 <div class="col-md-9">
 <div class="blog-post wow fadeInUp">
-	<img class="img-responsive" src="assets/images/blog-post/blog_big_01.jpg" alt="">
 	<h1>{{ $post->titulo }}</h1>
 	<span class="author">Michael</span>
 	<span class="review">6 Comments</span>
@@ -28,13 +26,37 @@
 		<a href="" class="hidden-xs"><i class="fa fa-pinterest"></i></a>
 	</div>
 </div>
-</div>
-@endforeach
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//sharkinformatica.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
 <!-- ==================BlOG===================================== -->
 
 
 
-				
+				</div>
 			</div>
 		</div>
 	</div>
