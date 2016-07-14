@@ -12,7 +12,7 @@ use Redirect;
 use Storage;
 use DB;
 use Image;
-
+use Soft\user;
 class WebPostController extends Controller
 {
     /**
@@ -22,8 +22,10 @@ class WebPostController extends Controller
      */
     public function index()
     {
-        $posts=webpost::all();
-    return view ('admin.post.index',compact('posts'));
+        $posts=webpost::orderBy('created_at','desc')->paginate(10);
+        $user= User::where('perfil_id', '=','1')->lists('nombre','id');
+        
+    return view ('admin.post.index',compact('posts','user'));
     }
 
     /**
@@ -32,9 +34,10 @@ class WebPostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+         $user= User::where('perfil_id', '=','1')->lists('nombre','id');
         //retorna a una vista que esta en la carpeta usuario y dentro esta create
-        return view('admin.post.create');
+        return view('admin.post.create',compact('user'));
     }
 
     /**

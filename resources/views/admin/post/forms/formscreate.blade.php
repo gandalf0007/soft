@@ -17,4 +17,10 @@
 	{!!Form::textarea('descripcionlarga',null,['class'=>'form-control ','placeholder'=>'ingrese descricpicon larga'])!!}
 </div>
 
+<div class="form-group">
+	{!!Form::label('Creado Por :')!!}
+	{!!Form::select('user_id',$user,'',['class'=>'form-control'])!!}
+</div>
+
+
 <br>

@@ -19,11 +19,17 @@
 
 	<div class="social-media">
 		<span>share post:</span>
-		<a href="#"><i class="fa fa-facebook"></i></a>
-		<a href="#"><i class="fa fa-twitter"></i></a>
-		<a href="#"><i class="fa fa-linkedin"></i></a>
-		<a href=""><i class="fa fa-rss"></i></a>
-		<a href="" class="hidden-xs"><i class="fa fa-pinterest"></i></a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.sharkinformatica.com/blogdetail-post{{ $post->id}}" target="_blank"><i class="fa fa-facebook"></i></a>
+	<a href="http://www.twitter.com/home?status=https://www.sharkinformatica.com/blogdetail-post{{ $post->id}}"><i class="fa fa-twitter"></i></a>
+	<a href="https://plus.google.com/share?url=https://www.sharkinformatica.com/blogdetail-post{{ $post->id}}"><i class="fa fa-google-plus"></i></a>
+	
+		<span>Like button:</span>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=https://www.sharkinformatica.com/&layout=button_count&show_faces=true&width=450&action=like&font=trebuchet+ms&colorscheme=light&height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+		
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	<g:plusone size="medium"></g:plusone>
+
+
 	</div>
 </div>
 
