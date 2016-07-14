@@ -69,7 +69,7 @@ public function venta()
 public function perfil()
     {
         //un usuario tiene un perfil
-       return $this->belongsTo(perfil::class);;
+       return $this->belongsTo(perfil::class);
     }   
 
 public function webpost()

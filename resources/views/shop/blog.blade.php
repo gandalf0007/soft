@@ -13,7 +13,7 @@
 @foreach($posts as $post)	
 <div class="blog-post wow fadeInUp">
 	<h1>{{ $post->titulo }}</h1>
-	<span class="author">Michael</span>
+	<span class="author">{{ $post->user->nombre }}</span>
 	<span class="review">6 Comments</span>
 	<span class="date-time">{{ $post->created_at }}</span>
 	<p>{!! $post->descripcioncorta !!}</p>
