@@ -12,7 +12,7 @@
 <div class="col-md-9">
 <div class="blog-post wow fadeInUp">
 	<h1>{{ $post->titulo }}</h1>
-	<span class="author">Michael</span>
+	<span class="author">{{ $post->user->nombre }}</span>
 	<span class="review">6 Comments</span>
 	<span class="date-time">{{ $post->created_at }}</span>
 	<p>{!! $post->descripcionlarga !!}</p>
@@ -50,13 +50,13 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
+</div>
 
 <!-- ==================BlOG===================================== -->
 
 
 
-				</div>
+				
 			</div>
 		</div>
 	</div>

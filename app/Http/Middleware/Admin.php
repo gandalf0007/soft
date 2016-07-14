@@ -26,10 +26,10 @@ class Admin
     {
         //el usuario ya esta logueado y hay un auth , nos referemiso a su id y si este es
         //desistinto de 1 que me de un error , si no que me deje pasar
-        if($this->auth->user()->id != 1){
+        if($this->auth->user()->perfil_id != 1){
+            //me redirecciona a la vista index
             Session::flash('message-error','no tiene privilegios');
-            //me redirecciona a la vista index dentro de admin
-            return redirect()->to('/admin');  
+            return redirect()->to('/inicio');  
         }
         //sigue con la peticion
         return $next($request);

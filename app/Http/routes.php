@@ -19,9 +19,15 @@
 Route::group(['middleware' => 'web'], function () {
     
     Route::get('/','FrontController@admin');
-   Route::get('welcome','FrontController@welcome');
 
-   Route::get('home','HomeController@index');
+Route::get('inicio','PaginasController@Home');
+Route::get('blog','PaginasController@post');
+Route::get('blogdetail-post{id}',[
+'as'=>'paginas.postDetalle',
+'uses'=>'PaginasController@postDetalle'
+	]);
+
+
  
 });
 
@@ -30,7 +36,7 @@ Route::group(array('middleware' => 'auth'), function(){
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'admin'], function () {
 
  Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
@@ -139,6 +145,8 @@ Route::resource('gasto','GastoController');
 Route::resource('categoria','CategoriaController');
 Route::resource('categoriasub','CategoriaSubController');
 /*---------------menu------------*/
+
+
 /*---------------menu WEB------------*/
 Route::get('webconfig-carrucel','WebCarrucelController@index');
 Route::resource('carrucel','WebCarrucelController');
@@ -155,12 +163,10 @@ Route::resource('logo','WebLogoController');
 
 Route::resource('post','WebPostController');
 
-Route::get('blog','PaginasController@post');
-Route::get('blogdetail-post{id}',[
-'as'=>'paginas.postDetalle',
-'uses'=>'PaginasController@postDetalle'
-	]);
+
 /*---------------menu WEB------------*/
+
+
 /*---------------login------------*/
 //sistema de logue para laravel 5.2
 Route::auth();

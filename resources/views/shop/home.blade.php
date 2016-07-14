@@ -1,4 +1,5 @@
 @extends('layouts.shop')
+@include('alerts.errors')
 @section('content')
 
 
