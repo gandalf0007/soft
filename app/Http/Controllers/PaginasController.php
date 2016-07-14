@@ -5,51 +5,36 @@ namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Soft\Http\Requests;
-use Soft\web_carrucel;
-use Soft\web_marca;
-use Soft\web_footer;
-use Soft\web_informacion;
-use Soft\web_facebook;
-use Soft\web_logo;
+use Soft\web_post;
 use Alert;
 use Session;
 use Redirect;
 use Storage;
 use DB;
 use Image;
+
 class PaginasController extends Controller
 {
-    /**
-     * esto envia los datos al backend osea a la parate de paginas de la administracion
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-   public function ConfigCarrucel()
+     public function postDetail()
     {
-        $imagenes=web_carrucel::all();
-    return view ('admin.paginas.home.carrucel.index',compact('imagenes'));
+        
+        /*seccion para el layout*/
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+        /*seccion para el layout*/
+        $posts=DB::table('web_posts')->orderBy('created_at', 'asc')->get();
+         return view ('shop.blog-details',compact(
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos',
+                                          'posts'
+                                          ));
     }
 
-    public function ConfigCarrucelmarcas()
-    {
-        $imagenesMarcas=web_marca::all();
-    return view ('admin.paginas.home.marcas.index',compact('imagenesMarcas'));
-    }
-
-
-    public function ConfigFooter()
-    {
-    $footers=web_footer::all();
-    $informacions=web_informacion::all();
-    $boxs=web_facebook::all();
-    return view ('admin.paginas.home.footer.index',compact('footers','informacions','boxs'));
-    }
-
-    public function ConfigHeader()
-    {
-    $logos=web_logo::all();
-    return view ('admin.paginas.home.header.index',compact('logos'));
-    }
+ 
 }

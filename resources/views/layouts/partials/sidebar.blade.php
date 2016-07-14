@@ -111,8 +111,8 @@
         </li>
 
         <li >
-        <a href="{!! URL::to('provedor/') !!}">
-        <i class='fa fa-user-secret'></i><span>Provedores</span></a>
+        <a href="{!! URL::to('post/') !!}">
+        <i class='fa fa-user-secret'></i><span>Post</span></a>
         </li>
 
         <li >

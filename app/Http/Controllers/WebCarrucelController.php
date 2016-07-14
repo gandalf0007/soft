@@ -19,8 +19,11 @@ class WebCarrucelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
+          $imagenes=web_carrucel::all();
+    return view ('admin.paginas.home.carrucel.index',compact('imagenes'));
     }
 
     /**

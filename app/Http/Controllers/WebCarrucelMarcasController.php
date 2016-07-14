@@ -21,9 +21,13 @@ class WebCarrucelMarcasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
+    
     public function index()
     {
-       
+        $imagenesMarcas=web_marca::all();
+    return view ('admin.paginas.home.marcas.index',compact('imagenesMarcas'));
     }
 
     /**

@@ -140,19 +140,21 @@ Route::resource('categoria','CategoriaController');
 Route::resource('categoriasub','CategoriaSubController');
 /*---------------menu------------*/
 /*---------------menu WEB------------*/
-Route::get('webconfig-carrucel','PaginasController@ConfigCarrucel');
+Route::get('webconfig-carrucel','WebCarrucelController@index');
 Route::resource('carrucel','WebCarrucelController');
 
-Route::get('webconfig-carrucelmarcas','PaginasController@ConfigCarrucelmarcas');
+Route::get('webconfig-carrucelmarcas','WebCarrucelMarcasController@index');
 Route::resource('carrucelmarcas','WebCarrucelMarcasController');
 
-Route::get('webconfig-footer','PaginasController@ConfigFooter');
-Route::resource('footer','WebFooterController');
+Route::get('webconfig-footer','WebFooterController@ConfigFooter');
 Route::resource('informacion','WebInformacionController');
 Route::resource('facebook','WebFacebookController');
 
-Route::get('webconfig-header','PaginasController@ConfigHeader');
+Route::get('webconfig-header','WebHeaderController@ConfigHeader');
 Route::resource('logo','WebLogoController');
+
+Route::resource('post','WebPostController');
+Route::get('postdetail','PaginasController@postDetail');
 /*---------------menu WEB------------*/
 /*---------------login------------*/
 //sistema de logue para laravel 5.2

@@ -9,14 +9,8 @@ namespace Soft\Http\Controllers;
 
 use Soft\Http\Requests;
 use Illuminate\Http\Request;
-use Soft\User;
-use Soft\Producto;
-use Soft\Provedore;
-use Soft\Venta;
 use Auth;
 use Counter;
-use Soft\categoria;
-use Soft\categoriasub;
 use DB;
 /**
  * Class HomeController
