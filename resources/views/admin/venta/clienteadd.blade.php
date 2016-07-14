@@ -40,11 +40,11 @@
 	@foreach($clientes as $cliente)
 	<tbody>
 	<!-- -->
- 	<td>{{ $cliente -> clie_nombres}}</td>
-	<td>{{ $cliente -> clie_mail}}</td>
-	<td>{{ $cliente -> clie_telefono}}</td>
-	<td>{{ $cliente -> clie_direccion}}</td>
-	<td>{{ $cliente -> clie_cuit}}</td>
+ 	<td>{{ $cliente -> nombre}}</td>
+	<td>{{ $cliente -> email}}</td>
+	<td>{{ $cliente -> telefono}}</td>
+	<td>{{ $cliente -> direccion}}</td>
+	<td>{{ $cliente -> cuit}}</td>
 
 <td>
 <a href="{{ URL::to('venta-cliente/'.$cliente->id) }}">{{ Form::submit('Agregar Cliente',array('class'=>'btn btn-success')) }}</a>

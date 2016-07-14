@@ -22,22 +22,22 @@
             <div class="box-body">
               <div class="input-group col-xs-6 pull-right">
                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                <input type="text" class="form-control" placeholder="direccion" value="{{ $cliente->clie_direccion}}" disabled>
+                <input type="text" class="form-control" placeholder="direccion" value="{{ $cliente->direccion}}" disabled>
              </div>
 
               <div class="input-group col-xs-6">
                 <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
-                 <input type="text" class="form-control" placeholder="Cuit" value="{{ $cliente->clie_cuit}}" disabled>
+                 <input type="text" class="form-control" placeholder="Cuit" value="{{ $cliente->cuit}}" disabled>
               </div>
               
               <div class="input-group col-xs-6 pull-right">
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                 <input type="text" class="form-control" placeholder="telefono" value="{{ $cliente->clie_telefono}}" disabled>
+                 <input type="text" class="form-control" placeholder="telefono" value="{{ $cliente->telefono}}" disabled>
               </div>
 
               <div class="input-group col-xs-6">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" placeholder="cliente" value="{{ $cliente->clie_nombres}}" disabled>
+                <input type="text" class="form-control" placeholder="cliente" value="{{ $cliente->nombre}}" disabled>
               </div>
               </div>
               @endif
@@ -72,8 +72,8 @@
 						@foreach($cart as $item)
 							<tr> 
 								<td><img src="{{ $item->path }}"></td>
-								<td>{{ $item->pro_descrip }}</td>
-								<td>${{ number_format($item->pro_venta,2) }}</td>
+								<td>{{ $item->descripcion }}</td>
+								<td>${{ number_format($item->precioventa,2) }}</td>
 								<td>
 									<input 
 										type="number"
@@ -91,7 +91,7 @@
 										<i class="fa fa-refresh"></i>
 									</a>
 								</td>
-								<td>${{ number_format($item->pro_venta * $item->quantity,2) }}</td>
+								<td>${{ number_format($item->precioventa * $item->quantity,2) }}</td>
 								<td>
 									<a href="{!! URL::to('venta-delete/'.$item->id) !!}" class="btn btn-danger">
 										<i class="fa fa-remove"></i>

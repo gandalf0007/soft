@@ -5,7 +5,7 @@ namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Soft\Http\Requests;
-use Soft\web_post;
+use Soft\webpost;
 use Alert;
 use Session;
 use Redirect;
@@ -22,7 +22,7 @@ class WebPostController extends Controller
      */
     public function index()
     {
-        $posts=web_post::all();
+        $posts=webpost::all();
     return view ('admin.post.index',compact('posts'));
     }
 
@@ -45,7 +45,7 @@ class WebPostController extends Controller
      */
     public function store(Request $request)
     {
-        web_post::create($request->all());
+        webpost::create($request->all());
 
         //le manda un mensaje al usuario
        Alert::success('Mensaje existoso', 'Post Creado');
@@ -71,7 +71,7 @@ class WebPostController extends Controller
      */
     public function edit($id)
     {
-        $post=web_post::find($id);
+        $post=webpost::find($id);
         return view('admin.post.edit',compact('post'));
     }
 
@@ -84,7 +84,7 @@ class WebPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $post=web_post::find($id);
+         $post=webpost::find($id);
         $post->fill($request->all());
         $post->save();
 
@@ -101,7 +101,7 @@ class WebPostController extends Controller
      */
     public function destroy($id)
     {
-        $post=web_Post::find($id);
+        $post=webPost::find($id);
         $post->delete();
         
         //le manda un mensaje al usuario

@@ -5,7 +5,7 @@ namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Soft\Http\Requests;
-use Soft\web_post;
+use Soft\webpost;
 use Alert;
 use Session;
 use Redirect;
@@ -25,7 +25,7 @@ class PaginasController extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $posts=web_post::paginate(10);
+        $posts=webpost::paginate(10);
          return view ('shop.blog',compact(
                                           'carrucels',
                                           'carrucelMarcas',
@@ -46,7 +46,7 @@ class PaginasController extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $post=web_post::find($id);
+        $post=webpost::find($id);
         return view('shop.blog-details',compact(
                                           'carrucels',
                                           'carrucelMarcas',

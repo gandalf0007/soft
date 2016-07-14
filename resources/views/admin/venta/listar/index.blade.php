@@ -57,8 +57,8 @@ endboton crear-->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-expand"> Detalle</i></button>
 </td>
 
-	  	<td>{{ $venta->user->usu_nombre }}</td>
-	  	<td>{{ $venta ->cliente->clie_nombres}}</td>
+	  	<td>{{ $venta->user->unombre }}</td>
+	  	<td>{{ $venta ->cliente->nombre}}</td>
 	  	<td>{{ $venta -> pago_tipo}}</td>
 	  	<td>{{ $venta -> comentario}}</td>
 	  	<td>{{ $venta -> total}}</td>

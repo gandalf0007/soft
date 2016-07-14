@@ -4,7 +4,7 @@ namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
 
-class web_post extends Model
+class webpost extends Model
 {
            
 
@@ -17,5 +17,13 @@ class web_post extends Model
            	'web_post_categoria_id',
             
     ];
+
+public function user()
+    {
+        //un post tiene un user
+       return $this->belongsTo(user::class);;
+    } 
+
+
 }
 

@@ -23,14 +23,14 @@
 	@foreach($productos as $producto)
 	<tbody>
 	<!-- -->
-	<td>{{ $producto -> pro_codigo}}</td>
+	<td>{{ $producto -> codigo}}</td>
 	<td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
-  	<td>{{ $producto -> pro_descrip}}</td>
+  	<td>{{ $producto -> descripcion}}</td>
    	<td>{{ $producto -> iva_id}}</td>
-  	<td>{{ $producto -> pro_preciocosto}}</td>
-  	<td>{{ $producto -> pro_venta}}</td>
-  	<td>{{ $producto -> pro_precio2}}</td>
-  	<td>{{ $producto -> pro_stock_act}}</td>
+  	<td>{{ $producto -> preciocosto}}</td>
+  	<td>{{ $producto -> precioventa}}</td>
+  	<td>{{ $producto -> precio2}}</td>
+  	<td>{{ $producto -> stockactual}}</td>
 
  <!--el usuario.edit hace referencia a la funcion edit del UsuarioController y $user->id nos envia
  el id a esa funcion -->

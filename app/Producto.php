@@ -11,41 +11,43 @@ class Producto extends Model
 {
 
 	protected $fillable = [
-        'id',
-        'pro_codigo',
-        'pro_descrip',
-        'path',
-        'pro_preciocosto',
-        'iva_id',
+           'id',
+           'codigo',
+           'descripcion',
+             
+           'preciocosto',
+           'iva_id',
+           'precioventa',
+           'precio',           
+           'rentabi1',
+           'precio2',
+           'rentabi2',
+           'precio3',
+           'rentabi3',
+           
+            
 
-        'pro_venta',
-        'pro_precio2',
-        'pro_precio3',
+           'atockactual',
+           'stockcritico',
+           'atockpededid',
+            'rubro_id',
+            'marca_id',
+            'provedor_id',
 
-          'pro_rentabi1',
-          'pro_rentabi2',
-          'pro_rentabi3',
+           'cod_alter',
+           'ubicacion',
+           'cod_bulto',
+           'cant_bulto',
 
-          'pro_stock_act',
-          'pro_stock_cri',
-          'pro_stock_ped',
-
-           'rubro_id',
-           'marca_id',
-
-          'pro_cod_alter',
-          'pro_ubicacion',
-          'pro_cod_bulto',
-          'pro_cant_bulto',
-
-           'provedor_id',
-
-          'pro_observaciones',
-          //faltan en el formulario
-          'pro_habilitado',
-          'pro_alerta',
-          'pro_usar_rentabili',
-          'fecha_alta',
+           'habilitado',
+           'alerta',
+           'observaciones',
+           'usar_rentabili',
+            
+           'imagen1',
+           'imagen2',
+           'imagen3',
+          
     ];
 
      	
@@ -66,7 +68,7 @@ class Producto extends Model
     public function transaction()
     {
       //una producto corresponde a una transaccion
-        return $this->belongsTo(transaction::class);
+        return $this->hasMany(transaction::class);
     }
 
     public function marca()

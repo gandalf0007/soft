@@ -19,9 +19,9 @@
       </tr>
     </thead>
     <tbody>
-   <td>{{ $venta->user->usu_nombre }}</td>
-   <td>{{ $venta->user->usu_apellido }}</td>
-   <td>{{ $venta->user->usu_email }}</td>
+   <td>{{ $venta->user->nombre }}</td>
+   <td>{{ $venta->user->apellido }}</td>
+   <td>{{ $venta->user->email }}</td>
    <td>{{ $venta->user->perfil->descripcion }}</td>
   </tbody>
   </table>
@@ -41,11 +41,11 @@
       </tr>
     </thead>
     <tbody>
-   <td>{{ $venta->cliente->clie_nombres }}</td>
-   <td>{{ $venta->cliente->clie_direccion }}</td>
-   <td>{{ $venta->cliente->clie_Telefono }}</td>
-   <td>{{ $venta->cliente->clie_mail }}</td>
-   <td>{{ $venta->cliente->clie_cuit }}</td>
+   <td>{{ $venta->cliente->nombre}}</td>
+   <td>{{ $venta->cliente->direccion }}</td>
+   <td>{{ $venta->cliente->telefono }}</td>
+   <td>{{ $venta->cliente->email }}</td>
+   <td>{{ $venta->cliente->cuit }}</td>
   </tbody>
   </table>
 
@@ -70,11 +70,11 @@
     @foreach($transactions as $transaction)
     @if ($venta->id == $transaction->venta_id )
     <tbody>
-   <td>{{ $transaction->producto->path }}</td>
-   <td>{{ $transaction->producto->pro_codigo }}</td>
-   <td>{{ $transaction->producto->pro_descrip }}</td>
+   <td>{{ $transaction->producto->imagen1 }}</td>
+   <td>{{ $transaction->producto->codigo }}</td>
+   <td>{{ $transaction->producto->descripcion }}</td>
    <td>{{ $transaction->cantidad }}</td>
-   <td>{{ $transaction->producto->pro_venta }}</td>
+   <td>{{ $transaction->producto->precioventa }}</td>
    <td>{{ $transaction->producto->marca->descripcion }}</td>
    <td>{{ $transaction->total_price }}</td>
   </tbody>

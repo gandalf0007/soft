@@ -70,6 +70,12 @@ public function perfil()
     {
         //un usuario tiene un perfil
        return $this->belongsTo(perfil::class);;
-    }    
+    }   
+
+public function webpost()
+    {
+        //un usuario puede tener muchos post
+       return $this->hasMany(webpost::class);
+    } 
 
 }

@@ -63,7 +63,7 @@ class VentaController extends Controller
         $itemadd  = producto::find($id);
         $cart = \Session::get('cart');
         $itemadd->quantity = 1;
-        $cart[$itemadd->pro_descrip] = $itemadd;
+        $cart[$itemadd->descripcion] = $itemadd;
         \Session::put('cart', $cart);
         return redirect('venta-show');
 
@@ -74,7 +74,7 @@ class VentaController extends Controller
     {
         $item  = producto::find($id);
         $cart = \Session::get('cart');
-        unset($cart[$item->pro_descrip]);
+        unset($cart[$item->descripcion]);
         \Session::put('cart', $cart);
 
         return redirect('venta-show');
@@ -87,7 +87,7 @@ class VentaController extends Controller
         
         $item  = producto::find($id);
         $cart = \Session::get('cart');
-        $cart[$item->pro_descrip]->quantity = $quantity;
+        $cart[$item->descripcion]->quantity = $quantity;
         \Session::put('cart', $cart);
 
         return redirect('venta-show');
@@ -110,7 +110,7 @@ class VentaController extends Controller
         $cart = \Session::get('cart');
         $total = 0;
         foreach($cart as $item){
-            $total += $item->pro_venta * $item->quantity;
+            $total += $item->precioventa * $item->quantity;
         }
         return $total;
     }
@@ -150,7 +150,7 @@ class VentaController extends Controller
             //alamacena la transaccion
             $transaction->venta_id    = $venta->id;
             $transaction->producto_id  = $item->id;
-            $transaction->user        = Auth::user()->usu_nombre;
+            $transaction->user        = Auth::user()->nombre;
             $transaction->cantidad    = $item->quantity;
             $transaction->total_price = $item->pro_venta * $item->quantity;
             //guardo la transaccion
@@ -158,7 +158,7 @@ class VentaController extends Controller
 
             //descontar stock en la tabla producto
             $producto = producto::find($item->id);
-            $producto->pro_stock_act = $producto->pro_stock_act - $item->quantity;
+            $producto->stockactual = $producto->stockactual - $item->quantity;
             $producto->save();
         }   
 
@@ -248,15 +248,15 @@ public function detalleVentaPdf($tipo,$id){
 public function seleccionarCliente(request $request)
     {
          //me busca los clientes
-        $clientes = cliente::orderBy('clie_nombres');
+        $clientes = cliente::orderBy('nombre');
 
         /*------------buscador-----------*/
         //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
-        $clie_nombre=$request->input('clie_nombres');
+        $clie_nombre=$request->input('nombre');
         //preguntamos que si ($usu_nombre no es vacio
         if (!empty($clie_nombre)) {
             //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $clientes->where('clie_nombres','LIKE','%'.$clie_nombre.'%');
+            $clientes->where('nombre','LIKE','%'.$clie_nombre.'%');
         }
          $clientes=$clientes->paginate(10);
          /*------------buscador-----------*/

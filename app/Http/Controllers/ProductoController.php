@@ -74,7 +74,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-         producto::create($request->all());
+         Producto::create($request->all());
          Alert::success('Mensaje existoso', 'Producto Creado');
         return redirect('/producto');
     }
