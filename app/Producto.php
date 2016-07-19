@@ -76,4 +76,10 @@ class Producto extends Model
       //una producto corresponde a una marca
         return $this->belongsTo(marca::class);
     }
+
+    public function producto_image()
+    {
+      //una producto puede tener varias imagenes
+        return $this->hasMany(producto_image::class);
+    }
 }

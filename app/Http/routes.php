@@ -137,6 +137,26 @@ Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');
+Route::resource('productoimagen','ProductoImagenController');
+
+/*porducto carga de imaganes*/
+Route::post('producto-uploadimagen/{id}','ProductoImagenController@crear');
+Route::get('producto-uploadimagen/{id}','ProductoImagenController@crear');
+Route::post('producto-imagen/{id}',[
+'as'=>'ProductoImagen.uploadFiles',
+'uses'=>'ProductoImagenController@uploadFiles'
+	]);
+Route::delete('producto-destroyimagen/{id}',[
+'as'=>'ProductoImagen.destroy',
+'uses'=>'ProductoImagenController@destroy'
+	]);
+
+/*porducto carga de imaganes*/
+
+
+
+
+
 Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
 Route::resource('transporte','TransporteController');
@@ -145,6 +165,8 @@ Route::resource('gasto','GastoController');
 Route::resource('categoria','CategoriaController');
 Route::resource('categoriasub','CategoriaSubController');
 /*---------------menu------------*/
+
+
 
 
 /*---------------menu WEB------------*/

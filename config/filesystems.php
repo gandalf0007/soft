@@ -43,10 +43,19 @@ return [
 
     'disks' => [
 
+        
+
+
         'local' => [
             'driver' => 'local',
             'root'   => public_path().'/storage',
         ],
+
+        'productos' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/productos',
+        ],
+
 
          'svg' => [
             'driver' => 'local',

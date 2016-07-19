@@ -15,7 +15,6 @@
 <script src="{{ asset('js/sweetalert/sweetalert-dev.js') }}"></script>
 @include('sweet::alert')
 
-
 <!--Filemanager-->
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
@@ -24,6 +23,44 @@ editor_config.selector = "textarea";
 editor_config.path_absolute = "{{ asset('/') }}";
 tinymce.init(editor_config);
 </script>
+
+<!--dropzone-->
+<script src="{{ asset('/js/dropzone/dropzone.js') }}" ></script>
+<script>
+        Dropzone.options.myDropzone = {
+            autoProcessQueue: false,
+            uploadMultiple: true,
+           addRemoveLinks: true,
+           dictRemoveFile: 'Remove',
+            maxFilezise: 20,
+             parallelUploads: 100,
+            maxFiles: 4,
+
+            
+            init: function() {
+                var submitBtn = document.querySelector("#submit");
+                myDropzone = this;
+                
+                submitBtn.addEventListener("click", function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
+                this.on("addedfile", function(file) {
+                    alert("file uploaded");
+                });
+                
+                this.on("complete", function(file) {
+                    myDropzone.removeFile(file);
+                });
+
+                this.on("success", 
+                    myDropzone.processQueue.bind(myDropzone)
+                );
+            }
+        };
+    </script>
+
 
 @yield('scriptdatepicker')
 

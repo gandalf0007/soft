@@ -169,6 +169,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
        Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider::class,
+           
     ],
 
     /*
@@ -226,6 +227,10 @@ return [
          'Excel' => Maatwebsite\Excel\Facades\Excel::class,
          'Alert' => UxWeb\SweetAlert\SweetAlert::class,
           'FilemanagerLaravel'=>Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
+         
+
     ],
+
 
 ];

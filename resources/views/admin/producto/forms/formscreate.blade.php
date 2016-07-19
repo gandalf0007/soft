@@ -308,6 +308,9 @@
 	{!!Form::label('file', 'Imagen') !!}
 	{!!Form::file('imagen3')!!}
 </div>
+
 </div>
 </div>
 </div>
+
+
