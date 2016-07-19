@@ -62,8 +62,10 @@ class ProductoController extends Controller
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
-        return view('admin.producto.create',['ivatipos'=>$ivatipos,'rubros'=>$rubros,'marcas'=>$marcas
-                                            ,'provedores'=>$provedores]);
+        return view('admin.producto.create',['ivatipos'=>$ivatipos,
+                                            'rubros'=>$rubros,
+                                            'marcas'=>$marcas,
+                                            'provedores'=>$provedores]);
     }
 
     /**

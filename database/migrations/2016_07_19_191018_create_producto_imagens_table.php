@@ -13,12 +13,10 @@ class CreateProductoImagensTable extends Migration
     public function up()
     {
         Schema::create('producto_imagens', function (Blueprint $table) {
-            $table->increments('id');
+             $table->increments('id');
             $table->string('nombre');
             $table->string('ruta');
             $table->string('tamaño');
-
-           
             $table->timestamps();
         });
     }

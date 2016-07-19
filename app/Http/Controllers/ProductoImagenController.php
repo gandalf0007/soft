@@ -37,7 +37,6 @@ class ProductoImagenController extends Controller
 
 
    public function uploadFiles(request $request,$id) {
-         $producto=producto::find($id);
           $path = public_path().'/storage/productos';
             $files = $request->file('file');
             foreach($files as $file){
@@ -48,7 +47,7 @@ class ProductoImagenController extends Controller
                 producto_imagen::create([
             'nombre' =>$fileName,
             'ruta'=>$path,
-            'producto_id'=>$producto->id,
+            'producto_id'=>$id,
             ]);
             }
         //le manda un mensaje al usuario

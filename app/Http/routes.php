@@ -139,8 +139,8 @@ Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');
 Route::resource('productoimagen','ProductoImagenController');
 
+
 /*porducto carga de imaganes*/
-Route::post('producto-uploadimagen/{id}','ProductoImagenController@crear');
 Route::get('producto-uploadimagen/{id}','ProductoImagenController@crear');
 Route::post('producto-imagen/{id}',[
 'as'=>'ProductoImagen.uploadFiles',

@@ -46,9 +46,7 @@ tinymce.init(editor_config);
                     e.stopPropagation();
                     myDropzone.processQueue();
                 });
-                this.on("addedfile", function(file) {
-                    alert("file uploaded");
-                });
+                
                 
                 this.on("complete", function(file) {
                     myDropzone.removeFile(file);

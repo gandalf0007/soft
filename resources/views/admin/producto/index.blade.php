@@ -37,10 +37,10 @@
 		<th>Codigo</th>
 		<th>Imagen</th>
 		<th>Descripcion</th>
-		<th>Iva</th>
-		<th>Costo</th>
+		<!--<th>Iva</th>-->
+		<!--<th>Costo</th>-->
 		<th>venta</th>
-		<th>venta 2</th>
+		<!--<th>venta 2</th>-->
 		<th>Stock</th>
 		<th class="col-md-4">Operaciones</th>
 	</thead>
@@ -50,16 +50,16 @@
 	<td>{{ $producto -> codigo}}</td>
 	<td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
   	<td>{{ $producto -> descripcion}}</td>
-   	<td>{{ $producto -> iva_id}}</td>
-  	<td>{{ $producto -> preciocosto}}</td>
+   	<!--<td>{{ $producto -> iva_id}}</td>-->
+  	<!--<td>{{ $producto -> preciocosto}}</td>-->
   	<td>{{ $producto -> precioventa}}</td>
-  	<td>{{ $producto -> precio2}}</td>
+  	<!--<td>{{ $producto -> precio2}}</td>-->
   	<td>{{ $producto -> stockactual}}</td>
 
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
 
-<br><a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa "></i>fotos</a>
+<a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa "></i>fotos</a>
 
 
 {!! link_to_route('producto.edit', $title = 'Editar', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary']); !!}
