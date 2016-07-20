@@ -113,6 +113,8 @@
 
 
 
+
+
 	<!---------- descripcion corta -------------->	
 			<div class="description-container m-t-20">
 				{!! $itemdetalle->descripcioncorta !!}
@@ -120,7 +122,23 @@
 	<!---------- descripcion corta -------------->	
 
 
-			
+	<!---------- Precio -------------->	
+	<div class="price-container info-container m-t-20">
+		<div class="row">
+									
+		<div class="col-sm-6">
+			<div class="price-box">
+				<span class="price">$800.00</span>
+				<span class="price-strike">$900.00</span>
+			</div>
+		</div>
+
+	</div><!-- /.row -->
+</div><!-- /.price-container -->
+<!---------- Precio -------------->	
+
+
+
 	<div class="attributes-list outer-top-vs">
 		<fieldset class="attribute_fieldset">
 			<div class="row">

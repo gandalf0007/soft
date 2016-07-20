@@ -29,7 +29,7 @@
 	<li class="yamm-content">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-lg-4">
-				<ul><li><a href="subcategoria/{{$subcategoria->nombre}}">{{ $subcategoria->nombre }}</a></li></ul>	
+				<ul><li><a href="subcategoria-{{$subcategoria->nombre}}">{{ $subcategoria->nombre }}</a></li></ul>	
 			</div>
 			<div class="dropdown-banner-holder">
                 <a href="#"><img alt="" src="storage/banner/{{ $categoria->banner }}" /></a>

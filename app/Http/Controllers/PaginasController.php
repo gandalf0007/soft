@@ -127,4 +127,27 @@ public function item(){
     }
 
 
+     public function subcategoria($nombre){
+      /*seccion para el layout*/
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+        /*seccion para el layout*/
+        $itemdetalles=producto::all();
+        $imagens= producto_imagen::all();
+        return view('shop.category',compact(
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos',
+                                          'itemdetalles',
+                                          'imagens'
+                                          ));
+
+    }
+
+
 }

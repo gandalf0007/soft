@@ -21,12 +21,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/','FrontController@admin');
 
 Route::get('inicio','PaginasController@Home');
+
+
 Route::get('blog','PaginasController@post');
 Route::get('blogdetail-post{id}',[
 'as'=>'paginas.postDetalle',
 'uses'=>'PaginasController@postDetalle'
 	]);
 
+Route::get('subcategoria-{nombre}','PaginasController@subcategoria');
 
 Route::get('item','PaginasController@item');
 Route::get('item-detalle{id}',[
