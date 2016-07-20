@@ -106,6 +106,8 @@ public function item(){
 
   public function itemDetalle($id){
       /*seccion para el layout*/
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
@@ -115,6 +117,8 @@ public function item(){
         $itemdetalle=producto::find($id);
         $imagens= producto_imagen::where('producto_id', '=',$id)->get();
         return view('shop.detail2',compact(
+                                          'categorias',
+                                          'subcategorias',
                                           'carrucels',
                                           'carrucelMarcas',
                                           'informacions',
@@ -129,6 +133,8 @@ public function item(){
 
      public function subcategoria($nombre){
       /*seccion para el layout*/
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
@@ -138,6 +144,8 @@ public function item(){
         $itemdetalles=producto::all();
         $imagens= producto_imagen::all();
         return view('shop.category',compact(
+                                          'categorias',
+                                          'subcategorias',
                                           'carrucels',
                                           'carrucelMarcas',
                                           'informacions',

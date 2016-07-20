@@ -1,13 +1,11 @@
-@extends('layouts.shop')
+@extends('layouts.shopmenu')
 @section('content')
 
 
 <div class="body-content outer-top-xs cnt-home">
 	<div class='container'>
 		<div class='row outer-bottom-sm'>
-			<div class='col-md-3 sidebar'>
-			<!-- MENU -->
-            </div>
+			
 
 
 			<div class='col-md-9'>

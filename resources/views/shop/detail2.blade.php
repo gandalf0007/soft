@@ -1,4 +1,4 @@
-@extends('layouts.shop')
+@extends('layouts.shopmenu')
 @section('content')
 
 
@@ -7,23 +7,16 @@
 	<div class='container'>
 		<div class="homepage-container">
 			<div class='row single-product outer-bottom-sm '>
-				<div class='col-md-3 sidebar'>
-					<div class="sidebar-module-container">
-
-					<!-- ====== Menu ===== -->
-   
-					</div>
-				</div><!-- /.sidebar --> 
+			
 <!-- ===================== COLOR: END ======================= -->
 
 
-
-				<div class='col-md-9'>
-					<div class="row  wow fadeInUp">
-						     <div class="col-xs-12 col-sm-6 col-md-7 gallery-holder">
-    <div class="product-item-holder size-big single-product-gallery small-gallery">
+<div class='col-md-9'>
 
 
+  <div class="row  wow fadeInUp">
+	<div class="col-xs-12 col-sm-6 col-md-7 gallery-holder">
+      <div class="product-item-holder size-big single-product-gallery small-gallery">
 <!----------- imagen portada ------------>
         <div id="owl-single-product">
 
@@ -45,7 +38,6 @@
 <!----------- imagen portada ------------>
 
 
-
  <!----------- imagen carrucel ------------>  
         <div class="single-product-gallery-thumbs second-gallery-thumb gallery-thumbs">
             <div id="owl-single-product2-thumbnails">
@@ -57,10 +49,7 @@
                 </div>
              @endforeach        
             </div><!-- /#owl-single-product-thumbnails -->
- <!----------- imagen carrucel ------------> 
-            
 
-        
          <div class="nav-holder left">
                 <a class="prev-btn slider-prev" data-target="#owl-single-product2-thumbnails" href="#prev"></a>
             </div><!-- /.nav-holder -->
@@ -68,15 +57,16 @@
                 <a class="next-btn slider-next" data-target="#owl-single-product2-thumbnails" href="#next"></a>
             </div><!-- /.nav-holder -->
             </div><!-- /.gallery-thumbs -->
-
+ <!----------- imagen carrucel ------------> 
 
 
     </div><!-- /.single-product-gallery -->
-</div><!-- /.gallery-holder -->	 
+</div><!-- /.col-xs-12 col-sm-6 col-md-7 gallery-holder -->	 
 
 
-		<div class='col-sm-6 col-md-5 product-info-block'>
-			<div class="product-info">
+
+<div class='col-sm-6 col-md-5 product-info-block'>
+  <div class="product-info">
 			<!---------- titulo -------------->	 
 				<h1 class="name">{{ $itemdetalle->descripcion }}</h1>
 			<!---------- titulo -------------->	 
@@ -95,8 +85,8 @@
 			</div><!-- /.rating-reviews -->
 
 <!-------------- Disponibilidad ------------------>	
-			<div class="stock-container info-container m-t-10">
-				<div class="row">
+	<div class="stock-container info-container m-t-10">
+		<div class="row">
 					
 <div class="col-sm-9">
 	@if($itemdetalle->stockactual > 2)
@@ -107,20 +97,15 @@
 	<div class="alert alert-warning" role="alert"><strong>DISPONIBILIDAD</strong> : POCO STOCK </div>
 	@endif
 </div>				
-				</div><!-- /.row -->	
-			</div><!-- /.stock-container -->
+		</div><!-- /.row -->	
+	</div><!-- /.stock-container -->
 <!-------------- Disponibilidad ------------------>		
-
-
-
-
 
 	<!---------- descripcion corta -------------->	
 			<div class="description-container m-t-20">
 				{!! $itemdetalle->descripcioncorta !!}
 			</div><!-- /.description-container -->
 	<!---------- descripcion corta -------------->	
-
 
 	<!---------- Precio -------------->	
 	<div class="price-container info-container m-t-20">
@@ -136,8 +121,6 @@
 	</div><!-- /.row -->
 </div><!-- /.price-container -->
 <!---------- Precio -------------->	
-
-
 
 	<div class="attributes-list outer-top-vs">
 		<fieldset class="attribute_fieldset">
@@ -162,49 +145,44 @@
 		<div class="col-sm-3 col-lg-3 col-md-4">
 			<input type="text" value="10" class="txt txt-qty">
 		</div>
-		<div class="cart col-md-12 col-lg-6 clearfix animate-effect">
-			<div class="action">
-														
-<button type="button" class="btn btn-primary">Add to cart</button>
-<button type="button" class="left btn btn-primary"><i class="icon fa fa-heart"></i></button>
-<button type="button" class="left btn btn-primary"><i class="fa fa-retweet"></i></button>											                
-											
-			</div><!-- /.action -->
-		</div>
+<div class="cart col-md-12 col-lg-6 clearfix animate-effect">
+  <div class="action">											
+	<button type="button" class="btn btn-primary">Add to cart</button>
+	<button type="button" class="left btn btn-primary"><i class="icon fa fa-heart"></i></button>
+	<button type="button" class="left btn btn-primary"><i class="fa fa-retweet"></i></button>
+  </div><!-- /.action -->
+</div>
 	</div>
 
-								<div class="row product-social-link outer-top-vs">
-
-									<div class="col-md-3 col-sm-3">
-										<span class="label">Share </span>
-                                    </div>
-									<div class=" col-md-9 col-sm-9 social-icons">
-							            <ul class="list-inline">
-							                <li><a href="http://facebook.com/transvelo" class="fa fa-facebook"></a></li>
-							                <li><a href="#" class="fa fa-twitter"></a></li>
-							                <li><a href="#" class="fa fa-linkedin"></a></li>
-							                <li><a href="#" class="fa fa-rss"></a></li>
-							                <li><a href="#" class="fa fa-pinterest"></a></li>
-							            </ul><!-- /.social-icons -->
-							        </div>
-								
-								</div>
+	<div class="row product-social-link outer-top-vs">
+		<div class="col-md-3 col-sm-3">
+			<span class="label">Share </span>
+        </div>
+		<div class=" col-md-9 col-sm-9 social-icons">
+		<ul class="list-inline">
+			<li><a href="http://facebook.com/transvelo" class="fa fa-facebook"></a></li>
+			<li><a href="#" class="fa fa-twitter"></a></li>
+			<li><a href="#" class="fa fa-linkedin"></a></li>
+			<li><a href="#" class="fa fa-rss"></a></li>
+			<li><a href="#" class="fa fa-pinterest"></a></li>
+		</ul><!-- /.social-icons -->
+		</div>
+	</div>
 								
 							</div><!-- /.product-info -->
-						</div><!-- /.col-sm-5 -->
-					</div><!-- /.row -->
+						</div><!-- /.col-sm-6 col-md-5 product-info-block -->
+					</div><!-- /.row  wow fadeInUp -->
+
 
 
 	<div class="product-tabs outer-top-smal  wow fadeInUp">
 				
-						<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
-							<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-							<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-							<li><a data-toggle="tab" href="#tags">COMENTARIOS</a></li>
-						</ul><!-- /.nav-tabs #product-tabs -->
+	<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
+		<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
+		<li><a data-toggle="tab" href="#review">REVIEW</a></li>
+		<li><a data-toggle="tab" href="#tags">COMENTARIOS</a></li>
+	</ul><!-- /.nav-tabs #product-tabs -->
 					
-
-
 	<div class="tab-content outer-top-xs">
 
 						<!----------- descripcion larga ---------->
@@ -221,14 +199,15 @@
 		<div class="product-reviews">
 			<h4 class="title">Customer Reviews</h4>
 
-			<div class="reviews">
-				<div class="review">
-					<div class="review-title"><span class="summary">Best Product For me :)</span><span class="date"><i class="fa fa-calendar"></i><span>20 minutes ago</span></span></div>
-					<div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit nisl in adipiscin"</div>
-					<div class="author m-t-15"><i class="fa fa-pencil-square-o"></i> <span class="name">Michael Lee</span></div>						</div>
+ <div class="reviews">
+	<div class="review">
+		<div class="review-title"><span class="summary">Best Product For me</span><span class="date"><i class="fa fa-calendar"></i><span>20 minutes ago</span></span></div>
+		<div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit nisl in adipiscin"</div>
+		<div class="author m-t-15"><i class="fa fa-pencil-square-o"></i> <span class="name">Michael Lee</span></div>						
+	</div>
+  </div><!-- /.reviews -->
+ </div><!-- /.product-reviews -->
 
-				</div><!-- /.reviews -->
-			</div><!-- /.product-reviews -->
 
 <div class="product-add-review">
 <h4 class="title">Write your own review</h4>
@@ -276,7 +255,6 @@
 </div><!-- /.review-table -->
 
 											
-
 <div class="review-form">
 	<div class="form-container">
 		<form role="form" class="cnt-form">
@@ -308,11 +286,13 @@
 			</form><!-- /.cnt-form -->
 		</div><!-- /.form-container -->
 	</div><!-- /.review-form -->
-
 </div><!-- /.product-add-review -->										
+
 
 	</div><!-- /.product-tab -->
 </div><!-- /.tab-pane -->
+
+
 
 
 <!---------------- COMENTARIO ------------------>
@@ -352,7 +332,7 @@
 				</div><!-- /.product-tab -->
 <!---------------- COMENTARIO ------------------>
 
-			</div><!-- /.tab-pane -->
+
 		</div><!-- /.tab-content -->
 	</div><!-- /.product-tabs -->
 </div><!-- /.col -->
@@ -360,9 +340,6 @@
 		</div><!-- /.homepage-container -->
 	</div><!-- /.container -->
 </div><!-- /.body-content -->					
-<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
-
-
 
 
 
