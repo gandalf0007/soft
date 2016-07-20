@@ -17,19 +17,16 @@ class Producto extends Model
              
            'preciocosto',
            'iva_id',
-           'precioventa',
-           'precio',           
+           'precioventa',     
            'rentabi1',
            'precio2',
            'rentabi2',
            'precio3',
            'rentabi3',
            
-            
-
-           'atockactual',
+           'stockactual',
            'stockcritico',
-           'atockpededid',
+           'stockpedido',
             'rubro_id',
             'marca_id',
             'provedor_id',
@@ -43,7 +40,10 @@ class Producto extends Model
            'alerta',
            'observaciones',
            'usar_rentabili',
-            
+
+            'descripcioncorta',
+            'descripcionlarga',
+
            'imagen1',
            'imagen2',
            'imagen3',

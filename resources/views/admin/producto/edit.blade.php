@@ -16,8 +16,19 @@
 
 {!!Form::model($producto,['route'=>['producto.update',$producto->id],'method'=>'PUT' , 'files'=>True])!!}
 
-  
-{{ Html::image('storage/' . $producto->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Imagen de Portada</h3>
+    </div>  
+  <div class="panel-body">
+<div class="row">
+<!--imagen-->
+{{ Html::image('storage/productos/' . $producto->imagen1 , 'img', array('class' => 'user-image center-block' , 'style'=>'height:100px')) }}
+
+</div>
+</div>
+</div>
+
 
 @include('admin.producto.forms.formscreate')
 

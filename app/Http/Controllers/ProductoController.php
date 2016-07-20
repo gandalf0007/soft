@@ -4,6 +4,7 @@ namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 use Soft\Http\Requests;
 use Soft\Producto;
+use Soft\producto_imagen;
 use Session;
 use Redirect;
 use Storage;
@@ -12,6 +13,7 @@ use Soft\Marca;
 use Soft\Ivatipo;
 use Soft\Provedore;
 use Alert;
+use Image;
 
 class ProductoController extends Controller
 {
@@ -76,7 +78,49 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-         Producto::create($request->all());
+
+        if ($request->hasFile('imagen1')) {
+            $imagen =$request->file('imagen1');
+            $filename=time() . '.' . $imagen->getClientOriginalExtension();
+            image::make($imagen)->save( public_path('/storage/productos/' . $filename));
+        
+         Producto::create([
+           'codigo'=>$request['codigo'],
+           'descripcion'=>$request['descripcion'],
+            
+           'preciocosto'=>$request['preciocosto'],
+           'iva_id'=>$request['iva_id'],
+           'precioventa'=>$request['precioventa'],      
+           'rentabi1'=>$request['rentabi1'],
+           'precio2'=>$request['precio2'],
+           'rentabi2'=>$request['rentabi2'],
+           'precio3'=>$request['precio3'],
+           'rentabi3'=>$request['rentabi3'],
+
+           'stockactual'=>$request['stockactual'],
+           'stockcritico'=>$request['stockcritico'],
+           'stockpedido'=>$request['stockpedido'],
+           'rubro_id'=>$request['rubro_id'],
+           'marca_id'=>$request['marca_id'],
+           'provedor_id'=>$request['provedor_id'],
+
+           'cod_alter'=>$request['cod_alter'],
+           'ubicacion'=>$request['ubicacion'],
+           'cod_bulto'=>$request['cod_bulto'],
+           'cant_bulto'=>$request['cant_bulto'],
+
+           'habilitado'=>$request['habilitado'],
+           'alerta'=>$request['alerta'],
+           'observaciones'=>$request['observaciones'],
+           'usar_rentabili'=>$request['usar_rentabili'],
+
+           'descripcioncorta'=>$request['descripcioncorta'],
+           'descripcionlarga'=>$request['descripcionlarga'],
+            
+           'imagen1'=>$filename,
+            ]);
+
+         }
          Alert::success('Mensaje existoso', 'Producto Creado');
         return redirect('/producto');
     }
@@ -119,6 +163,19 @@ class ProductoController extends Controller
     {
          $producto=producto::find($id);
          $producto->fill($request->all());
+
+         if ($request->hasFile('imagen1')) {
+            $imagen =$request->file('imagen1');
+            $filename=time() . '.' . $imagen->getClientOriginalExtension();
+            image::make($imagen)->save( public_path('/storage/productos/' . $filename));
+
+            $producto=Producto::find($id);
+            $producto->imagen1 = $filename;
+            $producto->save();
+
+        }
+
+
          $producto->save();
 
         //le manda un mensaje al usuario

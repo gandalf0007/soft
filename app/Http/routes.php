@@ -28,6 +28,13 @@ Route::get('blogdetail-post{id}',[
 	]);
 
 
+Route::get('item','PaginasController@item');
+Route::get('item-detalle{id}',[
+'as'=>'paginas.itemDetalle',
+'uses'=>'PaginasController@itemDetalle'
+	]);
+
+
  
 });
 
@@ -184,6 +191,7 @@ Route::get('webconfig-header','WebHeaderController@ConfigHeader');
 Route::resource('logo','WebLogoController');
 
 Route::resource('post','WebPostController');
+
 
 
 /*---------------menu WEB------------*/

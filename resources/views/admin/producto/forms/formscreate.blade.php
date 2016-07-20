@@ -6,7 +6,7 @@
 </style>
 <br><br>
 
-<!-- .................................... tabla descripcion................................. -->
+<!-- .......................... tabla descripcion......................... -->
 
 <div class="panel panel-primary">
 		<div class="panel-heading">
@@ -129,18 +129,19 @@
 </thead>
 <tbody>
 
-<td>
-<!--stock critico-->
-<div class="form-horizontal">
-	{!!Form::label('stock critico')!!}
-	{!!Form::text('stockcritico',null,['class'=>'form-control','placeholder'=>'ingrese el stock critico'])!!}
-</div>
-</td>
+
 <td>
 <!--stock actul-->
 <div class="form-horizontal">
 	{!!Form::label('stock actul')!!}
 	{!!Form::text('stockactual',null,['class'=>'form-control','placeholder'=>'ingrese el stock actul'])!!}
+</div>
+</td>
+<td>
+<!--stock critico-->
+<div class="form-horizontal">
+	{!!Form::label('stock critico')!!}
+	{!!Form::text('stockcritico',null,['class'=>'form-control','placeholder'=>'ingrese el stock critico'])!!}
 </div>
 </td>
 <td>
@@ -285,6 +286,20 @@
 
 
 
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Imagen de Portada</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+<!--imagen-->
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	{!!Form::label('file', 'Imagen') !!}
+	{!!Form::file('imagen1')!!}
+</div>
 
+</div>
+</div>
+</div>
 
 

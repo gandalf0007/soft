@@ -12,6 +12,8 @@ use Redirect;
 use Storage;
 use DB;
 use Image;
+use Soft\producto;
+use Soft\producto_imagen;
 
 class PaginasController extends Controller
 {
@@ -80,5 +82,49 @@ class PaginasController extends Controller
     }
     
 
- 
+
+public function item(){
+      /*seccion para el layout*/
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+        /*seccion para el layout*/
+        $items=producto::paginate(10);
+        return view('shop.blog-details',compact(
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos',
+                                          'itemds'
+                                          ));
+
+    }
+
+
+  public function itemDetalle($id){
+      /*seccion para el layout*/
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+        /*seccion para el layout*/
+        $itemdetalle=producto::find($id);
+        $imagens= producto_imagen::where('producto_id', '=',$id)->get();
+        return view('shop.detail2',compact(
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos',
+                                          'itemdetalle',
+                                          'imagens'
+                                          ));
+
+    }
+
+
 }
