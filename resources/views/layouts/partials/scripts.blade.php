@@ -60,6 +60,23 @@ tinymce.init(editor_config);
     </script>
 
 
+
+
+
+<script>
+$('#categoria').on('change',function(e){
+var cat_id = e.target.value;
+//ajax
+$.get('../ajax-subcategoria?cat_id='+ cat_id, function(data){
+    console.log(data);
+    $('#subcategoria').empty();
+    $.each(data, function(index, subcatObj){
+        $('#subcategoria').append('<option value="'+subcatObj.id+'">'+subcatObj.nombre+'</option>');
+    });
+});
+});
+</script>
+
 @yield('scriptdatepicker')
 
 

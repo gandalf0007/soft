@@ -15,6 +15,9 @@
 
 //rutas , el primer parammetro es el nombre de la ruta
 //el segundo parametro llama a la funcion dentro de frontController
+use Soft\categoria;
+use Soft\categoriasub;
+
 
 Route::group(['middleware' => 'web'], function () {
     
@@ -29,7 +32,7 @@ Route::get('blogdetail-post{id}',[
 'uses'=>'PaginasController@postDetalle'
 	]);
 
-Route::get('subcategoria-{nombre}','PaginasController@subcategoria');
+Route::get('subcategoria-{id}','PaginasController@subcategoria');
 
 Route::get('item','PaginasController@item');
 Route::get('item-detalle{id}',[
@@ -38,8 +41,17 @@ Route::get('item-detalle{id}',[
 	]);
 
 
- 
+
+
+
+
+
+
 });
+
+
+
+
 
 Route::group(array('middleware' => 'auth'), function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
@@ -148,7 +160,12 @@ Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 Route::resource('producto','ProductoController');
 Route::resource('productoimagen','ProductoImagenController');
-
+ //me devuelve las subcategorias al crear el prodcuto (select dinamico)
+Route::get('ajax-subcategoria',function(){
+	$cat_id = Input::get('cat_id');
+	$subcategorias = categoriasub::where('categoria_id','=', $cat_id)->get();
+	return Response::json($subcategorias);
+});
 
 /*porducto carga de imaganes*/
 Route::get('producto-uploadimagen/{id}','ProductoImagenController@crear');
@@ -160,7 +177,6 @@ Route::delete('producto-destroyimagen/{id}',[
 'as'=>'ProductoImagen.destroy',
 'uses'=>'ProductoImagenController@destroy'
 	]);
-
 /*porducto carga de imaganes*/
 
 

@@ -199,6 +199,40 @@
 </div>
 </div>
 
+
+<!-- .................Categoria y sub categorias........................ -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Categoria</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<!--categoria-->
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	<label for="">Categorias</label>
+	<select class="form-control input-sm" name="categorias[]" id="categoria">
+		@foreach($categorias as $categoria)
+			<option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
+		@endforeach
+	</select>
+</div>
+
+
+
+<!--sub categoria-->
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	<label for="">Sub-Categorias</label>
+	<select class="form-control input-sm" name="categoriasub_id" id="subcategoria">
+		<option value=""></option>
+	</select>
+</div>
+
+</div>
+</div>
+</div>
+
+
 <!-- ...........................tabla otras opciones................................. -->
 <div class="panel panel-primary">
 		<div class="panel-heading">

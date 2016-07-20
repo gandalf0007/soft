@@ -31,6 +31,8 @@ class Producto extends Model
             'marca_id',
             'provedor_id',
 
+            'categoriasub_id',
+            
            'cod_alter',
            'ubicacion',
            'cod_bulto',

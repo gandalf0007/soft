@@ -14,6 +14,11 @@ class Categoriasub extends Model
             
     ];
 
+    //para realizar el select dinamico
+    public static function subcategoriaselect($id){
+        return categoriasub::where('categoria_id','=',$id)->get();
+    }
+
     public function categoria()
     {
         //un sub-categoria puede tener una categoria

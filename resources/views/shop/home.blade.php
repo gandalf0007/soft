@@ -1,4 +1,4 @@
-@extends('layouts.shop')
+@extends('layouts.shopmenu')
 @include('alerts.errors')
 @section('content')
 
@@ -8,49 +8,6 @@
 	<div class="row">
 
 		
-
-<!-- ================================== MENU ================================== -->
-<div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-<div class="side-menu animate-dropdown outer-bottom-xs">
-  <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>        
-    <nav class="yamm megamenu-horizontal" role="navigation">
-      <ul class="nav">
-		@foreach($categorias as $categoria)<!----------foreach categorias---------->
-			 
-	<li class="dropdown menu-item">
-     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa {{$categoria->icon}} fa-fw"><img src="storage/categorias/{{$categoria->icon}}"></i>
-     {{ $categoria -> nombre}}</a>
-
-	@if(DB::table('categoriasubs')->where('categoria_id','=',$categoria->id)->get())
-	<ul class="dropdown-menu mega-menu">
-
-	@foreach($subcategorias as $subcategoria)
-	@if($categoria->id == $subcategoria->categoria_id)
-	<li class="yamm-content">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-lg-4">
-				<ul><li><a href="subcategoria-{{$subcategoria->nombre}}">{{ $subcategoria->nombre }}</a></li></ul>	
-			</div>
-			<div class="dropdown-banner-holder">
-                <a href="#"><img alt="" src="storage/banner/{{ $categoria->banner }}" /></a>
-           	</div>
-        </div><!-- /.row -->
-     </li><!-- /.yamm-content --> 
-  	@endif
-    @endforeach   
-
-   </ul><!-- /.dropdown-menu --> 	
-  	@endif
-   </li><!-- /.menu-item -->	
-	
-		  
-		@endforeach	 <!----------endforeach categorias---------->
-   	</ul><!-- /.nav -->	  
-  </nav><!-- /.megamenu-horizontal -->
-</div><!-- /.side-menu -->
-</div><!-- /.sidemenu-holder -->
-<!-- ================================== MENU ================================== -->
-
 
 <!-- ========================== CARRUCEL ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">			

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Soft\Http\Requests;
 use Soft\Producto;
 use Soft\producto_imagen;
+use Soft\categoria;
+use Soft\categoriasub;
 use Session;
 use Redirect;
 use Storage;
@@ -29,7 +31,7 @@ class ProductoController extends Controller
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
-
+        $categorias = categoria::all();
 
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::orderBy('descripcion');
@@ -50,7 +52,7 @@ class ProductoController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.index',compact('productos','rubros','marcas','ivatipos','provedores'));
+        return view('admin.producto.index',compact('categorias','productos','rubros','marcas','ivatipos','provedores'));
     }
 
     /**
@@ -60,15 +62,17 @@ class ProductoController extends Controller
      */
     public function create()
     {
+        
+        $categorias = categoria::all();
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
-        return view('admin.producto.create',['ivatipos'=>$ivatipos,
-                                            'rubros'=>$rubros,
-                                            'marcas'=>$marcas,
-                                            'provedores'=>$provedores]);
+
+        return view('admin.producto.create',compact('categorias','provedores','marcas','rubros','ivatipos'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -103,6 +107,9 @@ class ProductoController extends Controller
            'rubro_id'=>$request['rubro_id'],
            'marca_id'=>$request['marca_id'],
            'provedor_id'=>$request['provedor_id'],
+
+           'categoriasub_id'=>$request['categoriasub_id'],
+           
 
            'cod_alter'=>$request['cod_alter'],
            'ubicacion'=>$request['ubicacion'],
@@ -143,13 +150,14 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+         $categorias = categoria::all();
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
         $producto=producto::find($id);
-        return view('admin.producto.edit',compact('rubros','marcas','ivatipos','provedores','producto'));
+        return view('admin.producto.edit',compact('categorias','rubros','marcas','ivatipos','provedores','producto'));
     }
 
     /**

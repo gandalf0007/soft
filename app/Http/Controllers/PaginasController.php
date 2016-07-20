@@ -131,7 +131,7 @@ public function item(){
     }
 
 
-     public function subcategoria($nombre){
+     public function subcategoria($id){
       /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -141,8 +141,7 @@ public function item(){
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $itemdetalles=producto::all();
-        $imagens= producto_imagen::all();
+        $itemdetalles=producto::where('categoriasub_id','=',$id)->get();
         return view('shop.category',compact(
                                           'categorias',
                                           'subcategorias',
@@ -151,8 +150,8 @@ public function item(){
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'itemdetalles',
-                                          'imagens'
+                                          'itemdetalles'
+                                         
                                           ));
 
     }
