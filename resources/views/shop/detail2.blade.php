@@ -10,7 +10,7 @@
 			
 <!-- ===================== COLOR: END ======================= -->
 
-
+<br><br>		<br><br>		
 <div class='col-md-9'>
 
 
@@ -20,34 +20,41 @@
 <!----------- imagen portada ------------>
         <div id="owl-single-product">
 
-            <div class="single-product-gallery-item" id="silede1">
+			<div class="single-product-gallery-item" id="slide">
                 <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{ $itemdetalle->imagen1 }}">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" />
+                    <img class="img-responsive" alt="" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
+
 			@foreach($imagens as $imagen)
-			<div class="single-product-gallery-item" id="slide2">
+			<div class="single-product-gallery-item" id="{!! $imagen->id !!}">
                 <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{ $imagen->nombre }}">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="storage/productos/{{ $imagen->nombre }}" />
+                    <img class="img-responsive" alt="" src="storage/productos/{{ $imagen->nombre }}" data-echo="storage/productos/{{ $imagen->nombre }}" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 			@endforeach
-
         </div><!-- /.single-product-slider -->
 <!----------- imagen portada ------------>
 
-
+<?php $i=0; ?>
  <!----------- imagen carrucel ------------>  
         <div class="single-product-gallery-thumbs second-gallery-thumb gallery-thumbs">
             <div id="owl-single-product2-thumbnails">
- 			@foreach($imagens as $imagen)        
+
+            <div class="item">
+                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#">
+                        <img class="img-responsive" width="85" alt="" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" />
+                    </a>
+                </div>
+                
+ 			      @foreach($imagens as $imagen)   
                 <div class="item">
-                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="2" href="#slide{{$imagen->id}}">
+                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#{{$imagen->id}}">
                         <img class="img-responsive" width="85" alt="" src="storage/productos/{{ $imagen->nombre }}" data-echo="storage/productos/{{ $imagen->nombre }}" />
                     </a>
                 </div>
-             @endforeach        
+              @endforeach 
             </div><!-- /#owl-single-product-thumbnails -->
 
          <div class="nav-holder left">
@@ -113,8 +120,8 @@
 									
 		<div class="col-sm-6">
 			<div class="price-box">
-				<span class="price">$800.00</span>
-				<span class="price-strike">$900.00</span>
+				<span class="price">{!! $itemdetalle->precioventa !!}</span>
+				<span class="price-strike">{!! $itemdetalle->precio2 !!}</span>
 			</div>
 		</div>
 
@@ -176,13 +183,13 @@
 
 
 	<div class="product-tabs outer-top-smal  wow fadeInUp">
-				
+		
 	<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
 		<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
 		<li><a data-toggle="tab" href="#review">REVIEW</a></li>
 		<li><a data-toggle="tab" href="#tags">COMENTARIOS</a></li>
 	</ul><!-- /.nav-tabs #product-tabs -->
-					
+			<br><br>				
 	<div class="tab-content outer-top-xs">
 
 						<!----------- descripcion larga ---------->

@@ -62,7 +62,7 @@ tinymce.init(editor_config);
 
 
 
-
+<!--select dinamico para crear-->
 <script>
 $('#categoria').on('change',function(e){
 var cat_id = e.target.value;
@@ -72,6 +72,21 @@ $.get('../ajax-subcategoria?cat_id='+ cat_id, function(data){
     $('#subcategoria').empty();
     $.each(data, function(index, subcatObj){
         $('#subcategoria').append('<option value="'+subcatObj.id+'">'+subcatObj.nombre+'</option>');
+    });
+});
+});
+</script>
+
+<!--select dinamico para editar-->
+<script>
+$('#categoriaedit').on('change',function(e){
+var cat_id = e.target.value;
+//ajax
+$.get('../../ajax-subcategoria?cat_id='+ cat_id, function(data){
+    console.log(data);
+    $('#subcategoriaedit').empty();
+    $.each(data, function(index, subcatObj){
+        $('#subcategoriaedit').append('<option value="'+subcatObj.id+'">'+subcatObj.nombre+'</option>');
     });
 });
 });

@@ -1,10 +1,10 @@
+
 .blanco{
   background-color: #fff;
 }
 
-.mypadding{
-    padding-top: 25px;
-}
+
+
 
 /*===================================================================================*/
 /*  GENERAL
@@ -60,8 +60,9 @@ a {
 body {
   font-size: 13px;
   color: #666666;
-  background-color: #f11313;
-  background: url('http://www.xgaming.com.ar/themes/gameworld/css/../img/bkg_body.jpg') fixed center top no-repeat;
+
+background: url('http://www.xgaming.com.ar/themes/gameworld/css/../img/bkg_body.jpg') fixed center top no-repeat;
+ background: url('http://www.xgaming.com.ar/themes/gameworld/css/../img/bkg_body2.png') repeat fixed;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -271,7 +272,7 @@ img[src="assets/images/blank.gif"] {
   margin-top: 80px;
 }
 .outer-top-xs {
-  /*margin-top: 30px;*/
+  margin-top: 30px;
 }
 .outer-top-vs {
   margin-top: 40px;
@@ -561,7 +562,6 @@ a {
 }
 .header-style-1 .header-nav {
   background: #12cca7;
-
 }
 .cnt-home .header-style-1 .header-nav .navbar .navbar-nav > li.active {
   background: #0b816a;
@@ -1049,11 +1049,13 @@ a {
   background: rgba(0, 0, 0, 0);
 }
 .main-header {
-  /*padding: 50px 0px 60px 0px;*/
+ /* padding: 50px 0px 60px 0px;*/
 }
 .main-header .logo-holder {
   margin-top: 10px;
+  background-color: #fff;
 }
+
 .main-header .top-search-holder .contact-row {
   line-height: 20px;
   color: #9b9b9b;
@@ -1145,7 +1147,7 @@ a {
   vertical-align: middle;
 }
 .cnt-home .header-style-1.header-style-2 .header-nav .navbar-default {
-  background: #3498db;
+  background: #404040;
 }
 .top-cart-row {
   padding-top: 31px;
@@ -1419,7 +1421,7 @@ a {
   color: #fff;
 }
 .cnt-home .header-style-1.header-style-2 .header-nav .navbar-default {
-  background: #1d6ca1;
+  background: #404040;
 }
 .cnt-home .header-style-1.header-style-2 .header-nav .navbar-default .nav-bg-class {
   border: none;
@@ -2862,7 +2864,7 @@ a {
   font-size: 12px;
   line-height: 18px;
   color: #666666;
- /* margin-bottom: 70px;*/
+  /*margin-bottom: 70px;*/
 }
 .footer .links-social .contact-info .footer-logo {
   margin-top: 10px;

@@ -12,7 +12,7 @@
 			<div class="box-body">
 @include('alerts.request')
 
-{!!Form::open(array('route'=>'producto.store', 'method'=>'POST' , 'files'=>True))!!}
+{!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True])!!}
 
 
 @include('admin.producto.forms.formscreate')

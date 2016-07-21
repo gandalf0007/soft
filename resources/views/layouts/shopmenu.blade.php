@@ -34,11 +34,11 @@
 			<script src="shop/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
-    <body class="cnt-home">
+    <body class="cnt-home" >
 	
 
 <!-- =================================== HEADER ===================== -->
-<header class="header-style-1">
+<header class="header-style-1 header-style-2">
 	<!-- =========================== TOP MENU ============================ -->
 <div class="top-bar animate-dropdown">
 	<div class="container">
@@ -79,12 +79,12 @@
 	</div><!-- /.container -->
 </div><!-- /.header-top -->
 <!-- ========================== TOP MENU : END ================================ -->
-	<div class="main-header">
-		<div class="container">
-			<div class="row">
-				
+	<div class="main-header ">
+		<div class="container blanco ">
+			<div class="row blanco ">
+				<br>
 <!-- =================================== LOGO =========================================== -->
-<div class="col-xs-12 col-sm-12 col-md-6 logo-holder">
+<div class="col-xs-12 col-sm-12 col-md-6 logo-holder ">
 <div class="logo">
     <a href="home.html">
         @foreach($logos as $logo)
@@ -197,13 +197,14 @@
 <!-- ====================== SHOPPING CART DROPDOWN : END======================== -->				
 			</div><!-- /.row -->
 		</div><!-- /.container -->
+       
 	</div><!-- /.main-header -->
 
 
 
 <!-- ============================ NAVBAR ================================== -->
-<div class="header-nav animate-dropdown">
-    <div class="container">
+<div class="header-nav animate-dropdown blanco">
+    <div class="container blanco ">
         <div class="yamm navbar navbar-default" role="navigation">
             <div class="navbar-header">
                 <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -219,8 +220,12 @@
 		<ul class="nav navbar-nav">
 
 			<li class="active dropdown yamm-fw">
-				<a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+				<a href="{!! URL::to('inicio/') !!}">Home</a>
 			</li>
+            
+            <li class=" dropdown yamm-fw">
+                <a href="{!! URL::to('blog/') !!}">BLOG</a>
+            </li>
 
 			<li class="dropdown yamm">
 				<a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Desktop</a>
@@ -270,9 +275,9 @@
   
 
 
-<div class="body-content outer-top-xs" id="top-banner-and-menu">
-	<div class="container">
-	<div class="row">
+<div class="body-content outer-top-xs " id="top-banner-and-menu">
+	<div class="container blanco">
+	<div class="row blanco mypadding">
 	
 
 <!-- ================================ MENU ================================== -->
@@ -351,8 +356,8 @@
 <!-- ================================= FOOTER ================================ -->
 <footer id="footer" class="footer color-bg">
 	  <div class="links-social inner-top-sm">
-        <div class="container">
-            <div class="row">
+        <div class="container blanco">
+            <div class="row blanco">
  
 
 <!-- ======================== Seguinos Facebook ============================= -->
@@ -428,7 +433,7 @@
 
 
 <!-- ============================ INFORMACION ================================== -->
-<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="col-xs-12 col-sm-6 col-md-3 blanco">
 <div class="contact-information">
 	<div class="module-heading">
 		<h4 class="module-title">information</h4>

@@ -30,7 +30,7 @@
 </div>
 
 
-@include('admin.producto.forms.formscreate')
+@include('admin.producto.forms.formsedit')
 
 
 {!!Form::submit('modificar',['class'=>'btn btn-primary pull-right'])!!}

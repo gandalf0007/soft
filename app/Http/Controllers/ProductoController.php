@@ -34,7 +34,7 @@ class ProductoController extends Controller
         $categorias = categoria::all();
 
          //ordenamos por usu_nombre y lo guaramos en $users
-        $productos=producto::orderBy('descripcion');
+        $productos=producto::orderBy('created_at','des');
 
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
@@ -170,7 +170,34 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
          $producto=producto::find($id);
-         $producto->fill($request->all());
+         $producto->codigo = $request['codigo'];
+         $producto->descripcion =$request['descripcion'];
+         $producto->preciocosto=$request['preciocosto'];
+         $producto->iva_id=$request['iva_id'];
+         $producto->precioventa =$request['precioventa'];
+         $producto->rentabi1 =$request['rentabi1'];
+         $producto->precio2 =$request['precio2'];
+         $producto->rentabi2 =$request['rentabi2'];
+         $producto->precio3 =$request['precio3'];
+         $producto->rentabi3 =$request['rentabi3'];
+         $producto->stockactual =$request['stockactual'];
+         $producto->stockcritico =$request['stockcritico'];
+         $producto->stockpedido =$request['stockpedido'];
+         $producto->rubro_id =$request['rubro_id'];
+         $producto->marca_id =$request['marca_id'];
+         $producto->provedor_id =$request['provedor_id'];
+         $producto->categoriasub_id =$request['categoriasub_id'];
+         $producto->cod_alter =$request['cod_alter'];
+         $producto->ubicacion =$request['ubicacion'];
+         $producto->cod_bulto =$request['cod_bulto'];
+         $producto->cant_bulto =$request['cant_bulto'];
+         $producto->habilitado =$request['habilitado'];
+         $producto->alerta =$request['alerta'];
+         $producto->observaciones =$request['observaciones'];
+         $producto->usar_rentabili =$request['usar_rentabili'];
+         $producto->descripcioncorta =$request['descripcioncorta'];
+         $producto->descripcionlarga =$request['descripcionlarga'];
+         $producto->usar_rentabili =$request['usar_rentabili'];
 
          if ($request->hasFile('imagen1')) {
             $imagen =$request->file('imagen1');

@@ -211,7 +211,7 @@
 <!--categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	<label for="">Categorias</label>
-	<select class="form-control input-sm" name="categorias[]" id="categoria">
+	<select class="form-control input-sm" name="categoriaedit" id="categoriaedit">
 		@foreach($categorias as $categoria)
 			<option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
 		@endforeach
@@ -223,7 +223,7 @@
 <!--sub categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	<label for="">Sub-Categorias</label>
-	<select class="form-control input-sm" name="categoriasub_id" id="subcategoria">
+	<select class="form-control input-sm" name="categoriasub_id" id="subcategoriaedit">
 		<option value="" ></option>
 	</select>
 </div>
