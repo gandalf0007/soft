@@ -47,11 +47,11 @@
 	</table>
 
 <!--modal editar ivatipo-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-ivatipo')
+ @include('admin.Configuracion.ivatipo.modal.modal-edit-ivatipo')
 <!--modal eliminar ivatipo-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-ivatipo')
+ @include('admin.Configuracion.ivatipo.modal.modal-delete-ivatipo')
  <!--modal eliminar ivatipo-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-ivatipo')
+ @include('admin.Configuracion.ivatipo.modal.modal-ver-ivatipo')
 <!--para renderizar la paginacion-->
 {!! $ivatipos->render() !!}
 

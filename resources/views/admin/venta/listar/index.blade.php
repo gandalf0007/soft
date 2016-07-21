@@ -94,8 +94,8 @@ endboton crear-->
       <!-- /.row -->
     </section>
 
-    @include('admin.partials.modal.venta.modal-detalle-venta')
-    @include('admin.partials.modal.venta.modal-status')
+    @include('admin.venta.modal.modal-detalle-venta')
+    @include('admin.venta.modal.modal-status')
 
 
 

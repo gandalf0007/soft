@@ -55,9 +55,9 @@
   </table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.web.modal-edit-logo')
+ @include('admin.paginas.home.logo.modal.modal-edit-logo')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.web.modal-delete-logo')
+ @include('admin.paginas.home.logo.modal.modal-delete-logo')
 
 
                  </div>

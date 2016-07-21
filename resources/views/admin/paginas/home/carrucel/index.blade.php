@@ -52,9 +52,9 @@
 	</table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.web.modal-edit-carrucel')
+ @include('admin.paginas.home.carrucel.modal.modal-edit-carrucel')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.web.modal-delete-carrucel')
+ @include('admin.paginas.home.carrucel.modal.modal-delete-carrucel')
 
 
 			           </div>

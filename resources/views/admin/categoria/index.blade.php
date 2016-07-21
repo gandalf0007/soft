@@ -57,11 +57,11 @@
 	</table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-categoria')
+ @include('admin.Categoria.modal.modal-edit-categoria')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-categoria')
+ @include('admin.Categoria.modal.modal-delete-categoria')
  <!--modal ver usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-categoria')
+ @include('admin.Categoria.modal.modal-ver-categoria')
 
 			     </div>
             <!-- /.box-body -->
@@ -124,11 +124,11 @@
   </table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-categoriasub')
+ @include('admin.Categoria.modal.modal-edit-categoriasub')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-categoriasub')
+ @include('admin.Categoria.modal.modal-delete-categoriasub')
  <!--modal ver usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-categoriasub')
+ @include('admin.Categoria.modal.modal-ver-categoriasub')
 
 
            </div>

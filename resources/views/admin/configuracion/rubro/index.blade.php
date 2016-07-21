@@ -74,11 +74,11 @@
 {!!Form::close()!!}
 
 <!--modal editar rubro-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-rubro')
+ @include('admin.Configuracion.Rubro.modal.modal-edit-rubro')
 <!--modal eliminar rubro-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-rubro')
+ @include('admin.Configuracion.Rubro.modal.modal-delete-rubro')
  <!--modal ver rubro-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-rubro')
+ @include('admin.Configuracion.Rubro.modal.modal-ver-rubro')
 
 <!--para renderizar la paginacion-->
 {!! $rubros->render() !!}

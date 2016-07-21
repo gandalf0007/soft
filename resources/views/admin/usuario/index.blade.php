@@ -81,13 +81,13 @@
 	</table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-usuario')
+ @include('admin.usuario.modal.modal-edit-usuario')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-usuario')
+ @include('admin.usuario.modal.modal-delete-usuario')
  <!--modal ver usuario-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-usuario')
+ @include('admin.usuario.modal.modal-ver-usuario')
   <!--modal importar usuario-->
- @include('admin.partials.modal.excel.importuser')
+ @include('admin.usuario.modal.importuser')
 
 <!--para renderizar la paginacion-->
   {!! $users->render() !!}

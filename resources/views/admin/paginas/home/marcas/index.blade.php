@@ -52,9 +52,9 @@
   </table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.web.modal-edit-marcas')
+ @include('admin.paginas.home.marcas.modal.modal-edit-marcas')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.web.modal-delete-marcas')
+ @include('admin.paginas.home.marcas.modal.modal-delete-marcas')
 
 
                  </div>

@@ -148,5 +148,5 @@
       <!-- /.row -->
     </section>
 
-@include('admin.partials.modal.venta.modal-venta-agregarproducto')
+@include('admin.venta.modal.modal-venta-agregarproducto')
 @stop

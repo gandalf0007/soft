@@ -82,11 +82,11 @@
 
 
 <!--modal editar gasto-->
- @include('admin.partials.modal.ver-edit-delete.modal-edit-gasto')
+ @include('admin.gasto.modal.modal-edit-gasto')
 <!--modal eliminar gasto-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-gasto')
+ @include('admin.gasto.modal.modal-delete-gasto')
  <!--modal ver gasto-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-gasto')
+ @include('admin.gasto.modal.modal-ver-gasto')
 
 
 

@@ -69,9 +69,9 @@
   </table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.web.modal-edit-informacion')
+ @include('admin.paginas.home.informacion.modal.modal-edit-informacion')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.web.modal-delete-informacion')
+ @include('admin.paginas.home.informacion.modal.modal-delete-informacion')
 
 
                  </div>
@@ -137,9 +137,9 @@
   </table>
 
 <!--modal editar user-->
- @include('admin.partials.modal.web.modal-edit-boxfacebook')
+ @include('admin.paginas.home.facebook.modal.modal-edit-boxfacebook')
 <!--modal eliminar usuario-->
- @include('admin.partials.modal.web.modal-delete-boxfacebook')
+ @include('admin.paginas.home.facebook.modal.modal-delete-boxfacebook')
 
 
                  </div>
