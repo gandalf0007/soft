@@ -8,8 +8,8 @@
          </div>
 
 
-{!!Form::model($user,['route'=>['usuario.update',$user->id],'method'=>'PUT' , 'files'=>True])!!}
 
+{{ Form::model($user, array('route' => array('usuario.update', $user->id), 'method' => 'PUT', 'files'=>True)) }}
 <div class="modal-body">      
 {{ Html::image('storage/' . $user->path , 'img', array('class' => 'user-image' , 'style'=>'height:100px')) }}
 

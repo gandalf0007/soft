@@ -30,7 +30,8 @@ class Producto extends Model
             'rubro_id',
             'marca_id',
             'provedor_id',
-
+            
+            'categoria_id',
             'categoriasub_id',
             
            'cod_alter',
@@ -84,4 +85,19 @@ class Producto extends Model
       //una producto puede tener varias imagenes
         return $this->hasMany(producto_image::class);
     }
+
+    public function categoria()
+    {
+      //una producto corresponde a una categoria
+        return $this->belongsTo(categoria::class);
+    }
+
+    public function categoriasub()
+    {
+      //una producto corresponde a una categoriasub
+        return $this->belongsTo(categoriasub::class);
+    }
+
+
+
 }

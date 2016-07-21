@@ -25,7 +25,7 @@
 </div>
 </div>
 
-@include('admin.producto.forms.formscreate')
+@include('admin.producto.forms.formsedit')
 </fieldset>  
 </div>
 

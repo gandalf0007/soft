@@ -34,7 +34,7 @@ class UsuarioController extends Controller
     {
         
         //modal
-        $perfils=Perfil::lists('descripcion','id');
+        $perfils  = Perfil::lists('descripcion', 'id');
         //agrega un buscador que filtra por nombre de usuario , se agrega el Request $request
 
         //hacemos referencia al namespace de nuestra aplicacion y despues al modelo user
@@ -67,6 +67,8 @@ class UsuarioController extends Controller
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
         return view('admin.usuario.index',compact('users','perfils'));
+        
+
     }
 
 
@@ -107,14 +109,14 @@ class UsuarioController extends Controller
     //editar los recursos
     public function edit($id)
     {
-      /*  //creamos un $movie que va a hacer igual al user que encontremos con la id que recibimos 
+       //creamos un $movie que va a hacer igual al user que encontremos con la id que recibimos 
         $perfils=Perfil::lists('descripcion','id');
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
         $user=User::find($id);
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
         
-        return view('admin.usuario.edit',['user'=>$user , 'perfils'=>$perfils]);*/
+        return view('admin.usuario.edit',['user'=>$user , 'perfils'=>$perfils]);
     }
 
 

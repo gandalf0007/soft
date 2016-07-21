@@ -175,21 +175,21 @@
 <!--rubro id-->
 <div class="form-horizontal">
 	{!!Form::label('rubro id')!!}
-	{!!Form::select('rubro_id',$rubros,'',['class'=>'form-control'])!!}
+	{!!Form::select('rubro_id',$rubros,null,['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--marca id-->
 <div class="form-horizontal">
 	{!!Form::label('marca id')!!}
-	{!!Form::select('marca_id',$marcas,'',['class'=>'form-control'])!!}
+	{!!Form::select('marca_id',$marcas,null,['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--provedor-->
 <div class="form-horizontal">
 	{!!Form::label('provedores')!!}
-	{!!Form::select('provedor_id',$provedores,'',['class'=>'form-control'])!!}
+	{!!Form::select('provedor_id',$provedores,null,['class'=>'form-control'])!!}
 </div>
 </td>
 </tbody>
@@ -210,22 +210,19 @@
 
 <!--categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
-	<label for="">Categorias</label>
-	<select class="form-control input-sm" name="categoriaedit" id="categoriaedit">
-		@foreach($categorias as $categoria)
-			<option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
-		@endforeach
-	</select>
+	
+	<div class="form-horizontal">
+	{!!Form::label('Categorias')!!}
+	{!!Form::select('categoria_id',$categorias,null,['class'=>'form-control','id'=>'categoriaedit'])!!}
+	</div>
 </div>
-
-
 
 <!--sub categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
-	<label for="">Sub-Categorias</label>
-	<select class="form-control input-sm" name="categoriasub_id" id="subcategoriaedit">
-		<option value="" ></option>
-	</select>
+	<div class="form-horizontal">
+	{!!Form::label('Sub-Categorias')!!}
+	{!!Form::select('categoriasub_id',$categoriasub,null,['class'=>'form-control','id'=>'subcategoria'])!!}
+	</div>
 </div>
 
 </div>

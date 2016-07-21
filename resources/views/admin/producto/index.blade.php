@@ -42,6 +42,8 @@
 		<th>venta</th>
 		<!--<th>venta 2</th>-->
 		<th>Stock</th>
+    <th>Categoria</th>
+    <th>Sub-Categoria</th>
 		<th class="col-md-4">Operaciones</th>
 	</thead>
 	@foreach($productos as $producto)
@@ -55,6 +57,8 @@
   	<td>{{ $producto -> precioventa}}</td>
   	<!--<td>{{ $producto -> precio2}}</td>-->
   	<td>{{ $producto -> stockactual}}</td>
+    <td>{{ $producto ->categoriasub->categoria->nombre}}</td>
+    <td>{{ $producto ->categoriasub->nombre}}</td>
 
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
@@ -77,9 +81,9 @@
 
 
 <!--modal de eliminar producto-->
- @include('admin.partials.modal.ver-edit-delete.modal-delete-producto')
+ @include('admin.producto.modal.modal-delete-producto')
 <!--modal de ver producto-->
- @include('admin.partials.modal.ver-edit-delete.modal-ver-producto')
+ @include('admin.producto.modal.modal-ver-producto')
 
 <!--para renderizar la paginacion-->
   {!! $productos->render() !!}

@@ -25,5 +25,10 @@ class Categoriasub extends Model
         return $this->belongsTo(categoria::class);
     }
 
+     public function producto()
+    {
+        //una sub-categoria puede tener muchas productos
+       return $this->hasMany(producto::class);
+    }
 
 }

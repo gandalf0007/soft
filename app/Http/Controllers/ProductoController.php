@@ -31,7 +31,8 @@ class ProductoController extends Controller
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
-        $categorias = categoria::all();
+        $categoriasub = categoriasub::lists('nombre','id');
+        $categorias = categoria::lists('nombre','id');
 
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::orderBy('created_at','des');
@@ -52,7 +53,7 @@ class ProductoController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.index',compact('categorias','productos','rubros','marcas','ivatipos','provedores'));
+        return view('admin.producto.index',compact('categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
     }
 
     /**
@@ -108,6 +109,7 @@ class ProductoController extends Controller
            'marca_id'=>$request['marca_id'],
            'provedor_id'=>$request['provedor_id'],
 
+           'categoria_id'=>$request['categoria_id'],
            'categoriasub_id'=>$request['categoriasub_id'],
            
 
@@ -151,13 +153,14 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {   
-         $categorias = categoria::all();
+         $categorias = categoria::lists('nombre','id');
+         $categoriasub = categoriasub::lists('nombre','id');
         $rubros=Rubro::lists('descripcion','id');
         $marcas=Marca::lists('descripcion','id');
         $ivatipos=ivatipo::lists('descripcion','descripcion');
         $provedores=provedore::lists('razonsocial','id');
         $producto=producto::find($id);
-        return view('admin.producto.edit',compact('categorias','rubros','marcas','ivatipos','provedores','producto'));
+        return view('admin.producto.edit',compact('categoriasub','categorias','rubros','marcas','ivatipos','provedores','producto'));
     }
 
     /**
@@ -186,7 +189,10 @@ class ProductoController extends Controller
          $producto->rubro_id =$request['rubro_id'];
          $producto->marca_id =$request['marca_id'];
          $producto->provedor_id =$request['provedor_id'];
+
+         $producto->categoria_id =$request['categoria_id'];
          $producto->categoriasub_id =$request['categoriasub_id'];
+         
          $producto->cod_alter =$request['cod_alter'];
          $producto->ubicacion =$request['ubicacion'];
          $producto->cod_bulto =$request['cod_bulto'];

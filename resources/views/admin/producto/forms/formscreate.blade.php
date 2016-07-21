@@ -175,21 +175,21 @@
 <!--rubro id-->
 <div class="form-horizontal">
 	{!!Form::label('rubro id')!!}
-	{!!Form::select('rubro_id',$rubros,'',['class'=>'form-control'])!!}
+	{!!Form::select('rubro_id',$rubros,null,['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--marca id-->
 <div class="form-horizontal">
 	{!!Form::label('marca id')!!}
-	{!!Form::select('marca_id',$marcas,'',['class'=>'form-control'])!!}
+	{!!Form::select('marca_id',$marcas,null,['class'=>'form-control'])!!}
 </div>
 </td>
 <td>
 <!--provedor-->
 <div class="form-horizontal">
 	{!!Form::label('provedores')!!}
-	{!!Form::select('provedor_id',$provedores,'',['class'=>'form-control'])!!}
+	{!!Form::select('provedor_id',$provedores,null,['class'=>'form-control'])!!}
 </div>
 </td>
 </tbody>
@@ -211,7 +211,7 @@
 <!--categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	<label for="">Categorias</label>
-	<select class="form-control input-sm" name="categorias[]" id="categoria">
+	<select class="form-control input-sm" name="categoria_id" id="categoria">
 		@foreach($categorias as $categoria)
 			<option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
 		@endforeach

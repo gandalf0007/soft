@@ -38,7 +38,7 @@
 	{!!Form::text('telefono',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>
 
-<div class="form-group">
+<div class="form-group ">
 	{!!Form::label('perfil')!!}
-	{!!Form::select('perfil_id',$perfils,'',['class'=>'form-control'])!!}
+	{!!Form::select('perfil_id',$perfils,null,['class'=>'form-control'])!!}
 </div>
