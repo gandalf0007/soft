@@ -332,6 +332,16 @@
 	{!!Form::file('imagen1')!!}
 </div>
 
+<div class="form-horizontal ">
+	{!!Form::label('Habilitado')!!}
+	{!!Form::checkbox('habilitado',null,['class'=>'form-control','placeholder'=>'ingrese la cantidad de bulto'])!!}
+</div>
+
+<div class="form-group">
+            <label for="tags" class="control-label">Tags</label>
+            <select name="tags[]" class="form-control" multiple="multiple" id="tags"></select>
+</div>
+
 </div>
 </div>
 </div>

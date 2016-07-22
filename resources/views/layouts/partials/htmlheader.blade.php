@@ -35,5 +35,5 @@
     {!!Html::style('css/font-awesome.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
  
-        
+    {!!Html::style('css/select2.min.css')!!} 
 </head>

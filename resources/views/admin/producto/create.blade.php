@@ -20,8 +20,6 @@
 {!!Form::close()!!}
 
 
-
-
 </div>
             <!-- /.box-body -->
           </div>
@@ -32,3 +30,5 @@
       <!-- /.row -->
     </section>
 @endsection
+
+

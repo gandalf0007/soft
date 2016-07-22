@@ -158,6 +158,9 @@ Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
 Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
+
+
+
 Route::resource('producto','ProductoController');
 Route::resource('productoimagen','ProductoImagenController');
  //me devuelve las subcategorias al crear el prodcuto (select dinamico)
@@ -178,7 +181,15 @@ Route::delete('producto-destroyimagen/{id}',[
 'uses'=>'ProductoImagenController@destroy'
 	]);
 /*porducto carga de imaganes*/
-
+Route::get('tags', function (Illuminate\Http\Request  $request) {
+        $term = $request->term ?: '';
+        $tags = Soft\Tag::where('nombre', 'like', $term.'%')->lists('nombre', 'id');
+        $valid_tags = [];
+        foreach ($tags as $id => $tag) {
+            $valid_tags[] = ['id' => $id, 'text' => $tag];
+        }
+        return \Response::json($valid_tags);
+    });
 
 
 

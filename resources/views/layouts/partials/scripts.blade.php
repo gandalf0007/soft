@@ -24,6 +24,8 @@ editor_config.path_absolute = "{{ asset('/') }}";
 tinymce.init(editor_config);
 </script>
 
+@yield('scriptdatepicker')
+
 <!--dropzone-->
 <script src="{{ asset('/js/dropzone/dropzone.js') }}" ></script>
 <script>
@@ -92,7 +94,40 @@ $.get('../../ajax-subcategoria?cat_id='+ cat_id, function(data){
 });
 </script>
 
-@yield('scriptdatepicker')
+
+
+
+
+
+
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#tags').select2({
+            // Activamos la opcion "Tags" del plugin
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("tags") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
+    });
+</script>
+
+
 
 
 
