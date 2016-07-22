@@ -142,6 +142,7 @@ public function item(){
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
         $itemdetalles=producto::where('categoriasub_id','=',$id)->get();
+        $itemdetalles=producto::where('habilitado','=',1)->get();
         return view('shop.category',compact(
                                           'categorias',
                                           'subcategorias',

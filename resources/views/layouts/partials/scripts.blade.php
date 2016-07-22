@@ -26,6 +26,9 @@ tinymce.init(editor_config);
 
 @yield('scriptdatepicker')
 
+
+
+
 <!--dropzone-->
 <script src="{{ asset('/js/dropzone/dropzone.js') }}" ></script>
 <script>
@@ -99,7 +102,7 @@ $.get('../../ajax-subcategoria?cat_id='+ cat_id, function(data){
 
 
 
-
+<!--===============scrip de los tags========-->
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {

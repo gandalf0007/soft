@@ -332,18 +332,44 @@
 	{!!Form::file('imagen1')!!}
 </div>
 
-<div class="form-horizontal ">
-	{!!Form::label('Habilitado')!!}
-	{!!Form::checkbox('habilitado',null,['class'=>'form-control','placeholder'=>'ingrese la cantidad de bulto'])!!}
-</div>
-
-<div class="form-group">
-            <label for="tags" class="control-label">Tags</label>
-            <select name="tags[]" class="form-control" multiple="multiple" id="tags"></select>
-</div>
 
 </div>
 </div>
 </div>
 
 
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Opciones del Producto</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	{!!Form::label('Habilitado en la Web')!!}
+	{!!Form::checkbox('habilitado',1,true)!!}
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Tags</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+   <label for="tags" class="control-label"></label>
+   <select name="tags[]" class="form-control" multiple="multiple" id="tags"></select>
+</div>
+
+</div>
+</div>
+</div>

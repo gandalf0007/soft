@@ -84,6 +84,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
 
+
         if ($request->hasFile('imagen1')) {
             $imagen =$request->file('imagen1');
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
