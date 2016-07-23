@@ -34,11 +34,11 @@
             <script src="shop/js/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="cnt-home">
+    <body class="cnt-home" >
     
 
 <!-- =================================== HEADER ===================== -->
-<header class="header-style-1">
+<header class="header-style-1 header-style-2">
     <!-- =========================== TOP MENU ============================ -->
 <div class="top-bar animate-dropdown">
     <div class="container">
@@ -79,12 +79,12 @@
     </div><!-- /.container -->
 </div><!-- /.header-top -->
 <!-- ========================== TOP MENU : END ================================ -->
-    <div class="main-header">
-        <div class="container">
-            <div class="row">
-                
+    <div class="main-header ">
+        <div class="container blanco ">
+            <div class="row blanco ">
+                <br>
 <!-- =================================== LOGO =========================================== -->
-<div class="col-xs-12 col-sm-12 col-md-6 logo-holder">
+<div class="col-xs-12 col-sm-12 col-md-6 logo-holder ">
 <div class="logo">
     <a href="home.html">
         @foreach($logos as $logo)
@@ -197,13 +197,14 @@
 <!-- ====================== SHOPPING CART DROPDOWN : END======================== -->                
             </div><!-- /.row -->
         </div><!-- /.container -->
+       
     </div><!-- /.main-header -->
 
 
 
 <!-- ============================ NAVBAR ================================== -->
-<div class="header-nav animate-dropdown">
-    <div class="container">
+<div class="header-nav animate-dropdown blanco">
+    <div class="container blanco ">
         <div class="yamm navbar navbar-default" role="navigation">
             <div class="navbar-header">
                 <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -219,7 +220,11 @@
         <ul class="nav navbar-nav">
 
             <li class="active dropdown yamm-fw">
-                <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                <a href="{!! URL::to('inicio/') !!}">Home</a>
+            </li>
+            
+            <li class=" dropdown yamm-fw">
+                <a href="{!! URL::to('blog/') !!}">BLOG</a>
             </li>
 
             <li class="dropdown yamm">
@@ -270,47 +275,109 @@
   
 
 
-<div class="body-content outer-top-xs" id="top-banner-and-menu">
-	<div class="container">
-	<div class="row">
-		
-		
-@yield('content')
-
-
-	</div><!-- /.row -->
+<div class="body-content outer-top-xs " id="top-banner-and-menu">
+    <div class="container blanco">
+    <div class="row blanco mypadding">
     
-	<!-- ===================== Marcas Carrucel======================== -->
+<!-- ================================ MENU ================================== -->
+<div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+<div class="side-menu animate-dropdown outer-bottom-xs">
+  <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>        
+    <nav class="yamm megamenu-horizontal" role="navigation">
+      <ul class="nav">
+        @foreach($categorias as $categoria)<!----------foreach categorias---------->
+             
+    <li class="dropdown menu-item">
+     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa {{$categoria->icon}} fa-fw"><img src="storage/categorias/{{$categoria->icon}}"></i>
+     {{ $categoria -> nombre}}</a>
+
+    @if(DB::table('categoriasubs')->where('categoria_id','=',$categoria->id)->get())
+    <ul class="dropdown-menu mega-menu">
+
+    @foreach($subcategorias as $subcategoria)
+    @if($categoria->id == $subcategoria->categoria_id)
+    <li class="yamm-content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-4">
+                <ul><li><a href="subcategoria-{{$subcategoria->id}}">{{ $subcategoria->nombre }}</a></li></ul>  
+            </div>
+            <div class="dropdown-banner-holder">
+                <a href="#"><img alt="" src="storage/banner/{{ $categoria->banner }}" /></a>
+            </div>
+        </div><!-- /.row -->
+     </li><!-- /.yamm-content --> 
+    @endif
+    @endforeach   
+
+   </ul><!-- /.dropdown-menu -->    
+    @endif
+   </li><!-- /.menu-item -->    
+    
+          
+        @endforeach  <!----------endforeach categorias---------->
+    </ul><!-- /.nav -->   
+  </nav><!-- /.megamenu-horizontal -->
+</div><!-- /.side-menu -->
+</div><!-- /.sidemenu-holder -->
+<!-- ================================== MENU ================================== -->
+
+
+
+@yield('content')
+    
+</div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <!-- ===================== Marcas Carrucel======================== -->
 <div id="brands-carousel" class="logo-slider wow fadeInUp">
 
-		<h3 class="section-title">Nuestras Marcas</h3>
-		<div class="logo-slider-inner">	
-			<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
+        <h3 class="section-title">Nuestras Marcas</h3>
+        <div class="logo-slider-inner"> 
+            <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
             @foreach($carrucelMarcas as $carrucelMarca)
-				<div class="item m-t-15">
-					<a href="#" class="image">
-						<img src="storage/paginas/home/marcas/{{ $carrucelMarca -> imagen }}" alt="">
-					</a>	
-				</div><!--/.item-->
-			@endforeach
-		    </div><!-- /.owl-carousel #logo-slider -->
-		</div><!-- /.logo-slider-inner -->
-	
+                <div class="item m-t-15">
+                    <a href="#" class="image">
+                        <img src="storage/paginas/home/marcas/{{ $carrucelMarca -> imagen }}" alt="">
+                    </a>    
+                </div><!--/.item-->
+            @endforeach
+            </div><!-- /.owl-carousel #logo-slider -->
+        </div><!-- /.logo-slider-inner -->
+    
 </div><!-- /.logo-slider -->
 <!-- =========================== Marcas Carrucel================================ -->
 
 
-	</div><!-- /.container -->
+
 </div><!-- /#top-banner-and-menu -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 <!-- ================================= FOOTER ================================ -->
 <footer id="footer" class="footer color-bg">
-	  <div class="links-social inner-top-sm">
-        <div class="container">
-            <div class="row">
+      <div class="links-social inner-top-sm">
+        <div class="container blanco">
+            <div class="row blanco">
  
 
 <!-- ======================== Seguinos Facebook ============================= -->
@@ -356,28 +423,28 @@
 
 </div><!-- /.contact-info -->
 </div><!-- /.col -->
-<!-- ================================= CONTACT INFO : END ======================================= -->            	
+<!-- ================================= CONTACT INFO : END ======================================= -->               
 
-            	
+                
 <!-- ================================= HORARIOS DE ATENCION================================= -->
 <div class="col-xs-12 col-sm-6 col-md-3">
 <div class="contact-timing">
-	<div class="module-heading">
-		<h4 class="module-title">opening time</h4>
-	</div><!-- /.module-heading -->
+    <div class="module-heading">
+        <h4 class="module-title">opening time</h4>
+    </div><!-- /.module-heading -->
 
-	<div class="module-body outer-top-xs">
-		<div class="table-responsive">
-			<table class="table">
-				<tbody>
-					<tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
-					<tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
-					<tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
-				</tbody>
-			</table>
-		</div><!-- /.table-responsive -->
-		<p class='contact-number'>Hot Line:(400)888 868 848</p>
-	</div><!-- /.module-body -->
+    <div class="module-body outer-top-xs">
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
+                    <tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
+                    <tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <p class='contact-number'>Hot Line:(400)888 868 848</p>
+    </div><!-- /.module-body -->
 </div><!-- /.contact-timing -->
                 </div><!-- /.col -->
 <!-- ======================== HORARIOS DE ATENCION : END ========================================= -->
@@ -386,13 +453,13 @@
 
 
 <!-- ============================ INFORMACION ================================== -->
-<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="col-xs-12 col-sm-6 col-md-3 blanco">
 <div class="contact-information">
-	<div class="module-heading">
-		<h4 class="module-title">information</h4>
-	</div><!-- /.module-heading -->
+    <div class="module-heading">
+        <h4 class="module-title">information</h4>
+    </div><!-- /.module-heading -->
 
-	<div class="module-body outer-top-xs">
+    <div class="module-body outer-top-xs">
         <ul class="toggle-footer" style="">
         @foreach( $informacions as $informacion)
             <li class="media">
@@ -440,7 +507,7 @@
 </div><!-- /.contact-timing -->
 </div><!-- /.col -->
 <!-- ============================ INFORMACION ================================== -->
-           	
+            
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.links-social -->
@@ -541,19 +608,19 @@
 <!-- ============================================================= FOOTER : END============================================================= -->
 
 
-	<!-- JavaScripts placed at the end of the document so the pages load faster -->
-	<script src="shop/js/jquery-1.11.1.min.js"></script>
-	<script src="shop/js/bootstrap.min.js"></script>
-	<script src="shop/js/bootstrap-hover-dropdown.min.js"></script>
-	<script src="shop/js/owl.carousel.min.js"></script>
-	<script src="shop/js/echo.min.js"></script>
-	<script src="shop/js/jquery.easing-1.3.min.js"></script>
-	<script src="shop/js/bootstrap-slider.min.js"></script>
+    <!-- JavaScripts placed at the end of the document so the pages load faster -->
+    <script src="shop/js/jquery-1.11.1.min.js"></script>
+    <script src="shop/js/bootstrap.min.js"></script>
+    <script src="shop/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="shop/js/owl.carousel.min.js"></script>
+    <script src="shop/js/echo.min.js"></script>
+    <script src="shop/js/jquery.easing-1.3.min.js"></script>
+    <script src="shop/js/bootstrap-slider.min.js"></script>
     <script src="shop/js/jquery.rateit.min.js"></script>
     <script type="text/javascript" src="shop/js/lightbox.min.js"></script>
     <script src="shop/js/bootstrap-select.min.js"></script>
     <script src="shop/js/wow.min.js"></script>
-	<script src="shop/js/scripts.js"></script>
+    <script src="shop/js/scripts.js"></script>
 
 
 </body>

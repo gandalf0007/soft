@@ -21,7 +21,8 @@ class PaginasController extends Controller
     {
         
         /*seccion para el layout*/
-        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();      
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
@@ -29,12 +30,13 @@ class PaginasController extends Controller
         /*seccion para el layout*/
         $posts=webpost::paginate(10);
          return view ('shop.blog',compact(
-                                          'carrucels',
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'posts'
+                                          'posts',
+                                          'subcategorias',
+                                          'categorias'
                                           ));
     }
 
@@ -42,7 +44,8 @@ class PaginasController extends Controller
     {
         
          /*seccion para el layout*/
-        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
@@ -50,12 +53,13 @@ class PaginasController extends Controller
         /*seccion para el layout*/
         $post=webpost::find($id);
         return view('shop.blog-details',compact(
-                                          'carrucels',
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'post'
+                                          'post',
+                                          'subcategorias',
+                                          'categorias'
                                           ));
     }
 
@@ -83,32 +87,10 @@ class PaginasController extends Controller
     
 
 
-public function item(){
-      /*seccion para el layout*/
-        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
-        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
-        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
-        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
-        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
-        /*seccion para el layout*/
-        $items=producto::paginate(10);
-        return view('shop.blog-details',compact(
-                                          'carrucels',
-                                          'carrucelMarcas',
-                                          'informacions',
-                                          'boxs',
-                                          'logos',
-                                          'itemds'
-                                          ));
-
-    }
-
-
   public function itemDetalle($id){
       /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
-        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
@@ -118,8 +100,7 @@ public function item(){
         $imagens= producto_imagen::where('producto_id', '=',$id)->get();
         return view('shop.detail2',compact(
                                           'categorias',
-                                          'subcategorias',
-                                          'carrucels',
+                                          'subcategorias',      
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
@@ -155,6 +136,91 @@ public function item(){
                                          
                                           ));
 
+    }
+
+
+
+
+
+public function PreguntasFrecuentes(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         return view ('shop.preguntasfrecuentes',compact('categorias',
+                                          'subcategorias',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+
+public function FormasDePago(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         return view ('shop.formasdepago',compact('categorias',
+                                          'subcategorias',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+public function garantia(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         return view ('shop.garantia',compact('categorias',
+                                          'subcategorias',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+public function AvisoLegal(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         return view ('shop.avisolegal',compact('categorias',
+                                          'subcategorias',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+    public function envios(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         return view ('shop.envios',compact('categorias',
+                                          'subcategorias',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
     }
 
 

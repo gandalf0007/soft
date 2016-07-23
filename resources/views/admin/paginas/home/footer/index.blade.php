@@ -11,9 +11,7 @@
          <div class="row">
             <div class="col-xs-12">
               <div class="box-header"> 
-
               @include('alerts.request')
-
             <div><br>
             @if(empty(DB::table('web_informacions')->get()))
               <a class="btn btn-success   " href="{!! URL::to('informacion/create') !!}">
@@ -23,59 +21,18 @@
 
             </div>
 
-<div class="box-body">
-  <table id="example2" class="table table-bordered table-hover">
-  <thead>
-      <tr>
-    <th>Id</th>
-    <th>direccion1</th>
-    <th>direccion2</th>
-    <th>direccion3</th>
-    <th>telefono1</th>
-    <th>telefono2</th>
-    <th>telefono3</th>
-    <th>correo1</th>
-    <th>correo2</th>
-    <th>correo3</th>
+@foreach($informacions as $informacion)
+{!!Form::model($informacion,['route'=>['informacion.update',$informacion->id],'method'=>'PUT' , 'files'=>True])!!}
 
-    <th class="col-md-4">Operaciones</th> 
-      </tr>
-    </thead>
-    @foreach($informacions as $informacion)
-    <tbody>
-  <td>{{ $informacion -> id}}</td>
-  <td>{{ $informacion -> direccion1}}</td>
-  <td>{{ $informacion -> direccion2}}</td>
-  <td>{{ $informacion -> direccion3}}</td>
-  <td>{{ $informacion -> telefono1}}</td>
-  <td>{{ $informacion -> telefono2}}</td>
-  <td>{{ $informacion -> telefono3}}</td>
-  <td>{{ $informacion -> correo1}}</td>
-  <td>{{ $informacion -> correo2}}</td>
-  <td>{{ $informacion -> correo3}}</td>
+<div class="modal-body">      
+@include('admin.paginas.home.informacion.forms.formscreate')
+</div>
+<div class="modal-footer">
+{!!Form::submit('Guardar',['class'=>'btn btn-primary pull-right'])!!}
+<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
+{!!Form::close()!!}
+@endforeach
 
-  
-<td>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $informacion->id }}"><i class="fa fa-edit"> Editar</i></button>
-<!--esto es para que solo el administrador pueda eliminar-->
-@if (Auth::user()->perfil_id == 1)
-<!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $informacion->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
-@endif
-</td>
-
-  </tbody>
-  @endforeach
-  </table>
-
-<!--modal editar user-->
- @include('admin.paginas.home.informacion.modal.modal-edit-informacion')
-<!--modal eliminar usuario-->
- @include('admin.paginas.home.informacion.modal.modal-delete-informacion')
-
-
-                 </div>
-                <!-- /.box-body -->
               </div>
                <!-- /.col -->
             </div>
@@ -84,8 +41,15 @@
           <!-- /.panel-body -->
        </div>
        <!-- /.anel panel-default -->
+    </section>
 
 
+
+
+
+
+
+<section class="content">
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Configuracion Box Facebook</h3>
@@ -152,6 +116,8 @@
           <!-- /.panel-body -->
        </div>
        <!-- /.anel panel-default -->
+
+
 
 
     </section>

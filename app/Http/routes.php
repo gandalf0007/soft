@@ -41,11 +41,11 @@ Route::get('item-detalle{id}',[
 	]);
 
 
-
-
-
-
-
+Route::get('preguntas-frecuentes','PaginasController@PreguntasFrecuentes');
+Route::get('formas-de-pago','PaginasController@FormasDePago');
+Route::get('garantia','PaginasController@garantia');
+Route::get('aviso-legal','PaginasController@AvisoLegal');
+Route::get('envios','PaginasController@envios');
 
 });
 

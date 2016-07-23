@@ -16,6 +16,11 @@ class web_informacion extends Model
 			'telefono3',
 			'correo1',
 			'correo2',
-			'correo3',    
+			'correo3',   
+			'formasdepago',
+            'garantia',
+            'avisolegal',
+            'envios',
+            'preguntas',
     ];
 }

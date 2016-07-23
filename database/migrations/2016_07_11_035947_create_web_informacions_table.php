@@ -23,6 +23,11 @@ class CreateWebInformacionsTable extends Migration
             $table->string('correo1');
             $table->string('correo2');
             $table->string('correo3');
+            $table->string('formasdepago');
+            $table->string('garantia');
+            $table->string('avisolegal');
+            $table->string('envios');
+            $table->string('preguntas');
             $table->timestamps();
         });
     }

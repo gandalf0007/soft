@@ -36,6 +36,9 @@ class WebInformacionController extends Controller
         return view('admin.paginas.home.informacion.create');
     }
 
+   
+
+
     /**
      * Store a newly created resource in storage.
      *
