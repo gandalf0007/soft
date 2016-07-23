@@ -102,7 +102,7 @@ class WebCarrucelMarcasController extends Controller
          //carga de imagen atraves de intervention el paquete de imagen
         if ($request->hasFile('imagen')) {
             $avatar =$request->file('imagen');
-            $filename=time() . '.' . $avatar->getClientOriginalExtension();
+            $filename=$avatar->getClientOriginalName();
             image::make($avatar)->resize(114, 51)->save( public_path('/storage/paginas/home/marcas/' . $filename));
 
             $carrucelMarcas=web_marca::find($id);
@@ -122,9 +122,8 @@ class WebCarrucelMarcasController extends Controller
     public function destroy($id)
     {
         $imagenes=web_marca::find($id);
-        File::delete(public_path('/storage/paginas/home/marcas/$imagenes->imagen'));
         $imagenes->delete();
-        
+         \Storage::disk('marcas')->delete($imagenes->imagen);
         //le manda un mensaje al usuario
         Alert::success('Mensaje existoso', 'Marca Eliminada');
        return Redirect::to('/webconfig-carrucelmarcas');

@@ -122,7 +122,7 @@ class WebCarrucelController extends Controller
     {
         $imagenes=web_carrucel::find($id);
         $imagenes->delete();
-        
+        \Storage::disk('carrucel')->delete($imagenes->imagen);
         //le manda un mensaje al usuario
         Alert::success('Mensaje existoso', 'Carrucel Eliminada');
        return Redirect::to('/webconfig-carrucel');

@@ -51,6 +51,17 @@ return [
             'root'   => public_path().'/storage',
         ],
 
+
+        'carrucel' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/paginas/home/carrucel',
+        ],
+
+        'marcas' => [
+            'driver' => 'local',
+            'root'   => public_path().'/storage/paginas/home/marcas',
+        ],
+
         'productos' => [
             'driver' => 'local',
             'root'   => public_path().'/storage/productos',
