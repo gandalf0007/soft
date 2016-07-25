@@ -6,6 +6,16 @@
     padding-top: 25px;
 }
 
+.imagecircel{
+
+  float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
 /*===================================================================================*/
 /*  GENERAL
 /*===================================================================================*/
@@ -968,7 +978,7 @@ a {
 .top-bar {
   background: #f4f4f4;
   padding: 10px 0 9px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .top-bar .cnt-account {
   float: left;

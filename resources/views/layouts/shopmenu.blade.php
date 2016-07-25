@@ -13,7 +13,8 @@
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="shop/css/bootstrap.min.css">
 	    <!-- Customizable CSS -->
-	    <link rel="stylesheet" href="shop/css/main.css">
+	    
+	    {!!Html::style('shop/css/main.css')!!}
 	    <link rel="stylesheet" href="shop/css/blue.css">
 	    <link rel="stylesheet" href="shop/css/owl.carousel.css">
 		<link rel="stylesheet" href="shop/css/owl.transitions.css">
@@ -30,8 +31,7 @@
 		<link rel="shortcut icon" href="shop/images/favicon.ico">
 	   
 	   {!!Html::style('css/login.css')!!}
-
-
+		 
 		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 		<!--[if lt IE 9]>
 			<script src="shop/js/html5shiv.js"></script>
@@ -49,18 +49,20 @@
 	<div class="container">
 		<div class="header-top-inner">
 			<div class="cnt-account">
-				<ul class="list-unstyled">
-					@if(!empty(Auth::user()->path))
-					 
+				<ul class="list-unstyled ">
+
+				@if (Auth::guest())
+				<button type="button" data-toggle="modal" data-target="#loginModal">	<li><i class="icon fa fa-sign-in"></i>Login</li></button>
+				@else
+
+ 	{{HTML::image('storage/'.Auth::user()->path,'imge', array('class'=>'imagecircel'))}}
 				<li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
 				<li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
 				<li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
 				<li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
 				<li><a href="{{ url('/logout') }}"><i class="icon fa fa-sign-in"></i>Salir</a></li>
+
 				@endif
-					@if (Auth::guest())
-				<button type="button" data-toggle="modal" data-target="#loginModal">	<li><i class="icon fa fa-sign-in"></i>Login</li></button>
-					@endif
 
 				</ul>
 			</div><!-- /.cnt-account -->
