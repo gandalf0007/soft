@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -64,13 +64,13 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'usu_nombre' => $data['name'],
-            'usu_apellido' =>$data['apellido'],
+            'nombre' => $data['name'],
+            'apellido' =>$data['apellido'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             're_password' =>$data['password_confirmation'],
-            'usu_direcc' =>$data['direccion'],
-            'usu_tel' =>$data['telefono'],
+            'direccion' =>$data['direccion'],
+            'telefono' =>$data['telefono'],
         ]);
 
          

@@ -117,15 +117,15 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- Imagen del perfil de usuario -->
-                            <?php     if(!empty(Auth::user()->path)){?>
+                          @if(!empty(Auth::user()->path))
 
                                {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'user-image')) }}
 
-                           <?php }else{ ?>
+                           @else
 
                                {{ HTML::image('storage/user-default.png'  , 'img', array('class' => 'user-image')) }}
 
-                            <?php } ?>
+                            @endif
 
 
                               

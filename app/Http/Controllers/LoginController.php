@@ -4,7 +4,12 @@ namespace Soft\Http\Controllers;
 
 use Soft\Http\Requests;
 use Illuminate\Http\Request;
-
+use DB;
+use Alert;
+use Session;
+use Redirect;
+use Storage;
+use Image;
 class LoginController extends Controller
 {
     /**
@@ -12,11 +17,8 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-       $this->middleware('auth');
-    }
-
+   
+        
     /**
      * Show the application dashboard.
      *
@@ -26,4 +28,6 @@ class LoginController extends Controller
     {
         return view('/logueado');
     }
+
+
 }

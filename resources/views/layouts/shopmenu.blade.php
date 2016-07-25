@@ -28,11 +28,16 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="shop/images/favicon.ico">
+	   
+	   {!!Html::style('css/login.css')!!}
+
+
 		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 		<!--[if lt IE 9]>
 			<script src="shop/js/html5shiv.js"></script>
 			<script src="shop/js/respond.min.js"></script>
 		<![endif]-->
+
 	</head>
     <body class="cnt-home" >
 	
@@ -45,11 +50,18 @@
 		<div class="header-top-inner">
 			<div class="cnt-account">
 				<ul class="list-unstyled">
-					<li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
-					<li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-					<li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-					<li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
-					<li><a href="#"><i class="icon fa fa-sign-in"></i>Login</a></li>
+					@if(!empty(Auth::user()->path))
+					 
+				<li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
+				<li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+				<li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+				<li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
+				<li><a href="{{ url('/logout') }}"><i class="icon fa fa-sign-in"></i>Salir</a></li>
+				@endif
+					@if (Auth::guest())
+				<button type="button" data-toggle="modal" data-target="#loginModal">	<li><i class="icon fa fa-sign-in"></i>Login</li></button>
+					@endif
+
 				</ul>
 			</div><!-- /.cnt-account -->
 
@@ -78,6 +90,7 @@
 		</div><!-- /.header-top-inner -->
 	</div><!-- /.container -->
 </div><!-- /.header-top -->
+
 <!-- ========================== TOP MENU : END ================================ -->
 	<div class="main-header ">
 		<div class="container blanco ">
@@ -220,7 +233,7 @@
 		<ul class="nav navbar-nav">
 
 			<li class="active dropdown yamm-fw">
-				<a href="{!! URL::to('inicio/') !!}">Home</a>
+				<a href="{!! URL::to('/') !!}">Home</a>
 			</li>
             
             <li class=" dropdown yamm-fw">
@@ -303,7 +316,7 @@
     @endif
    </li><!-- /.menu-item -->    
     
-          
+     
         @endforeach  <!----------endforeach categorias---------->
     </ul><!-- /.nav -->   
   </nav><!-- /.megamenu-horizontal -->
@@ -583,6 +596,6 @@
     <script src="shop/js/wow.min.js"></script>
 	<script src="shop/js/scripts.js"></script>
 
-
+     @include('shop.modal.login') 
 </body>
 </html>

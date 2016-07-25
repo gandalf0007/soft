@@ -10,7 +10,7 @@
 <div class="wrap">
 	
 	<div class="banner">
-		<img src="images/banner.jpg" alt="" />
+		<img src="{{ asset('images/banner.jpg')}}" alt="" />
 	</div>
 	<div class="page">
 		<h2>Oops! Page Not Found</h2>

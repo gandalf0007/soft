@@ -21,26 +21,18 @@ use Soft\categoriasub;
 
 Route::group(['middleware' => 'web'], function () {
     
-    Route::get('/','FrontController@admin');
-
-Route::get('inicio','PaginasController@Home');
-
-
+Route::get('/','PaginasController@Home');
 Route::get('blog','PaginasController@post');
 Route::get('blogdetail-post{id}',[
 'as'=>'paginas.postDetalle',
 'uses'=>'PaginasController@postDetalle'
 	]);
-
 Route::get('subcategoria-{id}','PaginasController@subcategoria');
-
 Route::get('item','PaginasController@item');
 Route::get('item-detalle{id}',[
 'as'=>'paginas.itemDetalle',
 'uses'=>'PaginasController@itemDetalle'
 	]);
-
-
 Route::get('preguntas-frecuentes','PaginasController@PreguntasFrecuentes');
 Route::get('formas-de-pago','PaginasController@FormasDePago');
 Route::get('garantia','PaginasController@garantia');
@@ -58,12 +50,10 @@ Route::group(array('middleware' => 'auth'), function(){
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' =>['auth', 'admin']], function () {
 
  Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
-
-
 
 /*
 Route::get('venta-addcart','VentaController@addcart');
@@ -231,7 +221,11 @@ Route::resource('post','WebPostController');
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login
-Route::get('logged', 'LoginController@index');
+Route::get('logged', 'PaginasController@logged');
+
+
+
+
 /*---------------login------------*/
 
 
