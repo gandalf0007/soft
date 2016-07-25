@@ -248,4 +248,49 @@ public function logged(){
     }
 
 
+
+public function ubicacion(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         
+         return view ('shop.ubicacion',compact('categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+
+
+    }
+
+
+public function contacto(){
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+         
+         return view ('shop.contacto',compact('categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+
+
+    }
+
+
 }

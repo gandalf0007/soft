@@ -6,7 +6,7 @@
 <div class="breadcrumb pull-left">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
+				<li><a href="{{ url('/') }}">Home</a></li>
 				<li class='active'>Blog</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
@@ -27,7 +27,7 @@
 	<span class="date-time">{{ $post->created_at }}</span>
 	<p>{!! $post->descripcioncorta !!}</p>
 
-	{!! link_to_route('paginas.postDetalle', $title = 'Leer Mas', $parameters = $post->id  , $attributes = ['class'=>'btn btn-primary']); !!}
+	{!! link_to_route('paginas.postDetalle', $title = 'Leer Mas', $parameters = $post->id  , $attributes = ['class'=>'btn btn-azul']); !!}
 
 </div>
 <br><br>

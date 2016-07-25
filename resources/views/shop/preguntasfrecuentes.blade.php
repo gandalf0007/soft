@@ -6,7 +6,7 @@
 <div class="breadcrumb pull-left">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="inicio">Home</a></li>
+				<li><a href="{{ url('/') }}">Home</a></li>
 				<li class='active'>Preguntas Frecuentes</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->

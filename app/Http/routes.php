@@ -38,7 +38,8 @@ Route::get('formas-de-pago','PaginasController@FormasDePago');
 Route::get('garantia','PaginasController@garantia');
 Route::get('aviso-legal','PaginasController@AvisoLegal');
 Route::get('envios','PaginasController@envios');
-
+Route::get('ubicacion','PaginasController@ubicacion');
+Route::get('contacto','PaginasController@contacto');
 });
 
 

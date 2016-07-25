@@ -45,17 +45,17 @@
 <!-- =================================== HEADER ===================== -->
 <header class="header-style-1 header-style-2">
 	<!-- =========================== TOP MENU ============================ -->
-<div class="top-bar animate-dropdown">
+<div class="top-bar container animate-dropdown">
 	<div class="container">
 		<div class="header-top-inner">
 			<div class="cnt-account">
 				<ul class="list-unstyled ">
 
 				@if (Auth::guest())
-				<button type="button" data-toggle="modal" data-target="#loginModal">	<li><i class="icon fa fa-sign-in"></i>Login</li></button>
+				<button type="button" class="btn btn-azul"	data-toggle="modal" data-target="#loginModal">	<li><i class=" fa fa-sign-in"></i>Login</li></button>
 				@else
 
- 	{{HTML::image('storage/'.Auth::user()->path,'imge', array('class'=>'imagecircel'))}}
+ {{HTML::image('storage/user/'.Auth::user()->path,'img', array('class'=>'imagecircel'))}}
 				<li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
 				<li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
 				<li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
@@ -250,6 +250,12 @@
 				<a href="ubicacion">Ubicacion</a>
 			</li>
 			
+			@if (Auth::guest())
+			<li class="dropdown hidden-sm pull-right">
+				<a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
+			</li>
+			@endif
+
 			<li class="dropdown hidden-sm">
 				<a href="preguntas-frecuentes">FAQ</a>
 			</li>
@@ -599,5 +605,6 @@
 	<script src="shop/js/scripts.js"></script>
 
      @include('shop.modal.login') 
+     @include('shop.modal.registro') 
 </body>
 </html>

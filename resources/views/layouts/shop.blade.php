@@ -13,7 +13,8 @@
         <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="shop/css/bootstrap.min.css">
         <!-- Customizable CSS -->
-        <link rel="stylesheet" href="shop/css/main.css">
+        
+        {!!Html::style('shop/css/main.css')!!}
         <link rel="stylesheet" href="shop/css/blue.css">
         <link rel="stylesheet" href="shop/css/owl.carousel.css">
         <link rel="stylesheet" href="shop/css/owl.transitions.css">
@@ -28,11 +29,15 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
         <!-- Favicon -->
         <link rel="shortcut icon" href="shop/images/favicon.ico">
+       
+       {!!Html::style('css/login.css')!!}
+         
         <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
         <!--[if lt IE 9]>
             <script src="shop/js/html5shiv.js"></script>
             <script src="shop/js/respond.min.js"></script>
         <![endif]-->
+
     </head>
     <body class="cnt-home" >
     
@@ -40,16 +45,25 @@
 <!-- =================================== HEADER ===================== -->
 <header class="header-style-1 header-style-2">
     <!-- =========================== TOP MENU ============================ -->
-<div class="top-bar animate-dropdown">
+<div class="top-bar container animate-dropdown">
     <div class="container">
         <div class="header-top-inner">
             <div class="cnt-account">
-                <ul class="list-unstyled">
-                    <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
-                    <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                    <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-                    <li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
-                    <li><a href="#"><i class="icon fa fa-sign-in"></i>Login</a></li>
+                <ul class="list-unstyled ">
+
+                @if (Auth::guest())
+                <button type="button" class="btn btn-azul"  data-toggle="modal" data-target="#loginModal">  <li><i class=" fa fa-sign-in"></i>Login</li></button>
+                @else
+
+ {{HTML::image('storage/user/'.Auth::user()->path,'img', array('class'=>'imagecircel'))}}
+                <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
+                <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+                <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                <li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="icon fa fa-sign-in"></i>Salir</a></li>
+
+                @endif
+
                 </ul>
             </div><!-- /.cnt-account -->
 
@@ -78,6 +92,7 @@
         </div><!-- /.header-top-inner -->
     </div><!-- /.container -->
 </div><!-- /.header-top -->
+
 <!-- ========================== TOP MENU : END ================================ -->
     <div class="main-header ">
         <div class="container blanco ">
@@ -220,42 +235,35 @@
         <ul class="nav navbar-nav">
 
             <li class="active dropdown yamm-fw">
-                <a href="{!! URL::to('inicio/') !!}">Home</a>
+                <a href="{!! URL::to('/') !!}">Home</a>
             </li>
             
             <li class=" dropdown yamm-fw">
                 <a href="{!! URL::to('blog/') !!}">BLOG</a>
             </li>
 
-            <li class="dropdown yamm">
-                <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Desktop</a>
+            <li class="dropdown hidden-sm">
+                <a href="nosotros.html">Nosotros</a>
             </li>
 
             <li class="dropdown">
-                
-                <a href="category.html">Electronics
-                   <span class="menu-label hot-menu hidden-xs">hot</span>
-                </a>
-            </li>
-
-            <li class="dropdown hidden-sm">
-                
-                <a href="category.html">Television
-                    <span class="menu-label new-menu hidden-xs">new</span>
-                </a>
-            </li>
-
-            <li class="dropdown hidden-sm">
-                <a href="category.html">Smart Phone</a>
-            </li>
-
-            <li class="dropdown">
-                <a href="contact.html">Contact</a>
+                <a href="ubicacion">Ubicacion</a>
             </li>
             
-            <li class="dropdown navbar-right">
-                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
+            @if (Auth::guest())
+            <li class="dropdown hidden-sm pull-right">
+                <a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
             </li>
+            @endif
+
+            <li class="dropdown hidden-sm">
+                <a href="preguntas-frecuentes">FAQ</a>
+            </li>
+
+            <li class="dropdown">
+                <a href="contacto">Contacto</a>
+            </li>
+            
             
         </ul><!-- /.navbar-nav -->
         <div class="clearfix"></div>                
@@ -279,56 +287,17 @@
     <div class="container blanco">
     <div class="row blanco mypadding">
     
-<!-- ================================ MENU ================================== -->
-<div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-<div class="side-menu animate-dropdown outer-bottom-xs">
-  <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>        
-    <nav class="yamm megamenu-horizontal" role="navigation">
-      <ul class="nav">
-        @foreach($categorias as $categoria)<!----------foreach categorias---------->
-             
-    <li class="dropdown menu-item">
-     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa {{$categoria->icon}} fa-fw"><img src="storage/categorias/{{$categoria->icon}}"></i>
-     {{ $categoria -> nombre}}</a>
-
-    @if(DB::table('categoriasubs')->where('categoria_id','=',$categoria->id)->get())
-    <ul class="dropdown-menu mega-menu">
-
-    @foreach($subcategorias as $subcategoria)
-    @if($categoria->id == $subcategoria->categoria_id)
-    <li class="yamm-content">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-4">
-                <ul><li><a href="subcategoria-{{$subcategoria->id}}">{{ $subcategoria->nombre }}</a></li></ul>  
-            </div>
-            <div class="dropdown-banner-holder">
-                <a href="#"><img alt="" src="storage/banner/{{ $categoria->banner }}" /></a>
-            </div>
-        </div><!-- /.row -->
-     </li><!-- /.yamm-content --> 
-    @endif
-    @endforeach   
-
-   </ul><!-- /.dropdown-menu -->    
-    @endif
-   </li><!-- /.menu-item -->    
-    
-          
-        @endforeach  <!----------endforeach categorias---------->
-    </ul><!-- /.nav -->   
-  </nav><!-- /.megamenu-horizontal -->
-</div><!-- /.side-menu -->
-</div><!-- /.sidemenu-holder -->
-<!-- ================================== MENU ================================== -->
 
 
 
 @yield('content')
     
 </div><!-- /.row -->
-    </div><!-- /.container -->
 
+   
+   
     <!-- ===================== Marcas Carrucel======================== -->
+<div class="col-xs-12 col-sm-12 col-md-12 "> 
 <div id="brands-carousel" class="logo-slider wow fadeInUp">
 
         <h3 class="section-title">Nuestras Marcas</h3>
@@ -345,30 +314,12 @@
         </div><!-- /.logo-slider-inner -->
     
 </div><!-- /.logo-slider -->
+</div><!-- /.container -->
 <!-- =========================== Marcas Carrucel================================ -->
 
 
-
+    </div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -400,7 +351,7 @@
         <div class="logo">
             <a href="home.html">
                 
-                <img src="shop/images/logo.png" alt="">
+                <img src="storage/footer/logos-pago.jpg" alt="">
 
             </a>
         </div><!-- /.logo -->
@@ -408,7 +359,7 @@
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Nam libero tempore, cum soluta nobis est ses  eligendi optio cumque cum soluta nobis est ses  eligendi optio cumque.</p>
+        <p class="about-us">Nuestros metodos de Pago</p>
     
         <div class="social-icons">
             
@@ -427,26 +378,7 @@
 
                 
 <!-- ================================= HORARIOS DE ATENCION================================= -->
-<div class="col-xs-12 col-sm-6 col-md-3">
-<div class="contact-timing">
-    <div class="module-heading">
-        <h4 class="module-title">opening time</h4>
-    </div><!-- /.module-heading -->
 
-    <div class="module-body outer-top-xs">
-        <div class="table-responsive">
-            <table class="table">
-                <tbody>
-                    <tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
-                    <tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
-                    <tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
-                </tbody>
-            </table>
-        </div><!-- /.table-responsive -->
-        <p class='contact-number'>Hot Line:(400)888 868 848</p>
-    </div><!-- /.module-body -->
-</div><!-- /.contact-timing -->
-                </div><!-- /.col -->
 <!-- ======================== HORARIOS DE ATENCION : END ========================================= -->
 
 
@@ -549,35 +481,43 @@
 
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="module-heading outer-bottom-xs">
-                        <h4 class="module-title">our services</h4>
+                        <h4 class="module-title">Ayuda & Soporte</h4>
                     </div><!-- /.module-heading -->
 
                     <div class="module-body">
                         <ul class='list-unstyled'>
-                            <li><a href="#">Order History</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Libero Sed rhoncus</a></li>
-                            <li><a href="#">Venenatis augue tellus</a></li>
-                            <li><a href="#">My Vouchers</a></li>
+                          <li><a href="preguntas-frecuentes">Preguntas Frecuentes</a></li>
+                          <li><a href="formas-de-pago">Formas De Pago</a></li>
+                          <li><a href="garantia">Garantia y Devoluciones</a></li>
+                          <li><a href="aviso-legal">Aviso Legal</a></li>
+                          <li><a href="envios">Envios</a></li>
                         </ul>
                     </div><!-- /.module-body -->
                 </div><!-- /.col -->
 
                 <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="module-heading outer-bottom-xs">
-                        <h4 class="module-title">help & support</h4>
-                    </div><!-- /.module-heading -->
+                   <div class="contact-timing">
+    <div class="module-heading">
+        <h4 class="module-title">Hora de Apertura</h4>
+    </div><!-- /.module-heading -->
 
-                    <div class="module-body">
-                        <ul class='list-unstyled'>
-                            <li><a href="#">Knowledgebase</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Contact Support</a></li>
-                            <li><a href="#">Marketplace Blog</a></li>
-                            <li><a href="#">About Unicase</a></li>
-                        </ul>
-                    </div><!-- /.module-body -->
+    <div class="module-body outer-top-xs">
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr><td>Lunes-Viernes:</td><td class="pull-right">08.00 a 13:00</td></tr>
+                    <tr><td>Lunes-Viernes:</td><td class="pull-right">16:00 a 20:00</td></tr>
+                    <tr><td>Sabados:</td><td class="pull-right">08:00 To 15:00</td></tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <p class='contact-number'>Telefono: (381)  4247875 </p>
+    </div><!-- /.module-body -->
+</div><!-- /.contact-timing -->
+
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -586,8 +526,8 @@
         <div class="container">
             <div class="col-xs-12 col-sm-6 no-padding">
                 <div class="copyright">
-                   Copyright © 2014
-                    <a href="home.html">Unicase Shop.</a>
+                   Copyright © 2016
+                    <a href="home.html">SharkInformatica</a>
                     - All rights Reserved
                 </div>
             </div>
@@ -622,6 +562,7 @@
     <script src="shop/js/wow.min.js"></script>
     <script src="shop/js/scripts.js"></script>
 
-
+     @include('shop.modal.login') 
+     @include('shop.modal.registro') 
 </body>
 </html>

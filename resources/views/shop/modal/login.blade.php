@@ -25,7 +25,7 @@
 
 
         
-        <div class="panel panel-default" >
+        <div class="panel panel-primary" >
             <div class="panel-heading">
                 <div class="panel-title text-center">SharkInformatica.com</div>
             </div>     
@@ -36,20 +36,20 @@
     <form action="{{ url('/login') }}" method="post" id="form" class="form-horizontal">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <div class="input-group ">
+                        <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-user"></i></span>
                        <input type="email" class="form-control" placeholder="Email" name="email"/>                                   
                     </div>
 
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <div class="input-group ">
+                        <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-lock"></i></span>
                         <input type="password" class="form-control" placeholder="Password" name="password"/>
                     </div>                                                                  
 
                     <div class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
-                            <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Ingresar</button>                          
+                            <button type="submit" href="#" class="btn btn-azul pull-right"><i class="glyphicon glyphicon-log-in"></i> Ingresar</button>                          
                         </div>
                     </div>
 
