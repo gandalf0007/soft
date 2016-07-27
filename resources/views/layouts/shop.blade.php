@@ -15,6 +15,8 @@
         <!-- Customizable CSS -->
         
         {!!Html::style('shop/css/main.css')!!}
+        
+        <link rel="stylesheet" href="shop/css/checkout.css">
         <link rel="stylesheet" href="shop/css/blue.css">
         <link rel="stylesheet" href="shop/css/owl.carousel.css">
         <link rel="stylesheet" href="shop/css/owl.transitions.css">
@@ -26,7 +28,7 @@
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" type="text/css"  href="shop/css/font-awesome.css">
         <!-- Fonts --> 
-        <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+        
         <!-- Favicon -->
         <link rel="shortcut icon" href="shop/images/favicon.ico">
        
@@ -59,7 +61,7 @@
                 <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
                 <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                 <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-                <li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
+                <li><a href="web-shopping-cart"><i class="icon fa fa-key"></i>Checkout</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="icon fa fa-sign-in"></i>Salir</a></li>
 
                 @endif
@@ -167,7 +169,7 @@
                 <div class="basket">
                     <i class="glyphicon glyphicon-shopping-cart"></i>
                 </div>
-                <div class="basket-item-count"><span class="count">2</span></div>
+                <div class="basket-item-count"><span class="count"></span></div>
             
             </div>
         </a>
@@ -201,7 +203,7 @@
                 </div>
                 <div class="clearfix"></div>
                     
-                <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> 
+                <a href="{{ url('web-shopping-cart') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>    
             </div><!-- /.cart-total-->
                     
                 
@@ -287,8 +289,6 @@
     <div class="container blanco">
     <div class="row blanco mypadding">
     
-
-
 
 @yield('content')
     
@@ -549,8 +549,12 @@
 
 
     <!-- JavaScripts placed at the end of the document so the pages load faster -->
-    <script src="shop/js/jquery-1.11.1.min.js"></script>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pinterest_grid.js"></script>
     <script src="shop/js/bootstrap.min.js"></script>
+   <!--  <script src="shop/js/checkout.js"></script> -->
     <script src="shop/js/bootstrap-hover-dropdown.min.js"></script>
     <script src="shop/js/owl.carousel.min.js"></script>
     <script src="shop/js/echo.min.js"></script>
@@ -561,6 +565,11 @@
     <script src="shop/js/bootstrap-select.min.js"></script>
     <script src="shop/js/wow.min.js"></script>
     <script src="shop/js/scripts.js"></script>
+
+    <!--sweetalert-->
+<script src="js/sweetalert/sweetalert.min.js"></script>
+<script src="js/sweetalert/sweetalert-dev.js"></script>
+@include('sweet::alert')
 
      @include('shop.modal.login') 
      @include('shop.modal.registro') 

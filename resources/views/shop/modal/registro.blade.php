@@ -12,6 +12,18 @@
         <div class="center-block" >
     <div id="loginbox" class=" col-md-6  col-sm-9 "> 
         
+
+<h2>POR QU&Eacute; REGISTRARSE?</h2>
+<p align="justify">Para poder comprar, aprovechar las promociones y utilizar los medios de pago en nuestro sitio es requisitio estar correctamente registrado. En ning&uacute;n momento recibir&aacute; correo electr&oacute;nico que no haya solicitado. Pero se le pediran una serie de datos personales indispensables para cualquier operaci&oacute;n comercial.</p>
+<p>&nbsp;</p>
+<h2>PARA QU&Eacute; UTILIZAN MIS DATOS?</h2>
+<div class="span4">
+<p align="justify">Los datos solicitados son necesarios para confeccionar la factura de los productos comprados y la direcci&oacute;n f&iacute;sica para el envio de su compra.<br />Para m&aacute;s informaci&oacute; sobre nuestras pol&iacute;ticas en el tratamiento de los datos personales visite la secci&oacute;n <a href="{{ url('aviso-legal') }}">Terminos y Condiciones</a>.</p>
+</div>
+
+
+<img src="{{ asset('storage/paginas/home/login/lock.png') }}" alt="" width="128px" class="center-block"/><br>
+
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> Hubo algunos problemas con su entrada.<br><br>

@@ -1,12 +1,11 @@
 @extends('layouts.shopmenu')
 @section('content')
-
+@include('alerts.success')
 
 <div class="body-content outer-top-xs cnt-home">
 	<div class='container'>
 		<div class='row outer-bottom-sm'>
 			
-
 
 			<div class='col-md-9'>
 				<div class="search-result-container">
@@ -14,7 +13,7 @@
 						<div class="tab-pane active " id="grid-container">
 							<div class="category-product  inner-top-vs">
 								<div class="row">									
-										
+
 @foreach($itemdetalles as $itemdetalle)	
 <div class="col-sm-6 col-md-4 wow fadeInUp">
 	<div class="products">
@@ -28,7 +27,7 @@
 		</div><!-- /.product-image -->
 			
 		<div class="product-info text-left">
-			<h3 class="name"><a href="detail.html">Sony Ericson Vaga</a></h3>
+			<h3 class="name"><a href="item-detalle{{ $itemdetalle->id }}">{!! $itemdetalle->descripcion !!}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
@@ -44,10 +43,10 @@
 				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 				<i class="fa fa-shopping-cart"></i>			
 				</button>
-				<button class="btn btn-primary" type="button">Add to cart</button>
+				<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-primary" type="button">Add to cart</a>
 			</li>        
 		    <li class="lnk wishlist">
-			 	<a class="add-to-cart" href="detail.html" title="Wishlist">
+			 	<a class="add-to-cart" href="#" title="Wishlist">
 					<i class="icon fa fa-heart"></i>
 				</a>
 			</li>

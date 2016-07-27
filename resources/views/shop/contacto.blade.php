@@ -25,8 +25,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
+            {!!Form::open(['route'=>'mail.store', 'method'=>'POST','class'=>'form-horizontal'])!!}
+                
+                    
                         <legend class="text-center header">Contactenos</legend>
 
 
@@ -39,7 +40,7 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="lname" name="name" type="text" placeholder="Apellido" class="form-control">
+                                <input id="lname" name="apellido" type="text" placeholder="Apellido" class="form-control">
                             </div>
                         </div>
 
@@ -53,24 +54,26 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="telefono" class="form-control">
+                                <input id="phone" name="telefono" type="text" placeholder="telefono" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Introduzca su masaje. Nos pondremos en contacto con usted dentro de las 24 horas." rows="7"></textarea>
+                                <textarea class="form-control" id="message" name="Message" placeholder="Introduzca su masaje. Nos pondremos en contacto con usted dentro de las 24 horas." rows="7"></textarea>
                             </div>
                         </div>
+
+                      
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                             </div>
                         </div>
-                    </fieldset>
-                </form>
+                    
+                {!!Form::close()!!}
             </div>
         </div>
     </div>

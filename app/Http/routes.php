@@ -40,6 +40,28 @@ Route::get('aviso-legal','PaginasController@AvisoLegal');
 Route::get('envios','PaginasController@envios');
 Route::get('ubicacion','PaginasController@ubicacion');
 Route::get('contacto','PaginasController@contacto');
+Route::resource('mail','MailController');
+
+
+
+
+Route::get('web-addtocart/{id}',[
+	'uses'=>'WebVentas@add',
+	'as'=>'web.AddToCart'
+	]);
+Route::get('web-shopping-cart',[
+	'uses'=>'WebVentas@show',
+	'as'=>'web.ShoppingCart'
+	]);
+//eliminar carricato
+Route::get('web-trash','WebVentas@trash');
+//eliminar productos del carrito
+Route::get('web-delete/{id}','WebVentas@delete');
+//actualizar items
+Route::get('web-update/{id}/{quantity}','WebVentas@update');
+
+Route::get('checkout','WebVentas@CheckoutStep1');
+
 });
 
 

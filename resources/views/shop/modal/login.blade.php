@@ -9,8 +9,8 @@
 
 
 <div class="container">
-        <div class="center-block" >
-    <div id="loginbox" class=" col-md-6  col-sm-9 "> 
+<div class="center-block" >
+ <div id="loginbox" class=" col-md-6  col-sm-9 "> 
         
         @if (count($errors) > 0)
         <div class="alert alert-danger">

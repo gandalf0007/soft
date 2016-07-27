@@ -50,7 +50,7 @@ class WebCarrucelController extends Controller
         if ($request->hasFile('imagen')) {
             $avatar =$request->file('imagen');
             $filename=time() . '.' . $avatar->getClientOriginalExtension();
-            image::make($avatar)->save( public_path('/storage/paginas/home/carrucel/' . $filename));
+            image::make($avatar)->resize(720, 368)->save( public_path('/storage/paginas/home/carrucel/' . $filename));
 
             web_carrucel::create([
             'imagen' =>$filename,

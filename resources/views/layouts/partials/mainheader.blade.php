@@ -118,7 +118,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- Imagen del perfil de usuario -->       
 
-                               {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'user-image')) }}
+                               {{ HTML::image('storage/user/' . Auth::user()->path , 'img', array('class' => 'user-image')) }}
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->usu_nombre }}</span>
                         </a>
@@ -128,7 +128,7 @@
                             <!-- Imagen del perfil de usuario -->
                              
 
-                              {{ HTML::image('storage/' . Auth::user()->path , 'img', array('class' => 'img-circle')) }}
+                              {{ HTML::image('storage/user/' . Auth::user()->path , 'img', array('class' => 'img-circle')) }}
 
                                 <p>
 

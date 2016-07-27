@@ -58,10 +58,10 @@
     @foreach($users as $user)
     <tbody>
       <td>{{ $user -> id}}</td>
-	  	<td>{{ $user -> usu_nombre}}</td>
+	  	<td>{{ $user -> nombre}}</td>
 	  	<td>{{ $user -> email}}</td>
-	  	<td>{{ $user -> usu_tel}}</td>
-	  	<td>{{ $user -> usu_direcc}}</td>
+	  	<td>{{ $user -> telefono}}</td>
+	  	<td>{{ $user -> direccion}}</td>
 	  	<td>{{ $user->perfil->descripcion}}</td>
       
 <td>
