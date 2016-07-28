@@ -126,7 +126,9 @@ class UsuarioController extends Controller
         $user=User::find($id);
         $user->nombre = $request['nombre'];
         $user->apellido =$request['apellido'];
+        if(!empty($request['password'])){
         $user->password=bcrypt($request['password']);
+        }
         $user->re_password=$request['re_password'];
         $user->email =$request['email'];
         $user->direccion =$request['direccion'];
@@ -139,7 +141,7 @@ class UsuarioController extends Controller
         if ($request->hasFile('path')) {
             $avatar =$request->file('path');
             $filename=time() . '.' . $avatar->getClientOriginalExtension();
-            image::make($avatar)->resize(300, 300)->save( public_path('/storage/' . $filename));
+            image::make($avatar)->resize(300, 300)->save( public_path('/storage/user/' . $filename));
 
             $user=User::find($id);
             $user->path = $filename;

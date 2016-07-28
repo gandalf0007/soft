@@ -11,6 +11,7 @@ use Soft\web_venta;
 use DB;
 use Redirect;
 use Alert;
+use Auth;
 class WebVentas extends Controller
 {
 
@@ -178,7 +179,95 @@ class WebVentas extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
 
-        return view('shop.checkout', compact(
+
+
+        if (!Auth::guest()){
+            return view('shop.checkout-step2', compact('categorias','subcategorias','carrucels','carrucelMarcas','informacions','boxs','logos'));
+        }else{
+            return view('shop.checkout', compact('categorias','subcategorias','carrucels','carrucelMarcas','informacions','boxs','logos'));
+        }
+        
+    }
+
+
+
+
+    public function CheckoutStep2()
+    {
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        return view('shop.checkout-step2', compact(
+                                          'categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+
+    public function CheckoutStep3()
+    {
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        return view('shop.checkout-step3', compact(
+                                          'categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+
+    public function CheckoutStep4()
+    {
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        return view('shop.checkout-step4', compact(
+                                          'categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos'
+                                          ));
+    }
+
+    public function CheckoutStep5()
+    {
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        return view('shop.checkout-step5', compact(
                                           'categorias',
                                           'subcategorias',
                                           'carrucels',

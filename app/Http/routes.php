@@ -60,8 +60,8 @@ Route::get('web-delete/{id}','WebVentas@delete');
 //actualizar items
 Route::get('web-update/{id}/{quantity}','WebVentas@update');
 
-Route::get('checkout','WebVentas@CheckoutStep1');
 
+Route::get('checkout','WebVentas@CheckoutStep1');
 });
 
 
@@ -73,7 +73,7 @@ Route::group(array('middleware' => 'auth'), function(){
 });
 
 
-Route::group(['middleware' =>['auth', 'admin']], function () {
+Route::group(['middleware' =>['auth']], function () {
 
  Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
@@ -237,6 +237,26 @@ Route::resource('post','WebPostController');
 
 
 
+Route::get('checkout-step-2','WebVentas@CheckoutStep2');
+Route::get('checkout-step-3','WebVentas@CheckoutStep3');
+Route::get('checkout-step-4','WebVentas@CheckoutStep4');
+Route::get('checkout-step-5','WebVentas@CheckoutStep5');
+
+
+Route::resource('myaccount-edit','WebAccount@update');
+Route::get('myaccount','WebAccount@MyAccount');
+Route::post('myaccount-datos-facturacion',[
+	'uses'=>'WebAccount@DatosDeFacturacion',
+	'as'=>'myaccount.DatosDeFacturacion'
+	]);
+Route::post('myaccount-edit-datos-facturacion',[
+	'uses'=>'WebAccount@EditarFacturacion',
+	'as'=>'myaccount.EditarFacturacion'
+	]);
+Route::put('myaccount-edit-datos-facturacion/{id}',[
+	'uses'=>'WebAccount@EditarFacturacion',
+	'as'=>'myaccount.EditarFacturacion'
+	]);
 /*---------------menu WEB------------*/
 
 
@@ -244,9 +264,8 @@ Route::resource('post','WebPostController');
 //sistema de logue para laravel 5.2
 Route::auth();
 //para redireccionar si ya esta logueado y trata de entrar al login
-Route::get('logged', 'PaginasController@logged');
-
-
+Route::get('logged', 'LoginController@logged');
+Route::get('login-redirect', 'LoginController@LoginRedirect');
 
 
 /*---------------login------------*/
