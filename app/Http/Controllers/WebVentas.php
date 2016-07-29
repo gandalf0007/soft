@@ -182,7 +182,7 @@ class WebVentas extends Controller
 
 
         if (!Auth::guest()){
-            return view('shop.checkout-step2', compact('categorias','subcategorias','carrucels','carrucelMarcas','informacions','boxs','logos'));
+            return Redirect::to('checkout-step-2');
         }else{
             return view('shop.checkout', compact('categorias','subcategorias','carrucels','carrucelMarcas','informacions','boxs','logos'));
         }
@@ -202,7 +202,12 @@ class WebVentas extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
 
+
+        $datosfacturacions =  DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->first();
+
+
         return view('shop.checkout-step2', compact(
+                                          'datosfacturacions',
                                           'categorias',
                                           'subcategorias',
                                           'carrucels',
@@ -216,6 +221,8 @@ class WebVentas extends Controller
 
     public function CheckoutStep3()
     {
+
+      
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();

@@ -13,6 +13,7 @@ use Alert;
 use Redirect;
 use Image;
 use Soft\user_facturacion;
+use Session;
 
 class WebAccount extends Controller
 {
@@ -71,7 +72,7 @@ class WebAccount extends Controller
             $user->save();
         }
         //le manda un mensaje al usuario
-       Alert::success('Mensaje existoso', 'Modificado');
+       Session::flash('message','Usuario Modificados con exito'); 
        return Redirect::to('/myaccount');
 
     }
@@ -96,7 +97,7 @@ class WebAccount extends Controller
             ]);
 
 
-       Alert::success('Mensaje existoso', 'Modificado');
+        Session::flash('message','Datos Creados con exito'); 
        return Redirect::to('/myaccount');
 
     }
@@ -123,7 +124,7 @@ class WebAccount extends Controller
         $facturacion->save();
 
        
-       Alert::success('Mensaje existoso', 'Modificado');
+       Session::flash('message','Datos Modificados con exito'); 
        return Redirect::to('/myaccount');
 
     }

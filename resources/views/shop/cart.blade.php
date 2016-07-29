@@ -101,7 +101,7 @@
 
 		<a href="{!! URL::to('web-trash') !!}" class="btn btn-danger">Vaciar Carrito <i class="fa fa-trash"></i></a>
 
-		<a href="{!! URL::to('checkout') !!}" class="btn btn-azul">Confirmar Compra<i class=""></i></a>
+		<a href="{!! URL::to('checkout') !!}" class="btn btn-success pull-right">Confirmar Compra<i class=""></i></a>
 				
 		
 
