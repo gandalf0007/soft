@@ -7,7 +7,8 @@
          </div>
 
  @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
-{!!Form::model($datosfacturacions,['route'=>['myaccount.EditarFacturacion',$datosfacturacions->id],'method'=>'PUT' , 'files'=>True])!!}
+
+{!!Form::model($datosfacturacions,['route'=>['myaccount.EditarFacturacionCheckout',$datosfacturacions->id],'method'=>'PUT' , 'files'=>True])!!}
 
 <div class="modal-body">      
 
@@ -20,6 +21,7 @@
 <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
 {!!Form::close()!!}
 </div>
+
 @endif
 
 

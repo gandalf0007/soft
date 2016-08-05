@@ -228,6 +228,7 @@ return [
          'Alert' => UxWeb\SweetAlert\SweetAlert::class,
           'FilemanagerLaravel'=>Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        
          
 
     ],

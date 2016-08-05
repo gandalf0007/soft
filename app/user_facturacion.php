@@ -22,6 +22,7 @@ class user_facturacion extends Model
         'ciudad',
         'nacimiento',
         'empresa',
+        'transporte',
 
     ];
 }

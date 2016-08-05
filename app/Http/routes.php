@@ -239,24 +239,40 @@ Route::resource('post','WebPostController');
 
 Route::get('checkout-step-2','WebVentas@CheckoutStep2');
 Route::get('checkout-step-3','WebVentas@CheckoutStep3');
-Route::get('checkout-step-4','WebVentas@CheckoutStep4');
+Route::post('checkout-step-4',[
+	'uses'=>'WebVentas@CheckoutStep4',
+	'as'=>'WebVenta.step4'
+	]);
 Route::get('checkout-step-5','WebVentas@CheckoutStep5');
 
+Route::resource('pago','MercadoPagoController');
 
 Route::resource('myaccount-edit','WebAccount@update');
 Route::get('myaccount','WebAccount@MyAccount');
+
+
+
+//cuando crea desde la cuenta del user
 Route::post('myaccount-datos-facturacion',[
 	'uses'=>'WebAccount@DatosDeFacturacion',
 	'as'=>'myaccount.DatosDeFacturacion'
 	]);
-Route::post('myaccount-edit-datos-facturacion',[
-	'uses'=>'WebAccount@EditarFacturacion',
-	'as'=>'myaccount.EditarFacturacion'
-	]);
+//cuando edita desde la cuenta del user
 Route::put('myaccount-edit-datos-facturacion/{id}',[
 	'uses'=>'WebAccount@EditarFacturacion',
 	'as'=>'myaccount.EditarFacturacion'
 	]);
+//cuando crea desde el checkout
+Route::post('myaccount-datos-facturacion-checkout',[
+	'uses'=>'WebAccount@DatosDeFacturacionCheckout',
+	'as'=>'myaccount.DatosDeFacturacionCheckout'
+	]);
+//cuando edita desde el checkout
+Route::put('myaccount-edit-datos-facturacion-checkout/{id}',[
+	'uses'=>'WebAccount@EditarFacturacionCheckout',
+	'as'=>'myaccount.EditarFacturacionCheckout'
+	]);
+
 /*---------------menu WEB------------*/
 
 

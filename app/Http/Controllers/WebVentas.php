@@ -243,8 +243,21 @@ class WebVentas extends Controller
     }
 
 
-    public function CheckoutStep4()
+    public function CheckoutStep4(request $request)
     {
+      //guardamos el transporte elejido en el paso anterior
+      if ($request['transporte'] == 1) {
+      $transporte="retiro en nuestro local";
+      }
+      if ($request['transporte'] == 2) {
+      $transporte="Envio a domicilio por oca";
+      }
+      if ($request['transporte'] == 3) {
+      $transporte="Envio Express";
+      }
+
+     
+
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
@@ -260,7 +273,8 @@ class WebVentas extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'transporte'
                                           ));
     }
 

@@ -40,6 +40,7 @@
 @endif
 <div class=" col-md-12 col-lg-12 "> 
       <table class="table table-user-information">
+       @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
         <tbody>
           <tr>
             <td><strong><h4>Nombre:</h4></strong> {{ $datosfacturacions->nombre }}</td>
@@ -72,7 +73,7 @@
               </td>
                            
             </tr>
-                     
+                     @endif
                     </tbody>
                   </table>
                 </div>
@@ -92,7 +93,7 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
-@include('shop.modal.crear-datos-facturacion') 
-@include('shop.modal.editar-datos-facturacion') 
+@include('shop.modal.crear-datos-facturacion-checkout') 
+@include('shop.modal.editar-datos-facturacion-checkout') 
 <br><br><br><br><br><br>
 @endsection

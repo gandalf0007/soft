@@ -80,6 +80,11 @@ class WebAccount extends Controller
 
     public function DatosDeFacturacion(request $request)
     {
+        if($request['empresa'] == null){
+            $empresa=0;
+        }else{
+            $empresa=1;
+        }
 
          user_facturacion::create([
             'user_id' => Auth::user()->id,
@@ -91,7 +96,7 @@ class WebAccount extends Controller
             'provincia' =>$request['provincia'],
             'ciudad' =>$request['ciudad'],
             'nacimiento' =>$request['nacimiento'],
-            'empresa' =>$request['empresa'],
+            'empresa' =>$empresa,
             'telefono' =>$request['telefono'],  
             'telefono2' =>$request['telefono2'],
             ]);
@@ -101,6 +106,36 @@ class WebAccount extends Controller
        return Redirect::to('/myaccount');
 
     }
+
+public function DatosDeFacturacionCheckout(request $request)
+    {
+        if($request['empresa'] == null){
+            $empresa=0;
+        }else{
+            $empresa=1;
+        }
+
+         user_facturacion::create([
+            'user_id' => Auth::user()->id,
+            'nombre' =>$request['nombre'],
+            'apellido'=>$request['apellido'],
+            'cuit' =>$request['cuit'],
+            'cp' =>$request['cp'],
+            'direccion' =>$request['direccion'],
+            'provincia' =>$request['provincia'],
+            'ciudad' =>$request['ciudad'],
+            'nacimiento' =>$request['nacimiento'],
+            'empresa' =>$empresa,
+            'telefono' =>$request['telefono'],  
+            'telefono2' =>$request['telefono2'],
+            ]);
+
+
+        Session::flash('message','Datos Creados con exito'); 
+       return Redirect::to('/checkout-step-2');
+
+    }
+
 
 
  public function EditarFacturacion(request $request,$id)
@@ -126,6 +161,32 @@ class WebAccount extends Controller
        
        Session::flash('message','Datos Modificados con exito'); 
        return Redirect::to('/myaccount');
+
+    }
+
+     public function EditarFacturacionCheckout(request $request,$id)
+    {
+
+         $facturacion=user_facturacion::find($id);
+        $facturacion->nombre = $request['nombre'];
+        $facturacion->apellido =$request['apellido'];
+        $facturacion->cuit=$request['cuit'];
+        $facturacion->cp =$request['cp'];
+        $facturacion->direccion =$request['direccion'];
+        if(!empty($request['provincia'])){
+        $facturacion->provincia =$request['provincia'];
+        }
+        $facturacion->ciudad =$request['ciudad'];
+        $facturacion->nacimiento =$request['nacimiento'];
+        $facturacion->empresa =$request['empresa'];
+        $facturacion->telefono =$request['telefono'];
+        $facturacion->telefono2 =$request['telefono2'];
+       // $facturacion->path =$request['path'];
+        $facturacion->save();
+
+       
+       Session::flash('message','Datos Modificados con exito'); 
+       return Redirect::to('/checkout-step-2');
 
     }
 

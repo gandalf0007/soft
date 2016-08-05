@@ -161,6 +161,7 @@
 <div class=" col-md-12 col-lg-12 "> 
       <table class="table table-user-information">
         <tbody>
+        @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
           <tr>
             <td><strong><h4>Nombre:</h4></strong> {{ $datosfacturacions->nombre }}</td>
             <td><strong><h4>Apellido:</h4></strong> {{ $datosfacturacions->apellido }}</td>
@@ -192,7 +193,7 @@
               </td>
                            
             </tr>
-                     
+                     @endif
                     </tbody>
                   </table>
                 </div>
@@ -252,6 +253,8 @@
 </div><!-- /#top-banner-and-menu -->
 
 @include('shop.modal.user-edit') 
+
+
 @include('shop.modal.crear-datos-facturacion') 
 @include('shop.modal.editar-datos-facturacion') 
 

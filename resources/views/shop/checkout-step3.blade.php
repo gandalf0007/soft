@@ -38,7 +38,7 @@
             <div class="panel-body">
               <div class="row">
                 
-{!!Form::open(['route'=>'myaccount.DatosDeFacturacion', 'method'=>'POST', 'files'=>True])!!}
+{!!Form::open(['route'=>'WebVenta.step4', 'method'=>'POST', 'files'=>True])!!}
 
 
 @include('shop.forms.transporte')
@@ -48,9 +48,10 @@
             </div>
                  <div class="panel-footer">
                       <a href="{{ url('checkout-step-2') }}" class="btn btn-azul"><i class="fa fa-backward"> Atras</i></a>
-                        
-                      <a href="{{ url('checkout-step-4') }}" class="btn btn-success pull-right">Siguiente <i class="fa fa-forward"></i></a>
+                                      
+                      {!!Form::submit('Siguiente',['class'=>'btn btn-success pull-right'])!!}
                       
+                    
 
                     </div>
           </div>
