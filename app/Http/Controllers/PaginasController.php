@@ -18,6 +18,17 @@ use Soft\producto_imagen;
 class PaginasController extends Controller
 {
 
+    //total del carrito
+    private function total()
+    {
+        $cart = \Session::get('cartweb');
+        $total = 0;
+        foreach($cart as $item){
+            $total += $item->precioventa * $item->quantity;
+        }
+        return $total;
+    }
+
 
   public function CartCount(){
         /*obtengo mi variable de session cart que cree y la almaceno en $cart */
@@ -33,6 +44,8 @@ class PaginasController extends Controller
     {
         //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
@@ -50,7 +63,8 @@ class PaginasController extends Controller
                                           'logos',
                                           'posts',
                                           'subcategorias',
-                                          'categorias'
+                                          'categorias',
+                                          'total'
                                           ));
     }
 
@@ -58,6 +72,8 @@ class PaginasController extends Controller
     {
         //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
          /*seccion para el layout*/
          $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
@@ -75,7 +91,8 @@ class PaginasController extends Controller
                                           'logos',
                                           'post',
                                           'subcategorias',
-                                          'categorias'
+                                          'categorias',
+                                          'total'
                                           ));
     }
 
@@ -83,6 +100,8 @@ class PaginasController extends Controller
     public function Home(){
         //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -99,7 +118,8 @@ class PaginasController extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
 
 
@@ -110,6 +130,8 @@ class PaginasController extends Controller
   public function itemDetalle($id){
     //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
       /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
@@ -129,7 +151,8 @@ class PaginasController extends Controller
                                           'boxs',
                                           'logos',
                                           'itemdetalle',
-                                          'imagens'
+                                          'imagens',
+                                          'total'
                                           ));
 
     }
@@ -138,6 +161,8 @@ class PaginasController extends Controller
      public function subcategoria($id){
       //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
       /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
@@ -158,7 +183,8 @@ class PaginasController extends Controller
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'itemdetalles'
+                                          'itemdetalles',
+                                          'total'
                                          
                                           ));
 
@@ -169,8 +195,10 @@ class PaginasController extends Controller
 
 
 public function PreguntasFrecuentes(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -184,14 +212,17 @@ public function PreguntasFrecuentes(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
     }
 
 
 public function FormasDePago(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -205,13 +236,16 @@ public function FormasDePago(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
     }
 
 public function garantia(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -225,13 +259,17 @@ public function garantia(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
     }
 
 public function AvisoLegal(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
+
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -245,13 +283,16 @@ public function AvisoLegal(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
     }
 
     public function envios(){
-      //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -265,7 +306,8 @@ public function AvisoLegal(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
     }
 
@@ -277,8 +319,10 @@ public function AvisoLegal(){
 
 
 public function ubicacion(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -295,7 +339,8 @@ public function ubicacion(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
 
 
@@ -303,8 +348,10 @@ public function ubicacion(){
 
 
 public function contacto(){
-  //llama a la funcion CartTotal
+        //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -321,7 +368,8 @@ public function contacto(){
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total'
                                           ));
 
 
