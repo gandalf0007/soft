@@ -25,4 +25,12 @@ class user_facturacion extends Model
         'transporte',
 
     ];
+
+
+    public function user()
+    {
+        //una facturacion tiene un usuario
+       return $this->belongsTo(user::class);
+    }  
+
 }

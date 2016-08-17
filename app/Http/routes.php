@@ -252,6 +252,11 @@ Route::post('checkout-step-5',[
 	'as'=>'WebVenta.step5'
 	]);
 
+Route::post('checkout-step-6',[
+	'uses'=>'WebVentas@CheckoutStep6',
+	'as'=>'WebVenta.step6'
+	]);
+
 Route::resource('pago','MercadoPagoController');
 
 Route::resource('myaccount-edit','WebAccount@update');

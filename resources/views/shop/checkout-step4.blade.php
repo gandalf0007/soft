@@ -23,9 +23,9 @@
     
     <li class="active">Transporte</li>
     
-    <li class="">Pago</li>
-    
     <li class="">Confirmar</li>
+    
+    <li class="">Pagar</li>
   </ul>
 </div>
     
@@ -50,7 +50,7 @@
               </div>
             </div>
                  <div class="panel-footer">
-                      <a href="{{ url('checkout-step-2') }}" class="btn btn-azul"><i class="fa fa-backward"> Atras</i></a>
+                      <a href="{{ url('checkout-step-3') }}" class="btn btn-azul"><i class="fa fa-backward"> Atras</i></a>
                                       
                       {!!Form::submit('Siguiente',['class'=>'btn btn-success pull-right'])!!}
                       

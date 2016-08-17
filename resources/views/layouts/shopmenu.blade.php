@@ -164,7 +164,7 @@
 					<span class="lbl">cart -</span>
 					<span class="total-price">
 						<span class="sign">$</span>
-						<span class="value">{{ $total }}</span>
+						<span class="value">{!! $total !!}</span>
 					</span>
 				</div>
 				<div class="basket">

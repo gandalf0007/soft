@@ -12,6 +12,10 @@ use DB;
 use Redirect;
 use Alert;
 use Auth;
+use Soft\user_facturacion;
+use Soft\web_transaccione;
+
+
 class WebVentas extends Controller
 {
 
@@ -315,6 +319,7 @@ class WebVentas extends Controller
                                           'informacions',
                                           'boxs',
                                           'logos',
+
                                           'transporte',
                                           'total',
                                           'cartcount'
@@ -323,11 +328,22 @@ class WebVentas extends Controller
 
     public function CheckoutStep5(request $request)
     { 
+      //usuario
+       $user= Auth::user();
+
+      //datos de facturacion
+      $facturacion =  DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->first();
+      
+      //le mandamos los items del carrito
+      $carts = \Session::get('cartweb');
+
       //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
       //llama a la funcion total
         $total = $this->total();
 
+      //transporte
+       $transporte = $request['transporte'];
 
        //guardamos el metodo de pago del paso anterior
       if ($request['pago'] == 1) {
@@ -356,11 +372,90 @@ class WebVentas extends Controller
                                           'informacions',
                                           'boxs',
                                           'logos',
+
+                                          'transporte',
+                                          'TipoPago',
+                                          'total',
+                                          'cartcount',
+                                          'carts',
+                                          'user',
+                                          'facturacion'
+                                          ));
+    }
+
+
+public function CheckoutStep6(request $request)
+    { 
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
+        $totalaux = $total;
+
+       //transporte
+       $transporte = $request['transporte'];
+
+       //tipo de pago
+       $TipoPago= $request['TipoPago'];
+
+        
+    
+        //genero una venta que estara relacinada con los productos en las transacciones
+        $venta = new web_Venta();
+        $venta->user_id       = Auth::user()->id;
+        $venta->pago_tipo     = $TipoPago;
+        $venta->transporte    = $transporte;
+        $venta->total         = $total;
+        //$venta->comentario  =
+        $venta->status = "pendiente";
+        $venta->save();
+
+        //traigo todos los productos de la session  del usuario 
+        $cart = \Session::get('cartweb');
+        //los recorro
+        foreach ($cart as $item) {
+            //crea una nueva transaccion
+            $transaction  = new web_transaccione();
+            //alamacena la transaccion
+            $transaction->web_venta_id    = $venta->id;
+            $transaction->producto_id  = $item->id;
+            $transaction->user        = Auth::user()->nombre;
+            $transaction->cantidad    = $item->quantity;
+            $transaction->total_price = $item->precioventa * $item->quantity;
+            //guardo la transaccion
+            $transaction->save();
+
+            //descontar stock en la tabla producto
+            $producto = producto::find($item->id);
+            $producto->stockactual = $producto->stockactual - $item->quantity;
+            $producto->save();
+        }   
+
+        //limpiamos el carrito
+        \Session::forget('cartweb');
+       
+
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        return view('shop.checkout-step6', compact(
+                                          'categorias',
+                                          'subcategorias',
+                                          'carrucels',
+                                          'carrucelMarcas',
+                                          'informacions',
+                                          'boxs',
+                                          'logos',     
+                                          'totalaux',
                                           'total',
                                           'cartcount'
                                           ));
     }
-
 
 
 

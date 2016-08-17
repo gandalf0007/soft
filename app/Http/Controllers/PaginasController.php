@@ -18,6 +18,15 @@ use Soft\producto_imagen;
 class PaginasController extends Controller
 {
 
+  public function __construct()
+    {
+        /*si no existe mi session cart , esntonces la creo con put y creo
+        un array para almacenar los items*/
+        if(!\Session::has('cartweb')) \Session::put('cartweb', array());
+        //para cliente ya no es un array ya que almaceno 1 solo objeto
+        if(!\Session::has('cliente')) \Session::put('cliente');
+    }
+    
     //total del carrito
     private function total()
     {

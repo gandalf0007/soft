@@ -19,9 +19,9 @@
     
     <li class="">Transporte</li>
     
-    <li class="">Pago</li>
-    
     <li class="">Confirmar</li>
+    
+    <li class="">Pagar</li>
        
   </ul>
 </div>

@@ -78,4 +78,10 @@ public function webpost()
        return $this->hasMany(webpost::class);
     } 
 
+    public function facturacion()
+    {
+        //un usuario tiene una facturacion
+       return $this->belongsTo(user_facturacion::class);
+    }  
+
 }

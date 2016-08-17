@@ -74,6 +74,13 @@ class Producto extends Model
         return $this->hasMany(transaction::class);
     }
 
+    public function webtransaction()
+    {
+      //una producto corresponde a una transaccion
+        return $this->hasMany(web_transaccione::class);
+    }
+
+
     public function marca()
     {
       //una producto corresponde a una marca
