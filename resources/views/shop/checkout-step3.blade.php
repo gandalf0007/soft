@@ -13,8 +13,6 @@
 <div class="checkout-wrap center-block">
   <ul class="checkout-bar">
 
-    <li class="active">Resumen</li>
-    
     <li class="active">Iniciar Sesion</li>
     
     <li class="active">Direccion</li>
@@ -22,6 +20,8 @@
     <li class="">Transporte</li>
     
     <li class="">Pago</li>
+    
+    <li class="">Confirmar</li>
        
   </ul>
 </div>
@@ -58,6 +58,8 @@
 {!!Form::close()!!}
 </div>
 </div>
+
+<br><br><br><br><br><br>
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->

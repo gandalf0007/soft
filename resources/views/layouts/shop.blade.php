@@ -170,7 +170,7 @@
                 <div class="basket">
                     <i class="glyphicon glyphicon-shopping-cart"></i>
                 </div>
-                <div class="basket-item-count"><span class="count"></span></div>
+                <div class="basket-item-count"><span class="count">{{ $cartcount }}</span></div>
             
             </div>
         </a>

@@ -7,31 +7,6 @@
 	<div class="container">
 	<div class="row">
 
-		
- <h1>Responsive Checkout Progress Bar</h1>
-  <! -- To test add 'active' class and 'visited' class to different li elements -->
-  
-<div class="checkout-wrap center-block">
-  <ul class="checkout-bar">
-
-    <li class="active">Resumen</li>
-    
-    <li class="">Iniciar Sesion</li>
-    
-    <li class="">Direccion</li>
-    
-    <li class="">Transporte</li>
-    
-    <li class="">Pago</li>
-       
-  </ul>
-</div>
-    
-<br><br><br><br><br>
-
-
-
-
 
 <div class="table-cart container">
 			@if(count($cart))
@@ -97,18 +72,18 @@
 	
 		
 
-		<br>
+		<br><br><br>
 
 		<a href="{!! URL::to('web-trash') !!}" class="btn btn-danger">Vaciar Carrito <i class="fa fa-trash"></i></a>
 
-		<a href="{!! URL::to('checkout') !!}" class="btn btn-success pull-right">Confirmar Compra<i class=""></i></a>
+		<a href="{!! URL::to('checkout') !!}" class="btn btn-success pull-right">Comprar<i class=""></i></a>
 				
 		
 
 			</p>
 		</div>
 
-
+<br><br><br><br><br><br><br><br><br>
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->

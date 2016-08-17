@@ -24,6 +24,14 @@ class WebVentas extends Controller
         if(!\Session::has('cliente')) \Session::put('cliente');
     }
 
+    public function CartCount(){
+        /*obtengo mi variable de session cart que cree y la almaceno en $cart */
+        $cart = \Session::get('cartweb');
+        //cuenta los item que hay en la session
+        $cartcount =  count($cart);
+
+        return $cartcount;
+    }
 
    
     public function show()
@@ -31,6 +39,8 @@ class WebVentas extends Controller
         
         /*obtengo mi variable de session cart que cree y la almaceno en $cart */
         $cart = \Session::get('cartweb');
+        //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
         /*obtengo mi variable de session cliente que cree y la almaceno en $cart */
         $cliente = \Session::get('cliente');
         //llama a la funcion total
@@ -45,7 +55,7 @@ class WebVentas extends Controller
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
 
          
-        return view('shop.cart', compact('cart','total','cliente', 
+        return view('shop.cart', compact('cartcount','cart','total','cliente', 
                                           'categorias',
                                           'subcategorias',
                                           'carrucels',
@@ -278,8 +288,19 @@ class WebVentas extends Controller
                                           ));
     }
 
-    public function CheckoutStep5()
+    public function CheckoutStep5(request $request)
     {
+       //guardamos el metodo de pago del paso anterior
+      if ($request['pago'] == 1) {
+      $TipoPago="Mercadopago";
+      }
+      if ($request['pago'] == 2) {
+      $TipoPago="Desposito bancario";
+      }
+     
+
+     
+
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();

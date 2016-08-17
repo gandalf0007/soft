@@ -239,11 +239,16 @@ Route::resource('post','WebPostController');
 
 Route::get('checkout-step-2','WebVentas@CheckoutStep2');
 Route::get('checkout-step-3','WebVentas@CheckoutStep3');
+
 Route::post('checkout-step-4',[
 	'uses'=>'WebVentas@CheckoutStep4',
 	'as'=>'WebVenta.step4'
 	]);
-Route::get('checkout-step-5','WebVentas@CheckoutStep5');
+
+Route::post('checkout-step-5',[
+	'uses'=>'WebVentas@CheckoutStep5',
+	'as'=>'WebVenta.step5'
+	]);
 
 Route::resource('pago','MercadoPagoController');
 
