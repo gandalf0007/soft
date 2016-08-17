@@ -11,6 +11,7 @@ use Soft\web_footer;
 use Soft\web_informacion;
 use Soft\web_facebook;
 use Soft\web_logo;
+use Soft\web_mercadopago;
 use Alert;
 use Session;
 use Redirect;
@@ -25,7 +26,8 @@ class WebFooterController extends Controller
     $footers=web_footer::all();
     $informacions=web_informacion::all();
     $boxs=web_facebook::all();
-    return view ('admin.paginas.home.footer.index',compact('footers','informacions','boxs'));
+    $mercadopagos=web_mercadopago::all();
+    return view ('admin.paginas.home.footer.index',compact('footers','informacions','boxs','mercadopagos'));
     }
 
     

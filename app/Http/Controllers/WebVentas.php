@@ -180,7 +180,12 @@ class WebVentas extends Controller
 
 
  public function CheckoutStep1()
-    {
+    { 
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
+
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
@@ -194,7 +199,15 @@ class WebVentas extends Controller
         if (!Auth::guest()){
             return Redirect::to('checkout-step-2');
         }else{
-            return view('shop.checkout', compact('categorias','subcategorias','carrucels','carrucelMarcas','informacions','boxs','logos'));
+            return view('shop.checkout', compact('categorias',
+                                                  'subcategorias',
+                                                  'carrucels',
+                                                  'carrucelMarcas',
+                                                  'informacions',
+                                                  'boxs',
+                                                  'logos',
+                                                  'total',
+                                                  'cartcount'));
         }
         
     }
@@ -204,6 +217,11 @@ class WebVentas extends Controller
 
     public function CheckoutStep2()
     {
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
+
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
@@ -224,14 +242,19 @@ class WebVentas extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total',
+                                          'cartcount'
                                           ));
     }
 
 
     public function CheckoutStep3()
     {
-
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
       
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
@@ -248,13 +271,21 @@ class WebVentas extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total',
+                                          'cartcount'
                                           ));
     }
 
 
     public function CheckoutStep4(request $request)
-    {
+    { 
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
+
+
       //guardamos el transporte elejido en el paso anterior
       if ($request['transporte'] == 1) {
       $transporte="retiro en nuestro local";
@@ -284,12 +315,20 @@ class WebVentas extends Controller
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'transporte'
+                                          'transporte',
+                                          'total',
+                                          'cartcount'
                                           ));
     }
 
     public function CheckoutStep5(request $request)
-    {
+    { 
+      //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+      //llama a la funcion total
+        $total = $this->total();
+
+
        //guardamos el metodo de pago del paso anterior
       if ($request['pago'] == 1) {
       $TipoPago="Mercadopago";
@@ -302,7 +341,7 @@ class WebVentas extends Controller
      
 
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
-         $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
         $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
@@ -316,7 +355,9 @@ class WebVentas extends Controller
                                           'carrucelMarcas',
                                           'informacions',
                                           'boxs',
-                                          'logos'
+                                          'logos',
+                                          'total',
+                                          'cartcount'
                                           ));
     }
 

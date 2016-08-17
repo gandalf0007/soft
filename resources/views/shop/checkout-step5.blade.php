@@ -8,17 +8,27 @@ require_once "../lib/mercadopago.php";
 
 $mp = new MP("5038272799674049", "vDjzWpNZ0nrx3j9o7hSIcYw3QB4m9Igj");
 
+        //calculamos el total para mandar al carrito
+        $cart = \Session::get('cartweb');
+        $total = 0;
+        foreach($cart as $item){
+            $total += $item->precioventa * $item->quantity;
+        }
+       
+       //agregamos el porcentaje
+        $porcentaje = DB::table('web_mercadopagos')->first();
+       
 $preference_data = array(
     "items" => array(
         array(
-            "id" => "Code",
-            "title" => "hola soy goku",
+            "id" => "code",
+            "title" => "SharkInformatica",
             "currency_id" => "AR",
             "picture_url" =>"https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-            "description" => "asdasdasdsadsadasdasdasdasds",
+            "description" => "Productos",
             "category_id" => "Category",
             "quantity" => 1,
-            "unit_price" => 10
+            "unit_price" => (($total * $porcentaje->porcentaje)/100) + $total
         )
     ),
     

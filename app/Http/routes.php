@@ -229,6 +229,8 @@ Route::resource('carrucelmarcas','WebCarrucelMarcasController');
 Route::get('webconfig-footer','WebFooterController@ConfigFooter');
 Route::resource('informacion','WebInformacionController');
 Route::resource('facebook','WebFacebookController');
+Route::resource('mercadopago','WebMercadoPagoController');
+
 
 Route::get('webconfig-header','WebHeaderController@ConfigHeader');
 Route::resource('logo','WebLogoController');
