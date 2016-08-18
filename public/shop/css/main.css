@@ -5153,8 +5153,8 @@ a {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: middle;
-  border: none;
-  padding: 30px;
+  /*border: none;
+  padding: 30px;*/
 }
 .body-content .my-wishlist-page .my-wishlist table tbody .close-btn a,
 .body-content .my-wishlist-page .my-wishlist table tbody .close-btn a:hover {

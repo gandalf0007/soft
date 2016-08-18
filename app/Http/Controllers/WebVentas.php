@@ -465,75 +465,6 @@ public function CheckoutStep6(request $request)
 
 
 
- /*---------------------------------Listar Ventas--------------------------------------*/
-    public function listarVenta(request $request){
-
-
-         $ventas=venta::orderBy('id')->paginate(50);
-         $transactions = transaction::all();
-
-         /*buscador*/
-        $fechai=$request->input('fecha_inicio');
-        $fechaf=$request->input('fecha_final');
-        if (!empty($fechai) and !empty($fechaf)) {
-            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $ventas = venta::where('created_at', '>=' , $fechai)->where('created_at', '<=', $fechaf)->paginate(50);
-        }
-        /*buscador*/
-
-        return view('admin.venta.listar.index',compact('ventas','transactions'));
-    }
-
-
-public function detalleVentaPdf($tipo,$id){
-        $vistaurl="admin.venta.venta-detalle-pdf";
-        $ventas=venta::all();
-        $transactions = transaction::all();
-        
-     return $this->crearPDF($ventas, $transactions , $vistaurl,$tipo,$id);
-     
-    }
-
-    public function crearPDF($ventas, $transactions , $vistaurl,$tipo ,$id){
-        $data = $ventas;
-        $date = date('Y-m-d');
-        $view =  \View::make($vistaurl, compact('data', 'date', 'transactions','id'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        
-        if($tipo==1){return $pdf->stream('reporte');}
-        if($tipo==2){return $pdf->download('reporte.pdf'); }
-     
-    }
-
-    public function cambiarStatus(Request $Request , $id){
-    
-
-        $venta=venta::find($id);
-        $venta->status=$Request['pago'];
-        $venta->save();
-        return Redirect::to('/listar-venta');
-
-    }
-
-  /*  public function detalleVenta($id){
-        //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
-        //return json_encode($items);
-      
-        $ventas = venta::all();
-         $ventas= venta::Paginate();
-         $transactions = transaction::all();
-        //$items=venta::find($id);
-        $mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
-       
-        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
-       return view('admin.venta.listar.index')
-        ->with('ventas',$ventas)
-         ->with('transactions',$transactions)
-       ->with('mycart',$mycart);
-    }/*
-/*---------------------------------Listar Ventas--------------------------------------*/
-
 
 
 
@@ -576,9 +507,6 @@ public function seleccionarCliente(request $request)
 
 
 
-
-/*---------------------------------vendedor--------------------------------------*/
-/*---------------------------------vendedor--------------------------------------*/
 
 
 }

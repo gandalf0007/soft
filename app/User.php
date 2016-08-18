@@ -66,6 +66,13 @@ public function venta()
        return $this->hasMany(Venta::class);
     }
 
+public function webventa()
+    {
+        //un usuario puede tener muchas ventas
+       return $this->hasMany(web_Venta::class);
+    }
+
+
 public function perfil()
     {
         //un usuario tiene un perfil

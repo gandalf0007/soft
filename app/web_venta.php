@@ -25,4 +25,11 @@ public function webtransaction()
          return $this->hasMany(web_Transacsione::class);
     }
 
+public function user()
+    {
+      //una venta corresponde a un usuario
+        return $this->belongsTo(user::class);
+    }
+
+    
 }

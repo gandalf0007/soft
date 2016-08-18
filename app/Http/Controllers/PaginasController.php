@@ -26,10 +26,11 @@ class PaginasController extends Controller
         //para cliente ya no es un array ya que almaceno 1 solo objeto
         if(!\Session::has('cliente')) \Session::put('cliente');
     }
-    
+
     //total del carrito
     private function total()
     {
+      
         $cart = \Session::get('cartweb');
         $total = 0;
         foreach($cart as $item){

@@ -31,10 +31,11 @@
 
 
 <div class="container outer-section">
-        
-       
         <div id="print-area">
-                  <div class="row pad-top font-big">
+
+
+
+            <div class="row pad-top font-big">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <img src="assets/img/logo.png" alt="Free Bootstrap Invoice Logo" />
                 </div>
@@ -100,7 +101,7 @@
 
  <div class="col-lg-4 col-md-4 col-sm-4">
                     <h2>Detalles Del Transporte :</h2>
-                    <h4><strong>Envio :</strong>    {{ $transporte }}
+                    <h4><strong>Envio :</strong> {{ $transporte }}</h4>
                    
                     
 </div>
@@ -108,6 +109,9 @@
 </div>
 </div>
 </div>
+
+
+
 
             
             <hr />

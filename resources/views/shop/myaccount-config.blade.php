@@ -12,25 +12,25 @@
             
             <div class="user-info-block container">
                 <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information">
+                    <li >
+                        <a  href="{{url('myaccount-perfil')}}">
                             <h5><span class="glyphicon glyphicon-user"> Perfil</span></h5>
                         </a>
                     </li>
-                    <li>
-                        <a data-toggle="tab" href="#settings">
+                    <li class="active">
+                        <a  href="{{url('myaccount-config')}}">
                             <h5><span class="glyphicon glyphicon-cog"> Config</span></h5>
                         </a>
                     </li>
                    
                     <li>
-                        <a data-toggle="tab" href="#pedidos">
-                            <h5><span class="glyphicon glyphicon-shopping-cart"> Pedidos</span></h5>
+                        <a  href="{{ url('myaccount-facturas') }}">
+                            <h5><span class="glyphicon glyphicon-shopping-cart"> Mis Facturas</span></h5>
                         </a>
                     </li>
 
                     <li>
-                        <a data-toggle="tab" href="#events">
+                        <a  href="#events">
                             <h5><span class="glyphicon glyphicon-bell"> Avisos</span></h5>
                         </a>
                     </li>
@@ -40,115 +40,8 @@
     <div class="tab-content">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--=================== Datos de Usuario ======================-->
-        <div id="information" class="tab-pane active">             
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Account Information</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ url('storage/user/'.$user->path) }}" class="img-circle img-responsive"> </div>
-                
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Nombre:</td>
-                        <td>{{ $user->nombre }}</td>
-                      </tr>
-                      <tr>
-                        <td>Apellido:</td>
-                        <td>{{ $user->apellido }}</td>
-                      </tr>
-                      <tr>
-                        <td>Fecha de Ingreso</td>
-                        <td>{{ $user->created_at }}</td>
-                      </tr>
-                   
-                         <tr>
-                             
-                        <tr>
-                        <td>Direccion</td>
-                        <td>{{ $user->direccion }}</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
-                      </tr>
-                        <td>Telefono</td>
-                        <td>{{ $user->telefono }}
-                        </td>
-                           
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-                  
-                </div>
-              </div>
-            </div>
-                 <div class="panel-footer">
-                        <button type="button" class="btn btn-azul" data-toggle="modal" data-target="#user"><i class="fa fa-edit"> Editar</i></button>
-                    </div>
-          </div>
-</div>
-<!--=================== Datos de Usuario ======================-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--=================== Datos de Facturacion ======================-->
-<div id="settings" class="tab-pane">                         
+<div id="settings" class="tab-pane active">                         
   <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Datos de Facturacion</h3>
@@ -212,33 +105,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div id="pedidos" class="tab-pane">
-                            <h4>Send Message</h4>
-                        </div>
-                        <div id="events" class="tab-pane">
-                            <h4>Events</h4>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -251,9 +117,7 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
-
-@include('shop.modal.user-edit') 
-
+ 
 
 @include('shop.modal.crear-datos-facturacion') 
 @include('shop.modal.editar-datos-facturacion') 

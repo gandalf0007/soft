@@ -59,7 +59,7 @@
                 @else
 
  {{HTML::image('storage/user/'.Auth::user()->path,'img', array('class'=>'imagecircel'))}}
-               <li><a href="{{ url('/myaccount') }}"><i class="icon fa fa-user"></i>My Account</a></li>
+               <li><a href="{{ url('/myaccount-perfil') }}"><i class="icon fa fa-user"></i>My Account</a></li>
                 <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                 <li><a href="{{ url('/web-shopping-cart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                 <li><a href="{{ url('/checkout') }}"><i class="icon fa fa-key"></i>Checkout</a></li>

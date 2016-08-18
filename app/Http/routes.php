@@ -260,7 +260,11 @@ Route::post('checkout-step-6',[
 Route::resource('pago','MercadoPagoController');
 
 Route::resource('myaccount-edit','WebAccount@update');
-Route::get('myaccount','WebAccount@MyAccount');
+Route::get('myaccount-perfil','WebAccount@MyAccount');
+Route::get('myaccount-config','WebAccount@MyAccountConfig');
+Route::get('myaccount-facturas','WebAccount@verFacturas');
+
+Route::get('myaccount-detalle-pdf/{tipo}/{id}','WebAccount@detalleVentaPdf');
 
 
 
