@@ -11,6 +11,7 @@ protected $fillable = [
         	  'id',
             'cliente_id',
             'user_id',
+            'usuario',
            	'pago_tipo',
             'transporte',
            	'total',

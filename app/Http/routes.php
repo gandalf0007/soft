@@ -112,6 +112,8 @@ Route::post('venta-checkout','VentaController@checkout');
 Route::get('venta-checkout','VentaController@checkout');
 //listar ventas
 Route::get('listar-venta/','VentaController@listarVenta');
+//listar ventas WEB
+Route::get('listar-venta-web/','VentaController@listarVentaWeb');
 //cargar Cliente
 Route::get('venta-addcliente/','VentaController@seleccionarCliente');
 //mandamos id del cliente para almacenarlo en la sessio
@@ -121,12 +123,18 @@ Route::get('venta-detalle-pdf/{tipo}/{id}','VentaController@detalleVentaPdf');
 
 //cambiar status de venta
 Route::get('cambiar-status/','VentaController@cambiarStatus');
-Route::post('cambiar-status/','VentaController@cambiarStatus');
+Route::post('cambiar-status-web/','VentaController@cambiarStatusWeb');
 
 Route::post('cambiar-status/{id}',[
 'as'=>'venta.cambiarStatus',
 'uses'=>'VentaController@cambiarStatus'
 	]);
+
+Route::post('cambiar-status-web/{id}',[
+'as'=>'venta.cambiarStatusWeb',
+'uses'=>'VentaController@cambiarStatusWeb'
+	]);
+
 //detalle de la venta en una ventana modal
 /*Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
 Route::post('listar-venta/detalle/{id}','VentaController@detalleVenta');*/
@@ -172,8 +180,6 @@ Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 
-
-
 Route::resource('producto','ProductoController');
 Route::resource('productoimagen','ProductoImagenController');
  //me devuelve las subcategorias al crear el prodcuto (select dinamico)
@@ -194,6 +200,7 @@ Route::delete('producto-destroyimagen/{id}',[
 'uses'=>'ProductoImagenController@destroy'
 	]);
 /*porducto carga de imaganes*/
+
 Route::get('tags', function (Illuminate\Http\Request  $request) {
         $term = $request->term ?: '';
         $tags = Soft\Tag::where('nombre', 'like', $term.'%')->lists('nombre', 'id');
@@ -203,9 +210,6 @@ Route::get('tags', function (Illuminate\Http\Request  $request) {
         }
         return \Response::json($valid_tags);
     });
-
-
-
 
 Route::resource('provedor','ProvedoreController');
 Route::resource('cliente','ClienteController');
@@ -219,54 +223,45 @@ Route::resource('categoriasub','CategoriaSubController');
 
 
 
-/*---------------menu WEB------------*/
+/*---------------WEB CONFIG------------*/
 Route::get('webconfig-carrucel','WebCarrucelController@index');
 Route::resource('carrucel','WebCarrucelController');
-
 Route::get('webconfig-carrucelmarcas','WebCarrucelMarcasController@index');
 Route::resource('carrucelmarcas','WebCarrucelMarcasController');
-
 Route::get('webconfig-footer','WebFooterController@ConfigFooter');
 Route::resource('informacion','WebInformacionController');
 Route::resource('facebook','WebFacebookController');
 Route::resource('mercadopago','WebMercadoPagoController');
-
-
 Route::get('webconfig-header','WebHeaderController@ConfigHeader');
 Route::resource('logo','WebLogoController');
-
 Route::resource('post','WebPostController');
+/*---------------WEB CONFIG------------*/
 
-
-
+/*---------------CHECKOUT------------*/
 Route::get('checkout-step-2','WebVentas@CheckoutStep2');
 Route::get('checkout-step-3','WebVentas@CheckoutStep3');
-
 Route::post('checkout-step-4',[
 	'uses'=>'WebVentas@CheckoutStep4',
 	'as'=>'WebVenta.step4'
 	]);
-
 Route::post('checkout-step-5',[
 	'uses'=>'WebVentas@CheckoutStep5',
 	'as'=>'WebVenta.step5'
 	]);
-
 Route::post('checkout-step-6',[
 	'uses'=>'WebVentas@CheckoutStep6',
 	'as'=>'WebVenta.step6'
 	]);
-
 Route::resource('pago','MercadoPagoController');
+/*---------------CHECKOUT------------*/
 
+
+/*---------------USER ACCOUNT------------*/
 Route::resource('myaccount-edit','WebAccount@update');
 Route::get('myaccount-perfil','WebAccount@MyAccount');
 Route::get('myaccount-config','WebAccount@MyAccountConfig');
 Route::get('myaccount-facturas','WebAccount@verFacturas');
-
 Route::get('myaccount-detalle-pdf/{tipo}/{id}','WebAccount@detalleVentaPdf');
-
-
 
 //cuando crea desde la cuenta del user
 Route::post('myaccount-datos-facturacion',[
@@ -288,6 +283,9 @@ Route::put('myaccount-edit-datos-facturacion-checkout/{id}',[
 	'uses'=>'WebAccount@EditarFacturacionCheckout',
 	'as'=>'myaccount.EditarFacturacionCheckout'
 	]);
+/*---------------USER ACCOUNT------------*/
+
+
 
 /*---------------menu WEB------------*/
 

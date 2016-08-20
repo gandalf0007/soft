@@ -275,39 +275,10 @@ public function DatosDeFacturacionCheckout(request $request)
 
 
 
-public function MostrarFacturas(request $request,$id)
-    {
-
-         $facturacion=user_facturacion::find($id);
-        $facturacion->nombre = $request['nombre'];
-        $facturacion->apellido =$request['apellido'];
-        $facturacion->cuit=$request['cuit'];
-        $facturacion->cp =$request['cp'];
-        $facturacion->direccion =$request['direccion'];
-        if(!empty($request['provincia'])){
-        $facturacion->provincia =$request['provincia'];
-        }
-        $facturacion->ciudad =$request['ciudad'];
-        $facturacion->nacimiento =$request['nacimiento'];
-        $facturacion->empresa =$request['empresa'];
-        $facturacion->telefono =$request['telefono'];
-        $facturacion->telefono2 =$request['telefono2'];
-       // $facturacion->path =$request['path'];
-        $facturacion->save();
-
-       
-       Session::flash('message','Datos Modificados con exito'); 
-       return Redirect::to('/checkout-step-2');
-
-    }
-
-
-
  /*---------------------------------Listar Facturas--------------------------------------*/
     public function verFacturas(request $request){
 
-
-         $ventas= web_venta::orderBy('id')->paginate(50);
+        $ventas= web_venta::orderBy('created_at','des');
          $transactions = web_transaccione::all();
 
          /*buscador*/
@@ -320,7 +291,7 @@ public function MostrarFacturas(request $request,$id)
         /*buscador*/
 
         //listar Facturas
-        
+        $ventas=$ventas->paginate(50);
         //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
         //llama a la funcion total
@@ -381,15 +352,7 @@ public function detalleVentaPdf($tipo,$id){
      
     }
 
-    public function cambiarStatus(Request $Request , $id){
     
-
-        $venta=venta::find($id);
-        $venta->status=$Request['pago'];
-        $venta->save();
-        return Redirect::to('/listar-venta');
-
-    }
 
   /*  public function detalleVenta($id){
         //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();

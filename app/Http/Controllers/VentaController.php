@@ -16,7 +16,8 @@ use Soft\Transaction;
 use Soft\Venta;
 use Soft\Cliente;
 use Alert;
-
+use Soft\web_venta;
+use Soft\web_transaccione;
 
 class VentaController extends Controller
 {
@@ -189,6 +190,37 @@ class VentaController extends Controller
         return view('admin.venta.listar.index',compact('ventas','transactions'));
     }
 
+    public function listarVentaWeb(request $request){
+
+
+         $ventas= web_venta::orderBy('created_at','des');
+         $transactions = web_transaccione::all();
+
+         /*buscador*/
+        $fechai=$request->input('fecha_inicio');
+        $fechaf=$request->input('fecha_final');
+        if (!empty($fechai) and !empty($fechaf)) {
+            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
+            $ventas = web_venta::where('created_at', '>=' , $fechai)->where('created_at', '<=', $fechaf)->paginate(50);
+        }
+
+        $user=$request->input('user');
+        if (!empty($user)) {
+                $ventas = web_venta::where('usuario','LIKE','%'.$user.'%');
+        }
+        /*buscador*/
+        
+
+        $ventas= $ventas->paginate(50);
+        //llama a la funcion total
+        $total = $this->total();
+     
+        return view('admin.venta.listar.ventas-web',compact(
+            'total',
+            'ventas',
+            'transactions')); 
+        }
+
 
 public function detalleVentaPdf($tipo,$id){
         $vistaurl="admin.venta.venta-detalle-pdf";
@@ -212,12 +244,20 @@ public function detalleVentaPdf($tipo,$id){
     }
 
     public function cambiarStatus(Request $Request , $id){
-    
-
         $venta=venta::find($id);
         $venta->status=$Request['pago'];
         $venta->save();
         return Redirect::to('/listar-venta');
+
+    }
+
+    public function cambiarStatusWeb(Request $Request , $id){
+    
+
+        $venta=web_venta::find($id);
+        $venta->status=$Request['pago'];
+        $venta->save();
+        return Redirect::to('/listar-venta-web');
 
     }
 

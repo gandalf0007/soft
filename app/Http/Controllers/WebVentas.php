@@ -403,6 +403,7 @@ public function CheckoutStep6(request $request)
         //genero una venta que estara relacinada con los productos en las transacciones
         $venta = new web_Venta();
         $venta->user_id       = Auth::user()->id;
+        $venta->usuario         = Auth::user()->nombre;
         $venta->pago_tipo     = $TipoPago;
         $venta->transporte    = $transporte;
         $venta->total         = $total;

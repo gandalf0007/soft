@@ -9,20 +9,22 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de ventas</h3>
+              <h3 class="box-title">Listado de Ventas</h3>
             </div>
 			<div class="box-body">
  
 <ul class="nav nav-tabs">
-  <li class="active"><a href="{{ url('listar-venta') }}">Ventas</a></li>
-  <li><a href="{{ url('listar-venta-web') }}">Ventas Web</a></li>
+  <li ><a href="{{ url('listar-venta') }}">Ventas</a></li>
+  <li class="active"><a href="{{ url('listar-venta-web') }}">Ventas Web</a></li>
 </ul>
 
 <br>
 <!--buscador-->
-{!!Form::open(['url'=>'listar-venta', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
+{!!Form::open(['url'=>'listar-venta-web', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 
+<i class="fa fa-user"></i>
+{!!Form::text('user',null,['class'=>'form-control','placeholder'=>'Usuario'])!!}
 
 <i class="fa fa-calendar"></i>
 {!!Form::label('Fecha Inicial')!!}
@@ -45,29 +47,26 @@ endboton crear-->
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
       <tr>
-    <td>Mostrar</td>
-		<th>Vendedor</th>
-		<th>Cliente</th>
-		<th>Pago</th>
-		<th>Comentario</th>
-		<th>Total</th>
-		<th>Estatus</th>
+    <td>Numero de Factura</td>
+    <td>Usuario</td>
+    <td>Metodo de Pago</td>
+    <th>Transporte</th>
+    <th>Comentario</th>
+    <th>Total</th>
+    <th>Estatus</th>
     <th>Fecha</th>
     <th>Pdf</th>
       </tr>
     </thead>
     @foreach($ventas as $venta)
     <tbody>
-
-<td>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalle-{{ $venta->id }}"><i class="fa fa-expand"> Detalle</i></button>
-</td>
-
-	  	<td>{{ $venta->user->unombre }}</td>
-	  	<td>{{ $venta ->cliente->nombre}}</td>
-	  	<td>{{ $venta -> pago_tipo}}</td>
-	  	<td>{{ $venta -> comentario}}</td>
-	  	<td>{{ $venta -> total}}</td>
+   
+      <td>#{{ $venta -> id}}</td>
+	  	<td>{{ $venta ->user->nombre}}</td>
+      <td>{{ $venta -> pago_tipo}}</td>
+      <td>{{ $venta -> transporte}}</td>
+      <td>{{ $venta -> comentario}}</td>
+      <td>${{ $venta -> total}}</td>
 
       <td>
       @if ($venta -> status == "pagado")
@@ -84,7 +83,7 @@ endboton crear-->
 
       <td>{{ $venta -> created_at}}</td>
 
-      <td><a href="{{ URL::to('venta-detalle-pdf/1/'.$venta->id) }}" target="_blank" ><button class="btn btn-danger"><i class="fa fa-file-pdf-o"> PDF</i></button></a></td>
+      <td><a href="{{ URL::to('myaccount-detalle-pdf/1/'.$venta->id) }}" target="_blank" ><button class="btn btn-danger"><i class="fa fa-file-pdf-o"> PDF</i></button></a></td>
 	</tbody>
   @endforeach
 	</table>
@@ -100,8 +99,7 @@ endboton crear-->
       <!-- /.row -->
     </section>
 
-    @include('admin.venta.modal.modal-detalle-venta')
-    @include('admin.venta.modal.modal-status')
+@include('admin.venta.modal.modal-status-web')
 
 
 
