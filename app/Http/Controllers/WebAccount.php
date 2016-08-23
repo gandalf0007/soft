@@ -278,7 +278,7 @@ public function DatosDeFacturacionCheckout(request $request)
  /*---------------------------------Listar Facturas--------------------------------------*/
     public function verFacturas(request $request){
 
-        $ventas= web_venta::orderBy('created_at','des');
+        $ventas= web_venta::orderBy('created_at','des')->where('user_id','=',Auth::user()->id);
          $transactions = web_transaccione::all();
 
          /*buscador*/

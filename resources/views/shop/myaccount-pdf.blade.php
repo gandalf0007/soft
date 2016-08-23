@@ -58,7 +58,7 @@
       <tbody>
         <tr>
           <td width="30%">
-            <img src="http://exotel.in/wp-content/uploads/2013/03/exotel.png"> <!-- your logo here -->
+            <img src="{{ url('storage/paginas/home/logo/1468282267.jpg') }}" width="200" height="150"> <!-- your logo here -->
           </td>
           <td width="70%">
             <h2>Shark Informatica</h2><br>
@@ -71,20 +71,62 @@
         <tr>
           <td colspan="2">&nbsp;</td>
         </tr>
-        <tr>
-          <td colspan="2">
-            <div class="center-justified">
-              <strong>Factura a:</strong>
-              <strong>Importe de la factura :</strong> {{ $venta->total }}
-            </div>
-          </td>
-        </tr>
+       
       </tbody>
     </table>
     <p>&nbsp;</p>
 
+<table width="100%" class="outline-table">
+      <tbody>
+        <tr class="border-bottom border-right center">
+          <td width="45%"><strong>Detalles de Facturacion</strong></td>
+          <td width="25%"><strong>Detalles de Envio: </strong></td>
+          <td width="30%"><strong>Detalle de pago</strong></td>
+        </tr>
+
+        <tr class="border-right">
+
+        <td >
+            <div >
+                    <strong>Nombre :</strong> {{ $datosfacturacions->nombre }} {{$datosfacturacions->apellido }} <br>
+                    <strong>Cuit:</strong> {{ $datosfacturacions->cuit }} <br>
+                    <strong>Direccion: </strong> {{ $datosfacturacions->direccion }} <br>
+                    <strong>CP: </strong> {{ $datosfacturacions->cp }} <br>
+                    <strong>Provincia: </strong> {{ $datosfacturacions->provincia }} <br>
+                    <strong>Ciudad: </strong> {{ $datosfacturacions->ciudad }} <br>
+                    <strong>Telefono :</strong> {{ $datosfacturacions->telefono }} <br>
+                    <strong>Email:</strong>{{ $datosfacturacions->user->email }}
+            </div>
+          </td>
+
+          <td >
+            <div >
+                    <strong>Envio :</strong> {{ $venta->transporte }} <br>
+                    
+            </div>
+          </td>
 
 
+          <td >
+            <div >
+              <strong>Numero de Factura:</strong>#{{ $venta->id }} <br>
+              <strong>Tipo de Pago:</strong> {{ $venta->pago_tipo }}<br>
+              @if($venta->pago_tipo == "Desposito bancario")
+                    <strong>N De Cuenta Corriente : </strong>472 USD<br>
+                    <strong>Titular : </strong>Completed<br>
+                    <strong>Cuit : </strong>Completed<br>
+                    <strong>CBU : </strong>Completed<br>
+              @endif
+            </div>
+          </td>
+
+          
+
+        </tr>
+      </tbody>
+    </table>
+
+<br><br>
 
     <table width="100%" class="outline-table">
       <tbody>
@@ -154,55 +196,7 @@
     <p>&nbsp;</p>
 
     
-    <table width="100%" class="outline-table">
-      <tbody>
-        <tr class="border-bottom border-right center">
-          <td width="45%"><strong>Detalles de Facturacion</strong></td>
-          <td width="25%"><strong>Detalles de Envio: </strong></td>
-          <td width="30%"><strong>Detalle de pago</strong></td>
-        </tr>
-
-        <tr class="border-right">
-
-        <td >
-            <div >
-                    <strong>Nombre :</strong> {{ $datosfacturacions->nombre }} {{$datosfacturacions->apellido }} <br>
-                    <strong>Cuit:</strong> {{ $datosfacturacions->cuit }} <br>
-                    <strong>Direccion: </strong> {{ $datosfacturacions->direccion }} <br>
-                    <strong>CP: </strong> {{ $datosfacturacions->cp }} <br>
-                    <strong>Provincia: </strong> {{ $datosfacturacions->provincia }} <br>
-                    <strong>Ciudad: </strong> {{ $datosfacturacions->ciudad }} <br>
-                    <strong>Telefono :</strong> {{ $datosfacturacions->telefono }} <br>
-                    <strong>Email:</strong>{{ $datosfacturacions->user->email }}
-            </div>
-          </td>
-
-          <td >
-            <div >
-                    <strong>Envio :</strong> {{ $venta->transporte }} <br>
-                    
-            </div>
-          </td>
-
-
-          <td >
-            <div >
-              <strong>Numero de Factura:</strong>#{{ $venta->id }} <br>
-              <strong>Tipo de Pago:</strong> {{ $venta->pago_tipo }}<br>
-              @if($venta->pago_tipo == "Desposito bancario")
-                    <strong>N De Cuenta Corriente : </strong>472 USD<br>
-                    <strong>Titular : </strong>Completed<br>
-                    <strong>Cuit : </strong>Completed<br>
-                    <strong>CBU : </strong>Completed<br>
-              @endif
-            </div>
-          </td>
-
-          
-
-        </tr>
-      </tbody>
-    </table>
+    
     <p>&nbsp;</p>
     <table>
       <tbody>
