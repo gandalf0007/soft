@@ -25,11 +25,11 @@
 
         <div class="register-box-body">
             <p class="login-box-msg">Register a new membership</p>
-            <form action="{{ url('/register') }}" method="post">
+            <form action="{{ url('/register') }}" method="post" id="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}"/>
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="{{ old('nombre') }}"/>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
 

@@ -24,8 +24,9 @@ class FrontController extends Controller
 
     public function index()
     {
+
        //retornando una vista
-        return view ('shop.home');
+       return view ('shop.home');
     }
     
     public function welcome()

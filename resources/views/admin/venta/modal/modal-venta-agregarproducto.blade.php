@@ -24,7 +24,7 @@
 	<tbody>
 	<!-- -->
 	<td>{{ $producto -> codigo}}</td>
-	<td><img src="storage/{{$producto->path}}" alt="" style="height:100px"></td>
+	<td><img src="storage/productos/{{$producto->imagen1}}" alt="" style="height:100px"></td>
   	<td>{{ $producto -> descripcion}}</td>
    	<td>{{ $producto -> iva_id}}</td>
   	<td>{{ $producto -> preciocosto}}</td>

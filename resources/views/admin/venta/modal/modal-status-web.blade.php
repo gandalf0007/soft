@@ -11,7 +11,7 @@
 
 
 <div class="container">
-  {!!Form::open(['route'=>['venta.cambiarStatusWeb',$venta->id], 'method'=>'POST' ])!!}
+  {!!Form::open(['url'=>['cambiar-status-web',$venta->id], 'method'=>'POST' ])!!}
 
 <div class="form-horizontal">
 	<span class="label label-success">{!!Form::label('Pagado', 'Pagado') !!}</span>

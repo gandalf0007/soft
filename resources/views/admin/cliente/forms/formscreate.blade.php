@@ -25,32 +25,20 @@
 </div>
 
 
-<div class="form-group col-xs-3">
-	{!!Form::label('Localidad')!!}
-	{!!Form::select('localidad',['class'=>' form-control'])!!}
-</div>
-
-<div class="form-group col-xs-3">
+<div class="row">
+<div class="form-group col-xs-6">
 	{!!Form::label('Categoria Iva')!!}
 	{!!Form::select('iva_id',$ivas,'',['class'=>' form-control'])!!}
 </div>
 
-<div class="form-group col-xs-3">
+<div class="form-group col-xs-6">
 	{!!Form::label('Transporte')!!}
 	{!!Form::select('transporte_id',$transportes,'',['class'=>' form-control'])!!}
 </div>
-
-<div class="form-group col-xs-3">
-	{!!Form::label('Lista de Precio')!!}
-	{!!Form::select('lista_precio')!!}
 </div>
 
-<div class="form-group">
-	{!!Form::label('Observacion')!!}
-	{!!Form::textarea('observacion',null,['class'=>'form-control','placeholder'=>'ingrese la observacion'])!!}
-</div>
-
-<div class="form-group">
+<br>
+<div class="form-group ">
 	{!!Form::label('Habilitado')!!}
 	{!!Form::checkbox('habilitado',null,['class'=>'form-control','placeholder'=>''])!!}
 </div>
@@ -60,3 +48,8 @@
 	{!!Form::checkbox('cuentacorriente',null,['class'=>'form-control','placeholder'=>''])!!}
 </div>
 
+ 
+<div class="form-horizontal ">
+	{!!Form::label('observacion')!!}
+	{!!Form::textarea ('observacion',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
+</div>

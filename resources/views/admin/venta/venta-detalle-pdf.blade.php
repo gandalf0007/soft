@@ -74,7 +74,7 @@
         <tr>
           <td colspan="2">
             <div class="center-justified">
-              <strong>Factura a:</strong> {{ $venta->cliente->clie_nombres }}
+              <strong>Factura a:</strong> {{ $venta->cliente->nombre }}
               <strong>Importe de la factura :</strong> {{ $venta->total }}
             </div>
           </td>
@@ -103,10 +103,10 @@
          @if ($venta->id == $transaction->venta_id )
         <tr class="border-right">
   
-          <td>{{ $transaction->producto->pro_codigo }}</td>
-          <td>{{ $transaction->producto->pro_descrip }}</td>
+          <td>{{ $transaction->producto->codigo }}</td>
+          <td>{{ $transaction->producto->descripcion }}</td>
           <td>{{ $transaction->cantidad }}</td>
-          <td>{{ $transaction->producto->pro_venta }}</td>
+          <td>{{ $transaction->producto->precioventa }}</td>
           <td>{{ $transaction->producto->marca->descripcion }}</td>
           <td>{{ $transaction->total_price }}</td>
         </tr>

@@ -71,7 +71,7 @@
 					<tbody>
 						@foreach($cart as $item)
 							<tr> 
-								<td><img src="{{ $item->path }}"></td>
+								<td><img src="storage/productos/{{$item->imagen1}}" alt="" style="height:100px"></td>
 								<td>{{ $item->descripcion }}</td>
 								<td>${{ number_format($item->precioventa,2) }}</td>
 								<td>

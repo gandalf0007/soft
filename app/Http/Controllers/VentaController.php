@@ -88,10 +88,19 @@ class VentaController extends Controller
         
         $item  = producto::find($id);
         $cart = \Session::get('cart');
-        $cart[$item->descripcion]->quantity = $quantity;
-        \Session::put('cart', $cart);
+        
+        //si se actualisa con un stock superior al stockactual que tire error
+        if ($quantity  <=  $item->stockactual ) {
+            $cart[$item->descripcion]->quantity = $quantity;
+            \Session::put('cart', $cart);
+            Alert::success('Mensaje existoso', 'actualizado');
+            return redirect('venta-show');
+        }else{
 
-        return redirect('venta-show');
+            Alert::error('ERROR', 'stock insuficiente');
+            return redirect('venta-show');
+
+        }
     }
 
 
@@ -100,7 +109,7 @@ class VentaController extends Controller
     {
         \Session::forget('cart');
         \Session::forget('cliente');
-         Alert::success('Mensaje existoso', 'Venta Creada');
+         Alert::success('Mensaje existoso', 'Venta Vaciada');
         return redirect('venta-show');
     }
 

@@ -5,7 +5,7 @@
     <title>Soft Shark</title>
 
        
-        {!!Html::style('css/login.css')!!}
+        {!!Html::style('css/logincloud.css')!!}
         
 
   </head>

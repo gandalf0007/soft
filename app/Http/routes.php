@@ -21,7 +21,7 @@ use Soft\categoriasub;
 
 Route::group(['middleware' => 'web'], function () {
     
-Route::get('/','PaginasController@Home');
+Route::get('/','PaginasController@home');
 Route::get('blog','PaginasController@post');
 Route::get('blogdetail-post{id}',[
 'as'=>'paginas.postDetalle',
@@ -126,7 +126,7 @@ Route::get('cambiar-status/','VentaController@cambiarStatus');
 Route::post('cambiar-status-web/','VentaController@cambiarStatusWeb');
 
 Route::post('cambiar-status/{id}',[
-'as'=>'venta.cambiarStatus',
+'as'=>'venta.cambiarstatus',
 'uses'=>'VentaController@cambiarStatus'
 	]);
 
@@ -171,6 +171,77 @@ Route::get('presupuesto-addcliente/','PresupuestoController@seleccionarCliente')
 Route::get('presupuesto-cliente/{id}','PresupuestoController@addCliente');
 /*---------------PRESUPUESTOS------------*/
 /*--------------------------------SECCION VENTAS------------------------------*/
+
+
+/*--------------------------------SECCION COMPRAS------------------------------*/
+//visualisa los productos para agregar
+Route::get('compra-addproducto','CompraController@addproducto');
+//al darle agregar a un producto a mi carrito , le mando el id de ese producto
+Route::get('compra-addtocart/{id}','CompraController@add');
+//mostrar
+Route::get('compra-show','CompraController@show');
+//eliminar carricato
+Route::get('compra-trash','CompraController@trash');
+//actualizar items
+Route::get('compra-update/{id}/{quantity}','CompraController@update');
+//eliminar productos del carrito
+Route::get('compra-delete/{id}','CompraController@delete');
+//chekout finalizar carrito
+Route::post('compra-checkout','CompraController@checkout');
+Route::get('compra-checkout','CompraController@checkout');
+//listar Compras
+Route::get('listar-compra/','CompraController@listarCompra');
+//listar Compras WEB
+Route::get('listar-compra-web/','CompraController@listarCompraWeb');
+//cargar Cliente
+Route::get('compra-addprovedor/','CompraController@seleccionarProvedor');
+//mandamos id del cliente para almacenarlo en la sessio
+Route::get('compra-provedore/{id}','CompraController@addProvedor');
+
+Route::get('compra-detalle-pdf/{tipo}/{id}','CompraController@detalleCompraPdf');
+
+//cambiar status de Compra
+Route::get('cambiar-status/','CompraController@cambiarStatus');
+Route::post('cambiar-status-web/','CompraController@cambiarStatusWeb');
+
+Route::post('cambiar-status/{id}',[
+'as'=>'Compra.cambiarStatus',
+'uses'=>'CompraController@cambiarStatus'
+	]);
+
+Route::post('cambiar-status-web/{id}',[
+'as'=>'Compra.cambiarStatusWeb',
+'uses'=>'CompraController@cambiarStatusWeb'
+	]);
+
+//detalle de la venta en una ventana modal
+/*Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');
+Route::post('listar-venta/detalle/{id}','VentaController@detalleVenta');*/
+/*Route::post('listar-venta/detalle/{id}',[
+'as'=>'venta.detalleVenta',
+'uses'=>'VentaController@detalleVenta'
+	]);
+Route::get('listar-venta/detalle/{id}',[
+'as'=>'venta.detalleVenta',
+'uses'=>'VentaController@detalleVenta'
+	]);*/
+
+/*--------------------------------SECCION COMPRAS------------------------------*/
+
+
+/*--------------------------------SECCION LIQUIDACIONES------------------------------*/
+//mostrar
+Route::get('liquidacion-show','LiquidacionController@show');
+//generar
+Route::post('liquidacion-generar','LiquidacionController@generar');
+//cargar usuario
+Route::get('liquidacion-addusuario/','LiquidacionController@seleccionarUsuario');
+//mandamos id del cliente para almacenarlo en la sessio
+Route::get('liquidacion-usuario/{id}','LiquidacionController@addUsuario');
+/*--------------------------------SECCION LIQUIDACIONES------------------------------*/
+
+
+
 
 
 /*---------------menu------------*/

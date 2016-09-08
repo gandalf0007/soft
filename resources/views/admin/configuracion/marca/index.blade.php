@@ -61,11 +61,11 @@
 	</table>
 
 <!--modal editar marca-->
- @include('admin.Configuracion.Marca.modal.modal-edit-marca')	
+ @include('admin.configuracion.marca.modal.modal-edit-marca')	
 <!--modal eliminar marca-->
- @include('admin.Configuracion.Marca.modal.modal-delete-marca')
+ @include('admin.configuracion.marca.modal.modal-delete-marca')
  <!--modal ver marca-->
- @include('admin.Configuracion.Marca.modal.modal-ver-marca')
+ @include('admin.configuracion.marca.modal.modal-ver-marca')
 <!--para renderizar la paginacion-->
 {!! $marcas->render() !!}
 

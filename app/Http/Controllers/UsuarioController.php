@@ -112,7 +112,7 @@ class UsuarioController extends Controller
        //creamos un $movie que va a hacer igual al user que encontremos con la id que recibimos 
         $perfils=Perfil::lists('descripcion','id');
         //creamos un $user que va a hacer igual al user que encontremos con la id que recibimos 
-        $user=User::find($id);
+        
         //nos regrasa a la vista en edit que se encuentra en la carpeta usuario a la cual le pasamos el 
         //user correspondiente
         

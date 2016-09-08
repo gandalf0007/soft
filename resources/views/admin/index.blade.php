@@ -16,7 +16,7 @@
               <p>Total Ventas</p>
             </div>
 			<div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fa fa-dollar"></i>
             </div>
 			<a href="{!! URL::to('cart-show') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -65,7 +65,7 @@
               <p>Usuarios Registrados</p>
             </div>
 			<div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-user"></i>
             </div>
 			<a href="{!! URL::to('usuario/') !!}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -81,7 +81,7 @@
               <p>Nuevos Visitantes</p>
             </div>
 			<div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fa fa-flag"></i>
             </div>
 			<a href="#" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
           </div>

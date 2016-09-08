@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>Factura Shark Informatica</title>
+
+
+<style type="text/css">
+  #page-wrap {
+    width: 700px;
+    margin: 0 auto;
+  }
+  .center-justified {
+    text-align: justify;
+    margin: 0 auto;
+    width: 30em;
+  }
+  table.outline-table {
+    border: 1px solid;
+    border-spacing: 0;
+  }
+  tr.border-bottom td, td.border-bottom {
+    border-bottom: 1px solid;
+  }
+  tr.border-top td, td.border-top {
+    border-top: 1px solid;
+  }
+  tr.border-right td, td.border-right {
+    border-right: 1px solid;
+  }
+  tr.border-right td:last-child {
+    border-right: 0px;
+  }
+  tr.center td, td.center {
+    text-align: center;
+    vertical-align: text-top;
+  }
+  td.pad-left {
+    padding-left: 5px;
+  }
+  tr.right-center td, td.right-center {
+    text-align: right;
+    padding-right: 50px;
+  }
+  tr.right td, td.right {
+    text-align: right;
+  }
+  .grey {
+    background:grey;
+  }
+</style>
+</head>
+<body>
+  <div id="page-wrap">
+
+  @foreach($data as $venta)
+    @if($id == $venta->id)
+
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td width="30%">
+            <img src="http://exotel.in/wp-content/uploads/2013/03/exotel.png"> <!-- your logo here -->
+          </td>
+          <td width="70%">
+            <h2>Shark Informatica</h2><br>
+            <strong>Date:</strong> <?php echo date('d/M/Y');?><br>
+            <strong>Ciclo de facturación:</strong> 01/01/2013 to 01/02/2013<br>
+            <strong>Número de factura :</strong> BF123<br>
+            <strong>Fecha de vencimiento:</strong> 10/01/2013<br>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="center-justified">
+              <strong>Factura a:</strong> {{ $venta->cliente->clie_nombres }}
+              <strong>Importe de la factura :</strong> {{ $venta->total }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+
+
+
+
+    <table width="100%" class="outline-table">
+      <tbody>
+        <tr class="border-bottom border-right grey">
+          <td colspan="10"><strong>Productos</strong></td>
+        </tr>
+        <tr class="border-bottom border-right ">
+            <td>Codigo</td>
+            <td>Descripcion</td>
+            <td>Cantidad</td>
+            <td>Precio Venta</td>
+            <td>Marca</td>
+            <td>Total</td>
+        </tr>
+        @foreach($transactions as $transaction)
+         @if ($venta->id == $transaction->venta_id )
+        <tr class="border-right">
+  
+          <td>{{ $transaction->producto->pro_codigo }}</td>
+          <td>{{ $transaction->producto->pro_descrip }}</td>
+          <td>{{ $transaction->cantidad }}</td>
+          <td>{{ $transaction->producto->pro_venta }}</td>
+          <td>{{ $transaction->producto->marca->descripcion }}</td>
+          <td>{{ $transaction->total_price }}</td>
+        </tr>
+        
+      </tbody>
+       @endif
+  @endforeach
+    </table>
+    <p>&nbsp;</p>
+
+
+
+    <table width="100%" class="outline-table">
+      <tbody>
+        <tr class="border-bottom border-right grey">
+          <td colspan="3"><strong>Summary</strong></td>
+        </tr>
+        <tr class="border-bottom border-right center">
+          <td width="45%"><strong>Activity</strong></td>
+          <td width="25%"><strong>Tax</strong></td>
+          <td width="30%"><strong>Amount (INR)</strong></td>
+        </tr>
+        <tr class="border-right">
+          <td class="pad-left">Summary Line item 1</td>
+          <td class="center">Tax percent (12.36%)</td>
+          <td class="right-center">Rs. 11,236</td>
+        </tr>
+        <tr class="border-right">
+          <td class="pad-left">&nbsp;</td>
+          <td class="right border-top">Subtotal</td>
+          <td class="right border-top">Rs. 10,000</td>
+        </tr>
+        <tr class="border-right">
+          <td class="pad-left">&nbsp;</td>
+          <td class="right border-top">Tax</td>
+          <td class="right border-top">Rs. 1236</td>
+        </tr>
+        <tr class="border-right">
+          <td class="pad-left">&nbsp;</td>
+          <td class="right border-top">Total</td>
+          <td class="right border-top">Rs. 11,236</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+
+    
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td width="50%">
+            <div class="center-justified"><strong>To make a payment:</strong><br>
+              Your payment options<br>
+              <strong>ST Reg no:</strong> Your service tax number<br>
+              <strong>Service Category:</strong> Service tax category<br>
+              <strong>Service category code:</strong> Service tax code<br>
+            </div>
+          </td>
+          <td width="50%">
+            <div class="center-justified">
+            <strong>Address</strong><br>
+            Foo Baar<br>
+            Dubai<br>
+            Dubai Main Road<br>
+            Vivekanandar Street<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            No human was involved in creating this invoice, so, no signature is needed
+          </td>
+        </tr>
+      </tbody>
+    </table>
+     @endif
+       @endforeach
+  </div>
+</body>
+</html>

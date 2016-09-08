@@ -57,6 +57,23 @@
                 </ul>
         </li>
 
+        <li class="treeview">
+                <a href="#"><i class='fa fa-dollar'></i> <span>Compras</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a  href="{!! URL::to('compra-show/') !!}">Generar Compra</a></li>
+                    <li><a  href="{!! URL::to('listar-compra/') !!}">Listar Compras</a></li>
+                    
+                </ul>
+        </li>
+
+        <li class="treeview">
+                <a href="#"><i class='fa fa-dollar'></i> <span>Liquidaciones</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a  href="{!! URL::to('liquidacion-show/') !!}">Generar Liquidacion</a></li>
+                    <li><a  href="{!! URL::to('listar-compra/') !!}">Listar Liquidaciones</a></li>
+                    
+                </ul>
+        </li>
 
         <li >
         <a href="{!! URL::to('producto/') !!}">

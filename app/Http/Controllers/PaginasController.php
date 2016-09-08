@@ -12,8 +12,8 @@ use Redirect;
 use Storage;
 use DB;
 use Image;
-use Soft\producto;
-use Soft\producto_imagen;
+use Soft\Producto;
+use Soft\Producto_imagen;
 
 class PaginasController extends Controller
 {

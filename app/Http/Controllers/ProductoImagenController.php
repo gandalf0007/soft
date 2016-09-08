@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Soft\Http\Requests;
-use Soft\producto_imagen;
+use Soft\Producto_imagen;
 use Image;
 use Auth;
 use Hash;

@@ -38,7 +38,11 @@ return array(
 
 
 
-
+'jornada'=>[
+'completa' => 'completa', 
+'media' => 'media', 
+'2/3' => '2/3', 
+],
 
 
 

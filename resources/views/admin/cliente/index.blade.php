@@ -24,7 +24,7 @@
 {!!Form::open(['route'=>'cliente.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 	{!!Form::label('nombre')!!}
-	{!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'nombre de usuario'])!!}
+	{!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'nombre de Cliente'])!!}
  <button type="submit" class="glyphicon glyphicon-search btn btn-success"> BUSCAR </button>
 </div>
 {!!Form::close()!!}
