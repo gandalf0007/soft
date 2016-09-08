@@ -50,6 +50,10 @@ class Producto extends Model
            'imagen1',
            'imagen2',
            'imagen3',
+
+           'oferta',
+           'hot',
+           
           
     ];
 

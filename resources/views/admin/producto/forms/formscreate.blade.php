@@ -351,6 +351,15 @@
 	{!!Form::checkbox('habilitado',1,true)!!}
 </div>
 
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	{!!Form::label('Productos Hot')!!}
+	{!!Form::checkbox('hot',1,false)!!}
+</div>
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
+	{!!Form::label('Producto en Oferta')!!}
+	{!!Form::checkbox('oferta',1,false)!!}
+</div>
 
 </div>
 </div>

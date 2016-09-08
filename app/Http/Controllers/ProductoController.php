@@ -3,6 +3,8 @@
 namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 use Soft\Http\Requests;
+use Soft\Http\Requests\ProductoCreateRequest;
+use Soft\Http\Requests\ProductoUpdateRequest;
 use Soft\Producto;
 use Soft\Producto_imagen;
 use Soft\Categoria;
@@ -81,16 +83,21 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoCreateRequest $request)
     {
 
 
-        if ($request->hasFile('imagen1')) {
-            $imagen =$request->file('imagen1');
+        //pregunto si la imagen no es vacia y guado en $filename , caso contrario guardo null
+        if(!empty($request->hasFile('imagen1'))){
+           $imagen =$request->file('imagen1');
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
             image::make($imagen)->save( public_path('/storage/productos/' . $filename));
+        }elseif(empty($request->hasFile('imagen1'))){
+            $filename = "sin-foto.jpg";
+        }
+            
         
-         Producto::create([
+           Producto::create([
            'codigo'=>$request['codigo'],
            'descripcion'=>$request['descripcion'],
             
@@ -128,9 +135,14 @@ class ProductoController extends Controller
            'descripcionlarga'=>$request['descripcionlarga'],
             
            'imagen1'=>$filename,
+
+           'oferta'=>$request['oferta'],
+           'hot'=>$request['hot']
+           
             ]);
 
-         }
+        
+    
          Alert::success('Mensaje existoso', 'Producto Creado');
         return redirect('/producto');
     }
@@ -171,7 +183,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductoUpdateRequest $request, $id)
     {
          $producto=producto::find($id);
          $producto->codigo = $request['codigo'];
@@ -205,6 +217,8 @@ class ProductoController extends Controller
          $producto->descripcioncorta =$request['descripcioncorta'];
          $producto->descripcionlarga =$request['descripcionlarga'];
          $producto->usar_rentabili =$request['usar_rentabili'];
+         $producto->oferta =$request['oferta'];
+         $producto->hot =$request['hot'];
 
          if ($request->hasFile('imagen1')) {
             $imagen =$request->file('imagen1');
@@ -236,10 +250,15 @@ class ProductoController extends Controller
         //destruye deacuerdo al id que nos pasaron User::destroy($id); 
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
         $producto=producto::find($id);
+
+         //para eliminar la imagen
+        if($producto->imagen1 != "sin-foto.jpg"){
+         \Storage::disk('productos')->delete($producto->imagen1);
+        }
+        
         $producto->delete();
         
-        //para eliminar la imagen
-        \Storage::delete($producto->path);
+       
         //le manda un mensaje al usuario
         Alert::success('Mensaje existoso', 'Producto Eliminado');
         return Redirect::to('/producto');

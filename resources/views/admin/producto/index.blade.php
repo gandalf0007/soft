@@ -50,7 +50,7 @@
 	<tbody>
 	<!-- -->
 	<td>{{ $producto -> codigo}}</td>
-	<td><img src="storage/productos/{{$producto->imagen1}}" alt="" style="height:100px"></td>
+	<td><img src="storage/productos/{{$producto->imagen1}}" alt="" height="100" width="100" ></td>
   	<td>{{ $producto -> descripcion}}</td>
    	<!--<td>{{ $producto -> iva_id}}</td>-->
   	<!--<td>{{ $producto -> preciocosto}}</td>-->

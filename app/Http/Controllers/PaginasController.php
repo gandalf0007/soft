@@ -113,6 +113,7 @@ class PaginasController extends Controller
         //llama a la funcion total
         $total = $this->total();
 
+         /*seccion para el layout*/
         $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
          $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
         $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
@@ -120,7 +121,11 @@ class PaginasController extends Controller
         $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
-         
+         /*seccion para el layout*/
+
+         /*productos*/
+          $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->take(10)->get();
+          $hots=producto::where('hot','=',1)->get();
          return view ('shop.home',compact('cartcount',
                                           'categorias',
                                           'subcategorias',
@@ -129,7 +134,9 @@ class PaginasController extends Controller
                                           'informacions',
                                           'boxs',
                                           'logos',
-                                          'total'
+                                          'total',
+                                          'nuevos',
+                                          'hots'
                                           ));
 
 

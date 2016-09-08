@@ -19,14 +19,14 @@
 
 @foreach($itemdetalles as $itemdetalle)	
 <div class="col-sm-6 col-md-4 wow fadeInUp">
-	<div class="products">
+	
 
 	<div class="product">		
 		<div class="product-image">
 			<div class="image">
-				<a href="item-detalle{{ $itemdetalle->id }}"><img  src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" alt=""></a>
+				<a href="item-detalle{{ $itemdetalle->id }}"><img height="200" width="200" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" alt=""></a>
 			</div><!-- /.image -->			
-			<div class="tag new"><span>new</span></div>                        		   
+			             		   
 		</div><!-- /.product-image -->
 			
 		<div class="product-info text-left">
@@ -42,12 +42,22 @@
 <div class="cart clearfix animate-effect">
 	<div class="action">
 		<ul class="list-unstyled">
+		<!-- cuadno el stock es mayor que cero que me diga que puedo agregar , caso contrario que diga agotado-->
+		@if($itemdetalle->stockactual > 0)
 			<li class="add-cart-button btn-group">
 				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 				<i class="fa fa-shopping-cart"></i>			
 				</button>
-				<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-primary" type="button">Add to cart</a>
-			</li>        
+				<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-primary" type="button">Agregar</a>
+			</li>  
+			@else
+			<li class="add-cart-button btn-group">
+				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+				<i class="fa fa-shopping-cart"></i>			
+				</button>
+				<a href="#"	class="btn btn-danger" type="button">Agotado</a>
+			</li>  
+		@endif      
 		    <li class="lnk wishlist">
 			 	<a class="add-to-cart" href="#" title="Wishlist">
 					<i class="icon fa fa-heart"></i>
@@ -65,7 +75,7 @@
      
 
 
-	</div><!-- /.products -->
+
 </div><!-- /.item -->
 	 @endforeach
 		

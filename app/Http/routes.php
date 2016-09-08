@@ -73,7 +73,7 @@ Route::group(array('middleware' => 'auth'), function(){
 });
 
 
-Route::group(['middleware' =>['auth']], function () {
+Route::group(['middleware' =>['auth','admin']], function () {
 
  Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
