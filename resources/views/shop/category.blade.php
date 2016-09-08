@@ -2,12 +2,15 @@
 @section('content')
 @include('alerts.success')
 
+
+
+<div class="col-xs-12 col-sm-12 col-md-9 ">
 <div class="body-content outer-top-xs cnt-home">
 	<div class='container'>
 		<div class='row outer-bottom-sm'>
 			
 
-			<div class='col-md-9'>
+			<div class='col-md-9 '>
 				<div class="search-result-container">
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active " id="grid-container">
@@ -77,7 +80,7 @@
 			</div><!-- /.col -->
 		</div><!-- /.row -->
 	</div>
-		
+	</div>	
 
 
 @endsection

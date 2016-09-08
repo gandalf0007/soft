@@ -217,12 +217,6 @@
                 <a href="ubicacion">Ubicacion</a>
             </li>
             
-            @if (Auth::guest())
-            <li class="dropdown hidden-sm pull-right">
-                <a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
-            </li>
-            @endif
-
             <li class="dropdown hidden-sm">
                 <a href="preguntas-frecuentes">FAQ</a>
             </li>
@@ -230,6 +224,12 @@
             <li class="dropdown">
                 <a href="contacto">Contacto</a>
             </li>
+
+            @if (Auth::guest())
+            <li class="dropdown">
+                <a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
+            </li>
+            @endif
             
             
         </ul><!-- /.navbar-nav -->

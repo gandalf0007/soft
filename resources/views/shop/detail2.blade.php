@@ -2,7 +2,7 @@
 @section('content')
 
 
-
+<div class="col-xs-12 col-sm-12 col-md-9 ">
 <div class="body-content outer-top-xs cnt-homepage">
 	<div class='container'>
 		<div class="homepage-container">
@@ -11,7 +11,7 @@
 <!-- ===================== COLOR: END ======================= -->
 
 <br><br>		<br><br>		
-<div class='col-md-9'>
+<div class='col-md-9 '>
 
 
   <div class="row  wow fadeInUp">
@@ -72,7 +72,7 @@
 
 
 
-<div class='col-sm-6 col-md-5 product-info-block'>
+<div class='col-sm-6 col-md-5 product-info-block '>
   <div class="product-info">
 			<!---------- titulo -------------->	 
 				<h1 class="name">{{ $itemdetalle->descripcion }}</h1>
@@ -91,8 +91,10 @@
 				</div><!-- /.row -->		
 			</div><!-- /.rating-reviews -->
 
+
+
 <!-------------- Disponibilidad ------------------>	
-	<div class="stock-container info-container m-t-10">
+	<div class="stock-container info-container m-t-10 homebanner-holder">
 		<div class="row">
 					
 <div class="col-sm-9">
@@ -347,7 +349,6 @@
 		</div><!-- /.homepage-container -->
 	</div><!-- /.container -->
 </div><!-- /.body-content -->					
-
-
+</div><!-- /.col-xs-12 col-sm-12 col-md-9 -->	
 
 @endsection

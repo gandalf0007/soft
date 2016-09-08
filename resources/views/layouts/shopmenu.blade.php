@@ -217,12 +217,6 @@
 			<li class="dropdown">
 				<a href="ubicacion">Ubicacion</a>
 			</li>
-			
-			@if (Auth::guest())
-			<li class="dropdown hidden-sm pull-right">
-				<a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
-			</li>
-			@endif
 
 			<li class="dropdown hidden-sm">
 				<a href="preguntas-frecuentes">FAQ</a>
@@ -231,6 +225,12 @@
 			<li class="dropdown">
 				<a href="contacto">Contacto</a>
 			</li>
+
+			@if (Auth::guest())
+			<li class="dropdown ">
+				<a  data-toggle="modal" data-target="#registrarse" id="#registrarse">Registrarse<span class="menu-label hot-menu hidden-xs">hot</span></a>
+			</li>
+			@endif
 			
 			
 		</ul><!-- /.navbar-nav -->
@@ -253,12 +253,12 @@
 
 <div class="body-content outer-top-xs " id="top-banner-and-menu">
 	<div class="container blanco">
-	<div class="row blanco mypadding">
+	<div class="row blanco mypadding" >
 	
 
 <!-- ================================ MENU ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-<div class="side-menu animate-dropdown outer-bottom-xs">
+<div class="side-menu animate-dropdown outer-bottom-xs ">
   <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>        
     <nav class="yamm megamenu-horizontal" role="navigation">
       <ul class="nav">
@@ -276,12 +276,12 @@
     <li class="yamm-content">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-4">
-                <ul><li><a href="subcategoria-{{$subcategoria->id}}">{{ $subcategoria->nombre }}</a></li>
+                <ul class="links list-unstyled"><li><a href="subcategoria-{{$subcategoria->id}}">{{ $subcategoria->nombre }}</a></li>
                 </ul>  
 
             </div>
             <div class="dropdown-banner-holder">
-                <a href="#"><img alt="" src="storage/banner/{{ $categoria->banner }}" /></a>
+                <a href="#"><img class="visible-lg" alt="" src="storage/banner/{{ $categoria->banner }}" /></a>
             </div>
         </div><!-- /.row -->
      </li><!-- /.yamm-content --> 
@@ -289,9 +289,8 @@
     @endforeach   
 
    </ul><!-- /.dropdown-menu -->    
-    @endif
    </li><!-- /.menu-item -->    
-    
+    @endif
      
         @endforeach  <!----------endforeach categorias---------->
     </ul><!-- /.nav -->   
@@ -300,9 +299,11 @@
 </div><!-- /.sidemenu-holder -->
 <!-- ================================== MENU ================================== -->
 
+
+
 @yield('content')
-	
 </div><!-- /.row -->
+
 
    
    

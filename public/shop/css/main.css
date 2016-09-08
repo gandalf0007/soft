@@ -77,7 +77,7 @@ body {
   font-size: 13px;
   color: #666666;
   background-color: #f11313;
-  background: url('http://localhost/soft/public/storage/paginas/home/logo/fondo.jpg') fixed center top no-repeat;
+  background: url("../../storage/paginas/home/logo/fondo.jpg") fixed center top no-repeat;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
