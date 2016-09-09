@@ -266,10 +266,8 @@ class ProductoController extends Controller
         //guarda la nueva imagen
          if (!empty($request->hasFile('imagen1'))) {
             $imagen =$request->file('imagen1');
-            $filename=time() . '.' . $imagen->getClientOriginalName();
+            $filename=time() . '.' . $imagen->getClientOriginalExtension();
              image::make($imagen)->save( 'storage/'.$directory.'/'. $filename);
-
-           
 
 
         if(empty($request->hasFile('imagen1'))){

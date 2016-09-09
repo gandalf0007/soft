@@ -27,7 +27,7 @@
 				@if($itemdetalle->imagen1 == "sin-foto.jpg")
 				<a href="item-detalle{{ $itemdetalle->id }}"><img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@elseif($itemdetalle->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $itemdetalle->id }}"><img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle{{ $itemdetalle->id }}"><img src="{{$itemdetalle->imagen1}}" data-echo="{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@endif
 			</div><!-- /.image -->			
 			             		   

@@ -50,7 +50,7 @@
 				</a>
 			@elseif($nuevo->imagen1 != "sin-foto.jpg")
 				<a href="item-detalle{{ $nuevo->id }}">
-				<img src="storage/productos/{{$nuevo->categoria->nombre}}/{{$nuevo->categoriasub->nombre}}/{{$nuevo->descripcion}}/{{$nuevo->imagen1}}" data-echo="storage/productos/{{$nuevo->categoria->nombre}}/{{$nuevo->categoriasub->nombre}}/{{$nuevo->descripcion}}/{{$nuevo->imagen1}}" class="" alt="" height="180" width="180" >
+				<img src="{{$nuevo->imagen1}}" data-echo="{{$nuevo->imagen1}}" class="" alt="" height="180" width="180" >
 				</a>
 			@endif
 			</div><!-- /.image -->			
@@ -142,7 +142,7 @@
 			@if($hot->imagen1 == "sin-foto.jpg")
 				<a href="item-detalle{{ $hot->id }}"><img src="storage/productos/{{$hot->imagen1}}" data-echo="storage/productos/{{$hot->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@elseif($hot->imagen1 != "sin-foto.jpg")	
-				<a href="item-detalle{{ $hot->id }}"><img src="storage/productos/{{$hot->categoria->nombre}}/{{$hot->categoriasub->nombre}}/{{$hot->descripcion}}/{{$hot->imagen1}}" data-echo="storage/productos/{{$hot->categoria->nombre}}/{{$hot->categoriasub->nombre}}/{{$hot->descripcion}}/{{$hot->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle{{ $hot->id }}"><img src="{{$hot->imagen1}}" data-echo="{{$hot->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@endif
 			</div><!-- /.image -->			
 			<div class="tag hot"><span>hot</span></div>		   
@@ -235,7 +235,7 @@
 				</a>
 			@elseif($nuevo->imagen1 != "sin-foto.jpg")
 				<a href="item-detalle{{ $nuevo->id }}">
-				<img src="storage/productos/{{$nuevo->categoria->nombre}}/{{$nuevo->categoriasub->nombre}}/{{$nuevo->descripcion}}/{{$nuevo->imagen1}}" data-echo="storage/productos/{{$nuevo->categoria->nombre}}/{{$nuevo->categoriasub->nombre}}/{{$nuevo->descripcion}}/{{$nuevo->imagen1}}" class="" alt="" height="180" width="180" >
+				<img src="{{$nuevo->imagen1}}" data-echo="{{$nuevo->imagen1}}" class="" alt="" height="180" width="180" >
 				</a>
 			@endif
 			</div><!-- /.image -->			

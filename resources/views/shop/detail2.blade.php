@@ -28,8 +28,8 @@
                 </a>
                  <!-- caso contrario cargo la foto -->
                @elseif($itemdetalle->imagen1 != "sin-foto.jpg")
-               	<a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}">
-                    <img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="img-responsive" alt="" height="200" width="200" >
+               	<a data-lightbox="image-1" data-title="Gallery" href="{{$itemdetalle->imagen1}}">
+                    <img src="{{$itemdetalle->imagen1}}" data-echo="{{$itemdetalle->imagen1}}" class="img-responsive" alt="" height="200" width="200" >
                 </a>
 
                @endif
@@ -60,7 +60,7 @@
                     <!-- caso contrario cargo la foto -->
                @elseif($itemdetalle->imagen1 != "sin-foto.jpg")
                		<a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#">
-                        <img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="img-responsive" alt=""  width="85" >
+                        <img src="{{$itemdetalle->imagen1}}" data-echo="{{$itemdetalle->imagen1}}" class="img-responsive" alt=""  width="85" >
                     </a>
                @endif     
                 </div>
