@@ -24,7 +24,11 @@
 	<div class="product">		
 		<div class="product-image">
 			<div class="image">
-				<a href="item-detalle{{ $itemdetalle->id }}"><img height="200" width="200" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" alt=""></a>
+				@if($itemdetalle->imagen1 == "sin-foto.jpg")
+				<a href="item-detalle{{ $itemdetalle->id }}"><img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
+			@elseif($itemdetalle->imagen1 != "sin-foto.jpg")
+				<a href="item-detalle{{ $itemdetalle->id }}"><img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
+			@endif
 			</div><!-- /.image -->			
 			             		   
 		</div><!-- /.product-image -->

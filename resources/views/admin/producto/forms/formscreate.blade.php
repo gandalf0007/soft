@@ -218,8 +218,6 @@
 	</select>
 </div>
 
-
-
 <!--sub categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
 	<label for="">Sub-Categorias</label>

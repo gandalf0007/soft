@@ -190,8 +190,7 @@ class PaginasController extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $itemdetalles=producto::where('categoriasub_id','=',$id)->get();
-        $itemdetalles=producto::where('habilitado','=',1)->get();
+        $itemdetalles=producto::where('categoriasub_id','=',$id)->where('habilitado','=',1)->get();
         return view('shop.category',compact('cartcount',
                                           'categorias',
                                           'subcategorias',

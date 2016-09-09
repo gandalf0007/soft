@@ -21,9 +21,16 @@
         <div id="owl-single-product">
 
 			<div class="single-product-gallery-item" id="slide">
-                <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{ $itemdetalle->imagen1 }}">
-                    <img class="img-responsive" alt="" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" />
+			@if($itemdetalle->imagen1 == "sin-foto.jpg")
+                <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{$itemdetalle->imagen1}}">
+                    <img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="img-responsive" alt="" height="200" width="200" >
                 </a>
+               @elseif($itemdetalle->imagen1 != "sin-foto.jpg")
+               	<a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}">
+                    <img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="img-responsive" alt="" height="200" width="200" >
+                </a>
+
+               @endif
             </div><!-- /.single-product-gallery-item -->
 
 
@@ -43,9 +50,15 @@
             <div id="owl-single-product2-thumbnails">
 
             <div class="item">
+            @if($itemdetalle->imagen1 == "sin-foto.jpg")
                     <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#">
-                        <img class="img-responsive" width="85" alt="" src="storage/productos/{{ $itemdetalle->imagen1 }}" data-echo="storage/productos/{{ $itemdetalle->imagen1 }}" />
+                        <img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="img-responsive" alt=""  width="85" >
                     </a>
+               @elseif($itemdetalle->imagen1 != "sin-foto.jpg")
+               		<a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#">
+                        <img src="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->categoria->nombre}}/{{$itemdetalle->categoriasub->nombre}}/{{$itemdetalle->descripcion}}/{{$itemdetalle->imagen1}}" class="img-responsive" alt=""  width="85" >
+                    </a>
+               @endif     
                 </div>
                 
  			      @foreach($imagens as $imagen)   

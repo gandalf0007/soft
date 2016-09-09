@@ -18,7 +18,7 @@ use Soft\Ivatipo;
 use Soft\Provedore;
 use Alert;
 use Image;
-
+use DB;
 class ProductoController extends Controller
 {
     /**
@@ -84,14 +84,26 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ProductoCreateRequest $request)
-    {
+    {   
+        $categoria_id = $request['categoria_id'];
+        $categoria = Categoria::where('id','=',$categoria_id)->first();
+        
+        $subcategoria_id= $request['categoriasub_id'];
+        $subcategoria = Categoriasub::where('id','=',$subcategoria_id)->first();
 
+        $producto = $request['descripcion'];
+        //creamos carpetas para almacenar las imagenes de los productos dependiendo de que categoria pertenecen
+        
+        //carpeta
+        $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$producto;
 
         //pregunto si la imagen no es vacia y guado en $filename , caso contrario guardo null
         if(!empty($request->hasFile('imagen1'))){
            $imagen =$request->file('imagen1');
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
-            image::make($imagen)->save( public_path('/storage/productos/' . $filename));
+            //crea la carpeta
+            Storage::makeDirectory($directory);
+            image::make($imagen)->save( public_path('/storage/'.$directory.'/'. $filename));
         }elseif(empty($request->hasFile('imagen1'))){
             $filename = "sin-foto.jpg";
         }
@@ -245,17 +257,24 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         //destruye deacuerdo al id que nos pasaron User::destroy($id); 
         //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
         $producto=producto::find($id);
 
+
+        $categoria = Categoria::where('id','=',$producto->categoria_id)->first();
+        $subcategoria = Categoriasub::where('id','=',$producto->categoriasub_id)->first();
+
+        //carpeta
+        $directory = $categoria->nombre."/".$subcategoria->nombre."/".$producto->descripcion."/".$producto->imagen1;
+        
          //para eliminar la imagen
         if($producto->imagen1 != "sin-foto.jpg"){
-         \Storage::disk('productos')->delete($producto->imagen1);
+         \Storage::disk('productos')->delete($directory);
         }
-        
+
         $producto->delete();
         
        
