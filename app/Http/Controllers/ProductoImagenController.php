@@ -19,6 +19,8 @@ use Redirect;
 use Storage;
 use DB;
 use Soft\Producto;
+use Soft\Categoria;
+use Soft\Categoriasub;
 
 class ProductoImagenController extends Controller
 {
@@ -37,16 +39,24 @@ class ProductoImagenController extends Controller
 
 
    public function uploadFiles(request $request,$id) {
-          $path = public_path().'/storage/productos';
+        $producto = producto::find($id);
+        $categoria = Categoria::where('id','=',$producto->categoria_id)->first();
+        $subcategoria = Categoriasub::where('id','=',$producto->categoriasub_id)->first();
+
+$directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$producto->descripcion;
+    
+
+
+          
             $files = $request->file('file');
             foreach($files as $file){
                 /*lo guarda con el  nombre generado
                 $fileName = time() . '.' .$file->getClientOriginalExtension();*/
-                $fileName =$file->getClientOriginalName();
-                $file->move($path, $fileName);
+                $filename=time() . '.' . $file->getClientOriginalExtension();
+                image::make($file)->save( public_path('storage/'.$directory.'/'. $filename));
                 producto_imagen::create([
-            'nombre' =>$fileName,
-            'ruta'=>$path,
+            'nombre' =>$filename,
+            'ruta'=>'storage/'.$directory.'/'. $filename,
             'producto_id'=>$id,
             ]);
             }
@@ -57,12 +67,19 @@ class ProductoImagenController extends Controller
 
    
  public function destroy(request $request,$id) {
-        
-          $imagen=producto_imagen::find($id);
+        $imagen=producto_imagen::find($id);
+
+        $producto = producto::where('id','=',$imagen->producto_id)->first();
+       
+        $categoria = Categoria::where('id','=',$producto->categoria_id)->first();
+        $subcategoria = Categoriasub::where('id','=',$producto->categoriasub_id)->first();
+
+        $directory = $categoria->nombre."/".$subcategoria->nombre."/".$producto->descripcion.'/'.$imagen->nombre;
+         
          $imagen->delete();
-        \Storage::disk('productos')->delete($imagen->nombre);
+        \Storage::disk('productos')->delete($directory);
         //le manda un mensaje al usuario
-       Alert::success('Mensaje existoso', 'Imagen Eliminada');
+       //Alert::success('Mensaje existoso', 'Imagen Eliminada');
        return Redirect::to('/producto-uploadimagen/'.$imagen->producto_id);
     }
 

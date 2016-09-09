@@ -35,7 +35,7 @@
     </thead>
     @foreach($imagens as $imagen)
     <tbody>
-   <td><i class="icon fa fa-fw"><img src="../storage/productos/{{$imagen->nombre}}"  width="100" height="80"></i></td>  
+   <td><i class="icon fa fa-fw"><img src="../storage/productos/{{$imagen->producto->categoria->nombre}}/{{$imagen->producto->categoriasub->nombre}}/{{$imagen->producto->descripcion}}/{{$imagen->nombre}}"  width="100" height="80"></i></td>  
 
   <td></td>
 
