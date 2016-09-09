@@ -85,18 +85,18 @@ class ProductoController extends Controller
      */
     public function store(ProductoCreateRequest $request)
     {   
-       
+        
         $categoria_id = $request['categoria_id'];
         $categoria = Categoria::where('id','=',$categoria_id)->first();
         
         $subcategoria_id= $request['categoriasub_id'];
         $subcategoria = Categoriasub::where('id','=',$subcategoria_id)->first();
 
-        $producto = $request['descripcion'];
+        $descripcion = $request['descripcion'];
         //creamos carpetas para almacenar las imagenes de los productos dependiendo de que categoria pertenecen
         
         //carpeta
-        $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$producto;
+        $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
 
         //pregunto si la imagen no es vacia y guado en $filename , caso contrario guardo null
         if(!empty($request->hasFile('imagen1'))){
@@ -106,7 +106,15 @@ class ProductoController extends Controller
             Storage::makeDirectory($directory);
             image::make($imagen)->save( public_path('/storage/'.$directory.'/'. $filename));
         }elseif(empty($request->hasFile('imagen1'))){
+            //crea la carpeta
+            Storage::makeDirectory($directory);
             $filename = "sin-foto.jpg";
+        }
+
+        if(empty($request->hasFile('imagen1'))){
+            $ruta = "sin-foto.jpg"; 
+        }else{
+            $ruta = 'storage/'.$directory.'/'. $filename;
         }
             
         
@@ -147,7 +155,8 @@ class ProductoController extends Controller
            'descripcioncorta'=>$request['descripcioncorta'],
            'descripcionlarga'=>$request['descripcionlarga'],
             
-           'imagen1'=>$filename,
+           'imagen1'=>$ruta,
+           'filename'=>$filename,
 
            'oferta'=>$request['oferta'],
            'hot'=>$request['hot']
@@ -198,6 +207,19 @@ class ProductoController extends Controller
      */
     public function update(ProductoUpdateRequest $request, $id)
     {
+        $categoria_id = $request['categoria_id'];
+        $categoria = Categoria::where('id','=',$categoria_id)->first();
+        
+        $subcategoria_id= $request['categoriasub_id'];
+        $subcategoria = Categoriasub::where('id','=',$subcategoria_id)->first();
+
+        $descripcion = $request['descripcion'];
+        //creamos carpetas para almacenar las imagenes de los productos dependiendo de que categoria pertenecen
+        
+        //carpeta
+        $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
+
+
          $producto=producto::find($id);
          $producto->codigo = $request['codigo'];
          $producto->descripcion =$request['descripcion'];
@@ -232,20 +254,35 @@ class ProductoController extends Controller
          $producto->usar_rentabili =$request['usar_rentabili'];
          $producto->oferta =$request['oferta'];
          $producto->hot =$request['hot'];
+         $producto->save();
 
-         if ($request->hasFile('imagen1')) {
-            $imagen =$request->file('imagen1');
-            $filename=time() . '.' . $imagen->getClientOriginalExtension();
-            image::make($imagen)->save( public_path('/storage/productos/' . $filename));
 
-            $producto=Producto::find($id);
-            $producto->imagen1 = $filename;
-            $producto->save();
-
+          //para eliminar la imagen antes de cargar la nueva
+        if($producto->filename != "sin-foto.jpg"){
+         $directoryDelete = "/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
+        \Storage::disk('productos')->delete($directoryDelete.'/'. $producto->filename);
         }
 
+        //guarda la nueva imagen
+         if (!empty($request->hasFile('imagen1'))) {
+            $imagen =$request->file('imagen1');
+            $filename=time() . '.' . $imagen->getClientOriginalName();
+             image::make($imagen)->save( 'storage/'.$directory.'/'. $filename);
 
-         $producto->save();
+           
+
+
+        if(empty($request->hasFile('imagen1'))){
+            $ruta = $request->hasFile('imagen1');
+        }else{
+            $ruta = 'storage/'.$directory.'/'. $filename;
+        }
+            $producto=producto::find($id);
+            $producto->imagen1 = $ruta;
+            $producto->filename = $filename;
+            $producto->save();
+        }
+
 
         //le manda un mensaje al usuario
        Alert::success('Mensaje existoso', 'Producto Modificado');

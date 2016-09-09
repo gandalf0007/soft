@@ -57,7 +57,7 @@
     <td><img src="storage/productos/{{$producto->imagen1}}" alt="" height="100" width="100" ></td>
      <!-- caso contrario cargo la foto -->
   @elseif($producto->imagen1 != "sin-foto.jpg")
-    <td><img src="storage/productos/{{$producto->categoria->nombre}}/{{$producto->categoriasub->nombre}}/{{$producto->descripcion}}/{{$producto->imagen1}}" alt="" height="100" width="100" ></td>
+    <td><img src="{{$producto->imagen1}}" alt="" height="100" width="100" ></td>
   @endif
 	
 

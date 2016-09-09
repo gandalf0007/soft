@@ -17,9 +17,7 @@
 <!--Filemanager-->
 <script src="{{ asset('../vendor/unisharp/laravel-filemanager/public/js/lfm.js') }}"></script>
 <script src="{{ asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="{{ asset('../vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
-<textarea name="content" class="form-control my-editor" id="lfm"></textarea>
     <script>
        $('textarea').ckeditor({
 filebrowserImageBrowseUrl: '../laravel-filemanager?type=Images',

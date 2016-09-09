@@ -20,7 +20,7 @@
 <div class="row">
 <!--imagen-->
 
-<img src="storage/productos/{{$producto->categoria->nombre}}/{{$producto->categoriasub->nombre}}/{{$producto->descripcion}}/{{$producto->imagen1}}" class="user-image center-block" alt="" height="100" width="100" >
+<img src="{{$producto->imagen1}}" class="user-image center-block" alt="" height="100" width="100" >
 
 </div>
 </div>

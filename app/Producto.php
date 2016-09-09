@@ -48,7 +48,7 @@ class Producto extends Model
             'descripcionlarga',
 
            'imagen1',
-           'imagen2',
+           'filename',
            'imagen3',
 
            'oferta',
