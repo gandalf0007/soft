@@ -292,7 +292,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('descripcioncorta',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
+	{!!Form::textarea ('descripcioncorta',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
 </div>
 
 </div>
@@ -309,7 +309,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('descripcionlarga',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('descripcionlarga',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'rows' => 30, 'cols' => 40])!!}
 </div>
 <br>
 </div>
@@ -380,3 +380,14 @@
 </div>
 </div>
 </div>
+
+
+<div class="input-group">
+      <span class="input-group-btn">
+        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+          <i class="fa fa-picture-o"></i> Choose
+        </a>
+      </span>
+      <input id="thumbnail" class="form-control" type="text" name="filepath">
+    </div>
+    <img id="holder" style="margin-top:15px;max-height:100px;">

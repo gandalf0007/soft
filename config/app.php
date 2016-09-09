@@ -168,8 +168,9 @@ return [
         Kryptonit3\Counter\CounterServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-       Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider::class,
-           
+        Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*

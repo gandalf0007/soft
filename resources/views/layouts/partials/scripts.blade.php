@@ -15,13 +15,22 @@
 @include('sweet::alert')
 
 <!--Filemanager-->
-<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
-<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
-<script type="text/javascript">
-editor_config.selector = "textarea";
-editor_config.path_absolute = "{{ asset('/') }}";
-tinymce.init(editor_config);
-</script>
+<script src="{{ asset('../vendor/unisharp/laravel-filemanager/public/js/lfm.js') }}"></script>
+<script src="{{ asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="{{ asset('../vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
+<textarea name="content" class="form-control my-editor" id="lfm"></textarea>
+    <script>
+       $('textarea').ckeditor({
+filebrowserImageBrowseUrl: '../laravel-filemanager?type=Images',
+filebrowserImageUploadUrl: '../laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+filebrowserBrowseUrl: '../laravel-filemanager?type=Files',
+filebrowserUploadUrl: '../laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'});
+        $('#lfm').filemanager('image');
+    </script>
+
+
+
 
 @yield('scriptdatepicker')
 

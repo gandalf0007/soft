@@ -257,7 +257,7 @@
 
 @yield('content')
     
-</div><!-- /.row -->
+
 
    
    
@@ -282,7 +282,7 @@
 </div><!-- /.container -->
 <!-- =========================== Marcas Carrucel================================ -->
 
-
+        </div><!-- /.row -->
     </div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
 

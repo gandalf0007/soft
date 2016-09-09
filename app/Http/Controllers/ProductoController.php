@@ -85,6 +85,7 @@ class ProductoController extends Controller
      */
     public function store(ProductoCreateRequest $request)
     {   
+       
         $categoria_id = $request['categoria_id'];
         $categoria = Categoria::where('id','=',$categoria_id)->first();
         
