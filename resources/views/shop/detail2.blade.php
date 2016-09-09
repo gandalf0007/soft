@@ -38,8 +38,8 @@
 
 			@foreach($imagens as $imagen)
 			<div class="single-product-gallery-item" id="{!! $imagen->id !!}">
-                <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{ $imagen->nombre }}">
-                    <img class="img-responsive" alt="" src="storage/productos/{{ $imagen->nombre }}" data-echo="storage/productos/{{ $imagen->nombre }}" />
+                <a data-lightbox="image-1" data-title="Gallery" href="storage/productos/{{$imagen->producto->categoria->nombre}}/{{$imagen->producto->categoriasub->nombre}}/{{$imagen->producto->descripcion}}/{{$imagen->nombre}}">
+                    <img class="img-responsive" alt="" src="storage/productos/{{$imagen->producto->categoria->nombre}}/{{$imagen->producto->categoriasub->nombre}}/{{$imagen->producto->descripcion}}/{{$imagen->nombre}}" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 			@endforeach
@@ -68,7 +68,7 @@
  			      @foreach($imagens as $imagen)   
                 <div class="item">
                     <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $i++ }}" href="#{{$imagen->id}}">
-                        <img class="img-responsive" width="85" alt="" src="storage/productos/{{ $imagen->nombre }}" data-echo="storage/productos/{{ $imagen->nombre }}" />
+                        <img class="img-responsive" width="85" alt="" src="storage/productos/{{$imagen->producto->categoria->nombre}}/{{$imagen->producto->categoriasub->nombre}}/{{$imagen->producto->descripcion}}/{{$imagen->nombre}}" />
                     </a>
                 </div>
               @endforeach 
