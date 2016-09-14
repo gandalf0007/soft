@@ -5,7 +5,7 @@ namespace Soft\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Soft\Http\Requests;
-use Soft\categoria;
+use Soft\Categoria;
 
 class StateController extends Controller
 {

@@ -12,7 +12,7 @@ use Redirect;
 use Storage;
 use DB;
 use Image;
-use Soft\user;
+use Soft\User;
 class WebPostController extends Controller
 {
     /**

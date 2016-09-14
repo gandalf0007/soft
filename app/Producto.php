@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon; 
 use DB;
 use Storage;
-
+use Soft\Categoria;
+use Soft\Categoriasub;
 class Producto extends Model
 {
 

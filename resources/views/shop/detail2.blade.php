@@ -116,11 +116,11 @@
 					
 <div class="col-sm-9">
 	@if($itemdetalle->stockactual > 2)
-	<div class="alert alert-success" role="alert"><strong>DISPONIBILIDAD</strong> : ALTO STOCK </div>
+	<div class="alert alert-success" role="alert"><strong>DISPONIBILIDAD</strong> : {!!$itemdetalle->stockactual !!} </div>
 	@elseif($itemdetalle->stockactual == 0)
-	<div class="alert alert-danger" role="alert"><strong>DISPONIBILIDAD</strong> : SIN STOCK </div>
+	<div class="alert alert-danger" role="alert"><strong>DISPONIBILIDAD</strong> : {!!$itemdetalle->stockactual !!}</div>
 	@elseif($itemdetalle->stockactual <= 2)
-	<div class="alert alert-warning" role="alert"><strong>DISPONIBILIDAD</strong> : POCO STOCK </div>
+	<div class="alert alert-warning" role="alert"><strong>DISPONIBILIDAD</strong> : {!!$itemdetalle->stockactual !!}</div>
 	@endif
 </div>				
 		</div><!-- /.row -->	
@@ -172,8 +172,18 @@
 			<input type="text" value="10" class="txt txt-qty">
 		</div>
 <div class="cart col-md-12 col-lg-6 clearfix animate-effect">
-  <div class="action">											
-	<button type="button" class="btn btn-primary">Add to cart</button>
+  <div class="action">
+  @if($itemdetalle->stockactual > 2)
+	<button class="btn btn-success icon" data-toggle="dropdown" type="button">
+	<i class="fa fa-shopping-cart"></i> AGREGAR</button>
+   @elseif($itemdetalle->stockactual == 0)							
+	<button class="btn btn-danger icon" data-toggle="dropdown" type="button">
+	<i class="fa fa-shopping-cart"></i> AGOTADO</button>
+	@elseif($itemdetalle->stockactual <= 2)
+	<button class="btn btn-warning icon" data-toggle="dropdown" type="button">
+	<i class="fa fa-shopping-cart"></i> AGREGAR</button>
+	@endif
+
 	<button type="button" class="left btn btn-primary"><i class="icon fa fa-heart"></i></button>
 	<button type="button" class="left btn btn-primary"><i class="fa fa-retweet"></i></button>
   </div><!-- /.action -->

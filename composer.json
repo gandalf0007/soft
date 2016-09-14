@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
+        "laravel/framework": "5.2",
         "laravelcollective/html": "5.2.*",
         "mercadopago/sdk": "0.5.2",
         "barryvdh/laravel-debugbar": "^2.2",
@@ -19,7 +19,8 @@
         "uxweb/sweet-alert": "~1.1",
         "pqb/filemanager-laravel": "2.*",
         "unisharp/laravel-filemanager": "^1.6",
-        "unisharp/laravel-ckeditor": "^4.5"
+        "unisharp/laravel-ckeditor": "^4.5",
+        "guzzlehttp/guzzle": "~4.0"
 
     },
     "require-dev": {

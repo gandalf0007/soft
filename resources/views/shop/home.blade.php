@@ -54,7 +54,7 @@
 				</a>
 			@endif
 			</div><!-- /.image -->			
-			<div class="tag sale"><span>Sale</span></div>		   
+			<div class="tag new"><span>New</span></div>		   
 		</div><!-- /.product-image -->
 			
 

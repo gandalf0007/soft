@@ -16,7 +16,7 @@ use Soft\Transaction;
 use Soft\Venta;
 use Soft\Cliente;
 use Soft\Presupuesto;
-use Soft\presupuestos_detalle;
+use Soft\Presupuestos_detalle;
 use Alert;
 
 

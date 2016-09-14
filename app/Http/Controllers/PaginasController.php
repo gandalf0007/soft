@@ -14,7 +14,7 @@ use DB;
 use Image;
 use Soft\Producto;
 use Soft\Producto_imagen;
-
+use Soft\Categoria;
 class PaginasController extends Controller
 {
 

@@ -31,10 +31,12 @@
         <!-- Fonts --> 
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="shop/images/favicon.ico">
+		<link rel="shortcut icon" href="storage/favicon.ico">
 	   
 	   {!!Html::style('css/login.css')!!}
-		 
+	   
+
+
 		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 		<!--[if lt IE 9]>
 			<script src="shop/js/html5shiv.js"></script>
@@ -70,27 +72,7 @@
 				</ul>
 			</div><!-- /.cnt-account -->
 
-			<div class="cnt-block">
-				<ul class="list-unstyled list-inline">
-					<li class="dropdown dropdown-small">
-						<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">USD</a></li>
-							<li><a href="#">INR</a></li>
-							<li><a href="#">GBP</a></li>
-						</ul>
-					</li>
 
-					<li class="dropdown dropdown-small">
-						<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">English</a></li>
-							<li><a href="#">French</a></li>
-							<li><a href="#">German</a></li>
-						</ul>
-					</li>
-				</ul><!-- /.list-unstyled -->
-			</div><!-- /.cnt-cart -->
 			<div class="clearfix"></div>
 		</div><!-- /.header-top-inner -->
 	</div><!-- /.container -->
@@ -106,7 +88,7 @@
 <div class="logo">
     <a href="home.html">
         @foreach($logos as $logo)
-        <img src="storage/paginas/home/logo/{{ $logo->logo }}" alt="">
+        <img class="img-responsive" src="storage/paginas/home/logo/{{ $logo->logo }}" alt="">
         @endforeach
     </a>
 </div><!-- /.logo -->
@@ -116,33 +98,19 @@
 				
 <!-- ======================================== SEARCH AREA ======================================= -->
 <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder">
-                    <div class="contact-row">
+  <div class="contact-row">
+  @foreach($informacions as $informacion)
     <div class="phone inline">
-        <i class="icon fa fa-phone"></i> (400) 888 888 868
+        <i class="icon fa fa-phone"></i> {{ $informacion->telefono1 }}
     </div>
     <div class="contact inline">
-        <i class="icon fa fa-envelope"></i> saler@unicase.com
+        <i class="icon fa fa-envelope"></i> {{ $informacion->correo1 }}
     </div>
+    @endforeach
 </div><!-- /.contact-row -->
 <div class="search-area">
     <form>
         <div class="control-group">
-
-            <ul class="categories-filter animate-dropdown">
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
-
-                    <ul class="dropdown-menu" role="menu" >
-                        <li class="menu-header">Computer</li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Laptops</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Tv & audio</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Gadgets</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Cameras</a></li>
-
-                    </ul>
-                </li>
-            </ul>
 
             <input class="search-field" placeholder="Search here..." />
 
@@ -535,21 +503,17 @@
 
     <div class="copyright-bar">
         <div class="container">
-            <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="col-xs-12 col-sm-3 no-padding">
                 <div class="copyright">
                    Copyright © 2016
                     <a href="home.html">SharkInformatica</a>
                     - All rights Reserved
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="col-xs-12 col-sm-9 no-padding">
                 <div class="clearfix payment-methods">
                     <ul>
-                        <li><img src="shop/images/payments/1.png" alt=""></li>
-                        <li><img src="shop/images/payments/2.png" alt=""></li>
-                        <li><img src="shop/images/payments/3.png" alt=""></li>
-                        <li><img src="shop/images/payments/4.png" alt=""></li>
-                        <li><img src="shop/images/payments/5.png" alt=""></li>
+                        <li><img class="img-responsive" src="storage/footer/mercadopago.jpg" alt=""></li>   
                     </ul>
                 </div><!-- /.payment-methods -->
             </div>
@@ -577,9 +541,10 @@
     <script src="shop/js/wow.min.js"></script>
 	<script src="shop/js/scripts.js"></script>
 
-	<!--sweetalert-->
-<script src="js/sweetalert/sweetalert.min.js"></script>
-<script src="js/sweetalert/sweetalert-dev.js"></script>
+	
+<!--sweetalert-->
+<script src="{{ asset('js/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert/sweetalert-dev.js') }}"></script>
 @include('sweet::alert')
 
      @include('shop.modal.login') 

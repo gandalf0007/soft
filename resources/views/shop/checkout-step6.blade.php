@@ -66,11 +66,16 @@ $preference = $mp->create_preference($preference_data);
 </div>
     
     <br><br><br><br> <br><br><br><br> <br><br><br><br>
+   <div class="col-xs-12 col-sm-2 no-padding">
+        
+    </div>
+<div class="col-xs-12 col-sm-10 no-padding">
+
+<iframe src="<?php echo $preference['response']['init_point']; ?>" name="MP-Checkout" width="800" height="800" frameborder="0"></iframe>
 
 
-<a href="<?php echo $preference["response"]["init_point"]; ?>" name="MP-Checkout" class="orange-ar-m-sq-arall">Pay</a>
         <script type="text/javascript" src="//resources.mlstatic.com/mptools/render.js"></script>
-
+</div>
         <br><br><br><br><br><br>
 		</div><!-- /.row -->
 	</div><!-- /.container -->

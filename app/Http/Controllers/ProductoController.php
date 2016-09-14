@@ -258,7 +258,7 @@ class ProductoController extends Controller
 
 
           //para eliminar la imagen antes de cargar la nueva
-        if($producto->filename != "sin-foto.jpg"){
+        if($producto->filename == "sin-foto.jpg"){
          $directoryDelete = "/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
         \Storage::disk('productos')->delete($directoryDelete.'/'. $producto->filename);
         }

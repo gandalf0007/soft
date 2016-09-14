@@ -1,6 +1,6 @@
 @extends('layouts.shop')
-@include('alerts.errors')
 @section('content')
+@include('alerts.errors')
 
 
 <div class="breadcrumb pull-left">
@@ -25,16 +25,15 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-            {!!Form::open(['route'=>'mail.store', 'method'=>'POST','class'=>'form-horizontal'])!!}
+            {!!Form::open(['url'=>'mail', 'method'=>'POST','class'=>'form-horizontal'])!!}
                 
-                    
+                    @include('alerts.success')
                         <legend class="text-center header">Contactenos</legend>
-
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="fname" name="name" type="text" placeholder="Nombre" class="form-control">
+                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -43,29 +42,24 @@
                                 <input id="lname" name="apellido" type="text" placeholder="Apellido" class="form-control">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
                                 <input id="email" name="email" type="text" placeholder="Direccion de Corre Electronico" class="form-control">
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="phone" name="telefono" type="text" placeholder="telefono" class="form-control">
+                                <input id="phone" name="subject" type="text" placeholder="Titulo" class="form-control">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="Message" placeholder="Introduzca su masaje. Nos pondremos en contacto con usted dentro de las 24 horas." rows="7"></textarea>
+                                <textarea class="form-control" id="message" name="body" placeholder="Introduzca su masaje. Nos pondremos en contacto con usted dentro de las 24 horas." rows="7"></textarea>
                             </div>
                         </div>
-
-                      
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">

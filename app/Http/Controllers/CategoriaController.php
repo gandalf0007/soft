@@ -10,7 +10,7 @@ use Alert;
 use Session;
 use Redirect;
 use Storage;
-use Soft\categoria;
+use Soft\Categoria;
 use Soft\Categoriasub;
 use DB;
 use Image;

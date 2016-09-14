@@ -15,8 +15,8 @@
 
 //rutas , el primer parammetro es el nombre de la ruta
 //el segundo parametro llama a la funcion dentro de frontController
-use Soft\categoria;
-use Soft\categoriasub;
+use Soft\Categoria;
+use Soft\Categoriasub;
 
 
 Route::group(['middleware' => 'web'], function () {
@@ -40,7 +40,8 @@ Route::get('aviso-legal','PaginasController@AvisoLegal');
 Route::get('envios','PaginasController@envios');
 Route::get('ubicacion','PaginasController@ubicacion');
 Route::get('contacto','PaginasController@contacto');
-Route::resource('mail','MailController');
+Route::post('mail','MailController@send');
+
 
 
 
