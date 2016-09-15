@@ -291,7 +291,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('descripcioncorta',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
+	{!!Form::textarea ('descripcioncorta',null,['class'=>'my-editor2','id'=>'lfm2','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
 </div>
 
 </div>
@@ -308,7 +308,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('descripcionlarga',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la observacion', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('descripcionlarga',null,['class'=>'my-editor2','id'=>'lfm2','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
 <br>
 </div>

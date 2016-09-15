@@ -18,13 +18,23 @@
 <script src="{{ asset('../vendor/unisharp/laravel-filemanager/public/js/lfm.js') }}"></script>
 <script src="{{ asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('../vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
+<!--Filemanager para crear-->
     <script>
-       $('textarea').ckeditor({
+       $('textarea.my-editor').ckeditor({
 filebrowserImageBrowseUrl: '../laravel-filemanager?type=Images',
 filebrowserImageUploadUrl: '../laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
 filebrowserBrowseUrl: '../laravel-filemanager?type=Files',
 filebrowserUploadUrl: '../laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'});
         $('#lfm').filemanager('image');
+    </script>
+<!--Filemanager para editar-->
+    <script>
+       $('textarea.my-editor2').ckeditor({
+filebrowserImageBrowseUrl: '../../laravel-filemanager?type=Images',
+filebrowserImageUploadUrl: '../../laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+filebrowserBrowseUrl: '../../laravel-filemanager?type=Files',
+filebrowserUploadUrl: '../../laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'});
+        $('#lfm2').filemanager('image');
     </script>
 
 

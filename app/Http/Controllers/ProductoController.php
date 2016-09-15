@@ -19,6 +19,7 @@ use Soft\Provedore;
 use Alert;
 use Image;
 use DB;
+use Input;
 class ProductoController extends Controller
 {
     /**
@@ -100,16 +101,22 @@ class ProductoController extends Controller
 
         //pregunto si la imagen no es vacia y guado en $filename , caso contrario guardo null
         if(!empty($request->hasFile('imagen1'))){
-           $imagen =$request->file('imagen1');
+          $imagen = Input::file('imagen1');
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
             //crea la carpeta
             Storage::makeDirectory($directory);
-            image::make($imagen)->save( public_path('/storage/'.$directory.'/'. $filename));
+            image::make($imagen->getRealPath())->save( public_path('storage/'.$directory.'/'. $filename));
         }elseif(empty($request->hasFile('imagen1'))){
             //crea la carpeta
             Storage::makeDirectory($directory);
             $filename = "sin-foto.jpg";
         }
+
+
+     
+            
+            
+
 
         if(empty($request->hasFile('imagen1'))){
             $ruta = "sin-foto.jpg"; 
