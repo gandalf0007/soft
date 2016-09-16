@@ -1,5 +1,5 @@
 @foreach($subcategorias as $subcategoria)
-<div class="modal fade" id="confirmDelete-{{ $subcategoria->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
+<div class="modal fade" id="DeleteSub-{{ $subcategoria->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
  <div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">

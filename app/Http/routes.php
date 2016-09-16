@@ -63,6 +63,9 @@ Route::get('web-update/{id}/{quantity}','WebVentas@update');
 
 
 Route::get('checkout','WebVentas@CheckoutStep1');
+
+
+Route::get('buscador','BuscadorController@buscador');
 });
 
 

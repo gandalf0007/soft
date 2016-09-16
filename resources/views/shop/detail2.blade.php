@@ -174,14 +174,14 @@
 <div class="cart col-md-12 col-lg-6 clearfix animate-effect">
   <div class="action">
   @if($itemdetalle->stockactual > 2)
-	<button class="btn btn-success icon" data-toggle="dropdown" type="button">
-	<i class="fa fa-shopping-cart"></i> AGREGAR</button>
+	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-success icon" type="button">
+	<i class="fa fa-shopping-cart"></i> AGREGAR</a>
    @elseif($itemdetalle->stockactual == 0)							
-	<button class="btn btn-danger icon" data-toggle="dropdown" type="button">
-	<i class="fa fa-shopping-cart"></i> AGOTADO</button>
+	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-danger icon" type="button">
+	<i class="fa fa-shopping-cart"></i> AGOTADO</a>
 	@elseif($itemdetalle->stockactual <= 2)
-	<button class="btn btn-warning icon" data-toggle="dropdown" type="button">
-	<i class="fa fa-shopping-cart"></i> AGREGAR</button>
+	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-warning icon" type="button">
+	<i class="fa fa-shopping-cart"></i> AGREGAR</a>
 	@endif
 
 	<button type="button" class="left btn btn-primary"><i class="icon fa fa-heart"></i></button>

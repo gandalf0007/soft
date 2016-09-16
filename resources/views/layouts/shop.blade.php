@@ -107,15 +107,16 @@
      @endforeach
 </div><!-- /.contact-row -->
 <div class="search-area">
-    <form>
-        <div class="control-group">
-
-            <input class="search-field" placeholder="Search here..." />
-
-            <a class="search-button" href="#" ></a>    
-
-        </div>
-    </form>
+<!--buscador-->
+{!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'' , 'role'=>'Search'])!!}
+<div class="input-group">
+{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
+ <span class="input-group-btn">
+ <button type="submit" class="btn btn-primary "><i class="icon fa fa-search"></i> Buscar</button>
+ </span>
+</div>
+{!!Form::close()!!}
+ <!--endbuscador--> 
 </div><!-- /.search-area -->
 </div><!-- /.top-search-holder -->
 <!-- ================================== SEARCH AREA : END ==================================== -->              
@@ -280,17 +281,17 @@
 <div class="contact-info">
     <div class="footer-logo">
         <div class="logo">
-            <a href="home.html">
+            <a href="{{asset('/formas-de-pago')}}">
                 
-                <img src="storage/footer/logos-pago.jpg" alt="">
+                <img src="storage/footer/formas-de-pago.jpg" alt="">
 
             </a>
         </div><!-- /.logo -->
     
     </div><!-- /.footer-logo -->
-
+<br>
      <div class="module-body m-t-20">
-        <p class="about-us">Nuestros metodos de Pago</p>
+        
     
         <div class="social-icons">
             

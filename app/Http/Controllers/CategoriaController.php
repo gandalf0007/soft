@@ -102,6 +102,9 @@ class CategoriaController extends Controller
     {    
         $categoria=categoria::find($id);
         
+        //obtenemos el campo icon definido en el formulario
+        $file = $request->file('icon');
+        
        if(!empty($file)){
         //eliminar el archivo antes de modificar
          \Storage::disk('svg')->delete($categoria->icon);
