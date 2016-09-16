@@ -8,10 +8,10 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Crear Nuevo Carrucel</h3>
+              <h3 class="box-title">Crear Nuevo Post</h3>
             </div>
 			<div class="box-body">
-      <div class="container">
+      
 @include('alerts.request')
 
 
@@ -20,7 +20,7 @@
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
 
-</div>
+
 </div>
             <!-- /.box-body -->
           </div>

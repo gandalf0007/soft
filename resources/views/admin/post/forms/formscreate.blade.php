@@ -1,26 +1,70 @@
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Titulo</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
 
-<!--titulo-->
-<div class="form-horizontal">
-	{!!Form::label('Titulo:')!!}
+<div class="form-horizontal  col-xs-12 col-sm-12 col-md-12">
+	{!!Form::label('')!!}
 	{!!Form::text('titulo',null,['class'=>'form-control ','placeholder'=>'ingrese el titulo'])!!}
 </div>
-<br>
-<!--descripcion corta-->
-<div class="form-horizontal">
-	{!!Form::label('Descripcion Corta:')!!}
-	{!!Form::textarea('descripcioncorta',null,['class'=>'form-control ','placeholder'=>'ingrese descripcion del producto', 'rows' => 50, 'cols' => 40])!!}
+
+</div>
+</div>
 </div>
 <br>
-<!--descripcion larga-->
-<div class="form-horizontal">
-	{!!Form::label('Descripcion Larga:')!!}
-	{!!Form::textarea('descripcionlarga',null,['class'=>'form-control ','placeholder'=>'ingrese descricpicon larga', 'rows' => 50, 'cols' => 40])!!}
+
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Descripcion Corta</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
+	{!!Form::label('')!!}
+	{!!Form::textarea ('descripcioncorta',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion'])!!}<br><br><br>
 </div>
 
-<div class="form-group">
-	{!!Form::label('Creado Por :')!!}
+</div>
+</div>
+</div>
+<br>
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Descripcion Larga</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
+	{!!Form::label('')!!}
+	{!!Form::textarea ('descripcionlarga',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
+</div>
+<br>
+</div>
+</div>
+</div>
+
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Creado Por :</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<div class="form-group  col-xs-12 col-sm-12 col-md-12">
+	{!!Form::label('')!!}
 	{!!Form::select('user_id',$user,'',['class'=>'form-control'])!!}
 </div>
 
-
 <br>
+</div>
+</div>
+</div>
+
+

@@ -132,25 +132,6 @@
         <i class='fa fa-user-secret'></i><span>Post</span></a>
         </li>
 
-        <li >
-        <a href="{!! URL::to('usuario/') !!}">
-        <i class='fa fa-user'></i><span>Usuarios</span></a>
-        </li>
-
-        <li >
-        <a href="{!! URL::to('cliente/') !!}">
-        <i class='fa fa-users'></i><span>Clientes</span></a>
-        </li>
-
-        <li >
-        <a href="{!! URL::to('reportes/') !!}">
-        <i class='fa fa-circle-o'></i><span>Reportes</span></a>
-        </li>
-
-         <li >
-        <a href="{!! URL::to('gasto/') !!}">
-        <i class='fa fa-money'></i><span>Gastos</span></a>
-        </li>  
            
         </ul><!---========================== Gestion web ====================== -->
 

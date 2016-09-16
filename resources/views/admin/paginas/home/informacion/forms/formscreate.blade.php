@@ -113,7 +113,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('formasdepago',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la formasdepago', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('formasdepago',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
 <br>
 
@@ -133,7 +133,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('garantia',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese la garantia', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('garantia',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
 <br>
 
@@ -154,8 +154,9 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('avisolegal',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese el avisolegal', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('avisolegal',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
+
 <br>
 
 
@@ -174,7 +175,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('envios',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese el envio', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('envios',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
 <br>
 
@@ -194,7 +195,7 @@
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-12">
 	{!!Form::label('')!!}
-	{!!Form::textarea ('preguntas',null,['class'=>'form-control dropzone','id'=>'editor','placeholder'=>'ingrese las preguntas', 'rows' => 30, 'cols' => 40])!!}
+	{!!Form::textarea ('preguntas',null,['class'=>'my-editor','id'=>'lfm','placeholder'=>'ingrese la observacion', 'row' => 100, 'cols' => 80])!!}
 </div>
 <br>
 
