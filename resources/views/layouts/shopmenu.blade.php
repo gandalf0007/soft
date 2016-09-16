@@ -331,7 +331,7 @@
         <div class="logo">
             <a href="{{asset('/formas-de-pago')}}">
                 
-                <img src="storage/footer/formas-de-pago.jpg" alt="">
+                <img class="img-responsive" src="storage/footer/formas-de-pago.jpg" alt="">
 
             </a>
         </div><!-- /.logo -->

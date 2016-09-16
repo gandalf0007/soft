@@ -50,21 +50,6 @@
 </div>
 
 
-<div class="panel panel-primary">
-		<div class="panel-heading">
-   		 	<h3 class="panel-title">Creado Por :</h3>
- 		</div>	
-  <div class="panel-body">
-<div class="row">
 
-<div class="form-group  col-xs-12 col-sm-12 col-md-12">
-	{!!Form::label('')!!}
-	{!!Form::select('user_id',$user,'',['class'=>'form-control'])!!}
-</div>
-
-<br>
-</div>
-</div>
-</div>
 
 

@@ -11,11 +11,11 @@
 <!-- ==================BlOG===================================== -->		
 <div class="col-md-9">
 <div class="blog-post wow fadeInUp">
-	<h1>{{ $post->titulo }}</h1>
+	<h1 class="text-left">{{ $post->titulo }}</h1>
 	<span class="author">{{ $post->user->nombre }}</span>
 	<span class="review">6 Comments</span>
 	<span class="date-time">{{ $post->created_at }}</span>
-	<p>{!! $post->descripcionlarga !!}</p>
+	<p><div class="img-responsive">{!! $post->descripcionlarga !!}</div></p>
 
 	<div class="social-media">
 		<span>share post:</span>

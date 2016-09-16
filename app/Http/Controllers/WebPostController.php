@@ -13,6 +13,7 @@ use Storage;
 use DB;
 use Image;
 use Soft\User;
+use Auth;
 class WebPostController extends Controller
 {
     /**
@@ -48,7 +49,12 @@ class WebPostController extends Controller
      */
     public function store(Request $request)
     {
-        webpost::create($request->all());
+        $post = new webpost;
+        $post->titulo = $request['titulo'];
+        $post->descripcioncorta = $request['descripcioncorta'];
+        $post->descripcionlarga = $request['descripcionlarga'];
+        $post->user_id = Auth::user()->id;
+        $post->save();
 
         //le manda un mensaje al usuario
        Alert::success('Mensaje existoso', 'Post Creado');
@@ -88,7 +94,10 @@ class WebPostController extends Controller
     public function update(Request $request, $id)
     {
          $post=webpost::find($id);
-        $post->fill($request->all());
+        $post->titulo = $request['titulo'];
+        $post->descripcioncorta = $request['descripcioncorta'];
+        $post->descripcionlarga = $request['descripcionlarga'];
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         //le manda un mensaje al usuario

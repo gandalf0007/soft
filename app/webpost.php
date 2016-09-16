@@ -20,7 +20,7 @@ protected $fillable = [
 public function user()
     {
         //un post tiene un user
-       return $this->belongsTo(user::class);
+       return $this->belongsTo(User::class);
     } 
 
 

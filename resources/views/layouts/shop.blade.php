@@ -108,7 +108,7 @@
 </div><!-- /.contact-row -->
 <div class="search-area">
 <!--buscador-->
-{!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'' , 'role'=>'Search'])!!}
+{!!Form::open(['url'=>'buscador', 'method'=>'GET' , 'class'=>'' , 'role'=>'Search'])!!}
 <div class="input-group">
 {!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
  <span class="input-group-btn">
@@ -283,7 +283,7 @@
         <div class="logo">
             <a href="{{asset('/formas-de-pago')}}">
                 
-                <img src="storage/footer/formas-de-pago.jpg" alt="">
+                <img class="img-responsive" src="storage/footer/formas-de-pago.jpg" alt="">
 
             </a>
         </div><!-- /.logo -->

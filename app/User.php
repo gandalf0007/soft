@@ -76,7 +76,7 @@ public function webventa()
 public function perfil()
     {
         //un usuario tiene un perfil
-       return $this->belongsTo(perfil::class);
+       return $this->belongsTo(Perfil::class);
     }   
 
 public function webpost()

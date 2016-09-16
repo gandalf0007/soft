@@ -1,4 +1,3 @@
-
 @extends('layouts.shopmenu')
 @section('content')
 
@@ -18,14 +17,14 @@
 		<div class="row outer-bottom-vs">
 			<div class="blog-page">
 <!-- ==================BlOG===================================== -->	
-<div class="col-md-9">
+<div class="col-xs-12 col-sm-12 col-md-9">
 @foreach($posts as $post)	
 <div class="blog-post wow fadeInUp">
-	<h1>{{ $post->titulo }}</h1>
+	<h1 class="text-left">{{ $post->titulo }}</h1>
 	<span class="author">{{ $post->user->nombre }}</span>
 	<span class="review">6 Comments</span>
 	<span class="date-time">{{ $post->created_at }}</span>
-	<p>{!! $post->descripcioncorta !!}</p>
+	<p><div class="img-responsive">{!! $post->descripcioncorta !!}</div></p>
 
 	{!! link_to_route('paginas.postDetalle', $title = 'Leer Mas', $parameters = $post->id  , $attributes = ['class'=>'btn btn-azul']); !!}
 
