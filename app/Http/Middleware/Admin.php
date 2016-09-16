@@ -28,7 +28,7 @@ class Admin
         //desistinto de 1 que me de un error , si no que me deje pasar
         if($this->auth->user()->perfil_id == 3){
             //me redirecciona a la vista index
-            Session::flash('message-error','no tiene privilegios');
+            //Session::flash('message-error','no tiene privilegios');
             return redirect()->to('/');  
         }
             //sigue con la peticion

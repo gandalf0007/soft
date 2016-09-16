@@ -262,12 +262,24 @@ public function detalleVentaPdf($tipo,$id){
 
     public function cambiarStatusWeb(Request $Request , $id){
     
-
+        $transactions = web_transaccione::where('web_venta_id','=',$id)->get();
         $venta=web_venta::find($id);
-        $venta->status=$Request['pago'];
-        $venta->save();
-        return Redirect::to('/listar-venta-web');
+        if($Request['pago'] == "cancelado" and $venta->status != "cancelado"){
+           
+         foreach ($transactions as $transaction) {
+           //volve  stock en la tabla producto
+            $producto = producto::find($transaction->producto_id);
+            $producto->stockactual = $producto->stockactual + $transaction->cantidad;
+            $producto->save(); 
+            //cambiamos el estado de la venta
+            $venta->status=$Request['pago'];
+            $venta->save();}
+        }else{
+            $venta->status=$Request['pago'];
+            $venta->save();
+        }
 
+         return Redirect::to('/listar-venta-web');
     }
 
   /*  public function detalleVenta($id){

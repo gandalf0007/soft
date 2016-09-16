@@ -49,9 +49,9 @@ $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$prod
 
           
             $files = $request->file('file');
+           
             foreach($files as $file){
-                /*lo guarda con el  nombre generado
-                $fileName = time() . '.' .$file->getClientOriginalExtension();*/
+                //lo guarda con el  nombre generado
                 $filename=time() . '.' . $file->getClientOriginalExtension();
                 image::make($file)->save( public_path('storage/'.$directory.'/'. $filename));
                 producto_imagen::create([

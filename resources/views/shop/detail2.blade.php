@@ -148,36 +148,17 @@
 </div><!-- /.price-container -->
 <!---------- Precio -------------->	
 
-	<div class="attributes-list outer-top-vs">
-		<fieldset class="attribute_fieldset">
-			<div class="row">
-				<label for="group_2" class="col-sm-2 attribute_label attribute-key">Color&nbsp;</label>
-				<div class="col-sm-10 attribute_list">
-					<select class="form-control selectpicker attribute_select no-print" id="group_2" name="group_1">
-						<option title="Option" selected="selected" >--select--</option>
-						<option title="Red" value="1">Red</option>
-						<option title="Blue" value="2">Blue</option>
-						<option title="Orange" value="3">Orange</option>
-					</select>
-				</div> <!-- /.attribute_list -->
-			</div> 
-		</fieldset>
-	</div>
+	
 
 	<div class="row outer-top-vs">
-		<div class="col-sm-2 col-lg-2 col-md-4">
-			<span class="label">Quantity :</span>
-		</div>
-		<div class="col-sm-3 col-lg-3 col-md-4">
-			<input type="text" value="10" class="txt txt-qty">
-		</div>
+		
 <div class="cart col-md-12 col-lg-6 clearfix animate-effect">
   <div class="action">
   @if($itemdetalle->stockactual > 2)
 	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-success icon" type="button">
 	<i class="fa fa-shopping-cart"></i> AGREGAR</a>
    @elseif($itemdetalle->stockactual == 0)							
-	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-danger icon" type="button">
+	<a href="#"	class="btn btn-danger icon" type="button">
 	<i class="fa fa-shopping-cart"></i> AGOTADO</a>
 	@elseif($itemdetalle->stockactual <= 2)
 	<a href="{{ route('web.AddToCart',['id'=>$itemdetalle->id]) }}"	class="btn btn-warning icon" type="button">

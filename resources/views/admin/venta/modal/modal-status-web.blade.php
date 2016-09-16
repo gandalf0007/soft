@@ -1,5 +1,5 @@
 @foreach($ventas as $venta)
-<div class="modal fade " id="status-{{ $venta->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
+<div class="modal fade " id="statusWeb-{{ $venta->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDelete">
  <div class="modal-dialog modal-lg" role="document">
      <div class="modal-content">
  

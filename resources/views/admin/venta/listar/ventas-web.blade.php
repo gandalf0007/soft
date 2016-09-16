@@ -70,13 +70,13 @@ endboton crear-->
 
       <td>
       @if ($venta -> status == "pagado")
-      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-success">{{ $venta -> status}}</span></a>
+      <a href="#statusWeb-{{ $venta->id }}" data-toggle="modal" ><span class="label label-success">{{ $venta -> status}}</span></a>
 
       @elseif ($venta -> status == "pendiente")
-      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-warning">{{ $venta -> status}}</span></a>
+      <a href="#statusWeb-{{ $venta->id }}" data-toggle="modal" ><span class="label label-warning">{{ $venta -> status}}</span></a>
 
       @elseif ($venta -> status == "cancelado")
-      <a href="#status-{{ $venta->id }}" data-toggle="modal" ><span class="label label-danger">{{ $venta -> status}}</span></a>
+      <a href="#statusWeb-{{ $venta->id }}" data-toggle="modal" ><span class="label label-danger">{{ $venta -> status}}</span></a>
 
       @endif
       </td>

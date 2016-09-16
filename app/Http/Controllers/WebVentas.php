@@ -14,6 +14,7 @@ use Alert;
 use Auth;
 use Soft\user_facturacion;
 use Soft\web_transaccione;
+use Soft\web_mercadopago;
 
 
 class WebVentas extends Controller
@@ -129,57 +130,6 @@ class WebVentas extends Controller
         return $total;
     }
 
-
-     public function checkout(Request $Request)
-    {
-        $total = $this->total();
-
-        //traigo el tipo de pago y si es efectivo que se guarde como pagado en otro caso 
-        //que se guarde como pendiente
-        $tipo_pago=$Request['tipo_pago'];
-        if ($tipo_pago == "Efectivo") 
-        {
-            $tipo_pago = "pagado";
-        }else{  
-            $tipo_pago="pendiente";            
-        }
-        //traigo el cliente de la session
-        $cliente = \Session::get('cliente');
-        //genero una venta que estara relacinada con los productos en las transacciones
-        $venta = new Venta();
-        $venta->cliente_id    = $cliente->id;
-        $venta->user_id       = Auth::user()->id;
-        $venta->pago_tipo     = $Request['tipo_pago'];
-        $venta->total         = $total;
-        //$venta->comentario  =
-        $venta->status = $tipo_pago;
-        $venta->save();
-
-        //traigo todos los productos de la session  del usuario 
-        $cart = \Session::get('cart');
-        //los recorro
-        foreach ($cart as $item) {
-            //crea una nueva transaccion
-            $transaction  = new Transaction();
-            //alamacena la transaccion
-            $transaction->venta_id    = $venta->id;
-            $transaction->producto_id  = $item->id;
-            $transaction->user        = Auth::user()->nombre;
-            $transaction->cantidad    = $item->quantity;
-            $transaction->total_price = $item->pro_venta * $item->quantity;
-            //guardo la transaccion
-            $transaction->save();
-
-            //descontar stock en la tabla producto
-            $producto = producto::find($item->id);
-            $producto->stockactual = $producto->stockactual - $item->quantity;
-            $producto->save();
-        }   
-
-       
-        //redirecciona para destruir el carrito de la seccion
-         return Redirect::to('venta-trash');
-    }
 
 
 
@@ -328,6 +278,9 @@ class WebVentas extends Controller
 
     public function CheckoutStep5(request $request)
     { 
+      //mercadopago
+       $mercadopago=web_mercadopago::first();
+      
       //usuario
        $user= Auth::user();
 
@@ -379,7 +332,8 @@ class WebVentas extends Controller
                                           'cartcount',
                                           'carts',
                                           'user',
-                                          'facturacion'
+                                          'facturacion',
+                                          'mercadopago'
                                           ));
     }
 
@@ -463,48 +417,6 @@ public function CheckoutStep6(request $request)
 
 
 /*---------------------------------carrito--------------------------------------*/
-
-
-
-
-
-
-
-
-/*---------------------------------cliente--------------------------------------*/
-public function seleccionarCliente(request $request)
-    {
-         //me busca los clientes
-        $clientes = cliente::orderBy('nombre');
-
-        /*------------buscador-----------*/
-        //lo que ingresamos en el buscador lo alamacenamos en $usu_nombre
-        $clie_nombre=$request->input('nombre');
-        //preguntamos que si ($usu_nombre no es vacio
-        if (!empty($clie_nombre)) {
-            //entonces me busque de usu_nombre a el nombre que le pasamos atraves de $usu_nombre
-            $clientes->where('nombre','LIKE','%'.$clie_nombre.'%');
-        }
-         $clientes=$clientes->paginate(10);
-         /*------------buscador-----------*/
-
-
-        //me los manda a productoadd asi los seleccioens
-        return View('admin.venta.clienteadd')->with('clientes',$clientes);
-
-     }
-
- public function addCliente($id)
-    {
-        $clienteadd  = cliente::find($id);
-        $cliente = \Session::get('cliente');
-        $cliente = $clienteadd;
-        \Session::put('cliente', $cliente);
-         return redirect('venta-show');
-     }
-
-
-/*---------------------------------cliente--------------------------------------*/
 
 
 

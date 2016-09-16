@@ -33,32 +33,14 @@
 <div class="container outer-section">
         <div id="print-area">
 
-
-
-            <div class="row pad-top font-big">
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <img src="assets/img/logo.png" alt="Free Bootstrap Invoice Logo" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <strong>Support : </strong>info@yourdomain.com
-                    <br />
-                    <strong>Call :</strong>+01-345-908-55-89<br />
-                    <strong>Fax :</strong>+456-345-908-559<br />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <strong>Design Bootstrap Technologies  </strong>
-                    <br />
-                    Address : 234/90, New York Street
-                    <br />
-                    United States.<br />
-                </div>
-
-            </div>
-            <br />
+            
             <hr />
             <div class="row text-center">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    Este es un recibo electrónico, para cualquier problema por favor, póngase en contacto con &nbsp;<strong> ventas@sharkinformatica.com</strong>
+                    Este es un recibo electrónico, para cualquier problema por favor, póngase en contacto con &nbsp;<strong>
+                    @foreach($informacions as $informacion) {!! $informacion->correo1 !!}
+                    @endforeach
+                    </strong>
 
                 </div>
             </div>
@@ -147,15 +129,23 @@
             <hr />
             <div class="row">
                 <h1><div class="col-lg-9 col-md-9 col-sm-9" style="text-align: right; padding-right: 30px;">
-                    Importe total + IVA :
+                    Importe total + IVA (PAGO DE CONTADO):
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
-                    <strong>$ {{ $total }}</strong>
+                    <strong><i class="fa fa-money" aria-hidden="true"></i> $ {{ $total }}</strong>
                 </div></h1>
                 <hr />
-               
-               
             </div>
+            <div class="row">
+                <h1><div class="col-lg-9 col-md-9 col-sm-9" style="text-align: right; padding-right: 30px;">
+                    Importe total + IVA (PAGO CON TARJETA):
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <strong><i class="fa fa-cc-visa" aria-hidden="true"></i> $ {{ $total + ($total * ($mercadopago->porcentaje/100))}}</strong>
+                </div></h1>
+                <hr />
+            </div>
+
             <hr />
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">

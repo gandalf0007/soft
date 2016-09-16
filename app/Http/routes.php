@@ -126,9 +126,6 @@ Route::get('venta-cliente/{id}','VentaController@addCliente');
 Route::get('venta-detalle-pdf/{tipo}/{id}','VentaController@detalleVentaPdf');
 
 //cambiar status de venta
-Route::get('cambiar-status/','VentaController@cambiarStatus');
-Route::post('cambiar-status-web/','VentaController@cambiarStatusWeb');
-
 Route::post('cambiar-status/{id}',[
 'as'=>'venta.cambiarstatus',
 'uses'=>'VentaController@cambiarStatus'
@@ -204,19 +201,7 @@ Route::get('compra-provedore/{id}','CompraController@addProvedor');
 
 Route::get('compra-detalle-pdf/{tipo}/{id}','CompraController@detalleCompraPdf');
 
-//cambiar status de Compra
-Route::get('cambiar-status/','CompraController@cambiarStatus');
-Route::post('cambiar-status-web/','CompraController@cambiarStatusWeb');
 
-Route::post('cambiar-status/{id}',[
-'as'=>'Compra.cambiarStatus',
-'uses'=>'CompraController@cambiarStatus'
-	]);
-
-Route::post('cambiar-status-web/{id}',[
-'as'=>'Compra.cambiarStatusWeb',
-'uses'=>'CompraController@cambiarStatusWeb'
-	]);
 
 //detalle de la venta en una ventana modal
 /*Route::get('listar-venta/detalle/{id}','VentaController@detalleVenta');

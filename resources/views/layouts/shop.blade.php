@@ -84,7 +84,7 @@
 <!-- =================================== LOGO =========================================== -->
 <div class="col-xs-12 col-sm-12 col-md-6 logo-holder ">
 <div class="logo">
-    <a href="home.html">
+    <a href="/">
         @foreach($logos as $logo)
         <img class="img-responsive" src="storage/paginas/home/logo/{{ $logo->logo }}" alt="">
         @endforeach

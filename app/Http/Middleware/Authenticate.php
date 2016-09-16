@@ -22,7 +22,7 @@ class Authenticate
                 return response('Unauthorized.', 401);
             } else {
                 //es donde me redirecciona si no estoy logueado
-                return redirect()->guest('/admin');
+                return redirect()->guest('/');
             }
         }
 

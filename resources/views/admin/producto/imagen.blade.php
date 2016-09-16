@@ -14,7 +14,7 @@
 
 
   
-  {!!Form::model($producto,['route'=>['ProductoImagen.uploadFiles',$producto->id],'method'=>'POST' , 'files'=>'true' , 'id' => 'my-dropzone' , 'class' => 'dropzone'])!!}
+  {!!Form::model($producto,['route'=>['ProductoImagen.uploadFiles',$producto->id],'method'=>'POST' , 'files'=>true , 'id' => 'my-dropzone' , 'class' => 'dropzone'])!!}
     <div class="dz-message" style="height:200px;">
                         Drop your files here
     </div>
