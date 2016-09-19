@@ -7,7 +7,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Editar Producto</h3>
+              <h3 class="box-title">Ver Producto</h3>
             </div>
 			<div class="box-body">
 
@@ -23,7 +23,7 @@
   <div class="panel-body">
 <div class="row">
 <!--imagen-->
-<img src="../../{{$producto->imagen1}}" class="user-image center-block" alt="" height="100" width="100" >
+<img src="../{{$producto->imagen1}}" class="user-image center-block" alt="" height="100" width="100" >
 
 </div>
 </div>
@@ -33,8 +33,8 @@
 @include('admin.producto.forms.formsedit')
 
 
-{!!Form::submit('modificar',['class'=>'btn btn-primary pull-right'])!!}
-<a class="btn btn-primary pull-left" href="{!! URL::to('producto') !!}">
+
+<a class="btn btn-success center-block" href="{!! URL::to('producto') !!}">
   <i class="fa fa-backward fa-lg"></i> Back</a>
 {!!Form::close()!!}
 

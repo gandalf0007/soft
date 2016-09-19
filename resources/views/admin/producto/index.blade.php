@@ -68,7 +68,7 @@
   	<td>{{ $producto -> stockactual}}</td>
 
 <td>
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
+{!! link_to_route('producto.show', $title = 'Ver', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-warning']); !!}
 
 <a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa "></i>fotos</a>
 
@@ -89,8 +89,7 @@
 
 <!--modal de eliminar producto-->
  @include('admin.producto.modal.modal-delete-producto')
-<!--modal de ver producto-->
- @include('admin.producto.modal.modal-ver-producto')
+
 
 <!--para renderizar la paginacion-->
   {!! $productos->render() !!}

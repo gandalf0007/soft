@@ -184,7 +184,15 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+
+         $categorias = categoria::lists('nombre','id');
+         $categoriasub = categoriasub::lists('nombre','id');
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+        $producto=producto::find($id);
+        return view('admin.producto.ver',compact('categoriasub','categorias','rubros','marcas','ivatipos','provedores','producto'));
     }
 
     /**
