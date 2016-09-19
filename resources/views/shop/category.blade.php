@@ -3,7 +3,7 @@
 @include('alerts.success')
 
 
-
+<!-- ==========================  PRODUCT ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-9 ">
 <div class="body-content outer-top-xs cnt-home">
 	<div class='container'>
@@ -17,9 +17,9 @@
 							<div class="category-product  inner-top-vs">
 								<div class="row">									
 
-@foreach($itemdetalles as $itemdetalle)	
+
 <div class="col-sm-6 col-md-4 wow fadeInUp">
-	
+	@foreach($itemdetalles as $itemdetalle)	
 
 	<div class="product">		
 		<div class="product-image">
@@ -95,6 +95,6 @@
 		</div><!-- /.row -->
 	</div>
 	</div>	
-
+<!-- ==========================  PRODUCT ================================== -->
 
 @endsection

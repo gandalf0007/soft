@@ -77,7 +77,7 @@ Route::group(array('middleware' => 'auth'), function(){
 });
 
 
-Route::group(['middleware' =>['auth','admin']], function () {
+Route::group(['middleware' =>['admin']], function () {
 
  Route::get('/admin', 'FrontController@admin');
  Route::get('usuario/perfil','UsuarioController@perfil');
@@ -281,8 +281,6 @@ Route::resource('categoriasub','CategoriaSubController');
 /*---------------menu------------*/
 
 
-
-
 /*---------------WEB CONFIG------------*/
 Route::get('webconfig-carrucel','WebCarrucelController@index');
 Route::resource('carrucel','WebCarrucelController');
@@ -297,6 +295,32 @@ Route::resource('logo','WebLogoController');
 Route::resource('post','WebPostController');
 /*---------------WEB CONFIG------------*/
 
+
+/*---------------reportes Pdf------------*/
+//agregado pdf
+Route::get('reportes', 'PdfController@index');
+Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais');
+/*---------------reportes Pdf------------*/
+
+
+/*---------------Excel import/export ------------*/
+/*--------user --------*/
+Route::get('/userExport','ExcelController@userExport');
+Route::get('/userImport','ExcelController@userImport');
+Route::post('/userImport','ExcelController@userImport');
+
+
+/*---------------Excel import/export ------------*/
+
+
+ });
+
+
+
+
+
+
+Route::group(['middleware' =>['auth']], function () {
 /*---------------CHECKOUT------------*/
 Route::get('checkout-step-2','WebVentas@CheckoutStep2');
 Route::get('checkout-step-3','WebVentas@CheckoutStep3');
@@ -361,21 +385,7 @@ Route::get('login-redirect', 'LoginController@LoginRedirect');
 /*---------------login------------*/
 
 
-/*---------------reportes Pdf------------*/
-//agregado pdf
-Route::get('reportes', 'PdfController@index');
-Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais');
-/*---------------reportes Pdf------------*/
 
-
-/*---------------Excel import/export ------------*/
-/*--------user --------*/
-Route::get('/userExport','ExcelController@userExport');
-Route::get('/userImport','ExcelController@userImport');
-Route::post('/userImport','ExcelController@userImport');
-
-
-/*---------------Excel import/export ------------*/
 
 
 

@@ -126,6 +126,7 @@ class PaginasController extends Controller
          /*productos*/
           $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->take(10)->get();
           $hots=producto::where('hot','=',1)->get();
+          $sales=producto::where('precioventa','>=',1500)->get();
          return view ('shop.home',compact('cartcount',
                                           'categorias',
                                           'subcategorias',
@@ -136,7 +137,8 @@ class PaginasController extends Controller
                                           'logos',
                                           'total',
                                           'nuevos',
-                                          'hots'
+                                          'hots',
+                                          'sales'
                                           ));
 
 

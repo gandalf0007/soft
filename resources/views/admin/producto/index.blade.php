@@ -42,8 +42,7 @@
 		<th>venta</th>
 		<!--<th>venta 2</th>-->
 		<th>Stock</th>
-    <th>Categoria</th>
-    <th>Sub-Categoria</th>
+    
 		<th class="col-md-4">Operaciones</th>
 	</thead>
 	@foreach($productos as $producto)
@@ -67,8 +66,6 @@
   	<td>{{ $producto -> precioventa}}</td>
   	<!--<td>{{ $producto -> precio2}}</td>-->
   	<td>{{ $producto -> stockactual}}</td>
-    <td>{{ $producto ->categoriasub->categoria->nombre}}</td>
-    <td>{{ $producto ->categoriasub->nombre}}</td>
 
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $producto->id }}"><i class="fa fa-expand"> Ver</i></button>
@@ -84,9 +81,9 @@
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 @endif
 </td>
-
+@endforeach
 	</tbody>
-	@endforeach
+	
 	</table>
 
 

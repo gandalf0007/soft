@@ -6,7 +6,7 @@
 <?php
 require_once "../lib/mercadopago.php";
 
-$mp = new MP("5038272799674049", "vDjzWpNZ0nrx3j9o7hSIcYw3QB4m9Igj");
+$mp = new MP("202272916517685", "LDi7fuJAGEX1MOtp27ufQr2kt64Jvu0q");
 
         //calculamos el total para mandar al carrito
         $cart = \Session::get('cartweb');
@@ -66,16 +66,13 @@ $preference = $mp->create_preference($preference_data);
 </div>
     
     <br><br><br><br> <br><br><br><br> <br><br><br><br>
-   <div class="col-xs-12 col-sm-2 no-padding">
-        
-    </div>
+   <div class="col-xs-12 col-sm-2 no-padding"></div>
+
 <div class="col-xs-12 col-sm-10 no-padding">
-
 <iframe src="<?php echo $preference['response']['init_point']; ?>" name="MP-Checkout" width="800" height="800" frameborder="0"></iframe>
-
-
-        <script type="text/javascript" src="//resources.mlstatic.com/mptools/render.js"></script>
+<script type="text/javascript" src="//resources.mlstatic.com/mptools/render.js"></script>
 </div>
+
         <br><br><br><br><br><br>
 		</div><!-- /.row -->
 	</div><!-- /.container -->

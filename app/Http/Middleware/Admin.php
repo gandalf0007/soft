@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\Guard;
 //necesitamos agregar esta libreria
 use Session;
 use Closure;
-
+use Auth;
 class Admin
 {
 
@@ -26,7 +26,7 @@ class Admin
     {
         //el usuario ya esta logueado y hay un auth , nos referemiso a su id y si este es
         //desistinto de 1 que me de un error , si no que me deje pasar
-        if($this->auth->user()->perfil_id == 3){
+        if(Auth::user()->perfil_id == 3){
             //me redirecciona a la vista index
             //Session::flash('message-error','no tiene privilegios');
             return redirect()->to('/');  

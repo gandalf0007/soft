@@ -108,9 +108,9 @@
       <td>{{ $subcategoria->categoria->nombre}}</td>
 
 <td>
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $subcategoria->id }}"><i class="fa fa-expand"> Ver</i></button>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#verSub-{{ $subcategoria->id }}"><i class="fa fa-expand"> Ver</i></button>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Edit-{{ $subcategoria->id }}"><i class="fa fa-edit"> Editar</i></button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditSub-{{ $subcategoria->id }}"><i class="fa fa-edit"> Editar</i></button>
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)

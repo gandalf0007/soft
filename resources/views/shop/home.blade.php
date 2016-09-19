@@ -25,6 +25,9 @@
 <!-- ========================== CARRUCEL ================================== -->
 
 
+
+
+
 <!-- ========================== NEW PRODUCT ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder ">
 <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
@@ -59,7 +62,7 @@
 			
 
 		<div class="product-info text-left">
-			<h3 class="name"><a href="detail.html">{{$nuevo->descripcion}}</a></h3>
+	<h3 class="name"><a href="item-detalle{{ $nuevo->id }}">{{$nuevo->descripcion}}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
@@ -120,7 +123,106 @@
 
 
 
-<!-- ========================== HOT PRODUCT ================================== -->
+
+
+
+
+<!-- ========================== SALE PRODUCT ================================== -->
+<div class=" col-xs-12 col-sm-12 col-md-3"></div>
+<div class=" col-xs-12 col-sm-12 col-md-9">
+<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+	<div class="more-info-tab clearfix ">
+	   <h3 class="new-product-title pull-left">Productos Mas Vendidos</h3>
+	</div>
+
+
+	<div class="tab-content outer-top-xs">
+		<div class="tab-pane in active" id="all">			
+			<div class="product-slider">
+				<div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
+	
+	@foreach($sales as $sale)			    	
+<div class="item item-carousel">
+	<div class="product">
+
+		<div class="product-image">
+			<div class="image">
+			@if($sale->imagen1 == "sin-foto.jpg")
+				<a href="item-detalle{{ $sale->id }}">
+				<img src="storage/productos/{{$sale->imagen1}}" data-echo="storage/productos/{{$sale->imagen1}}" class="" alt="" height="150" width="200" >
+				</a>
+			@elseif($sale->imagen1 != "sin-foto.jpg")
+				<a href="item-detalle{{ $sale->id }}">
+				<img src="{{$sale->imagen1}}" data-echo="{{$sale->imagen1}}" class="" alt="" height="150" width="200" >
+				</a>
+			@endif
+			</div><!-- /.image -->			
+			<div class="tag sale"><span>Sale</span></div>		   
+		</div><!-- /.product-image -->
+			
+
+		<div class="product-info text-left">
+	<h3 class="name"><a href="item-detalle{{ $sale->id }}">{{$sale->descripcion}}</a></h3>
+			<div class="rating rateit-small"></div>
+			<div class="description"></div>
+			<div class="product-price">	
+				<span class="price">{!! $sale->precioventa !!}</span>
+				<span class="price-before-discount">{!! $sale->precio2 !!}</span>				
+			</div><!-- /.product-price -->
+		</div><!-- /.product-info -->
+
+
+			<div class="cart clearfix animate-effect">
+				<div class="action">
+					<ul class="list-unstyled">
+
+			@if($sale->stockactual > 0)
+			<li class="add-cart-button btn-group">
+				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+				<i class="fa fa-shopping-cart"></i>			
+				</button>
+				<a href="{{ route('web.AddToCart',['id'=>$sale->id]) }}"	class="btn btn-primary" type="button">Agregar</a>
+			</li>  
+			@else
+			<li class="add-cart-button btn-group">
+				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+				<i class="fa fa-shopping-cart"></i>			
+				</button>
+				<a href="#"	class="btn btn-danger" type="button">Agotado</a>
+			</li>  
+			@endif    
+	                   
+		                <li class="lnk wishlist">
+							<a class="add-to-cart" href="detail.html" title="Wishlist">
+								 <i class="icon fa fa-heart"></i>
+							</a>
+						</li>
+
+						<li class="lnk">
+							<a class="add-to-cart" href="detail.html" title="Compare">
+							    <i class="fa fa-retweet"></i>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /.action -->
+			</div><!-- /.cart -->
+
+	</div><!-- /.product -->
+</div><!-- /.item -->
+
+@endforeach
+						</div><!-- /.home-owl-carousel -->
+				</div><!-- /.product-slider -->
+			</div><!-- /.tab-pane -->       
+		</div><!-- /.tab-content -->
+
+</div><!-- /.scroll-tabs -->
+</div><!-- /.col-xs-12 col-sm-1 -->	
+<!-- ========================== SALE PRODUCT ================================== -->
+
+
+<!-- ========================== OFERTA PRODUCT ================================== -->
+<div class=" col-xs-12 col-sm-12 col-md-3"></div>
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder ">
 <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
 	<div class="more-info-tab clearfix ">
@@ -145,12 +247,12 @@
 				<a href="item-detalle{{ $hot->id }}"><img src="{{$hot->imagen1}}" data-echo="{{$hot->imagen1}}" class="" alt="" height="150" width="200" ></a>
 			@endif
 			</div><!-- /.image -->			
-			<div class="tag hot"><span>hot</span></div>		   
+			<div class="tag hot"><span>HOT</span></div>		   
 		</div><!-- /.product-image -->
 			
 
 		<div class="product-info text-left">
-			<h3 class="name"><a href="detail.html">{{$hot->descripcion}}</a></h3>
+		<h3 class="name"><a href="item-detalle{{ $hot->id }}">{{$hot->descripcion}}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
@@ -205,101 +307,7 @@
 
 </div><!-- /.scroll-tabs -->
 </div><!-- /.col-xs-12 col-sm-1 -->	
-<!-- ========================== HOT PRODUCT ================================== -->
+<!-- ========================== OFERTA PRODUCT ================================== -->
 
-
-
-<!-- ========================== SALE PRODUCT ================================== -->
-<div class=" col-xs-12 col-sm-12 col-md-3"></div>
-<div class=" col-xs-12 col-sm-12 col-md-9">
-<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
-	<div class="more-info-tab clearfix ">
-	   <h3 class="new-product-title pull-left">Productos Mas Vendidos</h3>
-	</div>
-
-
-	<div class="tab-content outer-top-xs">
-		<div class="tab-pane in active" id="all">			
-			<div class="product-slider">
-				<div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
-	
-	@foreach($nuevos as $nuevo)			    	
-<div class="item item-carousel">
-	<div class="product">
-
-		<div class="product-image">
-			<div class="image">
-			@if($nuevo->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $nuevo->id }}">
-				<img src="storage/productos/{{$nuevo->imagen1}}" data-echo="storage/productos/{{$nuevo->imagen1}}" class="" alt="" height="150" width="200" >
-				</a>
-			@elseif($nuevo->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $nuevo->id }}">
-				<img src="{{$nuevo->imagen1}}" data-echo="{{$nuevo->imagen1}}" class="" alt="" height="150" width="200" >
-				</a>
-			@endif
-			</div><!-- /.image -->			
-			<div class="tag sale"><span>Sale</span></div>		   
-		</div><!-- /.product-image -->
-			
-
-		<div class="product-info text-left">
-			<h3 class="name"><a href="detail.html">{{$nuevo->descripcion}}</a></h3>
-			<div class="rating rateit-small"></div>
-			<div class="description"></div>
-			<div class="product-price">	
-				<span class="price">{!! $nuevo->precioventa !!}</span>
-				<span class="price-before-discount">{!! $nuevo->precio2 !!}</span>				
-			</div><!-- /.product-price -->
-		</div><!-- /.product-info -->
-
-
-			<div class="cart clearfix animate-effect">
-				<div class="action">
-					<ul class="list-unstyled">
-
-			@if($nuevo->stockactual > 0)
-			<li class="add-cart-button btn-group">
-				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-				<i class="fa fa-shopping-cart"></i>			
-				</button>
-				<a href="{{ route('web.AddToCart',['id'=>$nuevo->id]) }}"	class="btn btn-primary" type="button">Agregar</a>
-			</li>  
-			@else
-			<li class="add-cart-button btn-group">
-				<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-				<i class="fa fa-shopping-cart"></i>			
-				</button>
-				<a href="#"	class="btn btn-danger" type="button">Agotado</a>
-			</li>  
-			@endif    
-	                   
-		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="detail.html" title="Wishlist">
-								 <i class="icon fa fa-heart"></i>
-							</a>
-						</li>
-
-						<li class="lnk">
-							<a class="add-to-cart" href="detail.html" title="Compare">
-							    <i class="fa fa-retweet"></i>
-							</a>
-						</li>
-					</ul>
-				</div><!-- /.action -->
-			</div><!-- /.cart -->
-
-	</div><!-- /.product -->
-</div><!-- /.item -->
-
-@endforeach
-						</div><!-- /.home-owl-carousel -->
-				</div><!-- /.product-slider -->
-			</div><!-- /.tab-pane -->       
-		</div><!-- /.tab-content -->
-
-</div><!-- /.scroll-tabs -->
-</div><!-- /.col-xs-12 col-sm-1 -->	
-<!-- ========================== SALE PRODUCT ================================== -->
 
 @endsection

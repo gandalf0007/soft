@@ -192,7 +192,7 @@
 
 
 
-	<div class="product-tabs outer-top-smal  wow fadeInUp">
+	<div class=" product-tabs outer-top-smal  wow fadeInUp">
 		
 	<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
 		<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
@@ -204,7 +204,7 @@
 
 						<!----------- descripcion larga ---------->
 							<div id="description" class="tab-pane in active">
-								<div class="product-tab">
+								<div class="vid product-tab">
 									{!! $itemdetalle->descripcionlarga !!}
 								</div>	
 							</div><!-- /.tab-pane -->

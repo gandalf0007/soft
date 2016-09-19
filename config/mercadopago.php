@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'app_id'     => env('MP_APP_ID', '5038272799674049'),
-	'app_secret' => env('MP_APP_SECRET', 'vDjzWpNZ0nrx3j9o7hSIcYw3QB4m9Igj')
+	'app_id'     => env('MP_APP_ID', '202272916517685'),
+	'app_secret' => env('MP_APP_SECRET', 'LDi7fuJAGEX1MOtp27ufQr2kt64Jvu0q')
 ];
