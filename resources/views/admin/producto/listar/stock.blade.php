@@ -18,9 +18,9 @@
             </div>
 			<div class="box-body">
 <ul class="nav nav-tabs">
-  <li class="active"><a href="{{ url('producto') }}">Todos ({{$count}})</a></li>
+  <li><a href="{{ url('producto') }}">Todos</a></li>
   <li><a href="{{ url('producto-oferta') }}">Oferta</a></li>
-  <li><a href="{{ url('producto-stock-critico') }}">Stock Critico</a></li>
+  <li class="active"><a href="{{ url('producto-stock-critico') }}">Stock Critico ({{$count}})</a></li>
 </ul>
 
 <!--buscador-->

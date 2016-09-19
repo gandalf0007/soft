@@ -39,7 +39,7 @@ class ProductoController extends Controller
 
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::orderBy('created_at','des');
-
+        $count = producto::count();
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
         if (!empty($descripcion)) { 
@@ -56,9 +56,73 @@ class ProductoController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.index',compact('categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+        return view('admin.producto.index',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
     }
 
+
+    public function ProductosOferta(Request $request)
+    {
+        //modal
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+        $categoriasub = categoriasub::lists('nombre','id');
+        $categorias = categoria::lists('nombre','id');
+
+         //ordenamos por usu_nombre y lo guaramos en $users
+        $productos=producto::where('hot','=',1);
+        $count=producto::where('hot','=',1)->count();
+        //busqueda por descripccion
+        $descripcion=$request->input('descripcion');
+        if (!empty($descripcion)) { 
+            $productos->where('descripcion','LIKE','%'.$descripcion.'%');
+        }
+        //busqueda por codigo
+        $codigo=$request->input('codigo');
+        if (!empty($codigo)) {
+            $productos->where('codigo','LIKE','%'.$codigo.'%');
+        }
+        
+        //realizamos la paginacion
+        $productos=$productos->paginate(10);
+        //retorna a una vista que esta en la carpeta usuario y dentro esta index
+        //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
+        //que contiene toda la informacion
+        return view('admin.producto.listar.oferta',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+    }
+
+    public function StockCritico(Request $request)
+    {
+        //modal
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+        $categoriasub = categoriasub::lists('nombre','id');
+        $categorias = categoria::lists('nombre','id');
+
+         //ordenamos por usu_nombre y lo guaramos en $users
+        $productos=producto::where('stockactual','<=','stockcritico');
+        $count= producto::where('stockactual','<=','stockcritico')->count();
+        //busqueda por descripccion
+        $descripcion=$request->input('descripcion');
+        if (!empty($descripcion)) { 
+            $productos->where('descripcion','LIKE','%'.$descripcion.'%');
+        }
+        //busqueda por codigo
+        $codigo=$request->input('codigo');
+        if (!empty($codigo)) {
+            $productos->where('codigo','LIKE','%'.$codigo.'%');
+        }
+        
+        //realizamos la paginacion
+        $productos=$productos->paginate(10);
+        //retorna a una vista que esta en la carpeta usuario y dentro esta index
+        //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
+        //que contiene toda la informacion
+        return view('admin.producto.listar.stock',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+    }
     /**
      * Show the form for creating a new resource.
      *

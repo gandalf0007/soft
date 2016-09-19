@@ -44,7 +44,7 @@ class FrontController extends Controller
 
     public function admin()
     {
-        $activities =Counter::showAndCount('/');
+        
         $Ventas = Venta::count();
         $provedores = provedore::count();
         $productos = Producto::count();
@@ -57,7 +57,7 @@ class FrontController extends Controller
         return view('admin.index')
            // ->with('items', $items)
             //->with('item_kits', $item_kits)
-            ->with('activities', $activities)
+            
             ->with('Ventas', $Ventas)
             ->with('provedores', $provedores)
             ->with('productos', $productos)

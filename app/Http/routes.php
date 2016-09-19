@@ -241,6 +241,8 @@ Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 
 Route::resource('producto','ProductoController');
+Route::get('producto-oferta','ProductoController@ProductosOferta');
+Route::get('producto-stock-critico','ProductoController@StockCritico');
 Route::resource('productoimagen','ProductoImagenController');
  //me devuelve las subcategorias al crear el prodcuto (select dinamico)
 Route::get('ajax-subcategoria',function(){
