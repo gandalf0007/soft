@@ -204,7 +204,7 @@
 
 						<!----------- descripcion larga ---------->
 							<div id="description" class="tab-pane in active">
-								<div class="vid product-tab">
+								<div class="product-tab">
 									{!! $itemdetalle->descripcionlarga !!}
 								</div>	
 							</div><!-- /.tab-pane -->
