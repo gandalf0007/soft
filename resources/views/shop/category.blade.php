@@ -17,9 +17,9 @@
 							<div class="category-product  inner-top-vs">
 								<div class="row">									
 
-
+@foreach($itemdetalles as $itemdetalle)	
 <div class="col-sm-6 col-md-4 wow fadeInUp">
-	@foreach($itemdetalles as $itemdetalle)	
+	
 
 	<div class="product">		
 		<div class="product-image">
@@ -85,6 +85,7 @@
 		
 		
 									</div><!-- /.row -->
+									{!! $itemdetalles->render() !!}	
 								</div><!-- /.category-product -->
 							</div><!-- /.tab-pane -->
 						</div><!-- /.tab-pane #list-container -->

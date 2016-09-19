@@ -83,8 +83,9 @@
 </div><!-- /.item -->
 	 @endforeach
 		
-	  {!! $productos->render() !!}	
+	  
 									</div><!-- /.row -->
+									
 								</div><!-- /.category-product -->
 							</div><!-- /.tab-pane -->
 						</div><!-- /.tab-pane #list-container -->

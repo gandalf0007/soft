@@ -124,7 +124,7 @@ class PaginasController extends Controller
          /*seccion para el layout*/
 
          /*productos*/
-          $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->take(10)->get();
+          $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->take(30)->get();
           $hots=producto::where('hot','=',1)->get();
           $sales=producto::where('precioventa','>=',1500)->get();
          return view ('shop.home',compact('cartcount',
@@ -192,7 +192,8 @@ class PaginasController extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $itemdetalles=producto::where('categoriasub_id','=',$id)->where('habilitado','=',1)->get();
+        $itemdetalles=producto::where('categoriasub_id','=',$id)->where('habilitado','=',1);
+        $itemdetalles = $itemdetalles->paginate(15);
         return view('shop.category',compact('cartcount',
                                           'categorias',
                                           'subcategorias',

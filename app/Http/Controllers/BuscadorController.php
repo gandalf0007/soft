@@ -86,7 +86,7 @@ class BuscadorController extends Controller
         }
 
         //realizamos la paginacion
-        $productos=$productos->paginate(10);
+        $productos=$productos->paginate(100);
 
        
          return view ('shop.buscador',compact('cartcount',
