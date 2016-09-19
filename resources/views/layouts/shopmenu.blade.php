@@ -84,7 +84,7 @@
 			<div class="row blanco ">
 				<br>
 <!-- =================================== LOGO =========================================== -->
-<div class="col-xs-12 col-sm-12 col-md-6 logo-holder ">
+<div class="col-xs-12 col-sm-12 col-md-5 logo-holder ">
 <div class="logo">
     <a href="/">
         @foreach($logos as $logo)
@@ -97,7 +97,7 @@
 
 				
 <!-- ======================================== SEARCH AREA ======================================= -->
-<div class="col-xs-12 col-sm-12 col-md-6 top-search-holder">
+<div class="col-xs-12 col-sm-12 col-md-5 top-search-holder">
   <div class="contact-row">
   @foreach($informacions as $informacion)
     <div class="phone inline">
@@ -111,12 +111,12 @@
 <div class="search-area">
 <!--buscador-->
 {!!Form::open(['url'=>'buscador', 'method'=>'GET' , 'class'=>'' , 'role'=>'Search'])!!}
-<div class="input-group">
-{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
- <span class="input-group-btn">
- <button type="submit" class="btn btn-primary "><i class="icon fa fa-search"></i> Buscar</button>
- </span>
-</div>
+
+<div class="control-group">
+{!!Form::text('descripcion',null,['class'=>'search-field','placeholder'=>'Descripcion'])!!}
+
+ <button type="submit" class="search-button btn"> Buscar </button>
+ </div>
 {!!Form::close()!!}
  <!--endbuscador--> 
 </div><!-- /.search-area -->
@@ -125,7 +125,7 @@
 
 				
 <!-- ======================= SHOPPING CART DROPDOWN ======================================== -->
-<div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
+<div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
 	<div class="dropdown dropdown-cart">
 		<a href="{{ url('/web-shopping-cart') }}" class="dropdown-toggle lnk-cart" >
 			<div class="items-cart-inner">

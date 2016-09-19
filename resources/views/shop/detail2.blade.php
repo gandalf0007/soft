@@ -194,7 +194,7 @@
 
 	<div class=" product-tabs outer-top-smal  wow fadeInUp">
 		
-	<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
+	<ul id="product-tabs" class="homepage-container nav nav-tabs nav-tab-cell-detail">
 		<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
 		<li><a data-toggle="tab" href="#review">REVIEW</a></li>
 		<li><a data-toggle="tab" href="#tags">COMENTARIOS</a></li>
