@@ -124,9 +124,9 @@ class PaginasController extends Controller
          /*seccion para el layout*/
 
          /*productos*/
-          $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->take(30)->get();
-          $hots=producto::where('hot','=',1)->get();
-          $sales=producto::where('precioventa','>=',1500)->get();
+          $nuevos=producto::where('hot','=',null)->orderBy('created_at','des')->where('habilitado','=',1)->take(30)->get();
+          $hots=producto::where('hot','=',1)->where('habilitado','=',1)->get();
+          $sales=producto::where('precioventa','>=',1500)->where('habilitado','=',1)->get();
          return view ('shop.home',compact('cartcount',
                                           'categorias',
                                           'subcategorias',

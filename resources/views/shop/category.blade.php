@@ -38,8 +38,8 @@
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
-			<span class="price">{!! $itemdetalle->precioventa !!}</span>
-			<span class="price-before-discount">{!! $itemdetalle->precio2 !!}</span>					
+			<span class="price">${!! $itemdetalle->precioventa !!}</span>
+			<span class="price-before-discount">${!! $itemdetalle->precio2 !!}</span>					
 			</div><!-- /.product-price -->
 		</div><!-- /.product-info -->
 

@@ -66,8 +66,8 @@
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
-				<span class="price">{!! $nuevo->precioventa !!}</span>
-				<span class="price-before-discount">{!! $nuevo->precio2 !!}</span>				
+				<span class="price">${!! $nuevo->precioventa !!}</span>
+				<span class="price-before-discount">${!! $nuevo->precio2 !!}</span>				
 			</div><!-- /.product-price -->
 		</div><!-- /.product-info -->
 
@@ -166,8 +166,8 @@
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
-				<span class="price">{!! $sale->precioventa !!}</span>
-				<span class="price-before-discount">{!! $sale->precio2 !!}</span>				
+				<span class="price">${!! $sale->precioventa !!}</span>
+				<span class="price-before-discount">${!! $sale->precio2 !!}</span>				
 			</div><!-- /.product-price -->
 		</div><!-- /.product-info -->
 
@@ -256,8 +256,8 @@
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	
-				<span class="price">{!! $hot->precioventa !!}</span>
-				<span class="price-before-discount">{!! $hot->precio2 !!}</span>				
+				<span class="price">${!! $hot->precioventa !!}</span>
+				<span class="price-before-discount">${!! $hot->precio2 !!}</span>				
 			</div><!-- /.product-price -->
 		</div><!-- /.product-info -->
 

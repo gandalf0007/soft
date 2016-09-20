@@ -139,8 +139,8 @@
 									
 		<div class="col-sm-6">
 			<div class="price-box">
-				<span class="price">{!! $itemdetalle->precioventa !!}</span>
-				<span class="price-strike">{!! $itemdetalle->precio2 !!}</span>
+				<span class="price">${!! $itemdetalle->precioventa !!}</span>
+				<span class="price-strike">${!! $itemdetalle->precio2 !!}</span>
 			</div>
 		</div>
 

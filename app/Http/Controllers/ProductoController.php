@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Soft\Http\Requests;
 use Soft\Http\Requests\ProductoCreateRequest;
 use Soft\Http\Requests\ProductoUpdateRequest;
+use Illuminate\Support\Collection as Collection;
 use Soft\Producto;
 use Soft\Producto_imagen;
 use Soft\Categoria;
@@ -102,9 +103,53 @@ class ProductoController extends Controller
         $categoriasub = categoriasub::lists('nombre','id');
         $categorias = categoria::lists('nombre','id');
 
+         
+        $productoss = DB::table('productos')->orderBy('descripcion', 'asc')->get();
+        $count = 0;
+        foreach ($productoss as $producto) {
+            if ($producto->stockactual <= $producto->stockcritico) {
+               $productos[]=$producto;
+                $count= $count + 1;
+            }
+
+        }
+       //transformamos el array en una coleccion
+        $productos = Collection::make($productos);
+        
+        //busqueda por descripccion
+        $descripcion=$request->input('descripcion');
+        if (!empty($descripcion)) { 
+            $productos->where('descripcion','LIKE','%'.$descripcion.'%');
+        }
+        //busqueda por codigo
+        $codigo=$request->input('codigo');
+        if (!empty($codigo)) {
+            $productos->where('codigo','LIKE','%'.$codigo.'%');
+        }
+        
+        //realizamos la paginacion
+        
+        
+        //retorna a una vista que esta en la carpeta usuario y dentro esta index
+        //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
+        //que contiene toda la informacion
+        return view('admin.producto.listar.stock',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+    }
+
+
+    public function ProductoDesabilitado(Request $request)
+    {
+        //modal
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+        $categoriasub = categoriasub::lists('nombre','id');
+        $categorias = categoria::lists('nombre','id');
+
          //ordenamos por usu_nombre y lo guaramos en $users
-        $productos=producto::where('stockactual','<=','stockcritico');
-        $count= producto::where('stockactual','<=','stockcritico')->count();
+        $productos=producto::where('habilitado','=',null);
+        $count= producto::where('habilitado','=',null)->count();
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
         if (!empty($descripcion)) { 
@@ -121,8 +166,9 @@ class ProductoController extends Controller
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.listar.stock',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+        return view('admin.producto.listar.desabilitado',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
