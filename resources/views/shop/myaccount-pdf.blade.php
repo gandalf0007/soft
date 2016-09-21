@@ -51,8 +51,8 @@
 <body>
   <div id="page-wrap">
 
-  @foreach($data as $venta)
-    @if($id == $venta->id)
+ 
+    @if($id == $ventas->id)
 
     <table width="100%">
       <tbody>
@@ -63,7 +63,7 @@
           <td width="70%">
             <h2>Shark Informatica</h2><br>
             <strong>Date:</strong> <?php echo date('d/M/Y');?><br>
-            <strong>Fecha de Facturacion : {{ $venta->created_at }}</strong> <br>
+            <strong>Fecha de Facturacion : {{ $ventas->created_at }}</strong> <br>
             <strong>Número de factura :</strong> BF123<br>
             <strong>Fecha de vencimiento:</strong> 10/01/2013<br>
           </td>
@@ -101,7 +101,7 @@
 
           <td >
             <div >
-                    <strong>Envio :</strong> {{ $venta->transporte }} <br>
+                    <strong>Envio :</strong> {{ $ventas->transporte }} <br>
                     
             </div>
           </td>
@@ -109,9 +109,9 @@
 
           <td >
             <div >
-              <strong>Numero de Factura:</strong>#{{ $venta->id }} <br>
-              <strong>Tipo de Pago:</strong> {{ $venta->pago_tipo }}<br>
-              @if($venta->pago_tipo == "Desposito bancario")
+              <strong>Numero de Factura:</strong>#{{ $ventas->id }} <br>
+              <strong>Tipo de Pago:</strong> {{ $ventas->pago_tipo }}<br>
+              @if($ventas->pago_tipo == "Desposito bancario")
                     <strong>N De Cuenta Corriente : </strong>472 USD<br>
                     <strong>Titular : </strong>Completed<br>
                     <strong>Cuit : </strong>Completed<br>
@@ -142,7 +142,7 @@
             <td>Sub Total</td>
         </tr>
         @foreach($transactions as $transaction)
-         @if ($venta->id == $transaction->web_venta_id )
+         @if ($ventas->id == $transaction->web_venta_id )
         <tr class="border-right">
   
           <td>{{ $transaction->producto->codigo }}</td>
@@ -208,7 +208,7 @@
       </tbody>
     </table>
      @endif
-       @endforeach
+       
   </div>
 
 </body>
