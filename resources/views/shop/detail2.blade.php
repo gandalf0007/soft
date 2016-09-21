@@ -92,7 +92,7 @@
 <div class='col-sm-6 col-md-5 product-info-block '>
   <div class="product-info">
 			<!---------- titulo -------------->	 
-				<h1 class="name">{{ $itemdetalle->descripcion }}</h1>
+				<h1 class="name text-left">{{ $itemdetalle->descripcion }}</h1>
 			<!---------- titulo -------------->	 
 
 			<div class="rating-reviews m-t-20">

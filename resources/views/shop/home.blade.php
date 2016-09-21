@@ -61,7 +61,7 @@
 		</div><!-- /.product-image -->
 			
 
-		<div class="product-info text-left">
+		<div class="product-info text-left col-md-12">
 	<h3 class="name"><a href="item-detalle{{ $nuevo->id }}">{{$nuevo->descripcion}}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>

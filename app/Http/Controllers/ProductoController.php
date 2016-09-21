@@ -215,7 +215,7 @@ class ProductoController extends Controller
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
             //crea la carpeta
             Storage::makeDirectory($directory);
-            image::make($imagen->getRealPath())->save( public_path('storage/'.$directory.'/'. $filename));
+            image::make($imagen->getRealPath())->resize(200, 150)->save( public_path('storage/'.$directory.'/'. $filename));
         }elseif(empty($request->hasFile('imagen1'))){
             //crea la carpeta
             Storage::makeDirectory($directory);
@@ -392,7 +392,7 @@ class ProductoController extends Controller
          if (!empty($request->hasFile('imagen1'))) {
             $imagen =$request->file('imagen1');
             $filename=time() . '.' . $imagen->getClientOriginalExtension();
-             image::make($imagen)->save( 'storage/'.$directory.'/'. $filename);
+             image::make($imagen)->resize(200, 150)->save( 'storage/'.$directory.'/'. $filename);
 
 
         if(empty($request->hasFile('imagen1'))){
