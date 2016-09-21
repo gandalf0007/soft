@@ -253,9 +253,23 @@ public function detalleVentaPdf($tipo,$id){
     }
 
     public function cambiarStatus(Request $Request , $id){
+    $transactions = Transaction::where('venta_id','=',$id)->get();
         $venta=venta::find($id);
-        $venta->status=$Request['pago'];
-        $venta->save();
+         if($Request['pago'] == "cancelado" and $venta->status != "cancelado"){
+           
+         foreach ($transactions as $transaction) {
+           //volve  stock en la tabla producto
+            $producto = producto::find($transaction->producto_id);
+            $producto->stockactual = $producto->stockactual + $transaction->cantidad;
+            $producto->save(); 
+            //cambiamos el estado de la venta
+            $venta->status=$Request['pago'];
+            $venta->save();}
+        }else{
+            $venta->status=$Request['pago'];
+            $venta->save();
+        }
+
         return Redirect::to('/listar-venta');
 
     }
@@ -282,22 +296,6 @@ public function detalleVentaPdf($tipo,$id){
          return Redirect::to('/listar-venta-web');
     }
 
-  /*  public function detalleVenta($id){
-        //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
-        //return json_encode($items);
-      
-        $ventas = venta::all();
-         $ventas= venta::Paginate();
-         $transactions = transaction::all();
-        //$items=venta::find($id);
-        $mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
-       
-        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
-       return view('admin.venta.listar.index')
-        ->with('ventas',$ventas)
-         ->with('transactions',$transactions)
-       ->with('mycart',$mycart);
-    }/*
 /*---------------------------------Listar Ventas--------------------------------------*/
 
 
