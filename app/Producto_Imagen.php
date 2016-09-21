@@ -18,6 +18,6 @@ class Producto_imagen extends Model
 	  public function producto()
     {
       //una imagen corresponde a un producto
-        return $this->belongsTo(producto::class);
+        return $this->belongsTo(Producto::class);
     }
 }

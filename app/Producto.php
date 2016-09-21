@@ -8,6 +8,10 @@ use DB;
 use Storage;
 use Soft\Categoria;
 use Soft\Categoriasub;
+use Soft\Transaction;
+use Soft\web_transaccione;
+use Soft\Marca;
+use Soft\Producto_Image;
 class Producto extends Model
 {
 
@@ -76,7 +80,7 @@ class Producto extends Model
     public function transaction()
     {
       //una producto corresponde a una transaccion
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     public function webtransaction()
@@ -89,25 +93,25 @@ class Producto extends Model
     public function marca()
     {
       //una producto corresponde a una marca
-        return $this->belongsTo(marca::class);
+        return $this->belongsTo(Marca::class);
     }
 
     public function producto_image()
     {
       //una producto puede tener varias imagenes
-        return $this->hasMany(producto_image::class);
+        return $this->hasMany(Producto_Image::class);
     }
 
     public function categoria()
     {
       //una producto corresponde a una categoria
-        return $this->belongsTo(categoria::class);
+        return $this->belongsTo(Categoria::class);
     }
 
     public function categoriasub()
     {
       //una producto corresponde a una categoriasub
-        return $this->belongsTo(categoriasub::class);
+        return $this->belongsTo(Categoriasub::class);
     }
 
 

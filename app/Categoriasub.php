@@ -22,13 +22,13 @@ class Categoriasub extends Model
     public function categoria()
     {
         //un sub-categoria puede tener una categoria
-        return $this->belongsTo(categoria::class);
+        return $this->belongsTo(Categoria::class);
     }
 
      public function producto()
     {
         //una sub-categoria puede tener muchas productos
-       return $this->hasMany(producto::class);
+       return $this->hasMany(Producto::class);
     }
 
 }

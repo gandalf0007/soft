@@ -17,14 +17,14 @@ class Categoria extends Model
     public function categoriasub()
     {
         //una categoria puede tener muchas sub-categorias
-       return $this->hasMany(categoriasub::class);
+       return $this->hasMany(Categoriasub::class);
     }
 
 
     public function producto()
     {
         //una categoria puede tener muchas productos
-       return $this->hasMany(producto::class);
+       return $this->hasMany(Producto::class);
     }
 
 

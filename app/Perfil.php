@@ -3,7 +3,7 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Soft\User;
 class Perfil extends Model
 {
     protected $fillable = [
@@ -21,7 +21,7 @@ class Perfil extends Model
 public function user()
     {
         //un perfil puede tener muchas usuarios
-       return $this->hasMany(user::class);
+       return $this->hasMany(User::class);
     }
 
 }

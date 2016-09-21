@@ -3,7 +3,8 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Soft\Venta;
+use Soft\Producto;
 class Transaction extends Model
 {
 	 protected $fillable = [
@@ -21,13 +22,13 @@ class Transaction extends Model
  public function producto()
     {
       //una transaccion corresponde a un producto
-        return $this->belongsTo(producto::class);
+        return $this->belongsTo(Producto::class);
     }
 
 public function venta()
     {
       //una transaccion corresponde a una venta
-        return $this->belongsTo(venta::class);
+        return $this->belongsTo(Venta::class);
     }
 
 }

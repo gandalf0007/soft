@@ -3,7 +3,8 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Soft\web_Transacsione;
+use Soft\User;
 class web_venta extends Model
 {
     
@@ -23,13 +24,13 @@ protected $fillable = [
 public function webtransaction()
     {
       //una venta corresponde a muchas transacciones
-         return $this->hasMany(web_Transacsione::class);
+         return $this->hasMany(web_transacsione::class);
     }
 
 public function user()
     {
       //una venta corresponde a un usuario
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(User::class);
     }
 
     

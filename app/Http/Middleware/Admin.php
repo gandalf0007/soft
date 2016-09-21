@@ -26,15 +26,27 @@ class Admin
     {
         //el usuario ya esta logueado y hay un auth , nos referemiso a su id y si este es
         //desistinto de 1 que me de un error , si no que me deje pasar
-        if(Auth::user()->perfil_id == 3){
-            //me redirecciona a la vista index
-            //Session::flash('message-error','no tiene privilegios');
-            return redirect()->to('/');  
+         
+        if (Auth::guard($guard)->guest()) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('/');
+            }
         }
-            //sigue con la peticion
-        return $next($request);
-        
-        
+
+
+        if (  Auth::user()->perfil_id == 3) {
+                 return redirect()->to('/');
+            }
+
+
+
+            if (  Auth::user()->perfil_id == 1) {
+                 return $next($request);
+            }
+       
+    
 
     }
 }

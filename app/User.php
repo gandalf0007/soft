@@ -7,7 +7,11 @@ use Storage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Scope;
-
+use Soft\Venta;
+use Soft\web_venta;
+use Soft\Perfil;
+use Soft\webpost;
+use Soft\user_facturacion;
 class User extends Authenticatable
 {
     //el uso del soft delete
@@ -69,7 +73,7 @@ public function venta()
 public function webventa()
     {
         //un usuario puede tener muchas ventas
-       return $this->hasMany(web_Venta::class);
+       return $this->hasMany(web_venta::class);
     }
 
 

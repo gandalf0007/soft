@@ -3,7 +3,7 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Soft\User;
 class user_facturacion extends Model
 {
    
@@ -30,7 +30,7 @@ class user_facturacion extends Model
     public function user()
     {
         //una facturacion tiene un usuario
-       return $this->belongsTo(user::class);
+       return $this->belongsTo(User::class);
     }  
 
 }

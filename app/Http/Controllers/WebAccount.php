@@ -329,7 +329,8 @@ public function DatosDeFacturacionCheckout(request $request)
 
 public function detalleVentaPdf($tipo,$id){
         $vistaurl="shop.myaccount-pdf";
-        $ventas= DB::table('web_ventas')->where('user_id','=',Auth::user()->id)->get();
+        $ventas= web_venta::where('user_id','=',Auth::user()->id)->get();
+
         //$ventas=web_venta::where('user_id','=',Auth::user()->id);
         $datosfacturacions=user_facturacion::where('user_id','=',Auth::user()->id)->first();
         $transactions = web_transaccione::all();
@@ -341,6 +342,7 @@ public function detalleVentaPdf($tipo,$id){
 
     public function crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo ,$id){
         $datosfacturacions = $datosfacturacions;
+       
         $data = $ventas;
         $date = date('Y-m-d');
         $view =  \View::make($vistaurl, compact('data', 'date', 'transactions','datosfacturacions' ,'id'))->render();

@@ -3,7 +3,9 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Soft\Transaction;
+use Soft\Producto;
+use Soft\User;
 class Venta extends Model
 {
     		protected $fillable = [
@@ -20,7 +22,7 @@ class Venta extends Model
 public function user()
     {
       //una venta corresponde a un usuario
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(User::class);
     }
 
 public function cliente()
