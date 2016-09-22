@@ -189,7 +189,7 @@
         <tr class="border-right">
           <td class="pad-left">&nbsp;</td>
           <td class="right border-top">Total</td>
-          <td class="right border-top">Rs. 11,236</td>
+          <td class="right border-top">${{$ventas->total}}</td>
         </tr>
       </tbody>
     </table>
@@ -198,15 +198,14 @@
     
     
     <p>&nbsp;</p>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            No human was involved in creating this invoice, so, no signature is needed
-          </td>
-        </tr>
-      </tbody>
-    </table>
+     <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                <strong>INSTRUCCIONES IMPORTANTES: </strong>
+                <h5># Este es un recibo electrónico por lo que no requiere ninguna firma.</h5>
+                <h5># Todos los particulares se enumeran con el 21 % de impuestos , así que si tiene cualquier problema, por favor póngase en contacto con nosotros inmediatamente.</h5>
+                <h5># Se puede ponerse en contacto con nosotros entre las 8:00-12:00 am a 16:00-20:00 pm todos los días laborables .</h5>
+                </div>
+            </div>
      @endif
        
   </div>

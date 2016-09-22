@@ -275,7 +275,8 @@
 
 
    
-   
+
+ 
 	<!-- ===================== Marcas Carrucel======================== -->
 <div class="col-xs-12 col-sm-12 col-md-12 "> 
 <div id="brands-carousel" class="logo-slider wow fadeInUp">
@@ -306,19 +307,21 @@
 
 <!-- ================================= FOOTER ================================ -->
 <footer id="footer" class="footer color-bg">
-	  <div class="links-social inner-top-sm">
+	  <div class="links-social">
         <div class="container blanco">
             <div class="row blanco">
  
 
 <!-- ======================== Seguinos Facebook ============================= -->
-<div class="col-xs-12 col-sm-6 col-md-6">
+<div class=" col-xs-12 col-sm-6 col-md-6">
 <div class="latest-tweet">
     <div class="module-heading">
         <h4 class="module-title">Síguenos en Facebook</h4>
     </div><!-- /.module-heading -->
     @foreach( $boxs as $box)
+    <div class="flex-video widescreen ">
      {!! html_entity_decode($box->box) !!}
+     </div> 
     @endforeach
 </div><!-- /.contact-timing -->
 </div><!-- /.col -->

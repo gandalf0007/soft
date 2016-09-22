@@ -258,7 +258,7 @@
 
 <!-- ================================= FOOTER ================================ -->
 <footer id="footer" class="footer color-bg">
-      <div class="links-social inner-top-sm">
+      <div class="links-social">
         <div class="container blanco">
             <div class="row blanco">
  
@@ -270,7 +270,9 @@
         <h4 class="module-title">Síguenos en Facebook</h4>
     </div><!-- /.module-heading -->
     @foreach( $boxs as $box)
+    <div class="flex-video widescreen ">
      {!! html_entity_decode($box->box) !!}
+     </div>
     @endforeach
 </div><!-- /.contact-timing -->
 </div><!-- /.col -->

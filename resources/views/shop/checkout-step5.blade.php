@@ -128,11 +128,11 @@
             </div>
             <hr />
             <div class="row">
-                <h1><div class="col-lg-9 col-md-9 col-sm-9" style="text-align: right; padding-right: 30px;">
+                <h1><div class="green col-lg-9 col-md-9 col-sm-9" style="text-align: right; padding-right: 30px;">
                     Importe total + IVA (PAGO DE CONTADO):
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
-                    <strong><i class="fa fa-money" aria-hidden="true"></i> $ {{ $total }}</strong>
+                    <strong><i class="fa fa-money" style="color:green" aria-hidden="true"></i> $ {{ $total }}</strong>
                 </div></h1>
                 <hr />
             </div>
@@ -141,7 +141,7 @@
                     Importe total + IVA (PAGO CON TARJETA):
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
-                    <strong><i class="fa fa-cc-visa" aria-hidden="true"></i> $ {{ $total + ($total * ($mercadopago->porcentaje/100))}}</strong>
+                    <strong><i class="fa fa-cc-visa" style="color:blue" aria-hidden="true"></i> $ {{ $total + ($total * ($mercadopago->porcentaje/100))}}</strong>
                 </div></h1>
                 <hr />
             </div>

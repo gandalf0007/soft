@@ -331,21 +331,87 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(ProductoUpdateRequest $request, $id)
-    {
+    {   
+        $producto=producto::find($id);
+
         $categoria_id = $request['categoria_id'];
         $categoria = Categoria::where('id','=',$categoria_id)->first();
         
         $subcategoria_id= $request['categoriasub_id'];
         $subcategoria = Categoriasub::where('id','=',$subcategoria_id)->first();
 
+        //almaceno la descripcion
         $descripcion = $request['descripcion'];
-        //creamos carpetas para almacenar las imagenes de los productos dependiendo de que categoria pertenecen
         
-        //carpeta
+
+        //directorios nuevos y viejos
+        $oldDirectory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$producto->descripcion;
         $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
+        $directoryDelete = "/".$categoria->nombre."/".$subcategoria->nombre."/".$producto->descripcion."/".$producto->filename;
 
 
-         $producto=producto::find($id);
+
+        // si no cambio la imagen y si cambio la descripcion renombro la carpeta(01)
+        if ($request['descripcion'] != $producto->descripcion and empty($request->hasFile('imagen1'))) {
+          //renombramos la carpeta
+           Storage::rename($oldDirectory, $directory);
+
+           $imagen =$request->file('imagen1');
+           $ruta = 'storage/'.$directory.'/'. $producto->filename;
+
+           $producto=producto::find($id);
+           $producto->imagen1 = $ruta;
+           $producto->filename = $producto->filename;
+           $producto->save();
+        }
+
+        //si cambio la imagen y no la descripcion (10)
+        if(!empty($request->hasFile('imagen1')) and $request['descripcion'] == $producto->descripcion){
+         //eliminamos la imagen anterior
+          \Storage::disk('productos')->delete($directoryDelete);
+          //guardamos la nueva imagen
+          $imagen = Input::file('imagen1');
+          $filename=time() . '.' . $imagen->getClientOriginalExtension();
+          image::make($imagen->getRealPath())->resize(200, 150)->save( public_path('storage/'.$directory.'/'. $filename));
+          $ruta = 'storage/'.$directory.'/'. $filename;
+
+          $producto=producto::find($id);
+          $producto->imagen1 = $ruta;
+          $producto->filename = $filename;
+          $producto->save();
+        }
+
+        //si cambio la imagen y cambio la descripcion(11)
+        if (!empty($request->hasFile('imagen1')) and $request['descripcion'] != $producto->descripcion) {
+           //eliminamos la imagen anterior
+          \Storage::disk('productos')->delete($directoryDelete);
+           //renombramos la carpeta
+           Storage::rename($oldDirectory, $directory);
+          //guardamos la nueva imagen
+          $imagen = Input::file('imagen1');
+          $filename=time() . '.' . $imagen->getClientOriginalExtension();
+          image::make($imagen->getRealPath())->resize(200, 150)->save( public_path('storage/'.$directory.'/'. $filename));
+    
+           $ruta = 'storage/'.$directory.'/'. $filename;
+
+          $producto=producto::find($id);
+          $producto->imagen1 = $ruta;
+          $producto->filename = $filename;
+          $producto->save();
+        }
+        
+        //si no cambio ni la imgen ni la descripcion (00)    
+        if (empty($request->hasFile('imagen1')) and $request['descripcion'] == $producto->descripcion) {
+          $ruta = $producto->imagen1;
+
+          $producto=producto::find($id);
+          $producto->imagen1 = $ruta;
+          $producto->filename = $producto->filename;
+          $producto->save();
+        }
+
+    
+
          $producto->codigo = $request['codigo'];
          $producto->descripcion =$request['descripcion'];
          $producto->preciocosto=$request['preciocosto'];
@@ -382,31 +448,6 @@ class ProductoController extends Controller
          $producto->save();
 
 
-          //para eliminar la imagen antes de cargar la nueva
-        if($producto->filename == "sin-foto.jpg"){
-         $directoryDelete = "/".$categoria->nombre."/".$subcategoria->nombre."/".$descripcion;
-        \Storage::disk('productos')->delete($directoryDelete.'/'. $producto->filename);
-        }
-
-        //guarda la nueva imagen
-         if (!empty($request->hasFile('imagen1'))) {
-            $imagen =$request->file('imagen1');
-            $filename=time() . '.' . $imagen->getClientOriginalExtension();
-             image::make($imagen)->resize(200, 150)->save( 'storage/'.$directory.'/'. $filename);
-
-
-        if(empty($request->hasFile('imagen1'))){
-            $ruta = $request->hasFile('imagen1');
-        }else{
-            $ruta = 'storage/'.$directory.'/'. $filename;
-        }
-            $producto=producto::find($id);
-            $producto->imagen1 = $ruta;
-            $producto->filename = $filename;
-            $producto->save();
-        }
-
-
         //le manda un mensaje al usuario
        Alert::success('Mensaje existoso', 'Producto Modificado');
        return Redirect::to('/producto');
@@ -420,9 +461,7 @@ class ProductoController extends Controller
      */
     public function destroy(Request $request,$id)
     {
-        //destruye deacuerdo al id que nos pasaron User::destroy($id); 
-        //medoto delete ad , buscamos al user deacuardo a la id que recibimos y hacemos referencia a delete
-        $producto=producto::find($id);
+         $producto=producto::find($id);
 
 
         $categoria = Categoria::where('id','=',$producto->categoria_id)->first();
