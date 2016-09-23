@@ -146,7 +146,7 @@ class PaginasController extends Controller
     
 
 
-  public function itemDetalle($id){
+  public function itemDetalle($slug){
     //llama a la funcion CartTotal
         $cartcount = $this->CartCount();
         //llama a la funcion total
@@ -160,8 +160,9 @@ class PaginasController extends Controller
         $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
         $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
         /*seccion para el layout*/
-        $itemdetalle=producto::find($id);
-        $imagens= producto_imagen::where('producto_id', '=',$id)->get();
+        $itemdetalle = producto::where('slug','=', $slug)->firstOrFail();
+        //$itemdetalle=producto::find($id);
+        $imagens= producto_imagen::where('producto_id', '=',$itemdetalle->id)->get();
         return view('shop.detail2',compact('cartcount',
                                           'categorias',
                                           'subcategorias',      

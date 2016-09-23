@@ -47,11 +47,12 @@
 		<div class="product-image">
 			<div class="image">
 			@if($nuevo->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $nuevo->id }}">
+
+				<a href="item-detalle-{{ $nuevo->slug }}">
 				<img src="storage/productos/{{$nuevo->imagen1}}" data-echo="storage/productos/{{$nuevo->imagen1}}" class="" alt="" height="150" width="200" >
 				</a>
 			@elseif($nuevo->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $nuevo->id }}">
+				<a href="item-detalle-{{ $nuevo->slug }}">
 				<img src="{{$nuevo->imagen1}}" data-echo="{{$nuevo->imagen1}}" class="" alt="" height="150" width="200" >
 				</a>
 			@endif
@@ -147,11 +148,11 @@
 		<div class="product-image">
 			<div class="image">
 			@if($sale->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $sale->id }}">
+				<a href="item-detalle-{{ $sale->slug }}">
 				<img src="storage/productos/{{$sale->imagen1}}" data-echo="storage/productos/{{$sale->imagen1}}" class="" alt="" height="150" width="200" >
 				</a>
 			@elseif($sale->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $sale->id }}">
+				<a href="item-detalle-{{ $sale->slug }}">
 				<img src="{{$sale->imagen1}}" data-echo="{{$sale->imagen1}}" class="" alt="" height="150" width="200" >
 				</a>
 			@endif
@@ -220,6 +221,64 @@
 <!-- ========================== SALE PRODUCT ================================== -->
 
 
+
+<!-- ========================== PC ARMADAS ================================== -->
+<div class=" col-xs-12 col-sm-12 col-md-3 "></div>
+<div class="col-xs-12 col-sm-12 col-md-9 hidden-xs hidden-sm homebanner-holder">
+<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+<div class="more-info-tab clearfix">
+	  <h3 class="new-product-title pull-left">Pc Armadas</h3> 
+	</div>
+
+<div class="accordian">
+	<ul>
+		<li>
+			<div class="image_title">
+				<a href="#">T-OFFICE</a>
+			</div>
+			<a href="{{ url('/subcategoria-59') }}">
+				<img src="storage/slider/1.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-HOME</a>
+			</div>
+			<a href="{{ url('/subcategoria-60') }}">
+				<img src="storage/slider/2.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-GAMERS</a>
+			</div>
+			<a href="{{ url('/subcategoria-61') }}">
+				<img src="storage/slider/3.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-POWER</a>
+			</div>
+			<a href="{{ url('/subcategoria-62') }}">
+				<img src="storage/slider/4.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-MAXIMUS</a>
+			</div>
+			<a href="{{ url('/subcategoria-63') }}">
+				<img src="storage/slider/5.jpg"/>
+			</a>
+		</li>
+	</ul>
+	</div>
+		</div></div>
+<!-- ========================== PC ARMADAS ================================== -->
+
+
+
 <!-- ========================== OFERTA PRODUCT ================================== -->
 <div class=" col-xs-12 col-sm-12 col-md-3"></div>
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder ">
@@ -241,9 +300,9 @@
 		<div class="product-image">
 			<div class="image">
 			@if($hot->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $hot->id }}"><img src="storage/productos/{{$hot->imagen1}}" data-echo="storage/productos/{{$hot->imagen1}}" class="" alt="" height="150" width="200" ></a>
+				<a href="item-detalle-{{ $hot->slug }}"><img src="storage/productos/{{$hot->imagen1}}" data-echo="storage/productos/{{$hot->imagen1}}" class="" alt="" height="150" width="200" ></a>
 			@elseif($hot->imagen1 != "sin-foto.jpg")	
-				<a href="item-detalle{{ $hot->id }}"><img src="{{$hot->imagen1}}" data-echo="{{$hot->imagen1}}" class="" alt="" height="150" width="200" ></a>
+				<a href="item-detalle-{{ $hot->slug }}"><img src="{{$hot->imagen1}}" data-echo="{{$hot->imagen1}}" class="" alt="" height="150" width="200" ></a>
 			@endif
 			</div><!-- /.image -->			
 			<div class="tag hot"><span>HOT</span></div>		   
@@ -308,52 +367,6 @@
 </div><!-- /.col-xs-12 col-sm-1 -->	
 <!-- ========================== OFERTA PRODUCT ================================== -->
 
-
-<div class=" col-xs-12 col-sm-12 col-md-3 "></div>
-<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder  accordian ">
-	<ul class="hidden-sm">
-		<li>
-			<div class="image_title">
-				<a href="#">T-OFFICE</a>
-			</div>
-			<a href="{{ url('/subcategoria-59') }}">
-				<img src="storage/slider/1.jpg"/>
-			</a>
-		</li>
-		<li>
-			<div class="image_title">
-				<a href="#">T-HOME</a>
-			</div>
-			<a href="{{ url('/subcategoria-60') }}">
-				<img src="storage/slider/2.jpg"/>
-			</a>
-		</li>
-		<li>
-			<div class="image_title">
-				<a href="#">T-GAMERS</a>
-			</div>
-			<a href="{{ url('/subcategoria-61') }}">
-				<img src="storage/slider/3.jpg"/>
-			</a>
-		</li>
-		<li>
-			<div class="image_title">
-				<a href="#">T-POWER</a>
-			</div>
-			<a href="{{ url('/subcategoria-62') }}">
-				<img src="storage/slider/4.jpg"/>
-			</a>
-		</li>
-		<li>
-			<div class="image_title">
-				<a href="#">T-MAXIMUS</a>
-			</div>
-			<a href="{{ url('/subcategoria-63') }}">
-				<img src="storage/slider/5.jpg"/>
-			</a>
-		</li>
-	</ul>
-		</div>
 
 
 

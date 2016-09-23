@@ -19,6 +19,7 @@ class Producto extends Model
            'id',
            'codigo',
            'descripcion',
+           'slug',
              
            'preciocosto',
            'iva_id',
@@ -32,6 +33,7 @@ class Producto extends Model
            'stockactual',
            'stockcritico',
            'stockpedido',
+
             'rubro_id',
             'marca_id',
             'provedor_id',

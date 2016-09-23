@@ -1,5 +1,16 @@
 @extends('layouts.shopmenu')
 @section('content')
+<!-- ===================== facebook share ======================= -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.7&appId=1529659150661681";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- ===================== facebook share: END ======================= -->
+
 
 
 <div class="col-xs-12 col-sm-12 col-md-9 ">
@@ -177,11 +188,12 @@
         </div>
 		<div class=" col-md-9 col-sm-9 social-icons">
 		<ul class="list-inline">
-			<li><a href="http://facebook.com/transvelo" class="fa fa-facebook"></a></li>
+		<div class="fb-share-button" data-href="http://sharkinformatica.com/item-detalle{{$itemdetalle->id}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsharkinformatica.com%2F&amp;src=sdkpreparse">Compartir</a></div>
+			
 			<li><a href="#" class="fa fa-twitter"></a></li>
 			<li><a href="#" class="fa fa-linkedin"></a></li>
 			<li><a href="#" class="fa fa-rss"></a></li>
-			<li><a href="#" class="fa fa-pinterest"></a></li>
+			
 		</ul><!-- /.social-icons -->
 		</div>
 	</div>

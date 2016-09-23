@@ -29,7 +29,7 @@ Route::get('blogdetail-post{id}',[
 	]);
 Route::get('subcategoria-{id}','PaginasController@subcategoria');
 Route::get('item','PaginasController@item');
-Route::get('item-detalle{id}',[
+Route::get('item-detalle-{slug}',[
 'as'=>'paginas.itemDetalle',
 'uses'=>'PaginasController@itemDetalle'
 	]);

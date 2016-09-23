@@ -6,6 +6,7 @@ use Soft\Http\Requests;
 use Soft\Http\Requests\ProductoCreateRequest;
 use Soft\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Support\Collection as Collection;
+use Illuminate\Support\Str as Str;
 use Soft\Producto;
 use Soft\Producto_imagen;
 use Soft\Categoria;
@@ -17,6 +18,7 @@ use Soft\Rubro;
 use Soft\Marca;
 use Soft\Ivatipo;
 use Soft\Provedore;
+use Soft\Productos_slug;
 use Alert;
 use Image;
 use DB;
@@ -235,9 +237,11 @@ class ProductoController extends Controller
         }
             
         
-           Producto::create([
+          $producto = Producto::create([
            'codigo'=>$request['codigo'],
            'descripcion'=>$request['descripcion'],
+           'slug'=>Str::slug($request['descripcion']),
+         
             
            'preciocosto'=>$request['preciocosto'],
            'iva_id'=>$request['iva_id'],
@@ -279,9 +283,10 @@ class ProductoController extends Controller
            'hot'=>$request['hot']
            
             ]);
-
-        
     
+        
+
+
          Alert::success('Mensaje existoso', 'Producto Creado');
         return redirect('/producto');
     }
@@ -414,6 +419,7 @@ class ProductoController extends Controller
 
          $producto->codigo = $request['codigo'];
          $producto->descripcion =$request['descripcion'];
+         $producto->slug =Str::slug($request['descripcion']);
          $producto->preciocosto=$request['preciocosto'];
          $producto->iva_id=$request['iva_id'];
          $producto->precioventa =$request['precioventa'];
