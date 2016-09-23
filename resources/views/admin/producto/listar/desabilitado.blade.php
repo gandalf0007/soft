@@ -85,6 +85,9 @@
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 @endif
+
+<a class="btn btn-success" href="{!! URL::to('item-detalle-'.$producto->slug) !!}"><i class="fa fa-globe"></i>Web</a>
+
 </td>
 @endforeach
 	</tbody>

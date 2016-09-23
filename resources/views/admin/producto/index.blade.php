@@ -75,7 +75,7 @@
 <td>
 {!! link_to_route('producto.show', $title = 'Ver', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-warning']); !!}
 
-<a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa "></i>fotos</a>
+<a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa fa-picture-o"></i>fotos</a>
 
 
 {!! link_to_route('producto.edit', $title = 'Editar', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary']); !!}
@@ -85,6 +85,10 @@
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
 @endif
+
+<a class="btn btn-success" href="{!! URL::to('item-detalle-'.$producto->slug) !!}"><i class="fa fa-globe"></i>Web</a>
+
+
 </td>
 @endforeach
 	</tbody>
