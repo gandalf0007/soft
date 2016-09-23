@@ -27,7 +27,6 @@
 
 
 
-
 <!-- ========================== NEW PRODUCT ================================== -->
 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder ">
 <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
@@ -308,6 +307,54 @@
 </div><!-- /.scroll-tabs -->
 </div><!-- /.col-xs-12 col-sm-1 -->	
 <!-- ========================== OFERTA PRODUCT ================================== -->
+
+
+<div class=" col-xs-12 col-sm-12 col-md-3 "></div>
+<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder  accordian ">
+	<ul class="hidden-sm">
+		<li>
+			<div class="image_title">
+				<a href="#">T-OFFICE</a>
+			</div>
+			<a href="{{ url('/subcategoria-59') }}">
+				<img src="storage/slider/1.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-HOME</a>
+			</div>
+			<a href="{{ url('/subcategoria-60') }}">
+				<img src="storage/slider/2.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-GAMERS</a>
+			</div>
+			<a href="{{ url('/subcategoria-61') }}">
+				<img src="storage/slider/3.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-POWER</a>
+			</div>
+			<a href="{{ url('/subcategoria-62') }}">
+				<img src="storage/slider/4.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">T-MAXIMUS</a>
+			</div>
+			<a href="{{ url('/subcategoria-63') }}">
+				<img src="storage/slider/5.jpg"/>
+			</a>
+		</li>
+	</ul>
+		</div>
+
 
 
 @endsection
