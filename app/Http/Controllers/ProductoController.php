@@ -377,7 +377,7 @@ class ProductoController extends Controller
           //guardamos la nueva imagen
           $imagen = Input::file('imagen1');
           $filename=time() . '.' . $imagen->getClientOriginalExtension();
-          image::make($imagen->getRealPath())->resize(200, 150)->save( public_path('storage/'.$directory.'/'. $filename));
+          image::make($imagen->getRealPath())->save( public_path('storage/'.$directory.'/'. $filename));
           $ruta = 'storage/'.$directory.'/'. $filename;
 
           $producto=producto::find($id);
@@ -395,7 +395,7 @@ class ProductoController extends Controller
           //guardamos la nueva imagen
           $imagen = Input::file('imagen1');
           $filename=time() . '.' . $imagen->getClientOriginalExtension();
-          image::make($imagen->getRealPath())->resize(200, 150)->save( public_path('storage/'.$directory.'/'. $filename));
+          image::make($imagen->getRealPath())->save( public_path('storage/'.$directory.'/'. $filename));
     
            $ruta = 'storage/'.$directory.'/'. $filename;
 

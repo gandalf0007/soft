@@ -16,7 +16,7 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->string('codigo');
             $table->string('descripcion');
-            
+            $table->string('slug')->unique();
             
             $table->double('preciocosto');
             $table->integer('iva_id');
