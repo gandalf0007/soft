@@ -369,5 +369,24 @@
 
 
 
+<!--facenook pop up -->
+<div id='fanback'>
+<div id='fan-exit'>
+</div>
+<div id='JasperRoberts'>
+<div id='TheBlogWidgets'>
+</div>
+<div class='remove-borda'>
+</div>
+<iframe allowtransparency='true' frameborder='0' scrolling='no' src='//www.facebook.com/plugins/likebox.php?
+
+href=http://www.facebook.com//Shark-Informática-1484416818476825&width=402&height=255&colorscheme=light&show_faces=true&show_border=false&stream=false&header=false'
+ 
+style='border: none; overflow: hidden; margin-top: -19px; width: 402px; height: 230px;'></iframe>
+</div>
+</div>
+<!--facenook pop up -->
+
+
 
 @endsection

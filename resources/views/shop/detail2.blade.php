@@ -188,7 +188,7 @@
         </div>
 		<div class=" col-md-9 col-sm-9 social-icons">
 		<ul class="list-inline">
-		<div class="fb-share-button" data-href="http://sharkinformatica.com/item-detalle{{$itemdetalle->id}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsharkinformatica.com%2F&amp;src=sdkpreparse">Compartir</a></div>
+		<div class="fb-share-button" data-href="http://sharkinformatica.com/item-detalle-{{$itemdetalle->slug}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsharkinformatica.com%2F&amp;src=sdkpreparse">Compartir</a></div>
 			
 			<li><a href="#" class="fa fa-twitter"></a></li>
 			<li><a href="#" class="fa fa-linkedin"></a></li>
