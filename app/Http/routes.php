@@ -17,6 +17,9 @@
 //el segundo parametro llama a la funcion dentro de frontController
 use Soft\Categoria;
 use Soft\Categoriasub;
+use Soft\Http\Requests;
+use Soft\Http\Requests\Request;
+
 
 
 Route::group(['middleware' => 'web'], function () {
@@ -28,11 +31,13 @@ Route::get('blogdetail-post{id}',[
 'uses'=>'PaginasController@postDetalle'
 	]);
 Route::get('subcategoria-{id}','PaginasController@subcategoria');
-Route::get('item','PaginasController@item');
 Route::get('item-detalle-{slug}',[
 'as'=>'paginas.itemDetalle',
 'uses'=>'PaginasController@itemDetalle'
 	]);
+
+Route::post('review/{slug}','ReviewsController@Reviews');
+
 Route::get('preguntas-frecuentes','PaginasController@PreguntasFrecuentes');
 Route::get('formas-de-pago','PaginasController@FormasDePago');
 Route::get('garantia','PaginasController@garantia');

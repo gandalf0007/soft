@@ -163,6 +163,14 @@ class PaginasController extends Controller
         $itemdetalle = producto::where('slug','=', $slug)->firstOrFail();
         //$itemdetalle=producto::find($id);
         $imagens= producto_imagen::where('producto_id', '=',$itemdetalle->id)->get();
+        
+
+
+
+  // Get all reviews that are not spam for the product and paginate them
+  $reviews = $itemdetalle->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
+
+ 
         return view('shop.detail2',compact('cartcount',
                                           'categorias',
                                           'subcategorias',      
@@ -172,7 +180,8 @@ class PaginasController extends Controller
                                           'logos',
                                           'itemdetalle',
                                           'imagens',
-                                          'total'
+                                          'total',
+                                          'reviews'
                                           ));
 
     }

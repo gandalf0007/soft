@@ -281,6 +281,9 @@
 <!-- ================================= CONTACT INFO  ======================================= -->
 <div class="col-xs-12 col-sm-6 col-md-3">
 <div class="contact-info">
+<div class="module-heading">
+        <h4 class="module-title">Medios de Pago</h4>
+    </div><!-- /.module-heading -->
     <div class="footer-logo">
         <div class="logo">
             <a href="{{asset('/formas-de-pago')}}">
@@ -350,7 +353,9 @@
                     </span>
                 </div>
                 <div class="media-body">
-        <p>{{$informacion->telefono1}}<br>{{$informacion->telefono2}}<br>{{$informacion->telefono3}}</p>
+         <p>Telefono : {{$informacion->telefono1}}<br>
+           Telefono : {{$informacion->telefono2}}<br>
+           {{$informacion->telefono3}}</p>
                 </div>
             </li>
 
@@ -445,7 +450,6 @@
                 </tbody>
             </table>
         </div><!-- /.table-responsive -->
-        <p class='contact-number'>Telefono: (381)  4247875 </p>
     </div><!-- /.module-body -->
 </div><!-- /.contact-timing -->
 

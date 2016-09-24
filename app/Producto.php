@@ -12,6 +12,7 @@ use Soft\Transaction;
 use Soft\web_transaccione;
 use Soft\Marca;
 use Soft\Producto_Image;
+use Soft\Review;
 class Producto extends Model
 {
 
@@ -116,6 +117,19 @@ class Producto extends Model
         return $this->belongsTo(Categoriasub::class);
     }
 
+    public function reviews()
+  { 
+      //una producto puede tener varias Reviews
+      return $this->hasMany(Review::class);
+  }
 
+  public function recalculateRating($rating)
+    {
+      $reviews = $this->reviews()->notSpam()->approved();
+      $avgRating = $reviews->avg('rating');
+      $this->rating_cache = round($avgRating,1);
+      $this->rating_count = $reviews->count();
+      $this->save();
+    }
 
 }

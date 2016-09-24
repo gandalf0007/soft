@@ -108,12 +108,15 @@
 
 			<div class="rating-reviews m-t-20">
 				<div class="row">
-					<div class="col-sm-3">
-						<div class="rating rateit-small"></div>
+					<div class="col-sm-6">
+					@for ($i=1; $i <= 5 ; $i++)
+                      <span class="glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($itemdetalle->rating_cache, 1)}} stars
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<div class="reviews">
-							<a href="#" class="lnk">(06 Reviews)</a>
+						<p class="lnk">({{$itemdetalle->rating_count}}  Reviews)</p>
 						</div>
 					</div>
 				</div><!-- /.row -->		
@@ -222,104 +225,99 @@
 							</div><!-- /.tab-pane -->
 						<!----------- descripcion larga ---------->
 
+
+
+<!----------- REVIEWS ---------->
 <div id="review" class="tab-pane">
 	<div class="product-tab">
-
-		<div class="product-reviews">
-			<h4 class="title">Customer Reviews</h4>
-
- <div class="reviews">
-	<div class="review">
-		<div class="review-title"><span class="summary">Best Product For me</span><span class="date"><i class="fa fa-calendar"></i><span>20 minutes ago</span></span></div>
-		<div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit nisl in adipiscin"</div>
-		<div class="author m-t-15"><i class="fa fa-pencil-square-o"></i> <span class="name">Michael Lee</span></div>						
-	</div>
-  </div><!-- /.reviews -->
- </div><!-- /.product-reviews -->
-
-
-<div class="product-add-review">
-<h4 class="title">Write your own review</h4>
-<div class="review-table">
-<div class="table-responsive">
-	<table class="table table-bordered">	
-		<thead>
-			<tr>
-				<th class="cell-label">&nbsp;</th>
-				<th>1 star</th>
-				<th>2 stars</th>
-				<th>3 stars</th>
-				<th>4 stars</th>
-				<th>5 stars</th>
-			</tr>
-		</thead>	
-		<tbody>
-			<tr>
-				<td class="cell-label">Quality</td>
-				<td><input type="radio" name="quality" class="radio" value="1"></td>
-				<td><input type="radio" name="quality" class="radio" value="2"></td>
-				<td><input type="radio" name="quality" class="radio" value="3"></td>
-				<td><input type="radio" name="quality" class="radio" value="4"></td>
-				<td><input type="radio" name="quality" class="radio" value="5"></td>
-			</tr>
-			<tr>
-				<td class="cell-label">Price</td>
-				<td><input type="radio" name="quality" class="radio" value="1"></td>
-				<td><input type="radio" name="quality" class="radio" value="2"></td>
-				<td><input type="radio" name="quality" class="radio" value="3"></td>
-				<td><input type="radio" name="quality" class="radio" value="4"></td>
-				<td><input type="radio" name="quality" class="radio" value="5"></td>
-			</tr>
-			<tr>
-			<td class="cell-label">Value</td>
-			<td><input type="radio" name="quality" class="radio" value="1"></td>
-			<td><input type="radio" name="quality" class="radio" value="2"></td>
-			<td><input type="radio" name="quality" class="radio" value="3"></td>
-			<td><input type="radio" name="quality" class="radio" value="4"></td>
-			<td><input type="radio" name="quality" class="radio" value="5"></td>
-		</tr>
-	</tbody>
-</table><!-- /.table .table-bordered -->
-	</div><!-- /.table-responsive -->
-</div><!-- /.review-table -->
-
-											
-<div class="review-form">
-	<div class="form-container">
-		<form role="form" class="cnt-form">
-
+		
+@if (Auth::check())
+	
 <div class="row">
-	<div class="col-sm-6">
-		<div class="form-group">
-			<label for="exampleInputName">Your Name <span class="astk">*</span></label>
-			<input type="text" class="form-control txt" id="exampleInputName" placeholder="">
-		</div><!-- /.form-group -->
-		<div class="form-group">
-			<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
-			<input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
-		</div><!-- /.form-group -->
-	</div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+              <div class="ratings">
+                  <p class="pull-right">{{$itemdetalle->rating_count}} Reviews</p>
+                  <p>
+                    @for ($i=1; $i <= 5 ; $i++)
+                      <span class="glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($itemdetalle->rating_cache, 1)}} stars
+                  </p>
+              </div>
+            </div>
+            <div class="well container" id="reviews-anchor">
+              <div class="row">
+                <div class="col-md-12">
+                  @if(Session::get('errors'))
+                    <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                       <h5>There were errors while submitting this review:</h5>
+                       @foreach($errors->all('<li>:message</li>') as $message)
+                          {{$message}}
+                       @endforeach
+                    </div>
+                  @endif
+                  @if(Session::has('review_posted'))
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h5>Your review has been posted!</h5>
+                    </div>
+                  @endif
+                  @if(Session::has('review_removed'))
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h5>Your review has been removed!</h5>
+                    </div>
+                  @endif
+                </div>
+              </div>
+              <div class="text-right">
+                <a href="#reviews-anchor" id="open-review-box" class="btn btn-success btn-green">Leave a Review</a>
+              </div>
+              <div class="row" id="post-review-box" style="display:none;">
+                <div class="col-md-12">
 
-	<div class="col-md-6">
-		<div class="form-group">
-			<label for="exampleInputReview">Review <span class="astk">*</span></label>
-			<textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
-		</div><!-- /.form-group -->
-	</div>
-</div><!-- /.row -->
+{!!Form::model($itemdetalle,['url'=>['review',$itemdetalle->slug],'method'=>'POST' , 'files'=>True])!!}
+     {!!Form::hidden('rating', null, ['id'=>'ratings-hidden'])!!}
+     {!!Form::textarea('comment', null,['id'=>'new-review','class'=>'form-control animated','placeholder'=>'Enter your review here...'])!!}
+          <div class="text-right">
+             <div class="stars starrr" data-rating="{{Input::old('rating',0)}}"></div>
+                 <a href="#" class="btn btn-danger btn-sm" id="close-review-box" style="display:none; margin-right:10px;"> <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+               <button class="btn btn-success btn-lg" type="submit">Save</button>
+           </div>
+ {!!Form::close()!!}
+                </div>
+              </div>
 
-				<div class="action text-right">
-					<button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
-				</div><!-- /.action -->
+              @foreach($reviews as $review)
+              <hr>
+                <div class="row">
+                  <div class="col-md-12">
+                    @for ($i=1; $i <= 5 ; $i++)
+                      <span class="glyphicon glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+                    @endfor
 
-			</form><!-- /.cnt-form -->
-		</div><!-- /.form-container -->
-	</div><!-- /.review-form -->
-</div><!-- /.product-add-review -->										
+                    {{ $review->user ? $review->user->nombre : 'Anonymous'}} <span class="pull-right">{{$review->timeago}}</span> 
+                    
+                    <p>{{{$review->comment}}}</p>
+                  </div>
+                </div>
+              @endforeach
+              {{ $reviews->links() }}
+            </div>
+        </div>
 
-
+    </div>
+@else
+<p class="h3">Tiene que estar <strong class="text-danger">Registrado</strong> para poder hacer las criticas</p>
+@endif
 	</div><!-- /.product-tab -->
 </div><!-- /.tab-pane -->
+
+<!----------- REVIEWS END ---------->
+
+
 
 
 

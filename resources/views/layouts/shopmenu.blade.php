@@ -330,6 +330,9 @@
 <!-- ================================= CONTACT INFO  ======================================= -->
 <div class="col-xs-12 col-sm-6 col-md-3">
 <div class="contact-info">
+<div class="module-heading">
+        <h4 class="module-title">Medios de Pago</h4>
+    </div><!-- /.module-heading -->
     <div class="footer-logo">
         <div class="logo">
             <a href="{{asset('/formas-de-pago')}}">
@@ -400,7 +403,9 @@
                     </span>
                 </div>
                 <div class="media-body">
-        <p>{{$informacion->telefono1}}<br>{{$informacion->telefono2}}<br>{{$informacion->telefono3}}</p>
+        <p>Telefono : {{$informacion->telefono1}}<br>
+           Telefono : {{$informacion->telefono2}}<br>
+           {{$informacion->telefono3}}</p>
                 </div>
             </li>
 
@@ -495,7 +500,6 @@
 				</tbody>
 			</table>
 		</div><!-- /.table-responsive -->
-		<p class='contact-number'>Telefono: (381)  4247875 </p>
 	</div><!-- /.module-body -->
 </div><!-- /.contact-timing -->
 
@@ -607,6 +611,59 @@ $.cookie('popup_user_login', 'yes', { path: '/', expires: 7 });
 </script>
 <!--facebook pop up -->
 
+
+
+<!--Reviews-->
+{{HTML::script('shop/js/expanding.js')}}
+  {{HTML::script('shop/js/starrr.js')}}
+
+  <script type="text/javascript">
+    $(function(){
+
+      // initialize the autosize plugin on the review text area
+      $('#new-review').autosize({append: "\n"});
+
+      var reviewBox = $('#post-review-box');
+      var newReview = $('#new-review');
+      var openReviewBtn = $('#open-review-box');
+      var closeReviewBtn = $('#close-review-box');
+      var ratingsField = $('#ratings-hidden');
+
+      openReviewBtn.click(function(e)
+      {
+        reviewBox.slideDown(400, function()
+          {
+            $('#new-review').trigger('autosize.resize');
+            newReview.focus();
+          });
+        openReviewBtn.fadeOut(100);
+        closeReviewBtn.show();
+      });
+
+      closeReviewBtn.click(function(e)
+      {
+        e.preventDefault();
+        reviewBox.slideUp(300, function()
+          {
+            newReview.focus();
+            openReviewBtn.fadeIn(200);
+          });
+        closeReviewBtn.hide();
+        
+      });
+
+      // If there were validation errors we need to open the comment form programmatically 
+      @if($errors->first('comment') || $errors->first('rating'))
+        openReviewBtn.click();
+      @endif
+
+      // Bind the change event for the star rating - store the rating value in a hidden field
+      $('.starrr').on('starrr:change', function(e, value){
+        ratingsField.val(value);
+      });
+    });
+  </script>
+  <!--Reviews END-->
 
 
 </body>
