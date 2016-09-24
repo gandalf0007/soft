@@ -74,7 +74,7 @@ class Review extends Model
     public function storeReviewForProduct($slug, $comment, $rating)
     {
         $producto = Producto::where('slug','=', $slug)->firstOrFail();
-
+        
         //$this->user_id = Auth::user()->id;
         $this->comment = $comment;
         $this->rating = $rating;

@@ -48,9 +48,6 @@ Route::get('contacto','PaginasController@contacto');
 Route::post('mail','MailController@send');
 
 
-
-
-
 Route::get('web-addtocart/{id}',[
 	'uses'=>'WebVentas@add',
 	'as'=>'web.AddToCart'
@@ -249,6 +246,12 @@ Route::resource('producto','ProductoController');
 Route::get('producto-oferta','ProductoController@ProductosOferta');
 Route::get('producto-stock-critico','ProductoController@StockCritico');
 Route::get('producto-desabilitado','ProductoController@ProductoDesabilitado');
+
+Route::get('producto-review/{slug}','ReviewsController@ReviewsVer');
+Route::DELETE('producto-review-delete/{id}','ReviewsController@ReviewsDelete');
+Route::get('producto-review-confirm/{id}','ReviewsController@ReviewsConfirm');
+Route::get('producto-review-spam/{id}','ReviewsController@ReviewsSpam');
+
 Route::resource('productoimagen','ProductoImagenController');
  //me devuelve las subcategorias al crear el prodcuto (select dinamico)
 Route::get('ajax-subcategoria',function(){

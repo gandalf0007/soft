@@ -11,6 +11,7 @@ use Validator;
 use Redirect;
 use Soft\Producto;
 use Auth;
+use Alert;
 
 class ReviewsController extends Controller
 {
@@ -41,17 +42,51 @@ class ReviewsController extends Controller
       'spam'=>0,
     ]);
 
-// Validate that the user's input corresponds to the rules specified in the review model
-  $validator = Validator::make( $input, $review->getCreateRules());
 
-  // If input passes validation - store the review in DB, otherwise return to product page with error message 
-  if ($validator->passes()) {
-    $review->storeReviewForProduct($slug, $input['comment'], $input['rating']);
+  $review->storeReviewForProduct($slug, $input['comment'], $input['rating']);
      return Redirect::back()->with('review_posted',true);
-   // return Redirect::to('products/'.$id.'#reviews-anchor')->with('review_posted',true);
-  }
-  return Redirect::back()->withErrors($validator)->withInput();
   //return Redirect::to('products/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
+    }
+
+
+
+
+
+    public function ReviewsVer($slug){
+       
+        $producto = Producto::where('slug','=', $slug)->firstOrFail();
+        $reviews = Review::where('producto_id','=',$producto->id)->orderBy('created_at','desc')->get();
+        
+        return view('admin.producto.review.review',compact('reviews'));
+    }
+
+
+    public function ReviewsDelete($id){
+        $Review = Review::find($id);
+        $Review->delete();
+        //le manda un mensaje al usuario
+        Alert::success('Mensaje existoso', 'Review Eliminado');
+        return Redirect::back();
+    }
+
+
+    public function ReviewsConfirm($id){
+        $Review = Review::find($id);
+        $Review->approved = 1;
+        $Review->save();
+        //le manda un mensaje al usuario
+        Alert::success('Mensaje existoso', 'Review Aprobado');
+        return Redirect::back();
+    }
+
+
+    public function ReviewsSpam($id){
+        $Review = Review::find($id);
+        $Review->approved = 0;
+        $Review->save();
+        //le manda un mensaje al usuario
+        Alert::success('Mensaje existoso', 'Review Spam');
+        return Redirect::back();
     }
 
 }

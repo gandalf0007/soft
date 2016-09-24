@@ -126,6 +126,7 @@ class Producto extends Model
   public function recalculateRating($rating)
     {
       $reviews = $this->reviews()->notSpam()->approved();
+      
       $avgRating = $reviews->avg('rating');
       $this->rating_cache = round($avgRating,1);
       $this->rating_count = $reviews->count();

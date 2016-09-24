@@ -229,11 +229,11 @@
 
 <!----------- REVIEWS ---------->
 <div id="review" class="tab-pane">
-	<div class="product-tab">
+	<div class=" product-tab">
 		
 @if (Auth::check())
 	
-<div class="row">
+<div class="row container">
         <div class="col-md-9">
             <div class="thumbnail">
               <div class="ratings">
@@ -246,7 +246,7 @@
                   </p>
               </div>
             </div>
-            <div class="well container" id="reviews-anchor">
+            <div class="well " id="reviews-anchor">
               <div class="row">
                 <div class="col-md-12">
                   @if(Session::get('errors'))
@@ -273,18 +273,18 @@
                 </div>
               </div>
               <div class="text-right">
-                <a href="#reviews-anchor" id="open-review-box" class="btn btn-success btn-green">Leave a Review</a>
+                <a href="#reviews-anchor" id="open-review-box" class="btn btn-success btn-green">Dejar Un Comentario</a>
               </div>
               <div class="row" id="post-review-box" style="display:none;">
                 <div class="col-md-12">
 
 {!!Form::model($itemdetalle,['url'=>['review',$itemdetalle->slug],'method'=>'POST' , 'files'=>True])!!}
      {!!Form::hidden('rating', null, ['id'=>'ratings-hidden'])!!}
-     {!!Form::textarea('comment', null,['id'=>'new-review','class'=>'form-control animated','placeholder'=>'Enter your review here...'])!!}
+     {!!Form::textarea('comment', null,['id'=>'new-review','class'=>'form-control animated','placeholder'=>'Ingrese su Comentario...'])!!}
           <div class="text-right">
              <div class="stars starrr" data-rating="{{Input::old('rating',0)}}"></div>
                  <a href="#" class="btn btn-danger btn-sm" id="close-review-box" style="display:none; margin-right:10px;"> <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-               <button class="btn btn-success btn-lg" type="submit">Save</button>
+               <button class="btn btn-success" type="submit">Save</button>
            </div>
  {!!Form::close()!!}
                 </div>
@@ -299,8 +299,13 @@
                     @endfor
 
                     {{ $review->user ? $review->user->nombre : 'Anonymous'}} <span class="pull-right">{{$review->timeago}}</span> 
-                    
-                    <p>{{{$review->comment}}}</p>
+                    <blockquote>
+                    <div >
+    <div style="width:100%; word-wrap: break-word;">{{{$review->comment}}}</div>
+</div>
+
+                   
+                    </blockquote>
                   </div>
                 </div>
               @endforeach

@@ -15,6 +15,7 @@ use Image;
 use Soft\Producto;
 use Soft\Producto_imagen;
 use Soft\Categoria;
+use Soft\Review;
 class PaginasController extends Controller
 {
 
@@ -168,7 +169,7 @@ class PaginasController extends Controller
 
 
   // Get all reviews that are not spam for the product and paginate them
-  $reviews = $itemdetalle->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
+  $reviews = Review::where('approved','=',1)->orderBy('created_at','desc')->paginate(100);
 
  
         return view('shop.detail2',compact('cartcount',

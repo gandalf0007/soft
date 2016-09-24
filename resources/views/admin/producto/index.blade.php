@@ -88,6 +88,7 @@
 
 <a class="btn btn-success" href="{!! URL::to('item-detalle-'.$producto->slug) !!}"><i class="fa fa-globe"></i>Web</a>
 
+<a class="btn btn-info" href="{!! URL::to('producto-review/'.$producto->slug) !!}"><i class="fa fa-globe"></i>Comentarios</a>
 
 </td>
 @endforeach
