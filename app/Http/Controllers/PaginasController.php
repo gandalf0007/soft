@@ -170,7 +170,8 @@ class PaginasController extends Controller
 
   // Get all reviews that are not spam for the product and paginate them
   $reviews = Review::where('producto_id','=',$itemdetalle->id)->where('approved','=',1)->orderBy('created_at','desc')->paginate(100);
-
+  $urlimagen = str_replace(" ","%20",$itemdetalle->imagen1);
+  
  
         return view('shop.detail2',compact('cartcount',
                                           'categorias',
@@ -182,7 +183,8 @@ class PaginasController extends Controller
                                           'itemdetalle',
                                           'imagens',
                                           'total',
-                                          'reviews'
+                                          'reviews',
+                                          'urlimagen'
                                           ));
 
     }
