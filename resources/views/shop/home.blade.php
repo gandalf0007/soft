@@ -62,8 +62,13 @@
 			
 
 		<div class="product-info text-left col-md-12">
-	<h3 class="name"><a href="item-detalle{{ $nuevo->id }}">{{$nuevo->descripcion}}</a></h3>
-			<div class="rating rateit-small"></div>
+	<h3 class="name"><a href="item-detalle-{{ $nuevo->slug }}">{{$nuevo->descripcion}}</a></h3>
+			<div class="">
+					@for ($i=1; $i <= 5 ; $i++)
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $nuevo->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($nuevo->rating_cache, 1)}}
+			</div>
 			<div class="description"></div>
 			<div class="product-price">	
 				<span class="price">${!! $nuevo->precioventa !!}</span>
@@ -162,8 +167,13 @@
 			
 
 		<div class="product-info text-left">
-	<h3 class="name"><a href="item-detalle{{ $sale->id }}">{{$sale->descripcion}}</a></h3>
-			<div class="rating rateit-small"></div>
+	<h3 class="name"><a href="item-detalle-{{ $sale->slug }}">{{$sale->descripcion}}</a></h3>
+			<div class="">
+				@for ($i=1; $i <= 5 ; $i++)
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $sale->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($sale->rating_cache, 1)}}
+			</div>
 			<div class="description"></div>
 			<div class="product-price">	
 				<span class="price">${!! $sale->precioventa !!}</span>
@@ -310,8 +320,13 @@
 			
 
 		<div class="product-info text-left">
-		<h3 class="name"><a href="item-detalle{{ $hot->id }}">{{$hot->descripcion}}</a></h3>
-			<div class="rating rateit-small"></div>
+		<h3 class="name"><a href="item-detalle-{{ $hot->slug }}">{{$hot->descripcion}}</a></h3>
+			<div class="">
+				@for ($i=1; $i <= 5 ; $i++)
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $hot->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($hot->rating_cache, 1)}}
+			</div>
 			<div class="description"></div>
 			<div class="product-price">	
 				<span class="price">${!! $hot->precioventa !!}</span>

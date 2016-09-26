@@ -110,7 +110,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 					@for ($i=1; $i <= 5 ; $i++)
-                      <span class="glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
                     @endfor
                     {{ number_format($itemdetalle->rating_cache, 1)}} stars
 					</div>
@@ -240,7 +240,7 @@
                   <p class="pull-right">{{$itemdetalle->rating_count}} Reviews</p>
                   <p>
                     @for ($i=1; $i <= 5 ; $i++)
-                      <span class="glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
                     @endfor
                     {{ number_format($itemdetalle->rating_cache, 1)}} stars
                   </p>
@@ -295,7 +295,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     @for ($i=1; $i <= 5 ; $i++)
-                      <span class="glyphicon glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span>
                     @endfor
 
                     {{ $review->user ? $review->user->nombre : 'Anonymous'}} <span class="pull-right">{{$review->timeago}}</span> 

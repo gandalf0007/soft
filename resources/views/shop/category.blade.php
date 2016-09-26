@@ -25,17 +25,22 @@
 		<div class="product-image">
 			<div class="image">
 				@if($itemdetalle->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $itemdetalle->id }}"><img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle-{{ $itemdetalle->slug }}"><img src="storage/productos/{{$itemdetalle->imagen1}}" data-echo="storage/productos/{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@elseif($itemdetalle->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $itemdetalle->id }}"><img src="{{$itemdetalle->imagen1}}" data-echo="{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle-{{ $itemdetalle->slug }}"><img src="{{$itemdetalle->imagen1}}" data-echo="{{$itemdetalle->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@endif
 			</div><!-- /.image -->			
 			             		   
 		</div><!-- /.product-image -->
 			
 		<div class="product-info text-left">
-			<h3 class="name"><a href="item-detalle{{ $itemdetalle->id }}">{!! $itemdetalle->descripcion !!}</a></h3>
-			<div class="rating rateit-small"></div>
+			<h3 class="name"><a href="item-detalle-{{ $itemdetalle->slug }}">{!! $itemdetalle->descripcion !!}</a></h3>
+			<div class="">
+				@for ($i=1; $i <= 5 ; $i++)
+                      <span class="celeste glyphicon glyphicon-star{{ ($i <= $itemdetalle->rating_cache) ? '' : '-empty'}}"></span>
+                    @endfor
+                    {{ number_format($itemdetalle->rating_cache, 1)}}
+			</div>
 			<div class="description"></div>
 			<div class="product-price">	
 			<span class="price">${!! $itemdetalle->precioventa !!}</span>
