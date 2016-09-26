@@ -18,11 +18,13 @@ use Soft\Rubro;
 use Soft\Marca;
 use Soft\Ivatipo;
 use Soft\Provedore;
-use Soft\Productos_slug;
+use Soft\Review;
 use Alert;
 use Image;
 use DB;
 use Input;
+
+
 class ProductoController extends Controller
 {
     /**
@@ -184,8 +186,9 @@ class ProductoController extends Controller
         $categorias = categoria::lists('nombre','id');
 
          //ordenamos por usu_nombre y lo guaramos en $users
-        $productos=producto::where('habilitado','=',null);
-        $count= producto::where('habilitado','=',null)->count();
+        $reviews = review::orderBy('id','desc')->paginate(10);
+
+        $count= review::where('approved','=',1)->count();
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
         if (!empty($descripcion)) { 
@@ -198,12 +201,15 @@ class ProductoController extends Controller
         }
         
         //realizamos la paginacion
-        $productos=$productos->paginate(10);
+      
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
-        return view('admin.producto.listar.desabilitado',compact('count','categoriasub','categorias','productos','rubros','marcas','ivatipos','provedores'));
+        return view('admin.producto.listar.review-aprobados',compact('count','categoriasub','categorias','reviews','rubros','marcas','ivatipos','provedores'));
     }
+
+
+
 
 
     /**

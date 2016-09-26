@@ -22,6 +22,7 @@
   <li><a href="{{ url('producto-oferta') }}">Oferta</a></li>
   <li><a href="{{ url('producto-stock-critico') }}">Stock Critico</a></li>
   <li><a href="{{ url('producto-desabilitado') }}">Desabilitados</a></li>
+  <li><a href="{{ url('producto-review') }}">Review Aprobados</a></li>
 </ul>
 
 <!--buscador-->
@@ -73,22 +74,22 @@
   	<td>{{ $producto -> stockactual}}</td>
 
 <td>
-{!! link_to_route('producto.show', $title = 'Ver', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-warning']); !!}
+{!! link_to_route('producto.show', $title = '', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-warning btn-lg fa fa-eye']); !!}
 
-<a class="btn btn-success" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"><i class="fa fa-picture-o"></i>fotos</a>
+<a class="btn btn-success btn-lg fa fa-picture-o" href="{!! URL::to('producto-uploadimagen/'.$producto->id) !!}"></a>
 
 
-{!! link_to_route('producto.edit', $title = 'Editar', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary']); !!}
+{!! link_to_route('producto.edit', $title = '', $parameters = $producto->id  , $attributes = ['class'=>'btn btn-primary btn-lg fa fa-edit']); !!}
+
+<a class="btn btn-success btn-lg fa fa-globe" href="{!! URL::to('item-detalle-'.$producto->slug) !!}"></a>
+
+<a class="btn btn-info btn-lg fa fa-envelope" href="{!! URL::to('producto-review/'.$producto->slug) !!}"></a>
 
 <!--esto es para que solo el administrador pueda eliminar-->
 @if (Auth::user()->perfil_id == 1)
 <!--para el metodo eliminar necesito de un formulario para ejecutarlo-->
- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"><i class="fa fa-trash-o"> Eliminar</i></button>
+ <button type="button" class="btn btn-danger btn-lg fa fa-trash-o" data-toggle="modal" data-target="#confirmDelete-{{ $producto->id }}"></button>
 @endif
-
-<a class="btn btn-success" href="{!! URL::to('item-detalle-'.$producto->slug) !!}"><i class="fa fa-globe"></i>Web</a>
-
-<a class="btn btn-info" href="{!! URL::to('producto-review/'.$producto->slug) !!}"><i class="fa fa-globe"></i>Comentarios</a>
 
 </td>
 @endforeach

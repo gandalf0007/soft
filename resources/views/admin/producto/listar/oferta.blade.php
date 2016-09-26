@@ -22,6 +22,7 @@
   <li class="active"><a href="{{ url('producto-oferta') }}">Oferta ({{$count}})</a></li>
   <li><a href="{{ url('producto-stock-critico') }}">Stock Critico</a></li>
   <li><a href="{{ url('producto-desabilitado') }}">Desabilitados</a></li>
+  <li><a href="{{ url('producto-review') }}">Review</a></li>
 </ul>
 
 <!--buscador-->

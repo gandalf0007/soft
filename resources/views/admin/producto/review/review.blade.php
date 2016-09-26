@@ -15,7 +15,8 @@
 <table id="example2" class="table table-bordered table-hover">
   <thead>
     <th>Comentario</th>
-    <th>usuario</th>
+    <th>Usuario</th>
+    <th>Status</th>
 
     
     <th class="col-md-4">Operaciones</th>
@@ -25,7 +26,13 @@
   <!-- -->
   <td>{{ $review -> comment}}</td>
   <td>{{ $review ->user->nombre}}</td>
- 
+  <td>
+      @if ($review -> approved == 1)
+      <span class="label label-success">Aprobado</span>
+      @elseif ($review -> approved == 0)
+     <span class="label label-danger">Spam</span>
+      @endif
+  </td>
 
 <td>
 
