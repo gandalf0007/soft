@@ -562,7 +562,28 @@ $.cookie('popup_user_login', 'yes', { path: '/', expires: 7 });
 </script>
 <!--facebook pop up end-->
 
-
+ <!--Chat-->
+  <script type="text/javascript">
+var _videodesk= _videodesk || {};
+_videodesk['firstname'] = '' ;
+_videodesk['lastname'] = '' ;
+_videodesk['company'] = '' ;
+_videodesk['email'] = '' ;
+_videodesk['phone'] = '' ;
+_videodesk['customer_lang'] = '' ;
+_videodesk['customer_id'] = '' ;
+_videodesk['customer_url'] = '' ;
+_videodesk['cart_id'] = '' ;
+_videodesk['cart_url'] = '' ;
+_videodesk['uid'] = '75ce0d2b962e695d4fda3f967bbbb0d0' ;
+_videodesk['lang'] = 'es' ;
+(function() {
+var videodesk = document.createElement('script'); videodesk.type = 'text/javascript'; videodesk.async = true;
+videodesk.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'module-videodesk.com/js/videodesk.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(videodesk, s);
+})();
+</script>
+  <!--Chat END-->
 
 </body>
 </html>
