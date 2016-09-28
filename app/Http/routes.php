@@ -290,6 +290,14 @@ Route::resource('venta','VentaController');
 Route::resource('gasto','GastoController');
 Route::resource('categoria','CategoriaController');
 Route::resource('categoriasub','CategoriaSubController');
+
+
+Route::get('tickets','TicketController@index');
+Route::get('tickets-completados','TicketController@TicketCompletados');
+
+Route::post('tickets-cambiar-status/{id}','TicketController@TicketCambiarStatus');
+Route::get('tickets-responder/{id}','TicketController@TicketResponder');
+Route::put('tickets-comentario/{id}','TicketController@TicketComentario');
 /*---------------menu------------*/
 
 
@@ -358,7 +366,10 @@ Route::get('myaccount-perfil','WebAccount@MyAccount');
 Route::get('myaccount-config','WebAccount@MyAccountConfig');
 Route::get('myaccount-facturas','WebAccount@verFacturas');
 Route::get('myaccount-detalle-pdf/{tipo}/{id}','WebAccount@detalleVentaPdf');
-
+Route::get('myaccount-ticket','WebAccount@MyAccountTicket');
+Route::get('myaccount-ticket-responder-{id}','WebAccount@MyAccountTicketResponder');
+Route::put('myaccount-ticket-comentario/{id}','WebAccount@MyAccountTicketComentario');
+Route::post('myaccount-ticket-crear','WebAccount@MyAccountTicketCrear');
 //cuando crea desde la cuenta del user
 Route::post('myaccount-datos-facturacion',[
 	'uses'=>'WebAccount@DatosDeFacturacion',

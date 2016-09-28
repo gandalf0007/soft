@@ -29,9 +29,9 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a  href="#events">
-                            <h5><span class="glyphicon glyphicon-bell"> Avisos</span></h5>
+                   <li>
+                        <a  href="{{ url('myaccount-ticket') }}">
+                            <h5><span class="glyphicon glyphicon-bell"> Ticket</span></h5>
                         </a>
                     </li>
                 </ul>

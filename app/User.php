@@ -12,6 +12,9 @@ use Soft\web_venta;
 use Soft\Perfil;
 use Soft\webpost;
 use Soft\user_facturacion;
+use Soft\Ticket;
+use Soft\Tickets_comment;
+
 class User extends Authenticatable
 {
     //el uso del soft delete
@@ -95,4 +98,15 @@ public function webpost()
        return $this->belongsTo(user_facturacion::class);
     }  
 
+  public function ticket()
+    {
+        //un usuario puede tener muchas ticket
+       return $this->hasMany(Ticket::class);
+    }
+
+    public function comentario()
+    {
+        //un usuario puede tener muchas ticket
+       return $this->hasMany(Tickets_comment::class);
+    }
 }

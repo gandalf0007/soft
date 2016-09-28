@@ -16,6 +16,11 @@ use Soft\user_facturacion;
 use Session;
 use Soft\web_venta;
 use Soft\web_transaccione;
+use Soft\Ticket;
+use Soft\Tickets_comment;
+use Soft\Tickets_prioritie;
+use Soft\Tickets_categorie;
+
 
 class WebAccount extends Controller
 {
@@ -353,25 +358,120 @@ public function detalleVentaPdf($tipo,$id){
      
     }
 
-    
-
-  /*  public function detalleVenta($id){
-        //$items = Transaction::with('product_id')->where('venta_id','=',$request->get('venta_id'))->get();
-        //return json_encode($items);
-      
-        $ventas = venta::all();
-         $ventas= venta::Paginate();
-         $transactions = transaction::all();
-        //$items=venta::find($id);
-        $mycart = DB::table('transactions')->where('venta_id','=',$id)->get();
-       
-        //$myitemadds = DB::table('transactions')->where('venta_id','=',$id)->get();
-       return view('admin.venta.listar.index')
-        ->with('ventas',$ventas)
-         ->with('transactions',$transactions)
-       ->with('mycart',$mycart);
-    }/*
 /*---------------------------------Listar Ventas--------------------------------------*/
+
+
+/*---------------------------------Ticket--------------------------------------*/
+public function MyAccountTicket(){
+        //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
+
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        
+        //datos de facturacion
+        $tickets =  Ticket::where( 'user_id', '=',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
+        $prioridades  = Tickets_prioritie::lists('nombre', 'id');
+        $category  = Tickets_categorie::lists('nombre', 'id');
+
+        return view('shop.myaccount-ticket',compact(
+            'category',
+            'prioridades',
+            'tickets',
+            'categorias',
+            'subcategorias',
+            'carrucels',
+            'carrucelMarcas',
+            'informacions',
+            'boxs',
+            'logos',
+            'total',
+            'cartcount'));
+
+
+}
+
+
+public function MyAccountTicketResponder($id){
+        //llama a la funcion CartTotal
+        $cartcount = $this->CartCount();
+        //llama a la funcion total
+        $total = $this->total();
+
+        $subcategorias = DB::table('categoriasubs')->orderBy('nombre', 'asc')->get();
+        $categorias = DB::table('categorias')->orderBy('nombre', 'asc')->get();
+        $carrucels =  DB::table('web_carrucels')->orderBy('imagen', 'asc')->get();
+        $carrucelMarcas =  DB::table('web_marcas')->orderBy('imagen', 'asc')->get();
+        $informacions =  DB::table('web_informacions')->orderBy('direccion1', 'asc')->get();
+        $boxs =  DB::table('web_facebooks')->orderBy('box', 'asc')->get();
+        $logos =  DB::table('web_logos')->orderBy('logo', 'asc')->get();
+
+        
+        //datos de facturacion
+        $ticket =  Ticket::find($id);
+        $comentarios = Tickets_comment::where('ticket_id','=',$id)->get();
+        return view('shop.myaccount-ticket-responder',compact(
+            'comentarios',
+            'ticket',
+            'categorias',
+            'subcategorias',
+            'carrucels',
+            'carrucelMarcas',
+            'informacions',
+            'boxs',
+            'logos',
+            'total',
+            'cartcount'));
+
+
+}
+
+
+public function MyAccountTicketComentario(request $request ,$id){
+        
+
+        
+        $comentario = new Tickets_comment;
+        $comentario->comment = $request['comentario'];
+        $comentario->user_id = Auth::user()->id;
+        $comentario->ticket_id = $id;
+        $comentario->save();
+
+        Session::flash('message','Mensaje enviado');
+        return Redirect::to('/myaccount-ticket');
+
+
+}
+
+
+public function MyAccountTicketCrear(request $request){
+        
+
+        
+        $ticket = new Ticket;
+        $ticket->subject = $request['subject'];
+        $ticket->content = $request['comentario'];
+        $ticket->priority_id = $request['prioridad'];
+        $ticket->status_id = 2;
+        $ticket->user_id = Auth::user()->id;
+        $ticket->agent_id = null;
+        $ticket->category_id = $request['categoria'];
+        $ticket->save();
+
+        Session::flash('message','Ticket Creado');
+        return Redirect::to('/myaccount-ticket');
+
+
+}
+/*---------------------------------Ticket--------------------------------------*/
 
 
 

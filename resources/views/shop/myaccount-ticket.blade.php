@@ -23,13 +23,13 @@
                         </a>
                     </li>
                    
-                    <li class="active">
+                    <li >
                         <a  href="{{ url('myaccount-facturas') }}">
                             <h5><span class="glyphicon glyphicon-shopping-cart"> Mis Facturas</span></h5>
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a  href="{{ url('myaccount-ticket') }}">
                             <h5><span class="glyphicon glyphicon-bell"> Ticket</span></h5>
                         </a>
@@ -42,7 +42,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de Facturas</h3>
+              <h3 class="box-title">Ticket Abiertos</h3>
             </div>
       <div class="box-body">
  
@@ -64,52 +64,82 @@
 {!!Form::close()!!}
  <!--endbuscador-->
 
-<!--boton crear
-<div><a class="btn btn-success  pull-right " href="{!! URL::to('usuario/create') !!}">
-  <i class="fa fa-user-plus fa-lg"></i> Nuevo Usuario</a></div>
-endboton crear-->
+
+<div><a class="btn btn-success  pull-right " data-toggle="modal"  href="#ticket-crear">
+  <i class="fa fa-ticket fa-lg"></i> Nuevo Ticket</a></div>
+
  
  <br><br><br><br>
 <table id="example2" class="table table-bordered table-hover">
   <thead>
-      <tr>
-    <td>Numero de Factura</td>
-    <td>Metodo de Pago</td>
-    <th>Transporte</th>
-    <th>Comentario</th>
-    <th>Total</th>
-    <th>Estatus</th>
-    <th>Fecha</th>
-    <th>Pdf</th>
-      </tr>
-    </thead>
-    @foreach($ventas as $venta)
-    <tbody>
+    <th>#</th>
+    <th>Subject</th>
+    <th>Contenido</th>
+    <th>Status</th>
+    <th>Última actualización</th>
+    <!-- <th>Agent</th> -->
+    <th>Priority</th>
+    <th>Category</th>
+    <th>Propietario</th>
+    
+    
+    <th class="col-md-4">Operaciones</th>
+  </thead>
+  @foreach($tickets as $ticket)
+  <tbody>
+  <!-- -->
+  <td>{{ $ticket -> id}}</td>
+  <td>{{ $ticket -> subject}}</td>
+  <td>{{ $ticket -> content}}</td>
 
-    <td>#{{ $venta -> id}}</td>
-      <td>{{ $venta -> pago_tipo}}</td>
-      <td>{{ $venta -> transporte}}</td>
-      <td>{{ $venta -> comentario}}</td>
-      <td>${{ $venta -> total}}</td>
-
-      <td>
-      @if ($venta -> status == "pagado")
-      <span class="label label-success">{{ $venta -> status}}</span>
-      @elseif ($venta -> status == "pendiente")
-      <span class="label label-warning">{{ $venta -> status}}</span>
-      @elseif ($venta -> status == "cancelado")
-      <span class="label label-danger">{{ $venta -> status}}</span>
+  <td>
+      @if ($ticket -> status -> nombre == "PENDIENTE")
+      <a href="#status-{{ $ticket->id }}" data-toggle="modal" ><span class="label label-warning">{{ $ticket -> status -> nombre}}</span></a>
+      @elseif ($ticket -> status -> nombre == "SOLUCIONADO")
+      <a href="#status-{{ $ticket->id }}" data-toggle="modal" ><span class="label label-success">{{ $ticket -> status -> nombre }}</span></a>
       @endif
-      </td>
+  </td>
 
-      <td>{{ $venta -> created_at}}</td>
+  <td>{{ $ticket -> updated_at}}</td>
 
-      <td><a href="{{ URL::to('myaccount-detalle-pdf/1/'.$venta->id) }}" target="_blank" ><button class="btn btn-danger"><i class="fa fa-file-pdf-o"> PDF</i></button></a></td>
+  <td>
+      @if ($ticket -> priority -> nombre == "MEDIA")
+      <a href="" data-toggle="modal" ><span class="label label-success">{{ $ticket -> $ticket -> priority -> nombre}}</span></a>
+      @elseif ($ticket -> priority -> nombre == "BAJA")
+      <a href="" data-toggle="modal" ><span class="label label-warning">{{ $ticket -> priority -> nombre }}</span></a>
+      @elseif ($ticket -> priority -> nombre == "ALTA")
+      <a href="" data-toggle="modal" ><span class="label label-danger">{{ $ticket -> priority -> nombre}}</span></a>
+      @endif
+  </td>
+
+  <td>{{ $ticket -> category -> nombre}}</td>
+  
+  @if(!empty($ticket->agent_id))
+  <td>{{ $ticket -> agent -> nombre}}</td>
+  @else
+  <td>Nadie</td>
+  @endif
+
+
+<td>
+
+<a class="btn btn-info btn-lg fa fa-envelope" href="{!! URL::to('myaccount-ticket-responder-'.$ticket->id) !!}"></a>
+
+
+</td>
+@endforeach
   </tbody>
-  @endforeach
+  
   </table>
+
+
+
+<!--modal de eliminar producto-->
+@include('shop.modal.ticket-crear')
+
 <!--para renderizar la paginacion-->
- {!!$ventas->render() !!}
+ {!!$tickets->render() !!}
+
            </div>
             <!-- /.box-body -->
           </div>
