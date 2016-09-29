@@ -4,6 +4,7 @@ namespace Soft\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Soft\Http\Requests\UserUpdateRequest;
+use Soft\Http\Requests\TicketCreateRequest;
 use Soft\Http\Requests;
 use DB;
 use Auth;
@@ -378,7 +379,7 @@ public function MyAccountTicket(){
 
         
         //datos de facturacion
-        $tickets =  Ticket::where( 'user_id', '=',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
+        $tickets =  Ticket::where( 'user_id', '=',Auth::user()->id)->orderBy('created_at', 'des')->paginate(10);
         $prioridades  = Tickets_prioritie::lists('nombre', 'id');
         $category  = Tickets_categorie::lists('nombre', 'id');
 
@@ -452,9 +453,8 @@ public function MyAccountTicketComentario(request $request ,$id){
 }
 
 
-public function MyAccountTicketCrear(request $request){
+public function MyAccountTicketCrear(TicketCreateRequest $request){
         
-
         
         $ticket = new Ticket;
         $ticket->subject = $request['subject'];
@@ -468,7 +468,6 @@ public function MyAccountTicketCrear(request $request){
 
         Session::flash('message','Ticket Creado');
         return Redirect::to('/myaccount-ticket');
-
 
 }
 /*---------------------------------Ticket--------------------------------------*/

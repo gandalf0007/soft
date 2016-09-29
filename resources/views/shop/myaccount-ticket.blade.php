@@ -104,7 +104,7 @@
 
   <td>
       @if ($ticket -> priority -> nombre == "MEDIA")
-      <a href="" data-toggle="modal" ><span class="label label-success">{{ $ticket -> $ticket -> priority -> nombre}}</span></a>
+      <a href="" data-toggle="modal" ><span class="label label-success">{{ $ticket -> priority -> nombre}}</span></a>
       @elseif ($ticket -> priority -> nombre == "BAJA")
       <a href="" data-toggle="modal" ><span class="label label-warning">{{ $ticket -> priority -> nombre }}</span></a>
       @elseif ($ticket -> priority -> nombre == "ALTA")
@@ -113,7 +113,7 @@
   </td>
 
   <td>{{ $ticket -> category -> nombre}}</td>
-  
+
   @if(!empty($ticket->agent_id))
   <td>{{ $ticket -> agent -> nombre}}</td>
   @else
