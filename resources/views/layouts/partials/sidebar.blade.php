@@ -81,6 +81,11 @@
         </li>
 
         <li >
+        <a href="{!! URL::to('tickets/') !!}">
+        <i class='fa fa-ticket'></i><span>tickets</span></a>
+        </li> 
+
+        <li >
         <a href="{!! URL::to('provedor/') !!}">
         <i class='fa fa-user-secret'></i><span>Provedores</span></a>
         </li>

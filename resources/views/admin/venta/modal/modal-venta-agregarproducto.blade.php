@@ -47,7 +47,8 @@
 	@endforeach
 	</table>
 
-
+<!--para renderizar la paginacion-->
+  {!! $productos->render() !!}
 
      </div>
    </div>

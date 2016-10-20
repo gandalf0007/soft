@@ -25,16 +25,16 @@
 		<div class="product-image">
 			<div class="image">
 				@if($producto->imagen1 == "sin-foto.jpg")
-				<a href="item-detalle{{ $producto->id }}"><img src="storage/productos/{{$producto->imagen1}}" data-echo="storage/productos/{{$producto->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle-{{ $producto->slug }}"><img src="storage/productos/{{$producto->imagen1}}" data-echo="storage/productos/{{$producto->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@elseif($producto->imagen1 != "sin-foto.jpg")
-				<a href="item-detalle{{ $producto->id }}"><img src="{{$producto->imagen1}}" data-echo="{{$producto->imagen1}}" class="" alt="" height="180" width="180" ></a>
+				<a href="item-detalle-{{ $producto->slug }}"><img src="{{$producto->imagen1}}" data-echo="{{$producto->imagen1}}" class="" alt="" height="180" width="180" ></a>
 			@endif
 			</div><!-- /.image -->			
 			             		   
 		</div><!-- /.product-image -->
 			
 		<div class="product-info text-left">
-			<h3 class="name"><a href="item-detalle{{ $producto->id }}">{!! $producto->descripcion !!}</a></h3>
+			<h3 class="name"><a href="item-detalle-{{ $producto->slug }}">{!! $producto->descripcion !!}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 			<div class="product-price">	

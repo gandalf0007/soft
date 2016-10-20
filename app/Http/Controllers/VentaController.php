@@ -37,18 +37,33 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
 /*---------------------------------carrito--------------------------------------*/
-    public function addproducto(){
+    public function addproducto(Request $request){
         //me busca los productos
-        //$productos = producto::Paginate(8);
+        $productos = producto::orderBy('created_at','des');
+
+        //busqueda por descripccion
+        $descripcion=$request->input('descripcion');
+     
+        if (!empty($descripcion)) { 
+            $productos->where('descripcion','LIKE','%'.$descripcion.'%');
+        }
+        //busqueda por codigo
+        $codigo=$request->input('codigo');
+        if (!empty($codigo)) {
+            $productos->where('codigo','LIKE','%'.$codigo.'%');
+        }
+
+        $productos = $productos->Paginate(10);
+
         //me los manda a productoadd asi los seleccioens
-        //return View('admin.venta.productoadd')->with('productos',$productos);
+        return View('admin.venta.productoadd',compact('productos'));
     }
 
     //mostrar carrito
     public function show()
     {
         //carga los productos en el modal
-        $productos = producto::Paginate(8);
+        $productos = producto::orderBy('created_at','des')->Paginate(40);
         /*obtengo mi variable de session cart que cree y la almaceno en $cart */
         $cart = \Session::get('cart');
         /*obtengo mi variable de session cliente que cree y la almaceno en $cart */

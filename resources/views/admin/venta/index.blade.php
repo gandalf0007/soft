@@ -49,7 +49,7 @@
 			<div class="box-header with-border ">
               <h3 class="box-title">Datos de los Productos</h3>
              
-			<a class="btn btn-success  pull-right " data-toggle="modal" data-target="#productos"><i class="fa  fa-cubes fa-lg"></i> Agregar Producto</a>
+			<a class="btn btn-success  pull-right " href="{!! URL::to('venta-addproducto') !!}"><i class="fa  fa-cubes fa-lg"></i> Agregar Producto</a>
 
             </div>
         <br><br>
@@ -71,7 +71,14 @@
 					<tbody>
 						@foreach($cart as $item)
 							<tr> 
-								<td><img src="storage/productos/{{$item->imagen1}}" alt="" style="height:100px"></td>
+								
+								 <!-- si es sin foto cargo la foto por defecto -->
+  @if($item->imagen1 == "sin-foto.jpg")
+    <td><img src="storage/productos/{{$item->imagen1}}" alt="" height="100" width="100" ></td>
+     <!-- caso contrario cargo la foto -->
+  @elseif($item->imagen1 != "sin-foto.jpg")
+    <td><img src="{{$item->imagen1}}" alt="" height="100" width="100" ></td>
+  @endif
 								<td>{{ $item->descripcion }}</td>
 								<td>${{ number_format($item->precioventa,2) }}</td>
 								<td>

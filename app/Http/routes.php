@@ -101,6 +101,8 @@ Route::get('show-my-cart','VentaController@showMyCart');*/
 
 
 /*---------------VENTAS------------*/
+//busqueda de los productos
+Route::get('venta-busqueda','VentaController@addproducto');
 //visualisa los productos para agregar
 Route::get('venta-addproducto','VentaController@addproducto');
 //al darle agregar a un producto a mi carrito , le mando el id de ese producto
