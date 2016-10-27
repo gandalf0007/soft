@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <a  href="{{url('myaccount-config')}}">
-                            <h5><span class="glyphicon glyphicon-cog"> Config</span></h5>
+                            <h5><span class="glyphicon glyphicon-cog"> Facturacion</span></h5>
                         </a>
                     </li>
                    
@@ -76,6 +76,22 @@
                         <td>Email</td>
                         <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
                       </tr>
+
+                      <tr>
+                        <td>Provincia</td>
+                        <td>{{ $user->provincia }}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Ciudad</td>
+                        <td>{{ $user->ciudad }}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Codigo Postal</td>
+                        <td>{{ $user->cp }}</td>
+                      </tr>
+
                         <td>Telefono</td>
                         <td>{{ $user->telefono }}
                         </td>

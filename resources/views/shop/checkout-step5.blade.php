@@ -57,13 +57,19 @@
 <div class="col-lg-4 col-md-4 col-sm-4">
                     <h2>Detalles de Facturacion:</h2>
                     <h4><strong>Fecha de Facturacion : </strong> </h4>
-                    <h4><strong>Nombre :</strong> {{ $facturacion->nombre }} {{$facturacion->apellido }}</h4>
-                    <h4><strong>Cuit:</strong> {{ $facturacion->cuit }}</h4>
-                    <h4><strong>Direccion: </strong> {{ $facturacion->direccion }}</h4>
-                    <h4><strong>CP: </strong> {{ $facturacion->cp }}</h4>
-                    <h4><strong>Provincia: </strong> {{ $facturacion->provincia }}</h4>
-                    <h4><strong>Ciudad: </strong> {{ $facturacion->ciudad }}</h4>
-                    <h4><strong>Telefono :</strong> {{ $facturacion->telefono }}</h4>
+                    
+        @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
+        <h4><strong>Razon Social :</strong>
+        {{ $facturacion->razonsocial }}</h4>
+        @else
+        <h4><strong>Nombre :</strong>{{ $user->nombre }} {{$user->apellido }}</h4>
+        @endif
+                    <h4><strong>Cuit:</strong> {{ $user->cuit }}</h4>
+                    <h4><strong>Direccion: </strong> {{ $user->direccion }}</h4>
+                    <h4><strong>CP: </strong> {{ $user->cp }}</h4>
+                    <h4><strong>Provincia: </strong> {{ $user->provincia }}</h4>
+                    <h4><strong>Ciudad: </strong> {{ $user->ciudad }}</h4>
+                    <h4><strong>Telefono :</strong> {{ $user->telefono }}</h4>
                     <h4><strong>Email: </strong>{{ $user->email }}</h4>
                     
 </div>

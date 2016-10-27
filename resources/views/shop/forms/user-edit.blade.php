@@ -42,6 +42,21 @@
 </div>
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-8">
+	{!!Form::label('Provincia')!!}
+	{!!Form::text('provincia',null,['class'=>'form-control','placeholder'=>'ingrese la Provincia'])!!}
+</div>
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-8">
+	{!!Form::label('Ciudad')!!}
+	{!!Form::text('ciudad',null,['class'=>'form-control','placeholder'=>'ingrese la Ciudad'])!!}
+</div>
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-8">
+	{!!Form::label('Codigo Postal')!!}
+	{!!Form::text('cp',null,['class'=>'form-control','placeholder'=>'ingrese la Codigo Postal'])!!}
+</div>
+
+<div class="form-horizontal col-xs-12 col-sm-12 col-md-8">
 	{!!Form::label('telefono')!!}
 	{!!Form::text('telefono',null,['class'=>'form-control','placeholder'=>'ingrese el telefono'])!!}
 </div>

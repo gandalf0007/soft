@@ -147,6 +147,9 @@ public function MyAccountConfig()
         $user->email =$request['email'];
         $user->direccion =$request['direccion'];
         $user->telefono =$request['telefono'];
+        $user->provincia =$request['provincia'];
+        $user->ciudad =$request['ciudad'];
+        $user->cp =$request['cp'];
        // $user->path =$request['path'];
         $user->save();
 
@@ -177,17 +180,10 @@ public function MyAccountConfig()
 
          user_facturacion::create([
             'user_id' => Auth::user()->id,
-            'nombre' =>$request['nombre'],
-            'apellido'=>$request['apellido'],
+            'razonsocial' =>$request['razonsocial'],
             'cuit' =>$request['cuit'],
-            'cp' =>$request['cp'],
-            'direccion' =>$request['direccion'],
-            'provincia' =>$request['provincia'],
-            'ciudad' =>$request['ciudad'],
             'nacimiento' =>$request['nacimiento'],
             'empresa' =>$empresa,
-            'telefono' =>$request['telefono'],  
-            'telefono2' =>$request['telefono2'],
             ]);
 
 
@@ -206,17 +202,11 @@ public function DatosDeFacturacionCheckout(request $request)
 
          user_facturacion::create([
             'user_id' => Auth::user()->id,
-            'nombre' =>$request['nombre'],
-            'apellido'=>$request['apellido'],
+            'razonsocial' =>$request['razonsocial'],
             'cuit' =>$request['cuit'],
-            'cp' =>$request['cp'],
-            'direccion' =>$request['direccion'],
-            'provincia' =>$request['provincia'],
-            'ciudad' =>$request['ciudad'],
             'nacimiento' =>$request['nacimiento'],
             'empresa' =>$empresa,
-            'telefono' =>$request['telefono'],  
-            'telefono2' =>$request['telefono2'],
+           
             ]);
 
 
@@ -231,20 +221,10 @@ public function DatosDeFacturacionCheckout(request $request)
     {
 
          $facturacion=user_facturacion::find($id);
-        $facturacion->nombre = $request['nombre'];
-        $facturacion->apellido =$request['apellido'];
+        $facturacion->razonsocial = $request['razonsocial'];
         $facturacion->cuit=$request['cuit'];
-        $facturacion->cp =$request['cp'];
-        $facturacion->direccion =$request['direccion'];
-        if(!empty($request['provincia'])){
-        $facturacion->provincia =$request['provincia'];
-        }
-        $facturacion->ciudad =$request['ciudad'];
         $facturacion->nacimiento =$request['nacimiento'];
         $facturacion->empresa =$request['empresa'];
-        $facturacion->telefono =$request['telefono'];
-        $facturacion->telefono2 =$request['telefono2'];
-       // $facturacion->path =$request['path'];
         $facturacion->save();
 
        
@@ -256,24 +236,17 @@ public function DatosDeFacturacionCheckout(request $request)
      public function EditarFacturacionCheckout(request $request,$id)
     {
 
-         $facturacion=user_facturacion::find($id);
-        $facturacion->nombre = $request['nombre'];
-        $facturacion->apellido =$request['apellido'];
+        $facturacion=user_facturacion::find($id);
+        $facturacion->razonsocial = $request['razonsocial'];
         $facturacion->cuit=$request['cuit'];
-        $facturacion->cp =$request['cp'];
-        $facturacion->direccion =$request['direccion'];
-        if(!empty($request['provincia'])){
-        $facturacion->provincia =$request['provincia'];
-        }
-        $facturacion->ciudad =$request['ciudad'];
         $facturacion->nacimiento =$request['nacimiento'];
         $facturacion->empresa =$request['empresa'];
-        $facturacion->telefono =$request['telefono'];
-        $facturacion->telefono2 =$request['telefono2'];
-       // $facturacion->path =$request['path'];
+        //if(!empty($request['provincia'])){
+        //$facturacion->provincia =$request['provincia'];
+        //}
+
         $facturacion->save();
 
-       
        Session::flash('message','Datos Modificados con exito'); 
        return Redirect::to('/checkout-step-2');
 
@@ -339,18 +312,19 @@ public function detalleVentaPdf($tipo,$id){
         //$ventas=web_venta::where('user_id','=',Auth::user()->id);
         $datosfacturacions=user_facturacion::where('user_id','=',$ventas->user_id)->first();
         $transactions = web_transaccione::all();
+        $user = Auth::user();
 
        
-     return $this->crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo,$id);
+     return $this->crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo,$id , $user);
      
     }
 
-    public function crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo ,$id){
+    public function crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo ,$id , $user){
         $datosfacturacions = $datosfacturacions;
-
+        $user = $user;
         $ventas = $ventas;
         $date = date('Y-m-d');
-        $view =  \View::make($vistaurl, compact('ventas', 'date', 'transactions','datosfacturacions' ,'id'))->render();
+        $view =  \View::make($vistaurl, compact('ventas', 'date', 'transactions','datosfacturacions' ,'id','user'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         

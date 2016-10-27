@@ -10,7 +10,7 @@ return array(
 	],
 
 'provincia'=>[
-	null	=> 'selecione un tipo',
+	null	=> 'selecione una Provincia',
 	'Buenos Aires'	=> 'Buenos Aires',
 	'Catamarca'	=> 'Catamarca',
 	'Chaco'	=> 'Chaco',

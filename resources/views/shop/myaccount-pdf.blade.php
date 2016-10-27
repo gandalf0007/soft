@@ -88,14 +88,19 @@
 
         <td >
             <div >
-                    <strong>Nombre :</strong> {{ $datosfacturacions->nombre }} {{$datosfacturacions->apellido }} <br>
-                    <strong>Cuit:</strong> {{ $datosfacturacions->cuit }} <br>
-                    <strong>Direccion: </strong> {{ $datosfacturacions->direccion }} <br>
-                    <strong>CP: </strong> {{ $datosfacturacions->cp }} <br>
-                    <strong>Provincia: </strong> {{ $datosfacturacions->provincia }} <br>
-                    <strong>Ciudad: </strong> {{ $datosfacturacions->ciudad }} <br>
-                    <strong>Telefono :</strong> {{ $datosfacturacions->telefono }} <br>
-                    <strong>Email:</strong>{{ $datosfacturacions->user->email }}
+        @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
+        <h4><strong>Razon Social :</strong>
+        {{ $datosfacturacions->razonsocial }}</h4>
+         <strong>Cuit:</strong> {{ $datosfacturacions->cuit }} <br>
+        @else
+        <h4><strong>Nombre :</strong>{{ $user->nombre }} {{$user->apellido }}</h4>
+        @endif <br>
+                    <strong>Direccion: </strong> {{ $user->direccion }} <br>
+                    <strong>CP: </strong> {{ $user->cp }} <br>
+                    <strong>Provincia: </strong> {{ $user->provincia }} <br>
+                    <strong>Ciudad: </strong> {{ $user->ciudad }} <br>
+                    <strong>Telefono :</strong> {{ $user->telefono }} <br>
+                    <strong>Email:</strong>{{ $user->email }}
             </div>
           </td>
 

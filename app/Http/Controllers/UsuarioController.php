@@ -93,6 +93,9 @@ class UsuarioController extends Controller
             'direccion' =>$request['direccion'],
             'perfil_id' =>$request['perfil_id'],
             'telefono' =>$request['telefono'],
+            'provincia' =>$request['provincia'],
+            'ciudad' =>$request['ciudad'],
+            'cp' =>$request['cp'],
             ]);
 
         Alert::success('Mensaje existoso', 'Creado');
@@ -134,6 +137,9 @@ class UsuarioController extends Controller
         $user->direccion =$request['direccion'];
         $user->perfil_id =$request['perfil_id'];
         $user->telefono =$request['telefono'];
+        $user->telefono =$request['provincia'];
+        $user->telefono =$request['ciudad'];
+        $user->telefono =$request['cp'];
        // $user->path =$request['path'];
         $user->save();
 

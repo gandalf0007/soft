@@ -19,7 +19,7 @@
                     </li>
                     <li >
                         <a  href="{{url('myaccount-config')}}">
-                            <h5><span class="glyphicon glyphicon-cog"> Config</span></h5>
+                            <h5><span class="glyphicon glyphicon-cog"> Facturacion</span></h5>
                         </a>
                     </li>
                    

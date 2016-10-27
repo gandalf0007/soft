@@ -35,42 +35,32 @@
             </div>
             <div class="panel-body">
               <div class="row">
- @if(!DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get())         
+ @if(!DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get())  
+
  <button type="button" class="center-block btn btn-azul" data-toggle="modal" data-target="#userFacturacion"><i class="fa fa-edit"> Cargar Nueva Informacion De Facturacion</i></button>
+<br><br><br>
+ <a class="btn btn-success pull-right" href="{{ url('checkout-step-3') }}"><i class="fa fa-forward"> Siguiente</i></a>
 @endif
 <div class=" col-md-12 col-lg-12 "> 
       <table class="table table-user-information">
        @if(!empty(DB::table('user_facturacions')->where( 'user_id', '=',Auth::user()->id)->get()))
         <tbody>
           <tr>
-            <td><strong><h4>Nombre:</h4></strong> {{ $datosfacturacions->nombre }}</td>
-            <td><strong><h4>Apellido:</h4></strong> {{ $datosfacturacions->apellido }}</td>
-          </tr>
-          <tr>
+            <td><strong><h4>Razon Social:</h4></strong> {{ $datosfacturacions->razonsocial }}</td>
             <td><strong><h4>Cuit:</h4></strong> {{ $datosfacturacions->cuit }} </td>
-            <td><strong><h4>Direccion:</h4></strong> {{ $datosfacturacions->direccion }}</td>
           </tr>
+            
+              <tr>              
           <tr>
-            <td><strong><h4>Telefono:</h4></strong> {{ $datosfacturacions->telefono }}</td>
-            <td><strong><h4>Telefono 2:</h4></strong>{{ $datosfacturacions->telefono2 }}</td>
-          </tr>
-                   
-              <tr>
-                             
-          <tr>
-            <td><strong><h4>Ciudad:</h4></strong> {{ $datosfacturacions->ciudad }}</td>
-            <td><strong><h4>Provincia:</h4></strong> {{ $datosfacturacions->provincia }}</td>
-          </tr>
-          <tr>
-            <td><strong><h4>Codigo Postal:</h4></strong> {{ $datosfacturacions->cp }}</td>
             <td><strong><h4>Fecha de Nacimiento:</h4></strong> {{ $datosfacturacions->nacimiento }}</td>
-          </tr>                       
-           <td><strong><h4>Empresa :</h4></strong> @if( $datosfacturacions->empresa == "1") 
+            <td><strong><h4>Empresa :</h4></strong> @if( $datosfacturacions->empresa == "1") 
                                           SI
                                       @else
                                           NO
                                       @endif
               </td>
+          </tr>                       
+           
                            
             </tr>
                      @endif

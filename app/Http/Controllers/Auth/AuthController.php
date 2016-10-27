@@ -71,6 +71,9 @@ class AuthController extends Controller
             're_password' =>$data['password_confirmation'],
             'direccion' =>$data['direccion'],
             'telefono' =>$data['telefono'],
+            'provincia' =>$data['provincia'],
+            'ciudad' =>$data['ciudad'],
+            'cp' =>$data['cp'],
             'perfil_id'=>3,
         ]);
 

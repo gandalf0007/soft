@@ -52,38 +52,54 @@
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-user"></i></span>
-<input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" value="{{ old('nombre') }}"/>
+<input type="text" class="form-control" placeholder="Ingrese El Nombre" name="nombre" value="{{ old('nombre') }}"/>
 </div>
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-user"></i></span>
-<input type="text" class="form-control" placeholder="Ingrese Apellido" name="apellido" value="{{ old('apellido') }}"/>             
+<input type="text" class="form-control" placeholder="Ingrese El Apellido" name="apellido" value="{{ old('apellido') }}"/>             
 </div>
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-envelope"></i></span>
-<input type="email" class="form-control" placeholder="Ingrese Email" name="email" value="{{ old('email') }}"/>
+<input type="email" class="form-control" placeholder="Ingrese El Email" name="email" value="{{ old('email') }}"/>
 </div>
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-lock"></i></span>
-<input type="password" class="form-control" placeholder="Ingrese Password" name="password"/>    
+<input type="password" class="form-control" placeholder="Ingrese El Password" name="password"/>    
 </div>
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-log-in"></i></span>
-<input type="password" class="form-control" placeholder="Retype password" name="password_confirmation"/>   
+<input type="password" class="form-control" placeholder="Repetir El Password" name="password_confirmation"/>   
 </div>
                 
 <div class="input-group">
-<span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-envelope"></i></span>
-<input type="text" class="form-control" placeholder="Ingrese direccion" name="direccion" value="{{ old('direccion') }}"/>
+<span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-home"></i></span>
+<input type="text" class="form-control" placeholder="Ingrese su Domicilio" name="direccion" value="{{ old('direccion') }}"/>
 </div>
 
 <div class="input-group">
 <span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-phone"></i></span>
-<input type="text" class="form-control" placeholder="Ingrese telefono" name="telefono" value="{{ old('telefono') }}"/>
-</div>                                                                  
+<input type="text" class="form-control" placeholder="Ingrese Un telefono" name="telefono" value="{{ old('telefono') }}"/>
+</div>
+
+
+<div class="input-group">
+<span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-map-marker"></i></span>
+{!! Form::select('provincia', config('options.provincia'),'', array('class' => 'form-control')) !!}
+</div> 
+
+<div class="input-group">
+<span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-map-marker"></i></span>
+<input type="text" class="form-control" placeholder="Ingrese la Ciudad" name="ciudad" value="{{ old('ciudad') }}"/>
+</div>  
+
+<div class="input-group">
+<span class="input-group-addon btn-azul"><i class="glyphicon glyphicon-map-marker"></i></span>
+<input type="text" class="form-control" placeholder="Ingrese el Codigo Postal" name="cp" value="{{ old('cp') }}"/>
+</div>                                                                   
 
                     <div class="form-group">
                         <!-- Button -->

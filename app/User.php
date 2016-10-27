@@ -35,6 +35,9 @@ class User extends Authenticatable
         'perfil_id',
         'telefono',
         'path',
+        'provincia',
+        'ciudad',
+        'cp',
     ];
 
     /**
