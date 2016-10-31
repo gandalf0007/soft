@@ -1,3 +1,5 @@
+
+
 <style>
 .color1{
 
@@ -8,6 +10,149 @@
 
 
 
+<!-- .................................... tabla Item de la PC................................. -->
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Items</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<table class="table">
+<thead>
+		<th class="color1"></th>
+</thead>
+<tbody>
+<td>
+
+
+
+
+
+<!--gabinetes-->
+<div class="form-horizontal">
+{!!Form::label('Gabinetes')!!} <br>
+<select  class="form-control importe_linea" name="gabinetes">
+  @foreach($gabinetes as $gabinete)
+    <option  value="{{$gabinete->precioventa}}">{{$gabinete->descripcion}} -----${{$gabinete->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+
+<!--mother-->
+<div class="form-horizontal">
+{!!Form::label('Mother')!!} <br>
+<select  class="form-control importe_linea" name="mothers">
+  @foreach($mothers as $mother)
+    <option  value="{{$mother->precioventa}}">{{$mother->descripcion}} -----${{$mother->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+<!--procesadore-->
+<div class="form-horizontal">
+{!!Form::label('Procesadores')!!} <br>
+<select   class="form-control importe_linea" name="procesadores">
+  @foreach($procesadores as $procesadore)
+    <option value="{{$procesadore->precioventa}}">{{$procesadore->descripcion}} -----${{$procesadore->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+<!--mouse-->
+<div class="form-horizontal">
+{!!Form::label('Mouses')!!} <br>
+<select   class="form-control importe_linea" name="mouses">
+  @foreach($mouses as $mouse)
+    <option value="{{$mouse->precioventa}}">{{$mouse->descripcion}} -----${{$mouse->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+<!--teclado-->
+<div class="form-horizontal">
+{!!Form::label('Teclados')!!} <br>
+<select  class="form-control importe_linea" name="teclados">
+  @foreach($teclados as $teclado)
+    <option value="{{$teclado->precioventa}}">{{$teclado->descripcion}} -----${{$teclado->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+
+
+</td>
+<td>
+
+
+<!--video-->
+<div class="form-horizontal">
+{!!Form::label('Videos')!!} <br>
+<select class="form-control importe_linea" name="videos">
+  @foreach($videos as $video)
+    <option value="{{$video->precioventa}}">{{$video->descripcion}} -----${{$video->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+<!--Fuentes-->
+<div class="form-horizontal">
+{!!Form::label('Fuentes')!!} <br>
+<select class="form-control importe_linea" name="fuentes">
+  @foreach($fuentes as $fuente)
+    <option value="{{$fuente->precioventa}}">{{$fuente->descripcion}} -----${{$fuente->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+<!--Discos-->
+<div class="form-horizontal">
+{!!Form::label('Discos')!!} <br>
+<select class="form-control importe_linea" name="discos">
+  @foreach($discos as $disco)
+    <option value="{{$disco->precioventa}}">{{$disco->descripcion}} -----${{$disco->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+<!--Memorias-->
+<div class="form-horizontal">
+{!!Form::label('Memorias')!!} <br>
+<select class="form-control importe_linea" name="memorias">
+  @foreach($memorias as $memoria)
+    <option value="{{$memoria->precioventa}}">{{$memoria->descripcion}} -----${{$memoria->precioventa}}</option>
+   @endforeach
+</select>
+</div>
+
+
+
+<!--BOTONES-->
+<br>
+<h3><label for="total">Total: $<input type="text" id="total" value="0"/></h3>
+<input type="button" value="Calcular" onclick="calcular_total()"/>
+
+<br><br><br>
+
+<h3>{!!Form::label('Ingrese el Descuento(%):')!!}
+<input class="descuento" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_descuento();" type="text" id="desc1" value="0"></h3>
+
+</div>
+</td>
+
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 
 
 
@@ -64,9 +209,8 @@
 <!--precio costo-->
 <div class="form-horizontal">
 	{!!Form::label('precio costo')!!}
-	{!!Form::text('preciocosto',null,['class'=>'form-control precio_costo','placeholder'=>'ingrese el precio de costo'])!!}
+	{!!Form::text('preciocosto',null,['class'=>'form-control','placeholder'=>'ingrese el precio de costo'])!!}
 </div>
-
 
 <!--iva id-->
 <div class="form-horizontal">
@@ -84,7 +228,7 @@
 <!--rentabilidad 1-->
 <div class="form-horizontal">
 	{!!Form::label('rentabilidad 1')!!}
-	<input name="preciocosto" class="form-control rentabilidad" placeholder="ingrese la rentabilidad 1" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad1" value="0">
+	{!!Form::text('rentabi1',null,['class'=>'form-control','placeholder'=>'ingrese la rentabilidad 1'])!!}
 </div>
 </td>
 <td>

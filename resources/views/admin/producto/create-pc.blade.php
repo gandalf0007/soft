@@ -12,10 +12,9 @@
 			<div class="box-body">
 @include('alerts.request')
 
+
 {!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True])!!}
-
-
-@include('admin.producto.forms.formscreate')
+@include('admin.producto.forms.formscreate-pc')
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
 
@@ -30,7 +29,8 @@
       <!-- /.row -->
     </section>
 
-    <!-- /.scrip para ahcer la suma de los productos atraves de la clase importe_linea -->
+
+<!-- /.scrip para ahcer la suma de los productos atraves de la clase importe_linea -->
 <script type="text/javascript">
 function calcular_total() {
   importe_total = 0
@@ -44,19 +44,19 @@ function calcular_total() {
 
 
 
-function calcular_rentabilidad() {
-  precio_costo = 0
-  $(".precio_costo").each(
+function calcular_descuento() {
+  importe_total = 0
+  $(".importe_linea").each(
     function(index, value) {
-      precio_costo = precio_costo + eval($(this).val());
+      importe_total = importe_total + eval($(this).val());
     }
   );
 
-  $(".rentabilidad").each(
+  $(".descuento").each(
     function(index, value) {
-      var rentabilidad1 = document.getElementById("rentabilidad1");
-      var resultado = document.getElementById("resultado");
-      resultado = precio_costo * parseFloat(rentabilidad1.value) ;
+      var desc1 = document.getElementById("desc1");
+      var div = document.getElementById("resultado");
+      resultado = importe_total / parseFloat(desc1.value) ;
       
       $("#resultado").val(resultado);
     }
@@ -67,6 +67,6 @@ function calcular_rentabilidad() {
 
 </script>
 
+
+
 @endsection
-
-

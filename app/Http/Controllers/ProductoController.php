@@ -32,6 +32,16 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        /*si no existe mi session cart , esntonces la creo con put y creo
+        un array para almacenar los items*/
+        if(!\Session::has('pc')) \Session::put('pc', array());
+    }
+
+
+
     public function index(Request $request)
     {
         //modal
@@ -42,7 +52,7 @@ class ProductoController extends Controller
         $categoriasub = categoriasub::lists('nombre','id');
         $categorias = categoria::lists('nombre','id');
 
-         //ordenamos por usu_nombre y lo guaramos en $users
+        
         $productos=producto::orderBy('created_at','des');
         $count = producto::count();
         //busqueda por descripccion
@@ -529,4 +539,42 @@ class ProductoController extends Controller
         Alert::success('Mensaje existoso', 'Producto Eliminado');
         return Redirect::to('/producto');
     }
+
+
+
+
+
+
+
+
+
+public function CreatePc()
+    {
+        $categorias = categoria::all();
+        $rubros=Rubro::lists('descripcion','id');
+        $marcas=Marca::lists('descripcion','id');
+        $ivatipos=ivatipo::lists('descripcion','descripcion');
+        $provedores=provedore::lists('razonsocial','id');
+
+       //transformamos el array en una coleccion
+        //$gabinetes = producto::where('categoria_id','=',20)->get();
+        $gabinetes = DB::table('productos')->where('categoria_id','=',20)->select('id', 'descripcion','precioventa')->get();
+        $mothers = DB::table('productos')->where('categoria_id','=',28)->select('id', 'descripcion','precioventa')->get();
+        $mouses = DB::table('productos')->where('categoria_id','=',29)->select('id', 'descripcion','precioventa')->get();
+        $teclados = DB::table('productos')->where('categoria_id','=',30)->select('id', 'descripcion','precioventa')->get();
+        $videos = DB::table('productos')->where('categoria_id','=',31)->select('id', 'descripcion','precioventa')->get();
+        $procesadores = DB::table('productos')->where('categoria_id','=',32)->select('id', 'descripcion','precioventa')->get();
+        $fuentes = DB::table('productos')->where('categoria_id','=',40)->select('id', 'descripcion','precioventa')->get();
+        $discos = DB::table('productos')->where('categoria_id','=',19)->select('id', 'descripcion','precioventa')->get();
+        $memorias = DB::table('productos')->where('categoria_id','=',24)->select('id', 'descripcion','precioventa')->get();
+      
+        $total = 0;
+        return view('admin.producto.create-pc',compact('gabinetes',
+            'categorias','provedores','marcas','rubros','ivatipos'
+            ,'memorias','discos','fuentes','procesadores','videos','teclados','mouses','mothers','total'));
+        
+    }
+    
+
+
 }

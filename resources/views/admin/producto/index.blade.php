@@ -13,7 +13,10 @@
 @include('alerts.request')
 
 <div><br><a class="btn btn-success" href="{!! URL::to('producto/create') !!}">
-  <i class="fa fa-shopping-basket fa-lg"></i> Nuevo Producto</a></div>
+  <i class="fa fa-shopping-basket fa-lg"></i> Nuevo Producto</a>
+
+<a class="btn btn-success" href="{!! URL::to('producto-create-pc') !!}">
+  <i class="fa fa-desktop fa-lg"></i> Nueva Pc</a></div>
 
             </div>
 			<div class="box-body">
