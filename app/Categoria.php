@@ -4,6 +4,8 @@ namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Soft\Producto;
+use Soft\Categoriasub;
 class Categoria extends Model
 {
     protected $fillable = [
@@ -27,6 +29,6 @@ class Categoria extends Model
        return $this->hasMany(Producto::class);
     }
 
-
+   
     
 }

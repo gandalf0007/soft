@@ -12,8 +12,7 @@
 			<div class="box-body">
 @include('alerts.request')
 
-
-{!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True])!!}
+{!!Form::open(['url'=>'producto-combo-create', 'id'=>'form', 'method'=>'POST' , 'files'=>True ])!!}
 @include('admin.producto.forms.formscreate-pc')
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
@@ -29,44 +28,18 @@
       <!-- /.row -->
     </section>
 
-
 <!-- /.scrip para ahcer la suma de los productos atraves de la clase importe_linea -->
+
+
+<!-- /.el scrip que perimte los calculos se llama myajax.js -->
+
+
 <script type="text/javascript">
-function calcular_total() {
-  importe_total = 0
-  $(".importe_linea").each(
-    function(index, value) {
-      importe_total = importe_total + eval($(this).val());
-    }
-  );
-  $("#total").val(importe_total);
-}
 
 
 
-function calcular_descuento() {
-  importe_total = 0
-  $(".importe_linea").each(
-    function(index, value) {
-      importe_total = importe_total + eval($(this).val());
-    }
-  );
 
-  $(".descuento").each(
-    function(index, value) {
-      var desc1 = document.getElementById("desc1");
-      var div = document.getElementById("resultado");
-      resultado = importe_total / parseFloat(desc1.value) ;
-      
-      $("#resultado").val(resultado);
-    }
-  );
-  
-  
-}
 
 </script>
-
-
 
 @endsection

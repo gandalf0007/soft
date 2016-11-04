@@ -1,0 +1,104 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateProductosCombosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+   public function up()
+    {
+        Schema::create('productos_combos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('codigo');
+            $table->string('descripcion');
+            $table->string('slug')->unique();
+            
+            $table->double('preciocosto');
+            $table->integer('iva_id');
+            $table->double('precioventa');
+            $table->double('precio1');
+            $table->double('rentabi1');
+            $table->double('precio2');
+            $table->double('rentabi2');
+            $table->double('precio3');
+            $table->double('rentabi3');
+
+            $table->double('stockcritico');
+            $table->double('stockactual');
+            $table->double('stockpedido');
+
+            $table->integer('rubro_id');
+            $table->integer('marca_id');
+            $table->integer('provedor_id');
+
+            $table->integer('categoria_id');
+            $table->integer('categoriasub_id');
+
+            $table->string('cod_alter');
+            $table->string('ubicacion'); 
+            $table->string('cod_bulto');
+            $table->double('cant_bulto');
+
+            $table->string('descripcioncorta');
+            $table->string('descripcionlarga');
+
+            $table->string('usar_rentabili');
+            $table->string('habilitado');
+            $table->string('alerta');
+            $table->string('observaciones');
+            
+
+            $table->string('imagen1');
+            $table->string('filename');
+            $table->string('oferta');
+            $table->string('hot');
+
+
+            $table->integer('gabinete')->unsigned();
+            $table->foreign('gabinete')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('mother')->unsigned();
+            $table->foreign('mother')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('mouse')->unsigned();
+            $table->foreign('mouse')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('teclado')->unsigned();
+            $table->foreign('teclado')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('video')->unsigned();
+            $table->foreign('video')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('procesador')->unsigned();
+            $table->foreign('procesador')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('fuente')->unsigned();
+            $table->foreign('fuente')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('disco')->unsigned();
+            $table->foreign('disco')->references('id')->on('productos')->onDelete('cascade');
+
+            $table->integer('memoria')->unsigned();
+            $table->foreign('memoria')->references('id')->on('productos')->onDelete('cascade');
+
+
+            $table->timestamps();
+        });
+    }
+
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('productos_combos');
+    }
+}

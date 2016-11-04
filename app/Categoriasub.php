@@ -3,6 +3,8 @@
 namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
+use Soft\Producto;
+use Soft\Categoria;
 
 class Categoriasub extends Model
 {
@@ -30,5 +32,7 @@ class Categoriasub extends Model
         //una sub-categoria puede tener muchas productos
        return $this->hasMany(Producto::class);
     }
+
+
 
 }

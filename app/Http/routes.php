@@ -235,8 +235,6 @@ Route::get('liquidacion-usuario/{id}','LiquidacionController@addUsuario');
 
 
 
-
-
 /*---------------menu------------*/
 Route::resource('usuario','UsuarioController');
 Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
@@ -245,12 +243,31 @@ Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 
 Route::resource('producto','ProductoController');
+
+
+//calcular precio del combo
+Route::get('producto-calcular/{gabinete}/{mother}/{procesador}/{mouse}/{teclado}/{video}/{fuente}/{disco}/{memoria}','ProductoController@calcularCombo');
+Route::post('producto-calcular/{gabinete}/{mother}/{procesador}/{mouse}/{teclado}/{video}/{fuente}/{disco}/{memoria}','ProductoController@calcularCombo');
+
+//store combo pc
+Route::get('producto-combo-pc','ProductoController@ComboPc');
+Route::post('producto-combo-create','ProductoController@CreateComboPc');
+//ver combo pc
+Route::get('producto-combo-ver-{id}','ProductoController@VerComboPc');
+//editar combo pc
+Route::get('producto-combo-edit-{id}','ProductoController@EditComboPc');
+//update combo pc
+Route::put('producto-combo-update/{id}','ProductoController@UpdateComboPc');
+//eliminar combo
+//elimina al combo
+Route::delete('producto-combo-delete/{id}','ProductoController@destroyCombo');
+
+//pestañas
 Route::get('producto-oferta','ProductoController@ProductosOferta');
 Route::get('producto-stock-critico','ProductoController@StockCritico');
 Route::get('producto-desabilitado','ProductoController@ProductoDesabilitado');
 Route::get('producto-review','ProductoController@ProductoReview');
-
-Route::get('producto-create-pc','ProductoController@CreatePc');
+Route::get('producto-combo','ProductoController@ProductosCombo');
 
 Route::get('producto-review/{slug}','ReviewsController@ReviewsVer');
 Route::DELETE('producto-review-delete/{id}','ReviewsController@ReviewsDelete');
@@ -258,12 +275,15 @@ Route::get('producto-review-confirm/{id}','ReviewsController@ReviewsConfirm');
 Route::get('producto-review-spam/{id}','ReviewsController@ReviewsSpam');
 
 Route::resource('productoimagen','ProductoImagenController');
+
+
  //me devuelve las subcategorias al crear el prodcuto (select dinamico)
 Route::get('ajax-subcategoria',function(){
 	$cat_id = Input::get('cat_id');
 	$subcategorias = categoriasub::where('categoria_id','=', $cat_id)->get();
 	return Response::json($subcategorias);
 });
+
 
 /*porducto carga de imaganes*/
 Route::get('producto-uploadimagen/{id}','ProductoImagenController@crear');

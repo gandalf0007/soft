@@ -13,8 +13,6 @@
 @include('alerts.request')
 
 {!!Form::open(['route'=>'producto.store', 'method'=>'POST' , 'files'=>True])!!}
-
-
 @include('admin.producto.forms.formscreate')
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
@@ -59,6 +57,26 @@ function calcular_rentabilidad() {
       resultado = precio_costo * parseFloat(rentabilidad1.value) ;
       
       $("#resultado").val(resultado);
+    }
+  );
+
+  $(".rentabilidad2").each(
+    function(index, value) {
+      var rentabilidad2 = document.getElementById("rentabilidad2");
+      var resultado2 = document.getElementById("resultado2");
+      resultado2 = precio_costo * parseFloat(rentabilidad2.value) ;
+      
+      $("#resultado2").val(resultado2);
+    }
+  );
+
+  $(".rentabilidad3").each(
+    function(index, value) {
+      var rentabilidad3 = document.getElementById("rentabilidad3");
+      var resultado3 = document.getElementById("resultado3");
+      resultado3 = precio_costo * parseFloat(rentabilidad3.value) ;
+      
+      $("#resultado3").val(resultado3);
     }
   );
   

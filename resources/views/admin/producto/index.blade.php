@@ -15,13 +15,14 @@
 <div><br><a class="btn btn-success" href="{!! URL::to('producto/create') !!}">
   <i class="fa fa-shopping-basket fa-lg"></i> Nuevo Producto</a>
 
-<a class="btn btn-success" href="{!! URL::to('producto-create-pc') !!}">
-  <i class="fa fa-desktop fa-lg"></i> Nueva Pc</a></div>
+<a class="btn btn-success" href="{!! URL::to('producto-combo-pc') !!}">
+  <i class="fa fa-desktop fa-lg"></i> Nuevo Combo</a></div>
 
             </div>
 			<div class="box-body">
 <ul class="nav nav-tabs">
   <li class="active"><a href="{{ url('producto') }}">Todos ({{$count}})</a></li>
+  <li><a href="{{ url('producto-combo') }}">Combos</a></li>
   <li><a href="{{ url('producto-oferta') }}">Oferta</a></li>
   <li><a href="{{ url('producto-stock-critico') }}">Stock Critico</a></li>
   <li><a href="{{ url('producto-desabilitado') }}">Desabilitados</a></li>

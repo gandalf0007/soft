@@ -84,33 +84,33 @@
 <!--rentabilidad 1-->
 <div class="form-horizontal">
 	{!!Form::label('rentabilidad 1')!!}
-	<input name="preciocosto" class="form-control rentabilidad" placeholder="ingrese la rentabilidad 1" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad1" value="0">
+	<input name="rentabi1" class="form-control rentabilidad" placeholder="ingrese la rentabilidad 1" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad1" value="0">
 </div>
 </td>
 <td>
 <!--precio 2-->
 <div class="form-horizontal">
 	{!!Form::label('precio 2')!!}
-	{!!Form::text('precio2',null,['class'=>'form-control','placeholder'=>'ingrese el precio 2'])!!}
+	{!!Form::text('precio2',null,['class'=>'form-control','id'=>'resultado2','placeholder'=>'ingrese el precio 2'])!!}
 </div>
 
 <!--rentabilidad 2-->
 <div class="form-horizontal">
 	{!!Form::label('rentabilidad 2')!!}
-	{!!Form::text('rentabi2',null,['class'=>'form-control','placeholder'=>'ingrese la rentabilidad 2'])!!}
+	<input name="rentabi2" class="form-control rentabilidad2" placeholder="ingrese la rentabilidad 2" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad2" value="0">
 </div>
 </td>
 <td>
 <!--precio 3-->
 <div class="form-horizontal">
 	{!!Form::label('precio 3')!!}
-	{!!Form::text('precio3',null,['class'=>'form-control','placeholder'=>'ingrese la precio 3'])!!}
+	{!!Form::text('precio3',null,['class'=>'form-control','id'=>'resultado3','placeholder'=>'ingrese la precio 3'])!!}
 </div>
 
 <!--rentabilidad 3-->
 <div class="form-horizontal">
 	{!!Form::label('rentabilidad 3')!!}
-	{!!Form::text('rentabi3',null,['class'=>'form-control','placeholder'=>'ingrese la rentabilidad 3'])!!}
+	<input name="rentabi3" class="form-control rentabilidad3" placeholder="ingrese la rentabilidad 3" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad3" value="0">
 </div>
 </td>
 </tbody>

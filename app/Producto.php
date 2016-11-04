@@ -24,7 +24,8 @@ class Producto extends Model
              
            'preciocosto',
            'iva_id',
-           'precioventa',     
+           'precioventa',   
+           'descuento', 
            'rentabi1',
            'precio2',
            'rentabi2',
@@ -61,6 +62,7 @@ class Producto extends Model
 
            'oferta',
            'hot',
+           'combo_id',
            
           
     ];

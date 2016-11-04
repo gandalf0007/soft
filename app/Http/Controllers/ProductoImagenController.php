@@ -34,6 +34,9 @@ class ProductoImagenController extends Controller
     {
         $producto=producto::find($id);
         $imagens= producto_imagen::where('producto_id', '=',$id)->get();
+
+        
+
         return view('admin.producto.imagen',compact('producto','imagens'));
     }
 
@@ -84,5 +87,7 @@ $directory = "productos/".$categoria->nombre."/".$subcategoria->nombre."/".$prod
     }
 
 
-    
+
+
+
 }

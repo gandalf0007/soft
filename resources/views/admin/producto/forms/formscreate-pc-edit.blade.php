@@ -8,7 +8,100 @@
 </style>
 <br><br>
 
+<!-- .......................... Componentes......................... -->
 
+<div class="panel panel-primary">
+		<div class="panel-heading">
+   		 	<h3 class="panel-title">Componentes</h3>
+ 		</div>	
+  <div class="panel-body">
+<div class="row">
+
+<table class="table">
+<thead>
+		<th class="color1"></th>
+</thead>
+<tbody>
+
+<td>
+<!--GABINETE-->
+<div class="form-horizontal">
+	{!!Form::label('GABINETE:' )!!} {{$gab->descripcion}}--${{$gab->precioventa}}
+	
+</div>
+
+<!--MOTHER-->
+<div class="form-horizontal">
+	{!!Form::label('MOTHER:')!!} {{$mot->descripcion}}--${{$mot->precioventa}}
+	
+</div>
+
+<!--PROCESADOR-->
+<div class="form-horizontal">
+	{!!Form::label('PROCESADOR:')!!} {{$pro->descripcion}}--${{$pro->precioventa}}
+	
+</div>
+
+<!--MOUSE-->
+<div class="form-horizontal">
+	{!!Form::label('MOUSE:')!!} {{$mou->descripcion}}--${{$mou->precioventa}}
+	
+</div>
+
+<!--TECLADO-->
+<div class="form-horizontal">
+	{!!Form::label('TECLADO:')!!} {{$tec->descripcion}}--${{$tec->precioventa}}
+	
+</div>
+</td>
+
+<td>
+<!--VIDEO-->
+<div class="form-horizontal">
+	{!!Form::label('VIDEO:')!!} {{$vid->descripcion}}--${{$vid->precioventa}}
+	
+</div>
+
+<!--FUENTE-->
+<div class="form-horizontal">
+	{!!Form::label('FUENTE:')!!} {{$fue->descripcion}}--${{$fue->precioventa}}
+	
+</div>
+
+<!--DISCO-->
+<div class="form-horizontal">
+	{!!Form::label('DISCO:')!!} {{$dis->descripcion}}--${{$dis->precioventa}}
+	
+</div>
+
+<!--MEMORIA-->
+<div class="form-horizontal">
+	{!!Form::label('MEMORIA:')!!} {{$mem->descripcion}}--${{$mem->precioventa}}
+	
+</div>	
+
+<br>
+<br>
+<!--TOTAL-->
+<div class="form-horizontal">
+	{!!Form::label('TOTAL:')!!} {{$gab->precioventa + $mot->precioventa + $pro->precioventa + $mou->precioventa + $tec->precioventa + $vid->precioventa + $fue->precioventa + $dis->precioventa + $mem->precioventa}}
+	
+</div>	
+
+<!--TOTAL DESCUENTO-->
+<div class="form-horizontal">
+	{!!Form::label('TOTAL DESCUENTO:')!!} {{$producto->precioventa}}
+	
+</div>
+
+
+</td>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 
 <!-- .................................... tabla Item de la PC................................. -->
 <div class="panel panel-primary">
@@ -25,63 +118,36 @@
 <tbody>
 <td>
 
-
-
-
-
 <!--gabinetes-->
 <div class="form-horizontal">
-{!!Form::label('Gabinetes')!!} <br>
-<select  class="form-control importe_linea" name="gabinete" id="gabinete">
-  @foreach($gabinetes as $gabinete)
-    <option  value="{{$gabinete->id}}">{{$gabinete->descripcion}} -----${{$gabinete->precioventa}}</option>
-   @endforeach
-</select>
-
+	{!!Form::label('Gabinetes')!!}
+	{!!Form::select('gabinete',$gabinetes,null,['class'=>'form-control','id'=>'gabinete','value'=>'$gabinetes->id'])!!}
 </div>
-
-
 
 <!--mother-->
 <div class="form-horizontal">
-{!!Form::label('Mother')!!} <br>
-<select  class="form-control importe_linea" name="mother" id="mother">
-  @foreach($mothers as $mother)
-    <option  value="{{$mother->id}}">{{$mother->descripcion}} -----${{$mother->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Mothers')!!}
+	{!!Form::select('mother',$mothers,null,['class'=>'form-control','id'=>'mother','value'=>'$mothers->id'])!!}
 </div>
 
 <!--procesadore-->
 <div class="form-horizontal">
-{!!Form::label('Procesadores')!!} <br>
-<select   class="form-control importe_linea" name="procesador" id="procesador">
-  @foreach($procesadores as $procesadore)
-    <option value="{{$procesadore->id}}">{{$procesadore->descripcion}} -----${{$procesadore->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Procesadores')!!}
+	{!!Form::select('procesador',$procesadores,null,['class'=>'form-control','id'=>'procesador','value'=>'$procesadores->id'])!!}
 </div>
 
 
 <!--mouse-->
 <div class="form-horizontal">
-{!!Form::label('Mouses')!!} <br>
-<select   class="form-control importe_linea" name="mouse" id="mouse">
-  @foreach($mouses as $mouse)
-    <option value="{{$mouse->id}}">{{$mouse->descripcion}} -----${{$mouse->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Mouses')!!}
+	{!!Form::select('mouse',$mouses,null,['class'=>'form-control','id'=>'mouse','value'=>'$mouses->id'])!!}
 </div>
 
 
 <!--teclado-->
 <div class="form-horizontal">
-{!!Form::label('Teclados')!!} <br>
-<select  class="form-control importe_linea" name="teclado" id="teclado">
-  @foreach($teclados as $teclado)
-    <option value="{{$teclado->id}}">{{$teclado->descripcion}} -----${{$teclado->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Teclados')!!}
+	{!!Form::select('teclado',$teclados,null,['class'=>'form-control','id'=>'teclado','value'=>'$teclados->id'])!!}
 </div>
 
 
@@ -93,45 +159,34 @@
 
 <!--video-->
 <div class="form-horizontal">
-{!!Form::label('Videos')!!} <br>
-<select class="form-control importe_linea" name="video" id="video">
-  @foreach($videos as $video)
-    <option value="{{$video->id}}">{{$video->descripcion}} -----${{$video->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Videos')!!}
+	{!!Form::select('video',$videos,null,['class'=>'form-control','id'=>'video','value'=>'$videos->id'])!!}
 </div>
 
 
 <!--Fuentes-->
 <div class="form-horizontal">
-{!!Form::label('Fuentes')!!} <br>
-<select class="form-control importe_linea" name="fuente" id="fuente">
-  @foreach($fuentes as $fuente)
-    <option value="{{$fuente->id}}">{{$fuente->descripcion}} -----${{$fuente->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Fuentes')!!}
+	{!!Form::select('fuente',$fuentes,null,['class'=>'form-control','id'=>'fuente','value'=>'$fuentes->id'])!!}
 </div>
 
 
 <!--Discos-->
 <div class="form-horizontal">
-{!!Form::label('Discos')!!} <br>
-<select class="form-control importe_linea" name="disco" id="disco">
-  @foreach($discos as $disco)
-    <option value="{{$disco->id}}">{{$disco->descripcion}} -----${{$disco->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Discos')!!}
+	{!!Form::select('disco',$discos,null,['class'=>'form-control','id'=>'disco','value'=>'$discos->id'])!!}
 </div>
 
 <!--Memorias-->
 <div class="form-horizontal">
-{!!Form::label('Memorias')!!} <br>
-<select class="form-control importe_linea" name="memoria" id="memoria">
-  @foreach($memorias as $memoria)
-    <option value="{{$memoria->id}}">{{$memoria->descripcion}} -----${{$memoria->precioventa}}</option>
-   @endforeach
-</select>
+	{!!Form::label('Memorias')!!}
+	{!!Form::select('memoria',$memorias,null,['class'=>'form-control','id'=>'memoria','value'=>'$memorias->id'])!!}
 </div>
+
+
+
+
+
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"/>
 <!--BOTONES-->
@@ -140,8 +195,6 @@
 <input type="button" value="Calcular" id="calcularTotal" class="btn btn-primary" />
 
 <br><br><br>
-
-
 
 </div>
 </td>
@@ -227,7 +280,7 @@
 <!--rentabilidad 1-->
 <div class="form-horizontal">
 	{!!Form::label('Ingrese el Descuento(%):')!!}
-	<input class="descuento form-control" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_descuento();" type="text" id="desc1" value="0">
+	<input name="descuento" class="descuento form-control" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_descuento();" type="text" id="desc1" value="0">
 </div>
 
 </td>
@@ -360,20 +413,19 @@
 
 <!--categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
-	<label for="">Categorias</label>
-	<select class="form-control input-sm" name="categoria_id" id="categoria">
-		@foreach($categorias as $categoria)
-			<option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
-		@endforeach
-	</select>
+	
+	<div class="form-horizontal">
+	{!!Form::label('Categorias')!!}
+	{!!Form::select('categoria_id',$categorias,null,['class'=>'form-control','id'=>'categoriaedit'])!!}
+	</div>
 </div>
 
 <!--sub categoria-->
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">
-	<label for="">Sub-Categorias</label>
-	<select class="form-control input-sm" name="categoriasub_id" id="subcategoria">
-		<option value="" ></option>
-	</select>
+	<div class="form-horizontal">
+	{!!Form::label('Sub-Categorias')!!}
+	{!!Form::select('categoriasub_id',$categoriasub,null,['class'=>'form-control','id'=>'subcategoria'])!!}
+	</div>
 </div>
 
 </div>

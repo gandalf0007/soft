@@ -4,10 +4,12 @@ namespace Soft;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Soft\Producto;
+
 class Producto_imagen extends Model
 {
      protected $fillable = [
-		'id',
+		    'id',
         'nombre',
         'ruta',
         'tipo',
@@ -20,4 +22,9 @@ class Producto_imagen extends Model
       //una imagen corresponde a un producto
         return $this->belongsTo(Producto::class);
     }
+
+
+
+
+
 }

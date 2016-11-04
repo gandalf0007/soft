@@ -1,5 +1,9 @@
 <!-- REQUIRED JS SCRIPTS -->
 
+
+
+
+
 <!-- jQuery 2.2.2 -->
 <script src="{{ asset('/js/jquery.min.js') }}" ></script>
 <!-- Bootstrap 3.3.2 JS -->
@@ -113,6 +117,20 @@ $.get('../../ajax-subcategoria?cat_id='+ cat_id, function(data){
 });
 </script>
 
+<!--select dinamico para crear combo-->
+<script>
+$('#categoria').on('change',function(e){
+var cat_id = e.target.value;
+//ajax
+$.get('ajax-subcategoria?cat_id='+ cat_id, function(data){
+    console.log(data);
+    $('#subcategoria').empty();
+    $.each(data, function(index, subcatObj){
+        $('#subcategoria').append('<option value="'+subcatObj.id+'">'+subcatObj.nombre+'</option>');
+    });
+});
+});
+</script>
 
 
 
@@ -150,7 +168,7 @@ $.get('../../ajax-subcategoria?cat_id='+ cat_id, function(data){
 
 
 
-
+<script src="{{ asset('/js/producto-combo.js') }}" ></script>
 
 	
 		
