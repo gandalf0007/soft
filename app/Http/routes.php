@@ -241,6 +241,7 @@ Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
 Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
+Route::resource('puntos','PuntosController');
 
 Route::resource('producto','ProductoController');
 

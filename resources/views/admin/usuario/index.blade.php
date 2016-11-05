@@ -52,6 +52,7 @@
 		<th>Telefono</th>
 		<th>Direccion</th>
 		<th>Tipo</th>
+    <th>Puntos</th>
     <th class="col-md-4">Operaciones</th> 
       </tr>
     </thead>
@@ -63,6 +64,7 @@
 	  	<td>{{ $user -> telefono}}</td>
 	  	<td>{{ $user -> direccion}}</td>
 	  	<td>{{ $user->perfil->descripcion}}</td>
+      <td>{{ $user->puntos}}</td>
       
 <td>
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ver-{{ $user->id }}"><i class="fa fa-expand"> Ver</i></button>

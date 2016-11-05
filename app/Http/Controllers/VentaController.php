@@ -18,6 +18,7 @@ use Soft\Cliente;
 use Alert;
 use Soft\web_venta;
 use Soft\web_transaccione;
+use Soft\Punto;
 
 class VentaController extends Controller
 {
@@ -293,6 +294,9 @@ public function detalleVentaPdf($tipo,$id){
     
         $transactions = web_transaccione::where('web_venta_id','=',$id)->get();
         $venta=web_venta::find($id);
+        $user=User::find($venta->user_id);
+        $punto = Punto::first();
+
         if($Request['pago'] == "cancelado" and $venta->status != "cancelado"){
            
          foreach ($transactions as $transaction) {
@@ -303,9 +307,16 @@ public function detalleVentaPdf($tipo,$id){
             //cambiamos el estado de la venta
             $venta->status=$Request['pago'];
             $venta->save();}
+
+            //descontar puntos
+            $user->puntos= $user->puntos-(($punto->porcentaje*$venta->total)/100);
+            $user->save();
         }else{
             $venta->status=$Request['pago'];
             $venta->save();
+            //cargamos los puntos al usuario
+            $user->puntos= (($punto->porcentaje*$venta->total)/100);
+            $user->save();
         }
 
          return Redirect::to('/listar-venta-web');
