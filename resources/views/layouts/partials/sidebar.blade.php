@@ -44,7 +44,6 @@
                     <li><a  href="{!! URL::to('ivatipo/') !!}">Iva Tipo</a></li>
                     <li><a  href="{!! URL::to('marca/') !!}">Marca</a></li>
                     <li><a  href="{!! URL::to('transporte/') !!}">Transporte</a></li>
-                    <li><a  href="{!! URL::to('puntos/') !!}">Puntos</a></li>
                 </ul>
         </li>
 
@@ -110,6 +109,11 @@
         <a href="{!! URL::to('gasto/') !!}">
         <i class='fa fa-money'></i><span>Gastos</span></a>
         </li>  
+
+        <li >
+        <a href="{!! URL::to('puntos/') !!}">
+        <i class='fa fa-paypal'></i><span>Sistema De Puntos</span></a>
+        </li> 
            
         </ul><!---========================== Gestion  Menu====================== -->
 

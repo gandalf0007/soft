@@ -15,7 +15,7 @@
 
 
 {!!Form::open(['route'=>'puntos.store', 'method'=>'POST' , 'files'=>True])!!}
-@include('admin.configuracion.puntos.forms.formscreate')
+@include('admin.puntos.forms.formscreate')
 {!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
 {!!Form::close()!!}
 

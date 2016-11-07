@@ -242,6 +242,10 @@ Route::resource('rubro','RubroController');
 Route::resource('ivatipo','IvatipoController');
 Route::resource('marca','MarcaController');
 Route::resource('puntos','PuntosController');
+Route::get('puntos-seleccionar-usuario','PuntosController@seleccionarUsuario');
+Route::get('puntos-agregar-usuario/{id}','PuntosController@addUsuario');
+Route::get('puntos-agregar-puntos/{id}','PuntosController@AgregarPuntos');
+
 
 Route::resource('producto','ProductoController');
 

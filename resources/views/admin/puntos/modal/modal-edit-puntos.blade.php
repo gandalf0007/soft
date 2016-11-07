@@ -13,7 +13,7 @@
 <div class="modal-body">      
 
 
-@include('admin.configuracion.puntos.forms.formscreate')
+@include('admin.puntos.forms.formscreate')
 </div>
 
 <div class="modal-footer">
