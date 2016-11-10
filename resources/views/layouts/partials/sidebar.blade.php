@@ -111,9 +111,9 @@
         </li>  
 
         <li >
-        <a href="{!! URL::to('puntos/') !!}">
-        <i class='fa fa-paypal'></i><span>Sistema De Puntos</span></a>
-        </li> 
+        <a href="{!! URL::to('listado_graficas/') !!}">
+        <i class='fa fa-area-chart'></i><span>Graficas</span></a>
+        </li>  
            
         </ul><!---========================== Gestion  Menu====================== -->
 
@@ -141,6 +141,11 @@
         <a href="{!! URL::to('post/') !!}">
         <i class='fa fa-user-secret'></i><span>Post</span></a>
         </li>
+
+        <li >
+        <a href="{!! URL::to('puntos/') !!}">
+        <i class='fa fa-paypal'></i><span>Sistema De Puntos</span></a>
+        </li> 
 
            
         </ul><!---========================== Gestion web ====================== -->
