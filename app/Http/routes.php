@@ -235,6 +235,8 @@ Route::get('liquidacion-usuario/{id}','LiquidacionController@addUsuario');
 
 
 
+
+
 /*---------------menu------------*/
 Route::resource('usuario','UsuarioController');
 Route::delete('rubro/deletemultiple','RubroController@deleteMultiple');
@@ -351,6 +353,12 @@ Route::get('reportes', 'PdfController@index');
 Route::get('crear_reporte_porpais/{tipo}', 'PdfController@crear_reporte_porpais');
 /*---------------reportes Pdf------------*/
 
+/*--------------------------------REPORTES GRAFICAS------------------------------*/
+Route::get('listado_graficas', 'GraficasController@index');
+Route::get('grafica_registros/{anio}/{mes}', 'GraficasController@registros_mes');
+Route::get('grafica_publicaciones', 'GraficasController@total_publicaciones');
+/*--------------------------------REPORTES GRAFICAS------------------------------*/
+
 
 /*---------------Excel import/export ------------*/
 /*--------user --------*/
@@ -363,9 +371,6 @@ Route::post('/userImport','ExcelController@userImport');
 
 
  });
-
-
-
 
 
 

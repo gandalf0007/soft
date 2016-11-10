@@ -200,7 +200,7 @@ class VentaController extends Controller
     public function listarVenta(request $request){
 
 
-         $ventas=venta::orderBy('id')->paginate(50);
+         $ventas=venta::orderBy('created_at','des')->paginate(50);
          $transactions = transaction::all();
 
          /*buscador*/
