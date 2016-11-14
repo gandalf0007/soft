@@ -313,18 +313,19 @@ public function detalleVentaPdf($tipo,$id){
         $datosfacturacions=user_facturacion::where('user_id','=',$ventas->user_id)->first();
         $transactions = web_transaccione::all();
         $user = Auth::user();
+        $logo = DB::table('web_logos')->first();
 
        
-     return $this->crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo,$id , $user);
+     return $this->crearPDF($logo,$ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo,$id , $user);
      
     }
 
-    public function crearPDF($ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo ,$id , $user){
+    public function crearPDF($logo,$ventas, $transactions ,$datosfacturacions, $vistaurl,$tipo ,$id , $user){
         $datosfacturacions = $datosfacturacions;
         $user = $user;
         $ventas = $ventas;
         $date = date('Y-m-d');
-        $view =  \View::make($vistaurl, compact('ventas', 'date', 'transactions','datosfacturacions' ,'id','user'))->render();
+        $view =  \View::make($vistaurl, compact('logo','ventas', 'date', 'transactions','datosfacturacions' ,'id','user'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         

@@ -58,13 +58,13 @@
       <tbody>
         <tr>
           <td width="30%">
-            <img src="{{ url('storage/paginas/home/logo/1468282267.jpg') }}" width="200" height="150"> <!-- your logo here -->
+           <img height="150" width="250" class="img-responsive" src="storage/paginas/home/logo/{{ $logo->logo }}" alt=""> <!-- your logo here -->
           </td>
           <td width="70%">
             <h2>Shark Informatica</h2><br>
             <strong>Date:</strong> <?php echo date('d/M/Y');?><br>
             <strong>Fecha de Facturacion : {{ $ventas->created_at }}</strong> <br>
-            <strong>Número de factura :</strong> BF123<br>
+            <strong>Número de factura :</strong> {{ $ventas->id }}<br>
             <strong>Fecha de vencimiento:</strong> 10/01/2013<br>
           </td>
         </tr>
@@ -93,7 +93,7 @@
         {{ $datosfacturacions->razonsocial }}</h4>
          <strong>Cuit:</strong> {{ $datosfacturacions->cuit }} <br>
         @else
-        <h4><strong>Nombre :</strong>{{ $user->nombre }} {{$user->apellido }}</h4>
+        <strong>Nombre :</strong>{{ $user->nombre }} {{$user->apellido }}
         @endif <br>
                     <strong>Direccion: </strong> {{ $user->direccion }} <br>
                     <strong>CP: </strong> {{ $user->cp }} <br>
