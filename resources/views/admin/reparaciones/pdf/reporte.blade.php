@@ -65,7 +65,8 @@
             <strong>Direccion :</strong> {{$informacion->direccion1}}<br>
             <strong>Telefonos :</strong> {{$informacion->telefono1}} ---{{$informacion->telefono2}}<br>
             <strong>Web :</strong> http://sharkinformatica.com/ <br>
-            <strong>Correo :</strong>{{$informacion->correo1  }} <br>
+            <strong>Correo :</strong>{{$informacion->correo1  }} <br><br>
+            <strong>Recibido por :</strong>{{$vendedor->apellido  }} {{$vendedor->nombre  }} <br>
           </td>
         </tr>
       </tbody>
@@ -148,6 +149,11 @@
           <td>
            <strong>IMPORTANTE : </strong> La empresa no se Hará responsable ante daño o perdida de información, total o parcial que puedan ser causadas por razones involuntarias  o  por motivos ajenos a nuestra empresa. El cliente es el responsable de la totalidad de los datos y programas instalados en su equipo. Si el equipo no fuese retirado dentro de los (90) días después de ser ingresado, se lo considerara abandonado. En este supuesto SHARK INFORMATICA adquirirá su dominio, quedando facultada para disponer del equipo, perdiendo el CLIENTE todo derecho a reclamo o indemnización alguna (Art. 2525 y 2526 del código civil).  
           </td>
+        </tr>
+
+        <tr>
+        Firma de la empresa : 
+        ...............................<br><br><br>
         </tr>
       </tbody>
     </table>

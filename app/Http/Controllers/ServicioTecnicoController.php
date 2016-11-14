@@ -248,15 +248,16 @@ public function crearReporteReparacion($tipo,$id){
      $Reparacione=Reparacione::find($id);
      $logo = DB::table('web_logos')->first();
      $informacion =  DB::table('web_informacions')->first();
+     $vendedor = DB::table('users')->where('id','=',$Reparacione->vendedor_id)->first();
 
-     return $this->crearPDF($informacion,$logo,$Reparacione, $vistaurl,$tipo);
+     return $this->crearPDF($vendedor,$informacion,$logo,$Reparacione, $vistaurl,$tipo);
 
     }
 
-      public function crearPDF($informacion,$logo,$Reparacione,$vistaurl,$tipo)
+      public function crearPDF($vendedor,$informacion,$logo,$Reparacione,$vistaurl,$tipo)
     {
         $date = date('Y-m-d');
-        $view =  \View::make($vistaurl, compact('informacion','Reparacione','logo','date'))->render();
+        $view =  \View::make($vistaurl, compact('vendedor','informacion','Reparacione','logo','date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         

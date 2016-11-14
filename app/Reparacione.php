@@ -17,6 +17,7 @@ class Reparacione extends Model
         'observaciones',
         'status',
         'user_id',
+        'vendedor_id',
         
     ];
 
