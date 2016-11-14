@@ -251,15 +251,16 @@ public function detalleVentaPdf($tipo,$id){
         $vistaurl="admin.venta.venta-detalle-pdf";
         $ventas=venta::all();
         $transactions = transaction::all();
-        
-     return $this->crearPDF($ventas, $transactions , $vistaurl,$tipo,$id);
+         $logo = DB::table('web_logos')->first();
+     return $this->crearPDF($logo,$ventas, $transactions , $vistaurl,$tipo,$id);
      
     }
 
-    public function crearPDF($ventas, $transactions , $vistaurl,$tipo ,$id){
+    public function crearPDF($logo,$ventas, $transactions , $vistaurl,$tipo ,$id){
+        
         $data = $ventas;
         $date = date('Y-m-d');
-        $view =  \View::make($vistaurl, compact('data', 'date', 'transactions','id'))->render();
+        $view =  \View::make($vistaurl, compact('data','logo', 'date', 'transactions','id'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         

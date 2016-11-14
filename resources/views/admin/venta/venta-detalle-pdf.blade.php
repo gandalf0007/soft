@@ -58,7 +58,7 @@
       <tbody>
         <tr>
           <td width="30%">
-            <img src="http://exotel.in/wp-content/uploads/2013/03/exotel.png"> <!-- your logo here -->
+           <img height="150" width="250" class="img-responsive" src="storage/paginas/home/logo/{{ $logo->logo }}" alt=""> <!-- your logo here -->
           </td>
           <td width="70%">
             <h2>Shark Informatica</h2><br>

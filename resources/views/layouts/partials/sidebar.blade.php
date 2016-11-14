@@ -114,6 +114,11 @@
         <a href="{!! URL::to('listado_graficas/') !!}">
         <i class='fa fa-area-chart'></i><span>Graficas</span></a>
         </li>  
+
+        <li >
+        <a href="{!! URL::to('reparaciones/') !!}">
+        <i class='fa fa-wrench'></i><span>Servicio Tecnico</span></a>
+        </li>  
            
         </ul><!---========================== Gestion  Menu====================== -->
 

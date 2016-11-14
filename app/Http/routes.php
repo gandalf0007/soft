@@ -329,6 +329,25 @@ Route::get('tickets-completados','TicketController@TicketCompletados');
 Route::post('tickets-cambiar-status/{id}','TicketController@TicketCambiarStatus');
 Route::get('tickets-responder/{id}','TicketController@TicketResponder');
 Route::put('tickets-comentario/{id}','TicketController@TicketComentario');
+
+
+
+Route::get('reparaciones','ServicioTecnicoController@index');
+Route::get('reparaciones-completados','ServicioTecnicoController@ReparacionesCompletadas');
+Route::get('reparaciones-canceladas','ServicioTecnicoController@ReparacionesCancelada');
+Route::get('reparacion-create','ServicioTecnicoController@create');
+Route::get('reparacion-seleccionar-usuario','ServicioTecnicoController@seleccionarUsuario');
+Route::get('reparacion-agregar-usuario/{id}','ServicioTecnicoController@addUsuario');
+Route::post('reparacion-store','ServicioTecnicoController@store');
+Route::put('reparacion-update/{id}','ServicioTecnicoController@store');
+Route::post('reparacion-cambiar-status/{id}','ServicioTecnicoController@ServicioCambiarStatus');
+Route::delete('reparacion-destroy/{id}','ServicioTecnicoController@destroy');
+
+Route::get('reparacion-pdf/{tipo}/{id}','ServicioTecnicoController@crearReporteReparacion');
+
+
+
+
 /*---------------menu------------*/
 
 

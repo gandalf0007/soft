@@ -12,6 +12,8 @@ use Storage;
 use DB;
 use Image;
 use Soft\web_logo;
+
+
 class WebLogoController extends Controller
 {
     /**
@@ -99,8 +101,8 @@ class WebLogoController extends Controller
             $filename=time() . '.' . $avatar->getClientOriginalExtension();
             image::make($avatar)->save( public_path('/storage/paginas/home/logo/' . $filename));
 
-            $logos=web_carrucel::find($id);
-            $logos->imagen = $filename;
+            
+            $logos->logo = $filename;
             $logos->save();
         }
          //le manda un mensaje al usuario

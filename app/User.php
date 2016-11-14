@@ -14,6 +14,7 @@ use Soft\webpost;
 use Soft\user_facturacion;
 use Soft\Ticket;
 use Soft\Tickets_comment;
+use Soft\Reparacione;
 
 class User extends Authenticatable
 {
@@ -77,6 +78,7 @@ public function venta()
        return $this->hasMany(Venta::class);
     }
 
+
 public function webventa()
     {
         //un usuario puede tener muchas ventas
@@ -112,5 +114,12 @@ public function webpost()
     {
         //un usuario puede tener muchas ticket
        return $this->hasMany(Tickets_comment::class);
+    }
+
+
+    public function Reparacione()
+    {
+        //un usuario puede tener muchas reparaciones
+       return $this->hasMany(Reparacione::class);
     }
 }
