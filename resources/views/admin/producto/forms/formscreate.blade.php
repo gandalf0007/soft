@@ -87,7 +87,16 @@
 	<input name="rentabi1" class="form-control rentabilidad" placeholder="ingrese la rentabilidad 1" onblur="if(this.value == ''){this.value='0'}"  onKeyUp="calcular_rentabilidad();" type="text" id="rentabilidad1" value="0">
 </div>
 </td>
+
+
+<!--CONFIRMAR RENTABILIDAD 1-->
+<div class="form-horizontal">
+	{!!Form::label('Habilitar Rentabilidades')!!}
+	<input id="habilitado1"  class="habilitado1" type="checkbox" onclick="calcular_rentabilidad();" >
+</div>
+
 <td>
+
 <!--precio 2-->
 <div class="form-horizontal">
 	{!!Form::label('precio 2')!!}
