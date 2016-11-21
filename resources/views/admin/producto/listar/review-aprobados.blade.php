@@ -88,7 +88,7 @@
 
 
 <!--para renderizar la paginacion-->
-   {!! $reviews->render() !!}
+   {!! $reviews->appends(Request::only(['codigo','descripcion']))->render() !!}
  
 			</div>
             <!-- /.box-body -->

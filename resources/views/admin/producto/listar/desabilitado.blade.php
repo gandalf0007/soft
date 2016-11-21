@@ -30,7 +30,7 @@
 </ul>
 
 <!--buscador-->
-{!!Form::open(['route'=>'producto.index', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
+{!!Form::open(['url'=>'producto-desabilitado', 'method'=>'GET' , 'class'=>'navbar-form navbar-left' , 'role'=>'Search'])!!}
 <div class="form-group">
 {!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'Codigo'])!!}
 {!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion'])!!}
@@ -109,7 +109,7 @@
 
 
 <!--para renderizar la paginacion-->
-  {!! $productos->render() !!}
+  {!! $productos->appends(Request::only(['codigo','descripcion']))->render() !!}
  
 			</div>
             <!-- /.box-body -->

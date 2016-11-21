@@ -33,6 +33,7 @@ class ServicioTecnicoController extends Controller
      */
     public function index(Request $request)
     {
+       
         //ordenamos por usu_nombre y lo guaramos en $users
         $reparaciones = Reparacione::where('status','=',"PENDIENTE")->orderBy('created_at','asc');
         $count = Reparacione::where('status','=',"PENDIENTE")->count();
@@ -110,6 +111,7 @@ public function ReparacionesCancelada(Request $request)
     public function create()
     {   
         $user = \Session::get('usuarioReparacion');
+       
          return view('admin.reparaciones.create',compact('user'));
     }
 

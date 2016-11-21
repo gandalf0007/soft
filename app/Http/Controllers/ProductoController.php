@@ -69,6 +69,7 @@ class ProductoController extends Controller
         
         //realizamos la paginacion
         $productos=$productos->paginate(10);
+
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
@@ -102,6 +103,7 @@ public function ProductosCombo(Request $request)
         
         //realizamos la paginacion
         $productos= $productos->paginate(10);
+
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos
         //que contiene toda la informacion
@@ -121,6 +123,7 @@ public function ProductosCombo(Request $request)
 
          //ordenamos por usu_nombre y lo guaramos en $users
         $productos=producto::where('hot','=',1);
+ 
         $count=producto::where('hot','=',1)->count();
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
@@ -151,18 +154,17 @@ public function ProductosCombo(Request $request)
         $categoriasub = categoriasub::lists('nombre','id');
         $categorias = categoria::lists('nombre','id');
 
-         
-        $productoss = DB::table('productos')->orderBy('descripcion', 'asc')->get();
-        $count = 0;
+        $productoss = producto::all();
+        
         foreach ($productoss as $producto) {
-            if ($producto->stockactual <= $producto->stockcritico) {
-               $productos[]=$producto;
-                $count= $count + 1;
-            }
-
+          $productos = producto::where('stockactual','<=',$producto->stockcritico)->orderBy('descripcion', 'asc');
         }
+        
+        
+        $count = $productos->count();
+       
        //transformamos el array en una coleccion
-        $productos = Collection::make($productos);
+        //$productos = Collection::make($productos);
         
         //busqueda por descripccion
         $descripcion=$request->input('descripcion');
@@ -176,7 +178,7 @@ public function ProductosCombo(Request $request)
         }
         
         //realizamos la paginacion
-        
+       $productos = $productos->paginate(10);
         
         //retorna a una vista que esta en la carpeta usuario y dentro esta index
         //compact es para enviarle informaion a esa vista index , y le mandamos ese users que creamos

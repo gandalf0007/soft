@@ -106,8 +106,9 @@
  @include('admin.producto.modal.modal-delete-producto')
 
 
-<!--para renderizar la paginacion-->
-  {!! $productos->render() !!}
+<!--para renderizar la paginacion
+appends(Request::only(['codigo','descripcion'])) con esto solucionamos para no perder la paginacion cuando se usan filtros-->
+  {!! $productos->appends(Request::only(['codigo','descripcion']))->render() !!}
  
 			</div>
             <!-- /.box-body -->

@@ -5,6 +5,8 @@
   <div class="panel-body">
 <div class="row">
 
+@if (!empty($user)) 
+	
 
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">	
 	{!!Form::label('Nombre:  ')!!} {{$user->nombre}}
@@ -25,7 +27,7 @@
 <div class="form-horizontal col-xs-12 col-sm-12 col-md-3">	
 	{!!Form::label('Telefono:  ')!!} {{$user->telefono}}
 </div>
-
+@endif
 
 
 </div>
