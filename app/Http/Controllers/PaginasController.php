@@ -13,7 +13,7 @@ use Storage;
 use DB;
 use Image;
 use Soft\Producto;
-use Soft\Producto_imagen;
+use Soft\Producto_Imagen;
 use Soft\Categoria;
 use Soft\Review;
 class PaginasController extends Controller
@@ -163,7 +163,7 @@ class PaginasController extends Controller
         /*seccion para el layout*/
         $itemdetalle = producto::where('slug','=', $slug)->firstOrFail();
         //$itemdetalle=producto::find($id);
-        $imagens= producto_imagen::where('producto_id', '=',$itemdetalle->id)->get();
+        $imagens= Producto_imagen::where('producto_id', '=',$itemdetalle->id)->get();
         
 
 
